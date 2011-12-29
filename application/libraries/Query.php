@@ -71,7 +71,7 @@ class Query {
 			foreach($fields as $field){
 				$field_key_value = explode("=",$field);
 				$key = urldecode($field_key_value[0]);
-				$value = urldecode($field_key_value[1]);
+				$value = ( isset( $field_key_value[1]) ? $field_key_value[1]:'' )urldecode($field_key_value[1]);
 				eval("$$key = \"$value\";");
 				$set_what_array[$key] = $value;
 			};	  
