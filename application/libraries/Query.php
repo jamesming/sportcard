@@ -66,12 +66,13 @@ class Query {
 	}
 	
 	function get_set_what_array_by_parsing_post_parameter($post_array){
-
+		
+		
 			$fields = explode('&', $post_array['set_what']);
 			foreach($fields as $field){
 				$field_key_value = explode("=",$field);
 				$key = urldecode($field_key_value[0]);
-				$value = ( isset( $field_key_value[1]) ? urldecode($field_key_value[1]):'0' );
+				$value = urldecode($field_key_value[1]);
 				eval("$$key = \"$value\";");
 				$set_what_array[$key] = $value;
 			};	  
