@@ -195,7 +195,7 @@ function get_stored_configurations(){
 			$('#full_name_readonly').html( full_name );	
 			
 			
-			$('body').css({background:'<?php echo $data['users'][0]->background_color    ?>'});
+			$('body').css({background:'<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>'});
 			
 			
 }	
