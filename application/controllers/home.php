@@ -51,20 +51,20 @@ class Home extends CI_Controller {
 	
 	
 	function a3_insert(){
-//		
-//		$string = '';
-//		
-//		foreach( $this->input->get()  as  $key => $value){
-//			$string = $string .  $key.'='.$value.'&';
-//		}
-//
-//		$post_array = array(
-//			'table' => $this->input->get('table'),
-//			'set_what' => $string
-//		);
-//		
-		echo  'test';exit;
-		echo  'test'.$this->query->insert( $set_what );
+		
+		$string = '';
+		
+		foreach( $this->input->get()  as  $key => $value){
+			$string = $string .  $key.'='.$value.'&';
+		}
+
+		$post_array = array(
+			'table' => $this->input->get('table'),
+			'set_what' => $string
+		);
+		
+
+		echo $this->query->insert( $post_array );
 	}
 
 
