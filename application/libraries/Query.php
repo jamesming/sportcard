@@ -53,7 +53,7 @@ class Query {
 		
 		$this->add_column_if_not_exist($set_where_array, $post_array['table']);
 
-		$db_response = $this->CI->my_database_model->update_table_where(
+		return $this->CI->my_database_model->update_table_where(
 					$post_array['table'], 
 					$where_array = array('id'=>$post_array['id']),
 					$set_what_array = $set_where_array

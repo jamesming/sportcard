@@ -171,7 +171,7 @@ $(document).ready(function() {
 							set_what_array:$('#form0').serialize()
 							},function(data) {
 							
-								
+								alert(data);
 		
 						});		
 				
