@@ -60,7 +60,7 @@ class Home extends CI_Controller {
 
 		$set_what = array(
 			'table' => $this->input->get('table'),
-			'set_what' => 
+			'set_what' => $string
 		);
 		
 		
