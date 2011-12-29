@@ -86,8 +86,8 @@
 <div  id='header' class='container ' >
 	<div class='float_left coordinates '>
 		<form id='form0'>
-			<input name="x" id="x" type="hidden" value="">
-			<input name="y" id="y" type="hidden" value="">
+			<input name="x" id="x" type="" value="">
+			<input name="y" id="y" type="" value="">
 		</form>
 	</div>
 	<div class='float_left right_panel'  >
