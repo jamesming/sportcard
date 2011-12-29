@@ -57,6 +57,8 @@ class Home extends CI_Controller {
 			'set_what' => $this->input->get()
 		);
 		
+		
+		echo  $this->query->insert( $set_what );
 	}
 
 
