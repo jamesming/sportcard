@@ -40,7 +40,7 @@
 	display:none;	
 	}
 	
-	#head-line-box #name-location{
+	#head-line-box #full_name_readonly{
 	font-size:15px;
 	font-weight:bold;
 	color:gray;	
@@ -105,7 +105,7 @@
 				</div>
 				<div  class='insides' >
 				</div>
-				<div  id='name-location'>
+				<div  id='full_name_readonly'>
 				</div>
 			</div>
 			
@@ -118,9 +118,36 @@
 						<tr>
 							<td>Name
 							</td>
-							<td><input  id="name" type="" value="">
+							<td><input  name='full_name' id="full_name" type="" value="">
 							</td>
 						</tr>
+						
+						<tr>
+							<td>Background
+							</td>
+							<td>
+								<select  id='background_color' name='background_color'>
+									
+								<?php 
+								
+								$colors = array(
+									'red',
+									'blue',
+									'orange',
+									'yellow',
+									'green',
+									'white',
+								);
+								
+								foreach( $colors  as  $key => $color ){ ?>	
+
+										<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
+								
+								<?php } ?>
+								
+								</select>
+							</td>
+						</tr>						
 					</table>
 				</div>
 			</div>
@@ -140,33 +167,77 @@
 </script>
 
 <script type="text/javascript" language="Javascript">
+	
+	
+
+	
 $(document).ready(function() { 
+	
+			get_stored_configurations();
+			
+			store_custom_configuration();
+			
+			bind_events();
+
+});
+
+function get_stored_configurations(){
 	
 			x_start_position = 37;
 			y_start_position = 51;
-	
+		
 			$('#head-line-box').show().css({position:'relative',left:'<?php echo ( isset( $data['users'][0]->x ) ? $data['users'][0]->x:'0' )    ?>px', top:'<?php echo ( isset( $data['users'][0]->y) ? $data['users'][0]->y:'0' ) ?>px'})
+			
+			var full_name = '<?php echo ( isset( $data['users'][0]->full_name ) ? $data['users'][0]->full_name:'' )    ?>';
+			
+			$('#full_name').val( full_name );
+			
+			$('#full_name_readonly').html( full_name );	
+			
+			
+			$('body').css({background:'<?php echo $data['users'][0]->background_color    ?>'});
+			
+			
+}	
 
-			$( ".draggable" ).draggable({ 
-					handle: "div.handle",
-					containment: '#main-box'
-			})
-			
-			$('#head-line-box .handle').mouseover(function(event) {
+
+function store_custom_configuration(){
+	
+			$('#full_name').keyup(function(event) {
 				
-						$('#control-panel-box').hide();
-			})
-			
-			$( "#head-line-box.draggable" ).mousemove(function(){
+				$('#full_name_readonly').html( $(this).val() )	;	
 				
-						var coord = $(this).position();
-						$('#x').val( coord.left.toFixed(0)  -  x_start_position );
-						$('#y').val( coord.top.toFixed(0) - y_start_position);
+			}).blur(function(event) {
+
+						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+							table:'users',
+							id:1,
+							set_what:$(this).serialize()
+							},function(data) {
+							
+								$('#y').val(data);
+		
+						});		
+			});	
+			
+			
+			$('#background_color').change(function(event) {
+				
+						$('body').css({background:$(this).val()});
 						
+						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+							table:'users',
+							id:1,
+							set_what:$(this).serialize()
+							},function(data) {
+							
+								$('#y').val(data);
+								
+						});	
 						
-						
-						
-		 	}).mouseup(function(){
+			});	
+			
+			$( "#head-line-box.draggable" ).mouseup(function(){
 
 						var coord = $(this).position();
 						$('#x').val( coord.left.toFixed(0) -  x_start_position );
@@ -181,24 +252,55 @@ $(document).ready(function() {
 								$('#y').val(data);
 								
 								$('#control-panel-box').show();
+								
+								$('#head-line-box .handle').mouseout(function(event) {
+
+										$('#control-panel-box').show();
+														
+								})
 		
 						});		
-				
+			})
+}
 
-
+function bind_events(){
+	
+			$( ".draggable" ).draggable({ 
+					handle: "div.handle",
+					containment: '#main-box'
 			})
 			
-			$('#name').keyup(function(event) {
-				$('#name-location').html( $(this).val() )	;	
-			});	
+			$('#head-line-box .handle').mouseover(function(event) {
+				
+						$('#control-panel-box').hide();
+						
+			}).mouseout(function(event) {
+				
+									$('#control-panel-box').show();
+									
+			}).mousedown(function() {
+				
+			  		$('#head-line-box .handle').unbind('mouseout');
+			  		
+			});
+			
+			$( "#head-line-box.draggable" ).mousemove(function(){
+				
+						var coord = $(this).position();
+						$('#x').val( coord.left.toFixed(0)  -  x_start_position );
+						$('#y').val( coord.top.toFixed(0) - y_start_position);
+						
+		 	})
 			
 			$('.close-window').click(function(event) {
 				$(this).parent().hide();
 			});	
 			
+
 			$('#edit-mode').css({cursor:'pointer'}).click(function(event) {
 						$('#control-panel-box').show();
-			});	
-});
+			});				
+
+}
 </script>
 

@@ -38,6 +38,8 @@ class Home extends CI_Controller {
 	}
 	
 	
+	
+	
 
 	public function update(){
 
@@ -48,9 +50,16 @@ class Home extends CI_Controller {
 	
 	
 	
+	public function insert(){
+
+		echo  $this->query->insert( $this->input->post()  );
+		
+	}	
 	
 	
-	function a3_insert(){
+	
+	
+	public function a3_insert(){
 		
 		$string = '';
 		
