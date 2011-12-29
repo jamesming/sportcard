@@ -54,8 +54,15 @@ class Home extends CI_Controller {
 		
 		$string = '';
 		
+		$count = 0;
 		foreach( $this->input->get()  as  $key => $value){
-			$string = $string .  $key.'='.$value.'&';
+			$count++;
+			if( $count < count($this->input->get())){
+					$string = $string .  $key.'='.$value.'&';
+			}else{
+					$string = $string .  $key.'='.$value;
+			};
+			
 		}
 
 		$post_array = array(
