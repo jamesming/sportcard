@@ -69,7 +69,10 @@ class Home extends CI_Controller {
 
 	
 function t(){
-$table = 'users';
+$table = 'a3_emails';
+$this->my_database_model->create_generic_table($table );
+
+$table = 'a3_screenings';
 $this->my_database_model->create_generic_table($table );
 
 $fields_array = array(
