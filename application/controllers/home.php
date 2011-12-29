@@ -50,7 +50,7 @@ class Home extends CI_Controller {
 	
 	
 	
-	public function a3_insert(){
+	function a3_insert(){
 		
 		echo  $this->query->insert( $this->input->get()  );
 		
