@@ -57,6 +57,8 @@ class Home extends CI_Controller {
 		foreach( $this->input->get()  as  $key => $value){
 			$string = $string .  $key.'='.$value.'&';
 		}
+		
+		echo '<pre>';print_r(  $string  );echo '</pre>';  exit;
 
 		$set_what = array(
 			'table' => $this->input->get('table'),
