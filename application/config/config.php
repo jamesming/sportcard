@@ -22,7 +22,7 @@ $subdomain = $urlParts[0];
 
 
 if( $_SERVER['HTTP_HOST'] == 'jamesming.whsites.net' ){
-	$config['base_url']	= "http://http://jamesming.whsites.net/sportcard";	
+	$config['base_url']	= "http://jamesming.whsites.net/sportcard";	
 }elseif( $_SERVER['HTTP_HOST'] == '127.0.0.1' ){
 	$config['base_url']	= "http://127.0.0.1/sportcard";
 }elseif( $_SERVER['HTTP_HOST'] == '192.168.1.104' ){
