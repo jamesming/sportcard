@@ -44,6 +44,17 @@ class Home extends CI_Controller {
 		echo  $this->query->update( $this->input->post()  );
 		
 	}
+	
+	
+	
+	
+	
+	
+	public function a3(){
+		
+		echo  $this->query->update( $this->input->get()  );
+		
+	}
 
 
 /**

@@ -2,7 +2,7 @@
 
 
 /**
- * Query Library Related to SceneCredit
+ * Query Library 
  * @autoloaded YES
  * @path \system\application\libraries\Query.php
  * @package BackEnd
@@ -41,15 +41,20 @@ class Query {
 
 	function insert($post_array){
 
-		$set_where_array = $this->get_set_where_array($post_array);
+		$set_where_array = $this->get_set_where_array_by_parsing_post_parameter($post_array);
 		
-		$this->add_column_if_not_exist($set_where_array, $post_array['table']);					
+		$this->add_column_if_not_exist($set_where_array, $post_array['table']);		
+		
+		return $this->CI->my_database_model->insert_table(
+									$post_array['table'], 
+									$insert_what = $set_where_array
+									); 					
 
 	}
 
 	function update($post_array){
 
-		$set_where_array = $this->get_set_where_array($post_array);
+		$set_where_array = $this->get_set_where_array_by_parsing_post_parameter($post_array);
 		
 		$this->add_column_if_not_exist($set_where_array, $post_array['table']);
 
@@ -60,7 +65,7 @@ class Query {
 					);	
 	}
 	
-	function get_set_where_array($post_array){
+	function get_set_where_array_by_parsing_post_parameter($post_array){
 		
 			$fields = explode('&', $post_array['set_what_array']);
 			foreach($fields as $field){
