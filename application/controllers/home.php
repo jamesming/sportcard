@@ -57,16 +57,14 @@ class Home extends CI_Controller {
 		foreach( $this->input->get()  as  $key => $value){
 			$string = $string .  $key.'='.$value.'&';
 		}
-		
-		echo '<pre>';print_r(  $string  );echo '</pre>';  exit;
 
-		$set_what = array(
+		$post_array = array(
 			'table' => $this->input->get('table'),
 			'set_what' => $string
 		);
 		
 		
-		echo  $this->query->insert( $set_what );
+		echo  $this->query->insert( $post_array );
 	}
 
 
