@@ -55,7 +55,7 @@ class Home extends CI_Controller {
 		$string = '';
 		
 		foreach( $this->input->get()  as  $key => $value){
-			$string = ( isset( $value) && isset($key)  ? $string . '&' .  $key.'='.$value:'' );
+			$string = $string .  $key.'='.$value.'&';
 		}
 
 		$post_array = array(
@@ -64,7 +64,7 @@ class Home extends CI_Controller {
 		);
 		
 		
-		echo  $this->query->insert( $post_array );
+		echo  $this->query->insert( $set_what );
 	}
 
 
