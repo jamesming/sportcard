@@ -36,7 +36,8 @@
 	}
 	#head-line-box{
 	width: 200px; 
-	height: 200px;		
+	height: 200px;	
+	display:none;	
 	}
 	
 	#head-line-box #name-location{
@@ -83,7 +84,11 @@
 
 <body>
 <div  id='header' class='container ' >
-	<div class='float_left coordinates '>&nbsp;
+	<div class='float_left coordinates '>
+		<form id='form0'>
+			<input name="x" id="x" type="" value="">
+			<input name="y" id="y" type="" value="">
+		</form>
 	</div>
 	<div class='float_left right_panel'  >
 		<div  class='float_right edit-panel' >
@@ -136,27 +141,41 @@
 
 <script type="text/javascript" language="Javascript">
 $(document).ready(function() { 
+	
+			x_start_position = 37;
+			y_start_position = 51;
+	
+			$('#head-line-box').show().css({position:'relative',left:'<?php echo $data['users'][0]->x    ?>px', top:'<?php echo $data['users'][0]->y ?>px'})
+
 			$( ".draggable" ).draggable({ 
 					handle: "div.handle",
 					containment: '#main-box'
 			})
-
 			
 			$( "#head-line-box.draggable" ).mousemove(function(){
-						var coord = $(this).position();
-						$('.coordinates').text( "left: " + coord.left.toFixed(0) + ", top: " + coord.top.toFixed(0) );
-		 	}).mouseup(function(){
-				var coords=[];
-				var coord = $(this).position();
-				var item={ coordTop:  coord.left.toFixed(0), coordLeft: coord.top.toFixed(0)  };
-			   	coords.push(item);
-				var order = {id:this.id, coords: coords };
 				
-//					$.post('updatecoords.php', 'data='+$.toJSON(order), function(response){
-//							if(response == "success")
-//								$("#respond").html('<div class="success">X and Y Coordinates Saved!</div>').hide().fadeIn(1000);
-//								setTimeout(function(){ $('#respond').fadeOut(1000); }, 2000);
-//							});
+						var coord = $(this).position();
+						$('#x').val( coord.left.toFixed(0)  -  x_start_position );
+						$('#y').val( coord.top.toFixed(0) - y_start_position);
+						
+						
+		 	}).mouseup(function(){
+
+						var coord = $(this).position();
+						$('#x').val( coord.left.toFixed(0) -  x_start_position );
+						$('#y').val( coord.top.toFixed(0) - y_start_position );
+
+						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+							table:'users',
+							id:1,
+							set_what_array:$('#form0').serialize()
+							},function(data) {
+							
+								
+		
+						});		
+				
+
 
 			})
 			

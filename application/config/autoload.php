@@ -53,7 +53,7 @@ $autoload['packages'] = array(APPPATH.'third_party');
 */
 
 
-$autoload['libraries'] = array('database',  'tools','image_lib', 'session');
+$autoload['libraries'] = array('database',  'tools', 'query', 'image_lib', 'session');
 
 
 /*
