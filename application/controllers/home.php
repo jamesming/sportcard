@@ -56,11 +56,12 @@ class Home extends CI_Controller {
 		
 		$count = 0;
 		foreach( $this->input->get()  as  $key => $value){
+			
+			$string = ( $key != 'table' ? $string .  $key.'='.$value:'' );
+			
 			$count++;
 			if( $count < count($this->input->get())){
-					$string = ( $key != 'table' ? $string .  $key.'='.$value.'&':'' );
-			}else{
-					$string = ( $key != 'table' ? $string .  $key.'='.$value:'' );
+					$string = $string . '&';
 			};
 			
 		}
