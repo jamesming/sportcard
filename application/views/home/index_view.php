@@ -3,12 +3,34 @@
 <head>
 <?php     	$this->load->view('header/blueprint_css.php');  ?>
 <style>
-	
+	.float_left{
+	float:left;	
+	}
+	.float_right{
+	float:right;	
+	}
+	.clearfix{
+	clear:both;	
+	}
 	div.container{
 	min-height:30px;	
 	border:1px solid gray;
 	}
 	
+	div#header .coordinates{
+		width:200px;
+	}
+	div#header .right_panel{
+	 width:662px;
+	 background:lightblue;
+
+	}	
+	
+	div#header .right_panel .edit-panel{
+	 width:200px;
+	 background:lightgray;
+
+	}		
 	div#main-box{
 	min-height:600px;
 	}
@@ -30,13 +52,19 @@
 	.draggable .insides{
 		clear:both;
 	}
-	.draggable div.handle { 
-	cursor: move; 
-	background:yellow;
-	width:20px;
+	.draggable .icon-boxes{
+	width:22px;
 	float:right;
-	text-align:center;
+	height:20px;
+	}	
+	.draggable div.handle {
+	background: url("http://localhost/sportcard/images/icons.png") no-repeat scroll -14px -480px yellow;
+	cursor: move; 
 	}
+	.draggable div.close-window {
+	background: url("http://localhost/sportcard/images/icons.png") no-repeat scroll -14px -172px yellow;
+	cursor: pointer; 
+	}	
 	#control-panel-box{
 	position:relative;
 	top:100px;
@@ -55,13 +83,20 @@
 
 <body>
 <div  id='header' class='container ' >
+	<div class='float_left coordinates '>&nbsp;
+	</div>
+	<div class='float_left right_panel'  >
+		<div  class='float_right edit-panel' >
+			<span  id='edit-mode'>EDIT</span>
+		</div>
+	</div>
 </div>
 <div  id='main-box' class='container '>
 	
 
 			<div  id='head-line-box' class="draggable" >
 				<div>
-					<div class="handle">X</div>
+					<div class="handle icon-boxes"></div>
 				</div>
 				<div  class='insides' >
 				</div>
@@ -70,7 +105,9 @@
 			</div>
 			
 			<div  id='control-panel-box' class="draggable" >
-				<div class="handle">X</div>
+				<div class="handle icon-boxes"></div>
+				<div  class='close-window icon-boxes' >
+				</div>
 				<div  class='insides' >
 					<table>
 						<tr>
@@ -107,11 +144,11 @@ $(document).ready(function() {
 			
 			$( "#head-line-box.draggable" ).mousemove(function(){
 						var coord = $(this).position();
-						$('#header').text( "left: " + coord.left + ", top: " + coord.top );
+						$('.coordinates').text( "left: " + coord.left.toFixed(0) + ", top: " + coord.top.toFixed(0) );
 		 	}).mouseup(function(){
 				var coords=[];
 				var coord = $(this).position();
-				var item={ coordTop:  coord.left, coordLeft: coord.top  };
+				var item={ coordTop:  coord.left.toFixed(0), coordLeft: coord.top.toFixed(0)  };
 			   	coords.push(item);
 				var order = {id:this.id, coords: coords };
 				
@@ -127,7 +164,13 @@ $(document).ready(function() {
 				$('#name-location').html( $(this).val() )	;	
 			});	
 			
+			$('.close-window').click(function(event) {
+				$(this).parent().hide();
+			});	
 			
+			$('#edit-mode').css({cursor:'pointer'}).click(function(event) {
+						$('#control-panel-box').show();
+			});	
 });
 </script>
 
