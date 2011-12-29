@@ -63,7 +63,7 @@ class Home extends CI_Controller {
 //			'set_what' => $string
 //		);
 //		
-		
+		echo  'test';exit;
 		echo  'test'.$this->query->insert( $set_what );
 	}
 
