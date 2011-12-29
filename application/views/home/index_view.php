@@ -240,28 +240,40 @@ function store_custom_configuration(){
 			
 			$( "#head-line-box" ).mouseup(function(){
 
-						var coord = $(this).position();
-						$('#x').val( coord.left.toFixed(0) -  x_start_position );
-						$('#y').val( coord.top.toFixed(0) - y_start_position );
 
-						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
-							table:'users',
-							id:1,
-							set_what:$('#form0').serialize()
-							},function(data) {
-							
-								$('#y').val(data);
-								
-								$('#control-panel-box').show();
-								
-								$('#head-line-box .handle').mouseout(function(event) {
+						store_position( $(this) );
+						
+						
+						$(this).unbind('mouseleave');
+						
+						
+			}).mousedown(function(event) {
+				
+						$(this).mouseleave(function(){
+			          
+			          $(this).css({background:'gray'})
+			          
+						})
+						.mouseover(function(){
+			          
+			          $(this).css({background:'orange'})
+			          
+			          
+			          
+						})
+						.mouseup(function(){
+			          
+			          $(this).unbind('mouseleave');
+			          
+			          
+			          
+						})		
+									
+			});	
+			
+			
+			
 
-										$('#control-panel-box').show();
-														
-								})
-		
-						});		
-			});
 }
 
 function bind_events(){
@@ -271,47 +283,16 @@ function bind_events(){
 					containment: '#main-box'
 			})
 			
-			$('#head-line-box .handle').mouseover(function(event) {
-				
-						$('#control-panel-box').hide();
-						
-			}).mouseout(function(event) {
+			$('#head-line-box .handle')
+			.mouseout(function(event) {
 				
 									$('#control-panel-box').show();
 									
 			}).mousedown(function() {
 				
+						$('#control-panel-box').hide();
+				
 			  		$('#head-line-box .handle').unbind('mouseout');
-			  		
-			  		$( "#head-line-box" ).mouseleave(function(){
-			  			
-
-//										var coord = $(this).position();
-//										$('#x').val( coord.left.toFixed(0) -  x_start_position );
-//										$('#y').val( coord.top.toFixed(0) - y_start_position );
-//				
-//										$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
-//											table:'users',
-//											id:1,
-//											set_what:$('#form0').serialize()
-//											},function(data) {
-//											
-//												$('#y').val(data);
-//												
-//												$('#control-panel-box').show();
-//												
-//												$('#head-line-box .handle').mouseout(function(event) {
-//				
-//														$('#control-panel-box').show();
-//																		
-//												})
-//						
-//										});	
-//										
-//										$(this).unbind('mouseleave');
-
-          
-						});
 			  		
 			}).mouseup(function() {
 				
@@ -336,6 +317,35 @@ function bind_events(){
 						$('#control-panel-box').show();
 			});				
 
+}
+
+
+
+function store_position( dom_element ){
+	
+						var coord = dom_element.position();
+						$('#x').val( coord.left.toFixed(0) -  x_start_position );
+						$('#y').val( coord.top.toFixed(0) - y_start_position );
+
+						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+							table:'users',
+							id:1,
+							set_what:$('#form0').serialize()
+							},function(data) {
+							
+								$('#y').val(data);
+								
+								$('#control-panel-box').show();
+								
+								$('#head-line-box .handle').mouseout(function(event) {
+
+										$('#control-panel-box').show();
+														
+								})
+		
+						});		
+	
+	
 }
 </script>
 
