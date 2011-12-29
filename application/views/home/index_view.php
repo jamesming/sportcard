@@ -152,11 +152,18 @@ $(document).ready(function() {
 					containment: '#main-box'
 			})
 			
+			$('#head-line-box .handle').mouseover(function(event) {
+				
+						$('#control-panel-box').hide();
+			})
+			
 			$( "#head-line-box.draggable" ).mousemove(function(){
 				
 						var coord = $(this).position();
 						$('#x').val( coord.left.toFixed(0)  -  x_start_position );
 						$('#y').val( coord.top.toFixed(0) - y_start_position);
+						
+						
 						
 						
 		 	}).mouseup(function(){
@@ -171,7 +178,9 @@ $(document).ready(function() {
 							set_what:$('#form0').serialize()
 							},function(data) {
 							
-								alert(data);
+								$('#y').val(data);
+								
+								$('#control-panel-box').show();
 		
 						});		
 				
