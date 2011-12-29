@@ -145,7 +145,7 @@ $(document).ready(function() {
 			x_start_position = 37;
 			y_start_position = 51;
 	
-			$('#head-line-box').show().css({position:'relative',left:'<?php echo $data['users'][0]->x    ?>px', top:'<?php echo $data['users'][0]->y ?>px'})
+			$('#head-line-box').show().css({position:'relative',left:'<?php echo ( isset( $data['users'][0]->x ) ? $data['users'][0]->x:'0' )    ?>px', top:'<?php echo ( isset( $data['users'][0]->y) ? $data['users'][0]->y:'' ) ?>px'})
 
 			$( ".draggable" ).draggable({ 
 					handle: "div.handle",
