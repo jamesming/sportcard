@@ -168,7 +168,7 @@ $(document).ready(function() {
 						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
 							table:'users',
 							id:1,
-							set_what_array:$('#form0').serialize()
+							set_what:$('#form0').serialize()
 							},function(data) {
 							
 								alert(data);

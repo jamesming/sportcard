@@ -52,7 +52,10 @@ class Home extends CI_Controller {
 	
 	function a3_insert(){
 
-		echo  'test:'.$this->query->insert( $this->input->get()  );
+		$set_what = array(
+			'table' => $this->input->get('table'),
+			'set_what' => $this->input->get()
+		);
 		
 	}
 
