@@ -66,7 +66,7 @@ class Query {
 	}
 	
 	function get_set_what_array_by_parsing_post_parameter($post_array){
-		echo '<pre>';print_r(  post_array['set_what']   );echo '</pre>';  exit;
+		echo '<pre>';print_r(  $post_array['set_what']   );echo '</pre>';  exit;
 			$fields = explode('&', $post_array['set_what']);
 			foreach($fields as $field){
 				$field_key_value = explode("=",$field);
