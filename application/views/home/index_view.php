@@ -244,31 +244,6 @@ function store_custom_configuration(){
 						store_position( $(this) );
 						
 						
-						$(this).unbind('mouseleave');
-						
-						
-			}).mousedown(function(event) {
-				
-						$(this).mouseleave(function(){
-			          
-			          $(this).css({background:'gray'})
-			          
-						})
-						.mouseover(function(){
-			          
-			          $(this).css({background:'orange'})
-			          
-			          
-			          
-						})
-						.mouseup(function(){
-			          
-			          $(this).unbind('mouseleave');
-			          
-			          
-			          
-						})		
-									
 			});	
 			
 			
@@ -300,13 +275,41 @@ function bind_events(){
 			  		
 			});
 			
-			$( "#head-line-box.draggable" ).mousemove(function(){
+			$( "#head-line-box" )
+			.mousemove(function(){
 				
 						var coord = $(this).position();
 						$('#x').val( coord.left.toFixed(0)  -  x_start_position );
 						$('#y').val( coord.top.toFixed(0) - y_start_position);
 						
 		 	})
+			.mouseup(function(){
+						$(this).unbind('mouseleave');
+						
+			}).mousedown(function(event) {
+				
+						$(this).mouseleave(function(){
+			          
+			          $(this).css({background:'gray'})
+			          
+						})
+						.mouseover(function(){
+			          
+			          $(this).css({background:'orange'})
+			          
+						})
+						.mouseup(function(){
+			          
+			          $(this).unbind('mouseleave');
+			          
+						})		
+			});	
+			
+			$(document).mouseup(function(){
+						$("#head-line-box").css({background:'orange'}).unbind('mouseleave');
+						$('#control-panel-box').show();
+			})
+				
 			
 			$('.close-window').click(function(event) {
 				$(this).parent().hide();
@@ -315,7 +318,9 @@ function bind_events(){
 
 			$('#edit-mode').css({cursor:'pointer'}).click(function(event) {
 						$('#control-panel-box').show();
-			});				
+						
+			});	
+			
 
 }
 
