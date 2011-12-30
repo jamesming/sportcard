@@ -35,7 +35,7 @@
 	min-height:600px;
 	}
 	#head-line-box{
-	width: 200px; 
+	width: 500px; 
 	height: 200px;	
 	display:none;	
 	}
@@ -158,6 +158,7 @@
 								<?php 
 								
 								$colors = array(
+									'black',
 									'red',
 									'blue',
 									'orange',
@@ -206,7 +207,17 @@
 									'27px',
 									'28px',
 									'29px',
-									'30px',
+									'31px',
+									'32px',
+									'33px',
+									'34px',
+									'35px',
+									'36px',
+									'37px',
+									'38px',
+									'39px',
+									'40px',
+									'41px',
 								);
 								
 								foreach( $sizes  as  $key => $size ){ ?>	
