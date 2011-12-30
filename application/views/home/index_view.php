@@ -48,7 +48,8 @@
 	}
 	.draggable{ 
 	float: left;
-	background:orange;	
+	background:transparent;	
+	border:1px solid gray;
 	}
 	.draggable .insides{
 		clear:both;
@@ -147,7 +148,76 @@
 								
 								</select>
 							</td>
-						</tr>						
+						</tr>
+						<tr>
+							<td>Font Color
+							</td>
+							<td>
+								<select  id='font_color' name='font_color'>
+									
+								<?php 
+								
+								$colors = array(
+									'red',
+									'blue',
+									'orange',
+									'yellow',
+									'green',
+									'white',
+								);
+								
+								foreach( $colors  as  $key => $color ){ ?>	
+
+										<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
+								
+								<?php } ?>
+								
+								</select>
+							</td>
+						</tr>		
+						
+						<tr>
+							<td>Font Size
+							</td>
+							<td>
+								<select  id='font_size' name='font_size'>
+									
+								<?php 
+								
+								$sizes = array(
+									'9px',
+									'10px',
+									'11px',
+									'12px',
+									'13px',
+									'14px',
+									'15px',
+									'16px',
+									'17px',
+									'18px',
+									'19px',
+									'20px',
+									'21px',
+									'22px',
+									'23px',
+									'24px',
+									'25px',
+									'26px',
+									'27px',
+									'28px',
+									'29px',
+									'30px',
+								);
+								
+								foreach( $sizes  as  $key => $size ){ ?>	
+
+										<option value='<?php  echo $size   ?>'><?php  echo $size   ?></option>
+								
+								<?php } ?>
+								
+								</select>
+							</td>
+						</tr>																	
 					</table>
 				</div>
 			</div>
@@ -186,19 +256,24 @@ $(document).ready(function() {
 
 function get_stored_configurations(){
 	
-		
 			$('#head-line-box').show().css({position:'relative',left:'<?php echo ( isset( $data['users'][0]->x ) ? $data['users'][0]->x:'0' )    ?>px', top:'<?php echo ( isset( $data['users'][0]->y) ? $data['users'][0]->y:'0' ) ?>px'})
 			
 			var full_name = '<?php echo ( isset( $data['users'][0]->full_name ) ? $data['users'][0]->full_name:'' )    ?>';
 			
 			$('#full_name').val( full_name );
 			
-			$('#full_name_readonly').html( full_name );	
-			
+			$('#full_name_readonly').html( full_name );
+				
 			
 			$('body').css({background:'<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>'});
+			$('#background_color').val('<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>')
 			
 			
+			$('#full_name_readonly').css({color:'<?php echo ( isset( $data['users'][0]->font_color) ? $data['users'][0]->font_color:'black' )    ?>'});
+			$('#font_color').val('<?php echo ( isset( $data['users'][0]->font_color) ? $data['users'][0]->font_color:'black' )    ?>');			
+			
+			$('#full_name_readonly').css({'font-size':'<?php echo ( isset( $data['users'][0]->font_size) ? $data['users'][0]->font_size:'11px' )    ?>'});			
+			$('#font_size').val('<?php echo ( isset( $data['users'][0]->font_size) ? $data['users'][0]->font_size:'11px' )    ?>');
 }	
 
 
@@ -237,6 +312,42 @@ function store_custom_configuration(){
 						});	
 						
 			});	
+			
+			
+			$('#font_color').change(function(event) {
+				
+						$('#full_name_readonly').css({color:$(this).val()});
+						
+						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+							table:'users',
+							id:1,
+							set_what:$(this).serialize()
+							},function(data) {
+							
+								$('#y').val(data);
+								
+						});	
+						
+			});				
+			
+			
+			$('#font_size').change(function(event) {
+				
+						$('#full_name_readonly').css({'font-size':$(this).val()});
+						
+						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+							table:'users',
+							id:1,
+							set_what:$(this).serialize()
+							},function(data) {
+							
+								$('#y').val(data);
+								
+						});	
+						
+			});		
+			
+			
 			
 			$( "#head-line-box" ).mouseup(function(){
 
@@ -295,7 +406,7 @@ function bind_events(){
 						})
 						.mouseover(function(){
 			          
-			          $(this).css({background:'orange'})
+			          $(this).css({background:'transparent'})
 			          
 						})
 						.mouseup(function(){
@@ -306,7 +417,7 @@ function bind_events(){
 			});	
 			
 			$(document).mouseup(function(){
-						$("#head-line-box").css({background:'orange'}).unbind('mouseleave');
+						$("#head-line-box").css({background:'transparent'}).unbind('mouseleave');
 						$('#control-panel-box').show();
 			})
 				
