@@ -73,9 +73,6 @@
 	background:gray;
 	}
 	#control-panel-box{
-	position:absolute;
-	top:100px;
-	left:320px;
 	background:red;
 	width:406px;
 	height: 300px;			
@@ -116,7 +113,6 @@
 		<form id='form0'>
 			<input name="x" id="x" type="" value="">
 			<input name="y" id="y" type="" value="">
-			<input name="windowSize" id="windowSize" type="" value="">
 			<input name="margin_left_of_center" id="margin_left_of_center" type="" value="">
 		</form>
 	</div>
@@ -334,7 +330,14 @@ function get_stored_configurations(){
 				'margin-left':(0-<?php echo ( isset( $data['users'][0]->margin_left_of_center) ? $data['users'][0]->margin_left_of_center:'0' ) ?>)+'px',
 			})
 
-	
+
+			$('#control-panel-box').css({
+				'position':'absolute',
+				'left':($(window).width() / 2),
+				'top':'100px',
+				'margin-left':'30px',
+			})
+
 			var full_name = '<?php echo ( isset( $data['users'][0]->full_name ) ? $data['users'][0]->full_name:'' )    ?>';
 			
 			$('#full_name').val( full_name );
