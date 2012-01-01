@@ -136,6 +136,7 @@
 	<div class='float_left right_panel'  >
 		<div  class='float_right edit-panel' >
 			<span  id='edit-mode'>EDIT</span>
+			<span  id='preview-mode'>PREVIEW</span>
 		</div>
 	</div>
 </div>
@@ -389,7 +390,6 @@ $(document).ready(function() {
 });
 
 function get_stored_configurations(){
-	
 
 			$('#head-line-box').css({
 				'position':'absolute',
@@ -411,11 +411,9 @@ function get_stored_configurations(){
 			$('#full_name').val( full_name );
 			
 			$('#full_name_readonly').html( full_name );
-				
 			
 //			$('body').css({background:'<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>'});
 //			$('#background_color').val('<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>')
-			
 			
 			$('#full_name_readonly').css({color:'<?php echo ( isset( $data['users'][0]->font_color) ? $data['users'][0]->font_color:'black' )    ?>'});
 			$('#font_color').val('<?php echo ( isset( $data['users'][0]->font_color) ? $data['users'][0]->font_color:'black' )    ?>');			
@@ -484,14 +482,10 @@ function bind_events(){
 						var coord = $(this).offset();
 						$('#x').val( coord.left.toFixed(0) );
 						$('#y').val( coord.top.toFixed(0));
-						
 	
-			$('#windowSize').val( $(window).width()  );
-			
-			$('#margin_left_of_center').val( ($(window).width()/2) -  (coord.left.toFixed(0)) ); 						
-
-
+						$('#windowSize').val( $(window).width()  );
 						
+						$('#margin_left_of_center').val( ($(window).width()/2) -  (coord.left.toFixed(0)) ); 						
 						
 		 	})
 			.mouseup(function(){
@@ -529,8 +523,19 @@ function bind_events(){
 
 			$('#edit-mode').css({cursor:'pointer'}).click(function(event) {
 						$('#control-panel-box').show();
-						
+						$('.draggable, #main-box').css({border:'1px solid gray'});
+						$('#head-line-box .window-controls-container').css({'visibility':'visibile'});
 			});	
+			
+			$('#preview-mode').css({cursor:'pointer'}).click(function(event) {
+						$('#control-panel-box').hide();
+
+						$('.draggable, #main-box').css({border:'0px'});
+						$('#head-line-box .window-controls-container').css({'visibility':'hidden'});
+						
+						
+			});				
+			
 			
 			$('#panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
 						$('#control-panel-box ul#panels li').hide();
