@@ -3,6 +3,11 @@
 <head>
 <?php     	$this->load->view('header/blueprint_css.php');  ?>
 <style>
+	body{
+  background-image: url(<?php  echo base_url()   ?>uploads/images/<?php echo $data['users'][0]->image_id    ?>/image.png);
+  background-position:0px 0px;
+  background-repeat:no-repeat;
+	}
 	.float_left{
 	float:left;	
 	}
@@ -102,9 +107,13 @@
 	}
 
 	#control-panel-box ul#panels #background-thumb{
-		background:lightgreen;
+	  background-image: url(<?php  echo base_url()   ?>uploads/images/<?php echo $data['users'][0]->image_id    ?>/image_thumb.png);
+	  background-position:0px 0px;
+	  background-repeat:no-repeat;
 		height:150px;
 	}	
+
+	
 </style>
 </head>
 
@@ -172,10 +181,11 @@
 												<td><input  name='full_name' id="full_name" type="" value="">
 												</td>
 											</tr>
-											
+<!--											
 											<tr>
 												<td>Background
 												</td>
+
 												<td>
 													<select  id='background_color' name='background_color'>
 														
@@ -199,6 +209,7 @@
 													</select>
 												</td>
 											</tr>
+											-->
 											<tr>
 												<td>Font Color
 												</td>
@@ -309,7 +320,7 @@
 															enctype='multipart/form-data' 
 															action='<?php echo base_url();    ?>index.php/home/upload'
 															>
-															<input name="" id="" type="file" value="">
+															<input type="file" name="Filedata"  value="">
 															<input name="" id="" type="submit" value="Go">
 														</form>
 														
@@ -402,8 +413,8 @@ function get_stored_configurations(){
 			$('#full_name_readonly').html( full_name );
 				
 			
-			$('body').css({background:'<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>'});
-			$('#background_color').val('<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>')
+//			$('body').css({background:'<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>'});
+//			$('#background_color').val('<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>')
 			
 			
 			$('#full_name_readonly').css({color:'<?php echo ( isset( $data['users'][0]->font_color) ? $data['users'][0]->font_color:'black' )    ?>'});
@@ -422,10 +433,10 @@ function store_custom_configuration(){
 						store( $(this) );		
 			});	
 			
-			$('#background_color').change(function(event) {
-						$('body').css({background:$(this).val()});
-						store( $(this) );
-			});	
+//			$('#background_color').change(function(event) {
+//						$('body').css({background:$(this).val()});
+//						store( $(this) );
+//			});	
 			
 			$('#font_color').change(function(event) {
 						$('#full_name_readonly').css({color:$(this).val()});

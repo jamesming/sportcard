@@ -23,7 +23,8 @@ class Home extends CI_Controller {
 		$users = $this->query->get(
 			'users',
 			array(
-				'id' => 1
+				'users.id' => 1,
+				'images.image_type_id' => 1  // REPRESENTS IMAGES THAT ARE BACKGROUND
 			)	
 		);
 		
@@ -64,12 +65,76 @@ class Home extends CI_Controller {
 	public function upload(){
 		
 		$post_array = array(
-			'table' => $this->input->get('table'),
-			'set_what' => $string
+			'table' => 'images'
 		);
 		
-		echo $this->query->insert( $post_array );
+		$this->my_database_model->update_table_where(
+							'images', 
+							$where_array = array(
+								'user_id'=> 1,
+								'image_type_id' => 1
+							),
+							$set_what_array = array()
+							);
+							
+
+		$path_array = array(
+			'folder'=> 'images', 
+			'image_id' => 1
+		);
+					
+		$upload_path = $this->tools->set_directory_for_upload( $path_array );
 		
+		$config['upload_path'] = './' . $upload_path;
+		$config['allowed_types'] = 'bmp|jpeg|gif|jpg|png';
+		$config['overwrite'] = 'TRUE';
+		$config['file_name'] = 'image.png';
+		
+		$this->load->library('upload', $config);
+
+	
+		$this->upload->do_upload("Filedata");
+		
+		?>
+		
+		<script type="text/javascript" language="Javascript">
+					document.location = '<?php echo base_url()    ?>index.php/home/resize?image_id=1';		
+		</script>
+		
+		<?php     
+	}	
+	
+	
+	
+	
+	public function resize(){
+		
+			$image_id = $this->input->get('image_id');
+		
+			$dir_path = 'uploads/images/'  . $image_id; 
+		
+			$image_information = getimagesize($dir_path . '/' . 'image.png');
+			
+			$width_of_file = $image_information[0];
+			$height_of_file = $image_information[1];
+			
+			$new_width = '367';
+			$new_height = $this->tools->get_new_size_of (
+				$what = 'height', 
+				$based_on_new = $new_width, 
+				$orig_width = $width_of_file, 
+				$orig_height = $height_of_file 
+				);
+		
+		
+			$this->tools->clone_and_resize_append_name_of(
+				$appended_suffix = '_thumb', 
+				$full_path = $dir_path . '/' . 'image.png', 
+				$width = $new_width, 
+				$height = $new_height
+				);
+			
+			
 		
 		?>
 		<script type="text/javascript" 
@@ -82,13 +147,30 @@ class Home extends CI_Controller {
 		</script>
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function() { 
-				window.parent.$('body').css({background:'red'})
+				
+				
+				window.parent.$('body').css({
+						    'background-image': 'url(<?php  echo base_url()   ?>uploads/images/<?php echo $image_id    ?>/image.png?random=<?php  rand(5,124324523)   ?>)',
+						    'background-position': '0px 0px',
+						    'background-repeat': 'no-repeat'});
+						    
+						    
+				window.parent.$('#background-thumb').css({
+						    'background-image': 'url(<?php  echo base_url()   ?>uploads/images/<?php echo $image_id    ?>/image_thumb.png?random=<?php  rand(5,124324523)   ?>)',
+						    'background-position': '0px 0px',
+						    'background-repeat': 'no-repeat'});						    
+						    
+						    
+						    
 			});
 		</script>
 		
-		<?php     
+		<?php 		
 		
-	}
+	}		
+
+    
+
 	
 	
 	public function a3_insert(){
@@ -128,19 +210,17 @@ class Home extends CI_Controller {
 
 	
 function t(){
-$table = 'a3_emails';
+$table = 'images';
 $this->my_database_model->create_generic_table($table );
 
-$table = 'a3_screenings';
-$this->my_database_model->create_generic_table($table );
 
 $fields_array = array(
-//                      'user_id' => array(
-//                                               'type' => 'int(11)'
-//                                    ),
-//                      'ip_address' => array(
-//                                               'type' => 'varchar(255)'
-//                                    ),
+                      'user_id' => array(
+                                               'type' => 'int(11)'
+                                    ),
+                      'image_type_id' => array(
+                                               'type' => 'int(11)'
+                                    ),
 //                      'county' => array(
 //                                               'type' => 'varchar(255)'
 //                                    ),

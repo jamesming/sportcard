@@ -27,15 +27,25 @@ class Query {
 
 	function get( $table, $where_array ){
 		
-		return $this->CI->my_database_model->select_from_table( 
-			$table, 
-			$select_what = '*', 
+		
+		$join_array = array(
+									'images' => 'images.user_id = users.id'
+									);
+		
+		$users = $this->CI->my_database_model->select_from_table( 
+			$table = 'users', 
+			$select_what = 'users.*, images.id as image_id', 
 			$where_array, 
-			$use_order = TRUE, 
-			$order_field = 'created', 
-			$order_direction = 'desc',
-			$limit = -1
+			$use_order = FALSE, 
+			$order_field = '', 
+			$order_direction = 'desc', 
+			$limit = 1, 
+			$use_join = TRUE, 
+			$join_array
 			);
+		
+
+		return $users;
 		
 	}
 
