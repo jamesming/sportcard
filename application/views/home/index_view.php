@@ -27,7 +27,6 @@
 	}
 	div#header .right_panel{
 	 width:662px;
-	 background:lightblue;
 
 	}	
 	
@@ -535,10 +534,11 @@ function bind_events(){
 			});	
 			
 			$('#preview-mode').css({cursor:'pointer'}).click(function(event) {
+			
 						$('#control-panel-box').hide();
 
-						$('.draggable, #main-box').css({border:'0px'});
-						$('#head-line-box .window-controls-container').css({'visibility':'hidden'});
+						$('.draggable, #main-box, #header').css({border:'0px'});
+						$('#head-line-box .window-controls-container, .coordinates').css({'visibility':'hidden'});
 
 			});				
 			
@@ -553,8 +553,8 @@ function bind_events(){
 function edit_mode_on(){
 
 						$('#control-panel-box').show();
-						$('.draggable, #main-box').css({border:'1px solid gray'});
-						$('#head-line-box .window-controls-container').css({'visibility':'visible'});
+						$('.draggable, #main-box, #header').css({border:'1px solid gray'});
+						$('#head-line-box .window-controls-container, .coordinates').css({'visibility':'visible'});
 						
 }
 
