@@ -81,22 +81,30 @@
 		height:19px;
 		background:lightblue;	
 		}
-		#control-panel-box #panel-tabs_container div{
+		#control-panel-box #panel-tabs_container li{
 			float:left;
 			border-right:1px solid gray;
 			width:100px;
 			border-bottom:1px solid gray;
+			text-align:center;
 		}		
 
-		#control-panel-box #control-panel-box table{
-		padding:20px;	
-		}
-	#control-panel-box .panel{
+
+	#control-panel-box ul#panels li{
 	display:none;	
 	}
-	#control-panel-box #panel-1{
+			#control-panel-box ul#panels li div{
+			padding:20px;	
+			}		
+	
+	#control-panel-box ul#panels li#panel-2{
 	display:block;	
 	}
+
+	#control-panel-box ul#panels #background-thumb{
+		background:lightgreen;
+		height:150px;
+	}	
 </style>
 </head>
 
@@ -143,151 +151,200 @@
 					</div>					
 				</div>
 				<div  id='panel-tabs_container'>
-					<div>1
-					</div>
-					<div>2
-					</div>
-					<div>3
-					</div>
-					<div>4
-					</div>
+					<ul>
+						<li>1
+						</li>
+						<li>2
+						</li>
+						<li>3
+						</li>
+						<li>4
+						</li>																		
 				</div>
 				<div  class='insides' >
-					<div  id='panel-1'  class='panel ' >
-						<table>
-							<tr>
-								<td>Name
-								</td>
-								<td><input  name='full_name' id="full_name" type="" value="">
-								</td>
-							</tr>
-							
-							<tr>
-								<td>Background
-								</td>
-								<td>
-									<select  id='background_color' name='background_color'>
-										
-									<?php 
-									
-									$colors = array(
-										'red',
-										'blue',
-										'orange',
-										'yellow',
-										'green',
-										'white',
-									);
-									
-									foreach( $colors  as  $key => $color ){ ?>	
-	
-											<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
-									
-									<?php } ?>
-									
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>Font Color
-								</td>
-								<td>
-									<select  id='font_color' name='font_color'>
-										
-									<?php 
-									
-									$colors = array(
-										'black',
-										'red',
-										'blue',
-										'orange',
-										'yellow',
-										'green',
-										'white',
-									);
-									
-									foreach( $colors  as  $key => $color ){ ?>	
-	
-											<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
-									
-									<?php } ?>
-									
-									</select>
-								</td>
-							</tr>		
-							
-							<tr>
-								<td>Font Size
-								</td>
-								<td>
-									<select  id='font_size' name='font_size'>
-										
-									<?php 
-									
-									$sizes = array(
-										'9px',
-										'10px',
-										'11px',
-										'12px',
-										'13px',
-										'14px',
-										'15px',
-										'16px',
-										'17px',
-										'18px',
-										'19px',
-										'20px',
-										'21px',
-										'22px',
-										'23px',
-										'24px',
-										'25px',
-										'26px',
-										'27px',
-										'28px',
-										'29px',
-										'31px',
-										'32px',
-										'33px',
-										'34px',
-										'35px',
-										'36px',
-										'37px',
-										'38px',
-										'39px',
-										'40px',
-										'41px',
-										'42px',
-										'43px',
-										'44px',
-										'45px',
-										'46px',
-										'47px',
-										'48px',
-										'49px',
-										'50px',
-										'51px',
-										'52px',
-										'53px',
-										'54px',
-										'55px',
-									);
-									
-												foreach( $sizes  as  $key => $size ){ ?>	
-				
-														<option value='<?php  echo $size   ?>'><?php  echo $size   ?></option>
-												
-												<?php } ?>
-									
-									</select>
-								</td>
-							</tr>																	
-						</table>
-					<div  id='panel-2'   class='panel ' >
-						test						
-					</div>
-					</div>
-
+							<ul  id='panels'>
+								<li id='panel-1'>
+									<div >
+										<table>
+											<tr>
+												<td>Name
+												</td>
+												<td><input  name='full_name' id="full_name" type="" value="">
+												</td>
+											</tr>
+											
+											<tr>
+												<td>Background
+												</td>
+												<td>
+													<select  id='background_color' name='background_color'>
+														
+													<?php 
+													
+													$colors = array(
+														'red',
+														'blue',
+														'orange',
+														'yellow',
+														'green',
+														'white',
+													);
+													
+													foreach( $colors  as  $key => $color ){ ?>	
+					
+															<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
+													
+													<?php } ?>
+													
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td>Font Color
+												</td>
+												<td>
+													<select  id='font_color' name='font_color'>
+														
+													<?php 
+													
+													$colors = array(
+														'black',
+														'red',
+														'blue',
+														'orange',
+														'yellow',
+														'green',
+														'white',
+													);
+													
+													foreach( $colors  as  $key => $color ){ ?>	
+					
+															<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
+													
+													<?php } ?>
+													
+													</select>
+												</td>
+											</tr>		
+											
+											<tr>
+												<td>Font Size
+												</td>
+												<td>
+													<select  id='font_size' name='font_size'>
+														
+													<?php 
+													
+													$sizes = array(
+														'9px',
+														'10px',
+														'11px',
+														'12px',
+														'13px',
+														'14px',
+														'15px',
+														'16px',
+														'17px',
+														'18px',
+														'19px',
+														'20px',
+														'21px',
+														'22px',
+														'23px',
+														'24px',
+														'25px',
+														'26px',
+														'27px',
+														'28px',
+														'29px',
+														'31px',
+														'32px',
+														'33px',
+														'34px',
+														'35px',
+														'36px',
+														'37px',
+														'38px',
+														'39px',
+														'40px',
+														'41px',
+														'42px',
+														'43px',
+														'44px',
+														'45px',
+														'46px',
+														'47px',
+														'48px',
+														'49px',
+														'50px',
+														'51px',
+														'52px',
+														'53px',
+														'54px',
+														'55px',
+													);
+													
+																foreach( $sizes  as  $key => $size ){ ?>	
+								
+																		<option value='<?php  echo $size   ?>'><?php  echo $size   ?></option>
+																
+																<?php } ?>
+													
+													</select>
+												</td>
+											</tr>																	
+										</table>
+									</li>
+									<li id='panel-2'>
+										<div >
+											<table>
+												<tr>
+													<td>File Upload:
+													</td>
+													<td>
+														<form 
+															id='form1' 
+															target='results' 
+															method='POST' 
+															enctype='multipart/form-data' 
+															action='<?php echo base_url();    ?>index.php/home/upload'
+															>
+															<input name="" id="" type="file" value="">
+															<input name="" id="" type="submit" value="Go">
+														</form>
+														
+													</td>
+												</tr>
+												<tr>
+													<td colspan=2>
+														<div  id='background-thumb'>&nbsp;
+														</div>
+													</td>
+												</tr>												
+											</table>
+											<iframe  
+												id="results"   
+												style='border:0px solid gray;width:0px;height:0px'  
+												border="1" 
+												frameborder="1" 
+												scrolling="auto" 
+												align="center" 
+												hspace="0" 
+												vspace="">
+											</iframe>
+										</div>							
+									</li>
+									<li>
+										<div>
+											panel 3
+										</div>
+									</li>
+									<li>
+										<div>
+										panel 4
+										</div>
+									</li>									
+							</ul>
 				</div>
 			</div>
 </div>
@@ -464,7 +521,11 @@ function bind_events(){
 						
 			});	
 			
-
+			$('#panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
+						$('#control-panel-box ul#panels li').hide();
+						$('#control-panel-box ul#panels li:eq('+$(this).index()+')').show();
+						
+			});	
 }
 
 function store( dom_element ){

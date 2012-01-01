@@ -59,6 +59,38 @@ class Home extends CI_Controller {
 	
 	
 	
+	
+	
+	public function upload(){
+		
+		$post_array = array(
+			'table' => $this->input->get('table'),
+			'set_what' => $string
+		);
+		
+		echo $this->query->insert( $post_array );
+		
+		
+		?>
+		<script type="text/javascript" 
+		        src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+		 
+		  google.load("jquery", "1.7.1");
+		 	google.load("jqueryui", "1.8.16");
+		
+		</script>
+		<script type="text/javascript" language="Javascript">
+			$(document).ready(function() { 
+				window.parent.$('body').css({background:'red'})
+			});
+		</script>
+		
+		<?php     
+		
+	}
+	
+	
 	public function a3_insert(){
 		
 		$string = '';
