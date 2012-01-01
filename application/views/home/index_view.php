@@ -5,7 +5,7 @@
 <style>
 	body{
   background-image: url(<?php  echo base_url()   ?>uploads/images/<?php echo $data['users'][0]->image_id    ?>/image.png);
-  background-position:0px 0px;
+  background-position:center 0px;
   background-repeat:no-repeat;
 	}
 	.float_left{

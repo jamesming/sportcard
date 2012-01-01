@@ -151,7 +151,7 @@ class Home extends CI_Controller {
 				
 				window.parent.$('body').css({
 						    'background-image': 'url(<?php  echo base_url()   ?>uploads/images/<?php echo $image_id    ?>/image.png?random=<?php  rand(5,124324523)   ?>)',
-						    'background-position': '0px 0px',
+						    'background-position': 'center 0px',
 						    'background-repeat': 'no-repeat'});
 						    
 						    
