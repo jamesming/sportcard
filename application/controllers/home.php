@@ -40,7 +40,39 @@ class Home extends CI_Controller {
 	
 	
 	
+	function test(){
+	?>	
+
+		<script src="http://jqueryui.com/jquery-1.6.2.js"></script>
+		<script src="http://jqueryui.com/ui/jquery.ui.core.js"></script>
+		<script src="http://jqueryui.com/ui/jquery.ui.widget.js"></script>
+		<script src="http://jqueryui.com/ui/jquery.ui.mouse.js"></script>
+		<script src="http://jqueryui.com/ui/jquery.ui.resizable.js"></script>
+		<style>
+		#resizable { background:red;width: 150px; height: 150px; padding: 0.5em; }
+		#resizable h3 { text-align: center; margin: 0; }
+		</style>
+
+		
+		
+		<script type="text/javascript" language="Javascript">
+			$(document).ready(function() { 
+				
+				
+				$( "#resizable" ).resizable();
+						    
+						    
+			});
+		</script>
 	
+		<div id="resizable" class="ui-widget-content">
+			<h3 class="ui-widget-header">Resizable</h3>
+		</div>
+	
+	
+	<?php     
+		
+	}
 
 	public function update(){
 

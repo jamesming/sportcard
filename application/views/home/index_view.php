@@ -8,6 +8,32 @@
   background-position:center 0px;
   background-repeat:no-repeat;
 	}
+	.top-right-rounded{
+		border-top-right-radius: 6px;
+		-moz-border-radius-topright: 6px;
+		-webkit-border-top-right-radius: 6px;	
+	}
+	.transparent{
+		background:black;
+		filter:alpha(opacity=25);    /* ie  */
+		-moz-opacity:0.25;    /* old mozilla browser like netscape  */
+		-khtml-opacity: 0.25;    /* for really really old safari */
+		opacity: 0.25;    /* css standard, currently it works in most modern browsers like firefox,  */
+		}
+	.rounded{
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+		-moz-border-radius-topleft: 6px;
+		-moz-border-radius-topright: 6px;
+		-webkit-border-top-right-radius: 6px;
+		-webkit-border-top-left-radius: 6px;
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		-moz-border-radius-bottomleft: 6px;
+		-moz-border-radius-bottomright: 6px;
+		-webkit-border-bottom-right-radius: 6px;
+		-webkit-border-bottom-left-radius: 6px;
+	}
 	.float_left{
 	float:left;	
 	}
@@ -41,7 +67,7 @@
 
 	.draggable{ 
 	float: left;
-	background:transparent;	
+/*	background:transparent;	*/
 	border:1px solid gray;
 	}
 	.draggable .insides{
@@ -50,7 +76,7 @@
 	.draggable .icon-boxes{
 	width:22px;
 	float:right;
-	height:20px;
+	height:20px;	
 	}	
 	.draggable div.handle {
 	background: url("http://localhost/sportcard/images/icons.png") no-repeat scroll -14px -480px yellow;
@@ -71,10 +97,14 @@
 	font-weight:bold;
 	color:gray;	
 	padding-left:10px;
+	white-space:nowrap;
+
 	}
 	.window-controls-container{
 	height:21px;
 	background:gray;
+	
+	
 	}
 	#control-panel-box{
 	background:red;
@@ -142,9 +172,9 @@
 <div  id='main-box' class='container '>
 	
 
-			<div  id='head-line-box' class="draggable" >
-				<div class='window-controls-container'>
-					<div class="handle icon-boxes"></div>
+			<div  id='head-line-box' class="transparent rounded draggable " >
+				<div class='window-controls-container top-right-rounded'>
+					<div class="handle icon-boxes top-right-rounded"></div>
 				</div>
 				<div  class='insides' >
 				</div>
@@ -390,7 +420,7 @@ $(document).ready(function() {
 });
 
 
-$.fn.drag_and_make_things_happen = function(){
+$.fn.bind_mouse_events = function(){
 	
 			$(this)
 			.mousemove(function(){
@@ -416,7 +446,7 @@ $.fn.drag_and_make_things_happen = function(){
 						})
 						.mouseover(function(){
 			          
-			          $(this).css({background:'transparent'})
+			          $(this).addClass('transparent')
 			          
 						})
 						.mouseup(function(){
@@ -514,10 +544,10 @@ function bind_events(){
 			  		
 			});
 			
-			$( "#head-line-box" ).drag_and_make_things_happen();
+			$( "#head-line-box" ).bind_mouse_events();
 			
 			$(document).mouseup(function(){
-						$("#head-line-box").css({background:'transparent'}).unbind('mouseleave');
+						$("#head-line-box").addClass('transparent').unbind('mouseleave');
 						edit_mode_on();
 			})
 				
