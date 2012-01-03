@@ -14,11 +14,18 @@
 		-webkit-border-top-right-radius: 6px;	
 	}
 	.transparent{
-		background:black;
-		filter:alpha(opacity=25);    /* ie  */
-		-moz-opacity:0.25;    /* old mozilla browser like netscape  */
-		-khtml-opacity: 0.25;    /* for really really old safari */
-		opacity: 0.25;    /* css standard, currently it works in most modern browsers like firefox,  */
+			/* Fallback for web browsers that don't support RGBa */
+			background-color: rgb(0, 0, 0);
+			/* RGBa with 0.6 opacity */
+			background-color: rgba(0, 0, 0, 0.3);
+			<?php if( $this->tools->browserIsExplorer() ){?>
+				background: transparent; 
+			<?php } ?>
+			<?php     
+			/*
+			http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/ 
+			*/
+			?>
 		}
 	.rounded{
 		border-top-left-radius: 6px;
@@ -417,6 +424,7 @@ $(document).ready(function() {
 			bind_events();
 
 
+
 });
 
 
@@ -434,27 +442,6 @@ $.fn.bind_mouse_events = function(){
 						$('#margin_left_of_center').val( ($(window).width()/2) -  (coord.left.toFixed(0)) ); 						
 						
 		 	})
-			.mouseup(function(){
-						$(this).unbind('mouseleave');
-						
-			}).mousedown(function(event) {
-				
-						$(this).mouseleave(function(){
-			          
-			          $(this).css({background:'gray'})
-			          
-						})
-						.mouseover(function(){
-			          
-			          $(this).addClass('transparent')
-			          
-						})
-						.mouseup(function(){
-			          
-			          $(this).unbind('mouseleave');
-			          
-						})		
-			});	
 	
 };
 
@@ -538,16 +525,11 @@ function bind_events(){
 				
 			  		$('#head-line-box .handle').unbind('mouseout');
 			  		
-			}).mouseup(function() {
-				
-			  		
-			  		
 			});
 			
 			$( "#head-line-box" ).bind_mouse_events();
 			
 			$(document).mouseup(function(){
-						$("#head-line-box").addClass('transparent').unbind('mouseleave');
 						edit_mode_on();
 			})
 				
@@ -578,6 +560,21 @@ function bind_events(){
 						$('#control-panel-box ul#panels li:eq('+$(this).index()+')').show();
 						
 			});	
+			
+			
+			<?php if( $this->tools->browserIsExplorer() ){?>
+			
+						var hex = Math.floor(0.3 * 255).toString(16);
+			
+						$( "#head-line-box" ).css({
+							'zoom':'1',
+							'-ms-filter':'progid:DXImageTransform.Microsoft.gradient(startColorstr=#'+hex+'000000, endColorstr=#'+hex+'000000)',
+							'filter': 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#'+hex+'000000, endColorstr=#'+hex+'000000)'
+						})
+			
+			<?php } ?>
+			
+			
 }
 
 function edit_mode_on(){
