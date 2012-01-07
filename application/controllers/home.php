@@ -20,6 +20,21 @@ class Home extends CI_Controller {
 	 
 	public function index(){
 		
+		$select_what =  '*';
+		
+		$where_array = array();
+
+		$fonts = $this->my_database_model->select_from_table(
+			$table = 'fonts', 
+			$select_what, 
+			$where_array, 
+			$use_order = TRUE, 
+			$order_field = 'created', 
+			$order_direction = 'desc', 
+			$limit = 1
+			);
+
+		
 		$users = $this->query->get(
 			'users',
 			array(
@@ -30,7 +45,8 @@ class Home extends CI_Controller {
 		
 		
 		$data = array(
-			'users' => $users
+			'users' => $users,
+			'fonts' => $fonts
 		);
 		
 

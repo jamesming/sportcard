@@ -15,7 +15,55 @@ class Fonts extends CI_Controller {
 		    
 		}
 		
+		public function test(){
+			
+				$select_what =  '*';
+				
+				$where_array = array();
 		
+				$fonts = $this->my_database_model->select_from_table( 
+				$table = $this->table, 
+				$select_what, 
+				$where_array, 
+				$use_order = TRUE, 
+				$order_field = 'created', 
+				$order_direction = 'desc', 
+				$limit = 1);
+		
+		
+				$this->load->view('fonts/test_view', array( 'fonts' => $fonts ));
+	    
+		}
+		
+		function change_font(){
+			
+				$select_what =  '*';
+				
+				$where_array = array(
+					'id' => 9
+				);
+		
+				$fonts = $this->my_database_model->select_from_table( 
+				$table = $this->table, 
+				$select_what, 
+				$where_array, 
+				$use_order = TRUE, 
+				$order_field = 'created', 
+				$order_direction = 'desc', 
+				$limit = 1);
+			
+		?>
+		<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
+
+		<script type="text/javascript" language="Javascript">
+
+			<?php  echo $fonts[0]->code;   ?>
+			Cufon.replace('#font-name',{ fontFamily: '<?php  echo $fonts[0]->name;   ?>', hover: true });
+			
+		</script>
+		<?php     	
+			
+		}
 
 		/**
 		 * add or update fonts
