@@ -31,7 +31,7 @@ class Home extends CI_Controller {
 			$use_order = TRUE, 
 			$order_field = 'id', 
 			$order_direction = 'asc', 
-			$limit = -1
+			$limit = 10
 			);
 
 		
