@@ -22,16 +22,16 @@ class Home extends CI_Controller {
 		
 		$select_what =  '*';
 		
-		$where_array = array();
+		$where_array = array('id !=' => 16);
 
 		$fonts = $this->my_database_model->select_from_table(
 			$table = 'fonts', 
 			$select_what, 
 			$where_array, 
 			$use_order = TRUE, 
-			$order_field = 'created', 
-			$order_direction = 'desc', 
-			$limit = 1
+			$order_field = 'id', 
+			$order_direction = 'asc', 
+			$limit = -1
 			);
 
 		

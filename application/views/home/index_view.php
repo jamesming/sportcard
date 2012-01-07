@@ -138,7 +138,7 @@
 			padding:20px;	
 			}		
 	
-	#control-panel-box ul#panels_ul li#panel-1{
+	#control-panel-box ul#panels_ul li#panel-2{
 	display:block;	
 	}
 
@@ -160,6 +160,7 @@
 
 </script>
 <script type="text/javascript" language="Javascript">
+ /* 
  * Copyright (c) 2009 Simo Kinnunen.
  * Licensed under the MIT license.
  *
@@ -320,11 +321,13 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													#control-panel-box ul#panels_ul li.panels table ul{
 														height:100px;
 														overflow-y:scroll;
+														overflow-x:hidden;
 													}
 													#control-panel-box ul#panels_ul li.panels table ul li{
 														background:white;	
 														border-bottom:1px solid gray;
 														height:45px;
+														font-size:28px;
 													}
 													
 													</style>
@@ -402,11 +405,11 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 		
 		<?php foreach($data['fonts'] as $font ){
 			
-				// echo $font->code;  
+				echo $font->code;  
 				
 		?>
 		
-				// Cufon.replace('#<?php    echo $font->name;     ?>',{ fontFamily: '<?php  echo $font->name;   ?>', hover: true });
+				Cufon.replace('#<?php    echo $font->name;     ?>',{ fontFamily: '<?php  echo $font->name;   ?>', hover: true });
 		
 		<?php } ?>
 		
@@ -566,8 +569,8 @@ function bind_events(){
 			
 			
 			$('#panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
-						$('#control-panel-box ul#panels_ul li').hide();
-						$('#control-panel-box ul#panels_ul li:eq('+$(this).index()+')').show();
+						$('#control-panel-box ul#panels_ul li.panels').hide();
+						$('#control-panel-box ul#panels_ul li.panels:eq('+$(this).index()+')').show();
 						
 			});	
 			
