@@ -86,11 +86,11 @@
 	height:20px;	
 	}	
 	.draggable div.handle {
-	background: url("http://localhost/sportcard/images/icons.png") no-repeat scroll -14px -480px yellow;
+	background: url("<?php  echo base_url()   ?>images/icons.png") no-repeat scroll -14px -480px yellow;
 	cursor: move; 
 	}
 	.draggable div.close-window {
-	background: url("http://localhost/sportcard/images/icons.png") no-repeat scroll -14px -172px yellow;
+	background: url("<?php  echo base_url()   ?>images/icons.png") no-repeat scroll -14px -172px yellow;
 	cursor: pointer; 
 	}
 	#head-line-box{
@@ -105,6 +105,7 @@
 	color:gray;	
 	padding-left:10px;
 	white-space:nowrap;
+	margin-top:13px;
 
 	}
 	.window-controls-container{
@@ -602,7 +603,6 @@ function bind_events(){
 			  		
 			});
 			
-			$( "#head-line-box" ).bind_mouse_events();
 			
 //			$(document).mouseup(function(){
 //						edit_mode_on();
@@ -632,6 +632,7 @@ function bind_events(){
 			
 			<?php } ?>
 			
+			$( "#head-line-box" ).bind_mouse_events();			
 			
 }
 
