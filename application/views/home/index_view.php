@@ -429,24 +429,6 @@ function activate_fonts(){
 		
 		<?php } ?>
 
-
-		$('li.fonts_li').css({cursor:'pointer'}).click(function(event) {
-			
-			Cufon.replace('#full_name_readonly',{ fontFamily: $(this).attr('font_name'), hover: true });
-			
-			var font_name_serialized = "font_name=" + $(this).attr('font_name');
-			
-			$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
-			table:'users',
-			id:1,
-			set_what:font_name_serialized
-			},function(data) {
-			
-				$('#y').val(data);
-				
-			});	
-			
-		});	
 	
 }
 
@@ -496,6 +478,7 @@ function get_stored_configurations(){
 			
 			Cufon.replace('#full_name_readonly',{ fontFamily: '<?php echo ( isset( $data['users'][0]->font_name ) ? $data['users'][0]->font_name:'' )    ?>', hover: true });
 				
+			$('#full_name_readonly').attr('font_name', '<?php echo ( isset( $data['users'][0]->font_name ) ? $data['users'][0]->font_name:'' )    ?>');
 			
 			$('#full_name_readonly').html( full_name );
 			
@@ -512,6 +495,29 @@ function get_stored_configurations(){
 
 
 function store_custom_configuration(){
+
+
+			$('li.fonts_li').css({cursor:'pointer'}).click(function(event) {
+				
+				Cufon.replace('#full_name_readonly',{ fontFamily: $(this).attr('font_name'), hover: true });
+				
+				$('#full_name_readonly').attr('font_name', $(this).attr('font_name'));
+				
+				var font_name_serialized = "font_name=" + $(this).attr('font_name');
+				
+				$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+				table:'users',
+				id:1,
+				set_what:font_name_serialized
+				},function(data) {
+				
+					$('#y').val(data);
+					
+				});	
+				
+			});	
+
+
 	
 			$('#full_name').keyup(function(event) {
 				$('#full_name_readonly').html( $(this).val() )	;	
@@ -526,11 +532,16 @@ function store_custom_configuration(){
 			
 			$('#font_color').change(function(event) {
 						$('#full_name_readonly').css({color:$(this).val()});
+						Cufon.replace('#full_name_readonly',{ fontFamily: $('#full_name_readonly').attr('font_name'), hover: true });
 						store( $(this) );
 			});				
 			
 			$('#font_size').change(function(event) {
+			
 						$('#full_name_readonly').css({'font-size':$(this).val()});
+						
+						Cufon.replace('#full_name_readonly',{ fontFamily: $('#full_name_readonly').attr('font_name'), hover: true });
+
 						store( $(this) );	
 			});		
 			
