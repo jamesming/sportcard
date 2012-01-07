@@ -297,13 +297,13 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<td>Font Size
 												</td>
 												<td>
-													<select  id='font_size' name='font_size'>
+													<select   id='font_size' name='font_size'>
 														
 													<?php 
 													
 
 													
-																for( $size = 5;  $size <= 95;  $size++ ){ ?>	
+																for( $size = 5;  $size <= 125;  $size++ ){ ?>	
 								
 																		<option value='<?php  echo $size   ?>px'><?php  echo $size   ?>px</option>
 																
