@@ -35,9 +35,9 @@ class Home extends CI_Controller {
 			);
 
 		
-		$users = $this->query->get(
+		$users = $this->query->get_users(
 			'users',
-			array(
+			$where_array = array(
 				'users.id' => 1,
 				'images.image_type_id' => 1  // REPRESENTS IMAGES THAT ARE BACKGROUND
 			)	

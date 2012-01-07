@@ -138,7 +138,7 @@
 			padding:20px;	
 			}		
 	
-	#control-panel-box ul#panels_ul li#panel-2{
+	#control-panel-box ul#panels_ul li#panel-1{
 	display:block;	
 	}
 
@@ -323,7 +323,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 														overflow-y:scroll;
 														overflow-x:hidden;
 													}
-													#control-panel-box ul#panels_ul li.panels table ul li{
+													#control-panel-box ul#panels_ul li.panels table ul#fonts_ul li.fonts_li{
 														background:white;	
 														border-bottom:1px solid gray;
 														height:45px;
@@ -334,7 +334,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													<ul  id='fonts_ul'>
 														<?php foreach($data['fonts'] as $font ){?>
 															
-															<li id='<?php echo $font->name    ?>'><?php  echo $font->name   ?></li>
+															<li  class='fonts_li ' font_name='<?php echo $font->name    ?>'><?php  echo $font->name   ?></li>
 														
 														<?php }?>
 													</ul>
@@ -400,8 +400,24 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 </body>
 </html>
 
+
 <script type="text/javascript" language="Javascript">
-	$(document).ready(function() { 
+	
+
+	
+$(document).ready(function() { 
+	
+			get_stored_configurations();
+			store_custom_configuration();
+			activate_fonts();
+			bind_events();
+
+});
+
+
+
+function activate_fonts(){
+
 		
 		<?php foreach($data['fonts'] as $font ){
 			
@@ -409,32 +425,30 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 				
 		?>
 		
-				Cufon.replace('#<?php    echo $font->name;     ?>',{ fontFamily: '<?php  echo $font->name;   ?>', hover: true });
+				Cufon.replace('li[font_name="<?php    echo $font->name;     ?>"]',{ fontFamily: '<?php  echo $font->name;   ?>', hover: true });
 		
 		<?php } ?>
-		
-	});
-	
-</script>
-<script type="text/javascript" language="Javascript">
-	
 
-	
-$(document).ready(function() { 
 
-	
-			get_stored_configurations();
+		$('li.fonts_li').css({cursor:'pointer'}).click(function(event) {
 			
-			store_custom_configuration();
+			Cufon.replace('#full_name_readonly',{ fontFamily: $(this).attr('font_name'), hover: true });
 			
-			bind_events();
-
-
-});
-
-
-
-
+			var font_name_serialized = "font_name=" + $(this).attr('font_name');
+			
+			$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+			table:'users',
+			id:1,
+			set_what:font_name_serialized
+			},function(data) {
+			
+				$('#y').val(data);
+				
+			});	
+			
+		});	
+	
+}
 
 
 $.fn.bind_mouse_events = function(){
@@ -479,6 +493,10 @@ function get_stored_configurations(){
 			
 			$('#full_name').val( full_name );
 			
+			
+			Cufon.replace('#full_name_readonly',{ fontFamily: '<?php echo ( isset( $data['users'][0]->font_name ) ? $data['users'][0]->font_name:'' )    ?>', hover: true });
+				
+			
 			$('#full_name_readonly').html( full_name );
 			
 //			$('body').css({background:'<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>'});
@@ -489,6 +507,7 @@ function get_stored_configurations(){
 			
 			$('#full_name_readonly').css({'font-size':'<?php echo ( isset( $data['users'][0]->font_size) ? $data['users'][0]->font_size:'11px' )    ?>'});			
 			$('#font_size').val('<?php echo ( isset( $data['users'][0]->font_size) ? $data['users'][0]->font_size:'11px' )    ?>');
+
 }	
 
 
@@ -608,7 +627,7 @@ function store( dom_element ){
 							
 								$('#y').val(data);
 								
-						});	
+							});	
 	
 }
 

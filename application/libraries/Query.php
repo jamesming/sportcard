@@ -25,7 +25,7 @@ class Query {
 		
 	}
 
-	function get( $table, $where_array ){
+	function get_users( $table, $where_array ){
 		
 		
 		$join_array = array(
