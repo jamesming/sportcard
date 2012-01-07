@@ -460,7 +460,7 @@ function get_stored_configurations(){
 				'position':'absolute',
 				'left':($(window).width() / 2),
 				'top':'<?php echo ( isset( $data['users'][0]->y) ? $data['users'][0]->y:'0' ) ?>px',
-				'margin-left':(0-<?php echo ( isset( $data['users'][0]->margin_left_of_center) ? $data['users'][0]->margin_left_of_center:'0' ) ?>)+'px',
+				'margin-left':(0-(<?php echo ( isset( $data['users'][0]->margin_left_of_center) ? $data['users'][0]->margin_left_of_center:'0' ) ?>))+'px',
 			})
 
 
@@ -496,7 +496,6 @@ function get_stored_configurations(){
 
 function store_custom_configuration(){
 
-
 			$('li.fonts_li').css({cursor:'pointer'}).click(function(event) {
 				
 				Cufon.replace('#full_name_readonly',{ fontFamily: $(this).attr('font_name'), hover: true });
@@ -516,7 +515,6 @@ function store_custom_configuration(){
 				});	
 				
 			});	
-
 
 	
 			$('#full_name').keyup(function(event) {
