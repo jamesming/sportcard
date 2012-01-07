@@ -190,8 +190,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 	</div>
 	<div class='float_left right_panel'  >
 		<div  class='float_right edit-panel' >
-			<span  id='edit-mode'>EDIT</span>
-			<span  id='preview-mode'>PREVIEW</span>
+			<span  id='edit_mode' on='1'>preview</span>
 		</div>
 	</div>
 </div>
@@ -491,6 +490,16 @@ function get_stored_configurations(){
 			$('#full_name_readonly').css({'font-size':'<?php echo ( isset( $data['users'][0]->font_size) ? $data['users'][0]->font_size:'11px' )    ?>'});			
 			$('#font_size').val('<?php echo ( isset( $data['users'][0]->font_size) ? $data['users'][0]->font_size:'11px' )    ?>');
 
+
+			<?php if( $data['users'][0]->edit_mode == 0){?>
+									$('#edit_mode').text('edit').attr('on', 0);	
+									edit_mode_off();									
+			<?php }else{?>
+									$('#edit_mode').text('preview').attr('on', 1);
+									edit_mode_on();
+			<?php } ?>
+
+
 }	
 
 
@@ -546,6 +555,31 @@ function store_custom_configuration(){
 			$( "#head-line-box" ).mouseup(function(){
 						store_position( $(this) );
 			});	
+			
+			$('#edit_mode').css({cursor:'pointer'}).click(function(event) {
+
+					if( $(this).attr('on') == 1){
+							edit_mode_off();	
+							$(this).text('edit').attr('on', 0);
+			
+					}else{
+							$(this).text('preview').attr('on', 1);			
+							edit_mode_on();		
+					};
+					
+					var edit_mode_serialized = "edit_mode=" + $(this).attr('on');
+					
+					$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+					table:'users',
+					id:1,
+					set_what:edit_mode_serialized
+					},function(data) {
+					
+						$('#y').val(data);
+						
+					});	
+
+			});	
 
 }
 
@@ -570,32 +604,15 @@ function bind_events(){
 			
 			$( "#head-line-box" ).bind_mouse_events();
 			
-			$(document).mouseup(function(){
-						edit_mode_on();
-			})
+//			$(document).mouseup(function(){
+//						edit_mode_on();
+//			})
 				
 			
 			$('.close-window').click(function(event) {
 				$(this).parent().parent().hide();
 			});	
-			
 
-			$('#edit-mode').css({cursor:'pointer'}).click(function(event) {
-
-					edit_mode_on();
-						
-			});	
-			
-			$('#preview-mode').css({cursor:'pointer'}).click(function(event) {
-			
-						$('#control-panel-box').hide();
-
-						$('.draggable, #main-box, #header').css({border:'0px'});
-						$('#head-line-box .window-controls-container, .coordinates').css({'visibility':'hidden'});
-
-			});				
-			
-			
 			$('#panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
 						$('#control-panel-box ul#panels_ul li.panels').hide();
 						$('#control-panel-box ul#panels_ul li.panels:eq('+$(this).index()+')').show();
@@ -623,6 +640,15 @@ function edit_mode_on(){
 						$('#control-panel-box').show();
 						$('.draggable, #main-box, #header').css({border:'1px solid gray'});
 						$('#head-line-box .window-controls-container, .coordinates').css({'visibility':'visible'});
+						
+}
+
+function edit_mode_off(){
+
+							$('#control-panel-box').hide();
+							$('.draggable, #main-box, #header').css({border:'0px'});
+							$('#head-line-box .window-controls-container, .coordinates').css({'visibility':'hidden'});
+	
 						
 }
 
