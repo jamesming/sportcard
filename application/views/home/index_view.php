@@ -313,6 +313,27 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													</select>
 												</td>
 											</tr>			
+											
+											<tr>
+												<td>Transparency
+												</td>
+												<td>
+													<select   id='transparency' name='transparency'>
+														
+													<?php 
+													
+
+													
+																for( $transparency_setting = 0;  $transparency_setting <= 9;  $transparency_setting++ ){ ?>	
+								
+																		<option value='<?php  echo $transparency_setting   ?>'><?php  echo $transparency_setting   ?></option>
+																
+																<?php } ?>
+													
+													</select>
+												</td>
+											</tr>														
+											
 											<tr>
 												<td>Font
 												</td>
@@ -409,47 +430,10 @@ $(document).ready(function() {
 	
 			get_stored_configurations();
 			store_custom_configuration();
-			activate_fonts();
+			activate_fonts_for_selection();
 			bind_events();
 
 });
-
-
-
-function activate_fonts(){
-
-		
-		<?php foreach($data['fonts'] as $font ){
-			
-				echo $font->code;  
-				
-		?>
-		
-				Cufon.replace('li[font_name="<?php    echo $font->name;     ?>"]',{ fontFamily: '<?php  echo $font->name;   ?>', hover: true });
-		
-		<?php } ?>
-
-	
-}
-
-
-$.fn.bind_mouse_events = function(){
-	
-			$(this)
-			.mousemove(function(){
-				
-						var coord = $(this).offset();
-						$('#x').val( coord.left.toFixed(0) );
-						$('#y').val( coord.top.toFixed(0));
-	
-						$('#windowSize').val( $(window).width()  );
-						
-						$('#margin_left_of_center').val( ($(window).width()/2) -  (coord.left.toFixed(0)) ); 						
-						
-		 	})
-	
-};
-
 
 
 
@@ -499,6 +483,30 @@ function get_stored_configurations(){
 									$('#edit_mode').text('preview').attr('on', 1);
 									edit_mode_on();
 			<?php } ?>
+			
+			
+			
+			$('#transparency').val('<?php echo ( isset( $data['users'][0]->transparency) ? $data['users'][0]->transparency:'6' )    ?>');			
+		
+			<?php if( $this->tools->browserIsExplorer() ){?>
+			
+						var hex = Math.floor(0.1 * <?php  echo ( isset( $data['users'][0]->transparency) ? $data['users'][0]->transparency:'6' )    ?> * 255).toString(16);
+			
+						$( '#head-line-box' ).css({
+							'zoom':'1',
+							'-ms-filter':'progid:DXImageTransform.Microsoft.gradient(startColorstr=#'+hex+'000000, endColorstr=#'+hex+'000000)',
+							'filter': 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#'+hex+'000000, endColorstr=#'+hex+'000000)'
+						})			
+						
+
+			
+			<?php }else{ ?>
+
+				$( '#head-line-box' ).css({
+								'background-color':'rgba(0, 0, 0, 0.'+ <?php  echo ( isset( $data['users'][0]->transparency) ? $data['users'][0]->transparency:'6' )    ?> +')'
+				})	
+			
+			<?php }?>		
 
 
 }	
@@ -528,7 +536,8 @@ function store_custom_configuration(){
 
 	
 			$('#full_name').keyup(function(event) {
-				$('#full_name_readonly').html( $(this).val() )	;	
+				$('#full_name_readonly').html( $(this).val() );	
+				Cufon.replace('#full_name_readonly',{ fontFamily: $('#full_name_readonly').attr('font_name'), hover: true });				
 			}).blur(function(event) {
 						store( $(this) );		
 			});	
@@ -543,7 +552,42 @@ function store_custom_configuration(){
 						Cufon.replace('#full_name_readonly',{ fontFamily: $('#full_name_readonly').attr('font_name'), hover: true });
 						store( $(this) );
 			});				
+
+
+
+			$('#transparency').change(function(event) {
 			
+					<?php if( $this->tools->browserIsExplorer() ){?>
+					
+								var hex = Math.floor(0.1 * $(this).val() * 255).toString(16);
+					
+								$( '#head-line-box' ).css({
+									'zoom':'1',
+									'-ms-filter':'progid:DXImageTransform.Microsoft.gradient(startColorstr=#'+hex+'000000, endColorstr=#'+hex+'000000)',
+									'filter': 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#'+hex+'000000, endColorstr=#'+hex+'000000)'
+								})			
+					
+					<?php }else{ ?>
+
+						$( '#head-line-box' ).css({
+										'background-color':'rgba(0, 0, 0, 0.'+ $(this).val() +')'
+						})	
+					
+					<?php }?>						
+
+					var transparency_serialized = "transparency=" + $(this).val();
+					
+					$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+					table:'users',
+					id:1,
+					set_what:transparency_serialized
+					},function(data) {
+					
+						$('#y').val(data);
+						
+					});	
+			});				
+
 			$('#font_size').change(function(event) {
 			
 						$('#full_name_readonly').css({'font-size':$(this).val()});
@@ -603,12 +647,7 @@ function bind_events(){
 			  		
 			});
 			
-			
-//			$(document).mouseup(function(){
-//						edit_mode_on();
-//			})
-				
-			
+
 			$('.close-window').click(function(event) {
 				$(this).parent().parent().hide();
 			});	
@@ -621,7 +660,7 @@ function bind_events(){
 			
 			
 			<?php if( $this->tools->browserIsExplorer() ){?>
-			
+			/*
 						var hex = Math.floor(0.3 * 255).toString(16);
 			
 						$( "#head-line-box" ).css({
@@ -629,12 +668,58 @@ function bind_events(){
 							'-ms-filter':'progid:DXImageTransform.Microsoft.gradient(startColorstr=#'+hex+'000000, endColorstr=#'+hex+'000000)',
 							'filter': 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#'+hex+'000000, endColorstr=#'+hex+'000000)'
 						})
-			
+			*/
 			<?php } ?>
 			
 			$( "#head-line-box" ).bind_mouse_events();			
 			
 }
+
+
+
+function activate_fonts_for_selection(){
+
+		
+		<?php foreach($data['fonts'] as $font ){
+			
+				echo $font->code;  
+				
+		?>
+		
+				Cufon.replace('li[font_name="<?php    echo $font->name;     ?>"]',{ fontFamily: '<?php  echo $font->name;   ?>', hover: true });
+		
+		<?php } ?>
+
+	
+}
+
+
+/********************
+*
+* LIBRARY OF FUNCTIONS
+*	
+*********************/
+
+$.fn.bind_mouse_events = function(){
+	
+			$(this)
+			.mousemove(function(){
+				
+						var coord = $(this).offset();
+						$('#x').val( coord.left.toFixed(0) );
+						$('#y').val( coord.top.toFixed(0));
+	
+						$('#windowSize').val( $(window).width()  );
+						
+						$('#margin_left_of_center').val( ($(window).width()/2) -  (coord.left.toFixed(0)) ); 						
+						
+		 	})
+	
+};
+
+
+
+
 
 function edit_mode_on(){
 
