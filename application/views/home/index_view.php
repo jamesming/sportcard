@@ -440,7 +440,7 @@ $(document).ready(function() {
 
 function get_stored_configurations(){
 	
-			$('body').css({'-webkit-background-size':'1500px 1500px'})
+			$('body').css({'-webkit-background-size':'1500px 1500px','background-size':'1500px 1500px'})
 
 			$('#head-line-box').css({
 				'position':'absolute',
