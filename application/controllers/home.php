@@ -127,7 +127,7 @@ class Home extends CI_Controller {
 							
 
 		$path_array = array(
-			'folder'=> 'images', 
+			'folder'=> 'backgrounds', 
 			'image_id' => 1
 		);
 					
@@ -141,12 +141,12 @@ class Home extends CI_Controller {
 		$this->load->library('upload', $config);
 
 	
-		$this->upload->do_upload("Filedata");
+		$this->upload->do_upload("Filedata_background");
 		
 		?>
 		
 		<script type="text/javascript" language="Javascript">
-					document.location = '<?php echo base_url()    ?>index.php/home/resize?image_id=1';		
+				document.location = '<?php echo base_url()    ?>index.php/home/resize?image_id=1&random=<?php echo  rand(5,126724523)   ?>';		
 		</script>
 		
 		<?php     
@@ -159,7 +159,7 @@ class Home extends CI_Controller {
 		
 			$image_id = $this->input->get('image_id');
 		
-			$dir_path = 'uploads/images/'  . $image_id; 
+			$dir_path = 'uploads/backgrounds/'  . $image_id; 
 		
 			$image_information = getimagesize($dir_path . '/' . 'image.png');
 			
@@ -198,13 +198,13 @@ class Home extends CI_Controller {
 				
 				
 				window.parent.$('body').css({
-						    'background-image': 'url(<?php  echo base_url()   ?>uploads/images/<?php echo $image_id    ?>/image.png?random=<?php  rand(5,124324523)   ?>)',
+						    'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $image_id    ?>/image.png?random=<?php echo   rand(5,124344523)   ?>)',
 						    'background-position': 'center 0px',
 						    'background-repeat': 'no-repeat'});
 						    
 						    
 				window.parent.$('#background-thumb').css({
-						    'background-image': 'url(<?php  echo base_url()   ?>uploads/images/<?php echo $image_id    ?>/image_thumb.png?random=<?php  rand(5,124324523)   ?>)',
+						    'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
 						    'background-position': '0px 0px',
 						    'background-repeat': 'no-repeat'});						    
 						    

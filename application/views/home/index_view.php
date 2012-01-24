@@ -4,7 +4,7 @@
 <?php     	$this->load->view('header/blueprint_css.php');  ?>
 <style>
 	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/images/<?php echo $data['users'][0]->image_id    ?>/image.png);
+  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users'][0]->image_id    ?>/image.png);
   background-position:center 0px;
   background-repeat:no-repeat;
 	}
@@ -139,12 +139,12 @@
 			padding:20px;	
 			}		
 	
-	#control-panel-box ul#panels_ul li#panel-1{
+	#control-panel-box ul#panels_ul li#panel-2{
 	display:block;	
 	}
 
 	#control-panel-box ul#panels_ul #background-thumb{
-	  background-image: url(<?php  echo base_url()   ?>uploads/images/<?php echo $data['users'][0]->image_id    ?>/image_thumb.png);
+	  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users'][0]->image_id    ?>/image_thumb.png);
 	  background-position:0px 0px;
 	  background-repeat:no-repeat;
 		height:150px;
@@ -382,21 +382,34 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 										<div >
 											<table>
 												<tr>
-													<td>File Upload:
-													</td>
+
 													<td>
+														<style>
+														form#form_background input{
+															
+														}
+														#upload_button{
+														margin:0px 0px 0px 0px;
+														padding:0px 0px 0px 0px;
+														cursor:pointer;
+														}
+														</style>
 														<form 
-															id='form1' 
+															id='form_background' 
 															target='results' 
 															method='POST' 
 															enctype='multipart/form-data' 
 															action='<?php echo base_url();    ?>index.php/home/upload'
 															>
-															<input type="file" name="Filedata"  value="">
+															<input type="file"  id='Filedata_background' name="Filedata_background"  value="">
 															<input name="" id="" type="submit" value="Go">
 														</form>
 														
 													</td>
+													<td >
+														<div  id='upload_button'>upload
+														</div>
+													</td>													
 												</tr>
 												<tr>
 													<td colspan=2>
@@ -647,6 +660,14 @@ function store_custom_configuration(){
 }
 
 function bind_events(){
+
+			$('#upload_button').click(function(event) {
+				$('#Filedata_background').click();
+			});
+			
+			$('#Filedata_background').change(function(event) {	
+				$('#form_background').submit()
+			});	
 	
 			$( ".draggable" ).draggable({ 
 					handle: "div.handle"
