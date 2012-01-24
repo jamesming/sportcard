@@ -185,6 +185,7 @@ class Home extends CI_Controller {
 			
 		
 		?>
+		<!-- 
 		<script type="text/javascript" 
 		        src="http://www.google.com/jsapi"></script>
 		<script type="text/javascript">
@@ -192,7 +193,9 @@ class Home extends CI_Controller {
 		  google.load("jquery", "1.7.1");
 		 	google.load("jqueryui", "1.8.16");
 		
-		</script>
+		</script>		
+		 -->
+		<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function() { 
 				

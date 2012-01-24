@@ -152,7 +152,7 @@
 
 	
 </style>
-<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
+	<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
 	<link rel="stylesheet" href="<?php echo  base_url();   ?>js/jquery-ui/themes/base/jquery.ui.all.css"> 
 	<script src="<?php echo  base_url();   ?>js/external/jquery.bgiframe-2.1.2.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.core.min.js"></script> 
@@ -380,19 +380,11 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 									</li>
 									<li id='panel-2'   class='panels ' >
 										<div >
-											<table>
-												<tr>
-
-													<td>
 														<style>
 														form#form_background input{
-															
+															display:none;
 														}
-														#upload_button{
-														margin:0px 0px 0px 0px;
-														padding:0px 0px 0px 0px;
-														cursor:pointer;
-														}
+
 														</style>
 														<form 
 															id='form_background' 
@@ -403,16 +395,27 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 															>
 															<input type="file"  id='Filedata_background' name="Filedata_background"  value="">
 															<input name="" id="" type="submit" value="Go">
-														</form>
-														
-													</td>
+														</form>											
+											<table>
+												<tr>
+
 													<td >
+														<style>
+														#upload_button{
+															height:5px;
+															margin:0px 0px 0px 0px;
+															padding:0px 0px 0px 0px;
+															cursor:pointer;
+															background:yellow;
+															text-align:right;
+														}
+														</style>
 														<div  id='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
 												<tr>
-													<td colspan=2>
+													<td>
 														<div  id='background-thumb'>&nbsp;
 														</div>
 													</td>
