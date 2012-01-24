@@ -34,16 +34,16 @@ class Query {
 		
 		$users = $this->CI->my_database_model->select_from_table( 
 			$table = 'users', 
-			$select_what = 'users.*, images.id as image_id', 
+			$select_what = 'users.*, image_type_id,  images.id as image_id', 
 			$where_array, 
 			$use_order = FALSE, 
 			$order_field = '', 
-			$order_direction = 'desc', 
-			$limit = 1, 
+			$order_direction = 'asc', 
+			$limit = -1, 
 			$use_join = TRUE, 
 			$join_array
 			);
-		
+
 
 		return $users;
 		

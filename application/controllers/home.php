@@ -112,23 +112,43 @@ class Home extends CI_Controller {
 	
 	public function upload(){
 		
-		$post_array = array(
-			'table' => 'images'
-		);
+		$image_type_id = $this->input->post('image_type_id');
+		$image_id = $this->input->post('image_id');
 		
-		$this->my_database_model->update_table_where(
-							'images', 
-							$where_array = array(
-								'user_id'=> 1,
-								'image_type_id' => 1
-							),
-							$set_what_array = array()
-							);
-							
+		if( $image_id [exist in datbase ]){
+			
+					$this->my_database_model->update_table_where(
+										$table = 'images', 
+										$where_array = array(
+											'id' => 1
+										),
+										$set_what_array = array()
+										);		
+											
+		}else{
+			
+				// INSERT
+				
+		};
+		
 
+							
+		switch ( $image_type_id ) {
+			
+		   			case '1':
+		    			$folder = 'backgrounds';
+		        break;
+		        
+		   			case '2':
+		    			$folder = 'pictures';
+		        break;		        
+		        
+		        
+		}
+		
 		$path_array = array(
-			'folder'=> 'backgrounds', 
-			'image_id' => 1
+			'folder'=> $folder, 
+			'image_type_id' => $image_type_id
 		);
 					
 		$upload_path = $this->tools->set_directory_for_upload( $path_array );
@@ -139,14 +159,12 @@ class Home extends CI_Controller {
 		$config['file_name'] = 'image.png';
 		
 		$this->load->library('upload', $config);
-
-	
-		$this->upload->do_upload("Filedata_background");
+		$this->upload->do_upload("Filedata");
 		
 		?>
 		
 		<script type="text/javascript" language="Javascript">
-				document.location = '<?php echo base_url()    ?>index.php/home/resize?image_id=1&random=<?php echo  rand(5,126724523)   ?>';		
+				document.location = '<?php echo base_url()    ?>index.php/home/resize?image_id=1&random=<?php echo  rand(5,126724523)   ?>&image_type_id=<?php echo $image_type_id ?>';		
 		</script>
 		
 		<?php     
@@ -196,6 +214,8 @@ class Home extends CI_Controller {
 		</script>		
 		 -->
 		<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
+
+
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function() { 
 				

@@ -380,28 +380,13 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 									</li>
 									<li id='panel-2'   class='panels ' >
 										<div >
-														<style>
-														form#form_background input{
-															display:none;
-														}
-
-														</style>
-														<form 
-															id='form_background' 
-															target='results' 
-															method='POST' 
-															enctype='multipart/form-data' 
-															action='<?php echo base_url();    ?>index.php/home/upload'
-															>
-															<input type="file"  id='Filedata_background' name="Filedata_background"  value="">
-															<input name="" id="" type="submit" value="Go">
-														</form>											
+										
 											<table>
 												<tr>
 
 													<td >
 														<style>
-														#upload_button{
+														.upload_button{
 															height:5px;
 															margin:0px 0px 0px 0px;
 															padding:0px 0px 0px 0px;
@@ -410,7 +395,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 															text-align:right;
 														}
 														</style>
-														<div  id='upload_button'>upload
+														<div image_type_id='1' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -421,17 +406,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													</td>
 												</tr>												
 											</table>
-											<iframe  
-												id="results"   
-												name="results"
-												style='border:0px solid gray;width:0px;height:0px'  
-												border="1" 
-												frameborder="1" 
-												scrolling="auto" 
-												align="center" 
-												hspace="0" 
-												vspace="">
-											</iframe>
+
 										</div>							
 									</li>
 									<li   class='panels ' >
@@ -449,7 +424,39 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 			</div>
 </div>
 
+<style>
+form#form_background input{
+	display:none;
+}
+form#form_background input[type=file]{
+	visibility:hidden;
+	display:block;
+}
 
+</style>
+<form 
+	id='form_background' 
+	target='results' 
+	method='POST' 
+	enctype='multipart/form-data' 
+	action='<?php echo base_url();    ?>index.php/home/upload'
+	>
+	<input  id='image_type_id' name="image_type_id"  type="" value="">
+	<input  id='image_id' name="image_id"  type="" value="">
+	<input type="file"  id='Filedata' name="Filedata"  value="">
+	
+</form>	
+<iframe  
+	id="results"   
+	name="results"
+	style='border:0px solid gray;width:0px;height:0px'  
+	border="1" 
+	frameborder="1" 
+	scrolling="auto" 
+	align="center" 
+	hspace="0" 
+	vspace="">
+</iframe>
 </body>
 </html>
 
@@ -664,11 +671,12 @@ function store_custom_configuration(){
 
 function bind_events(){
 
-			$('#upload_button').click(function(event) {
-				$('#Filedata_background').click();
+			$('.upload_button').click(function(event) {
+				$('#image_type_id').val(  $(this).attr('image_type_id')  );
+				$('#Filedata').click();
 			});
 			
-			$('#Filedata_background').change(function(event) {	
+			$('#Filedata').change(function(event) {	
 				$('#form_background').submit()
 			});	
 	
