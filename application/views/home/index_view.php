@@ -52,7 +52,7 @@
 	}
 	div.container{
 	min-height:30px;	
-	border:1px solid gray;
+	border:0px solid gray;
 	}
 	
 	div#header .coordinates{
@@ -75,7 +75,7 @@
 	.draggable{ 
 	float: left;
 /*	background:transparent;	*/
-	border:1px solid gray;
+	border:0px solid gray;
 	}
 	.draggable .insides{
 		clear:both;
@@ -152,14 +152,28 @@
 
 	
 </style>
+<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
+	<link rel="stylesheet" href="<?php echo  base_url();   ?>js/jquery-ui/themes/base/jquery.ui.all.css"> 
+	<script src="<?php echo  base_url();   ?>js/external/jquery.bgiframe-2.1.2.js"></script> 
+	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.core.min.js"></script> 
+	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.widget.min.js"></script> 
+	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.mouse.min.js"></script> 
+	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.draggable.min.js"></script> 
+	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.position.min.js"></script> 
+	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.resizable.min.js"></script> 
+	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.dialog.min.js"></script> 
+	
+<!--
 <script type="text/javascript" 
         src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
  
-  google.load("jquery", "1.7.1");
- 	google.load("jqueryui", "1.8.16");
+  // google.load("jquery", "1.7.1");
+ 	// google.load("jqueryui", "1.8.16");
 
 </script>
+  -->
+
 <script type="text/javascript" language="Javascript">
  /* 
  * Copyright (c) 2009 Simo Kinnunen.
@@ -181,6 +195,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 		<style>
 		#form0 input{
 		width:30px;	
+		display:none;
 		}
 		</style>
 		<form id='form0'>
@@ -392,6 +407,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 											</table>
 											<iframe  
 												id="results"   
+												name="results"
 												style='border:0px solid gray;width:0px;height:0px'  
 												border="1" 
 												frameborder="1" 
@@ -726,7 +742,7 @@ $.fn.bind_mouse_events = function(){
 function edit_mode_on(){
 
 						$('#control-panel-box').show();
-						$('.draggable, #main-box, #header').css({border:'1px solid gray'});
+						$('.draggable, #main-box, #header');
 						$('#head-line-box .window-controls-container, .coordinates').css({'visibility':'visible'});
 						
 }
@@ -769,11 +785,11 @@ function store_position( dom_element ){
 							
 								$('#y').val(data);
 								
-								$('#control-panel-box').show();
+								//$('#control-panel-box').show();
 								
 								$('#head-line-box .handle').mouseout(function(event) {
 
-										$('#control-panel-box').show();
+								//		$('#control-panel-box').show();
 														
 								})
 		
