@@ -4,9 +4,11 @@
 <?php     	$this->load->view('header/blueprint_css.php');  ?>
 <style>
 	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users'][0]->id    ?>/<?php echo $data['users'][0]->image_id    ?>/image.png);
+  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['id']   ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image.png);
   background-position:center 0px;
   background-repeat:no-repeat;
+  -webkit-background-size:1500px 1500px;
+  background-size:1500px 1500px;
 	}
 	.top-right-rounded{
 		border-top-right-radius: 6px;
@@ -144,7 +146,7 @@
 	}
 
 	#control-panel-box ul#panels_ul #background-thumb{
-	  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users'][0]->id    ?>/<?php echo $data['users'][0]->image_id    ?>/image_thumb.png);
+	  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['id']    ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image_thumb.png);
 	  background-position:0px 0px;
 	  background-repeat:no-repeat;
 		height:150px;
@@ -395,7 +397,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 															text-align:right;
 														}
 														</style>
-														<div image_id='<?php echo $data['users'][0]->image_id    ?>' image_type_id='1' class='upload_button'>upload
+														<div image_id='0' image_type_id='1' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -426,7 +428,8 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 
 <style>
 form#form_background input{
-	display:none;
+	display:block;
+	width:20px;
 }
 form#form_background input[type=file]{
 	visibility:hidden;
@@ -479,13 +482,12 @@ $(document).ready(function() {
 
 function get_stored_configurations(){
 	
-			$('body').css({'-webkit-background-size':'1500px 1500px','background-size':'1500px 1500px'})
 
 			$('#head-line-box').css({
 				'position':'absolute',
 				'left':($(window).width() / 2),
-				'top':'<?php echo ( isset( $data['users'][0]->y) ? $data['users'][0]->y:'0' ) ?>px',
-				'margin-left':(0-(<?php echo ( isset( $data['users'][0]->margin_left_of_center) ? $data['users'][0]->margin_left_of_center:'0' ) ?>))+'px',
+				'top':'<?php echo ( isset( $data['users']['backgrounds']['y']) ? $data['users']['backgrounds']['y']:'0' ) ?>px',
+				'margin-left':(0-(<?php echo ( isset( $data['users']['backgrounds']['margin_left_of_center']) ? $data['users']['backgrounds']['margin_left_of_center']:'0' ) ?>))+'px',
 			})
 
 
@@ -496,28 +498,28 @@ function get_stored_configurations(){
 				'margin-left':'30px',
 			})
 
-			var full_name = '<?php echo ( isset( $data['users'][0]->full_name ) ? $data['users'][0]->full_name:'' )    ?>';
+			var full_name = '<?php echo ( isset( $data['users']['backgrounds']['full_name'] ) ? $data['users']['backgrounds']['full_name']:'' )    ?>';
 			
 			$('#full_name').val( full_name );
 			
 			
-			Cufon.replace('#full_name_readonly',{ fontFamily: '<?php echo ( isset( $data['users'][0]->font_name ) ? $data['users'][0]->font_name:'' )    ?>', hover: true });
+			Cufon.replace('#full_name_readonly',{ fontFamily: '<?php echo ( isset( $data['users']['backgrounds']['font_name'] ) ? $data['users']['backgrounds']['font_name']:'' )    ?>', hover: true });
 				
-			$('#full_name_readonly').attr('font_name', '<?php echo ( isset( $data['users'][0]->font_name ) ? $data['users'][0]->font_name:'' )    ?>');
+			$('#full_name_readonly').attr('font_name', '<?php echo ( isset( $data['users']['backgrounds']['font_name'] ) ? $data['users']['backgrounds']['font_name']:'' )    ?>');
 			
 			$('#full_name_readonly').html( full_name );
 			
-//			$('body').css({background:'<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>'});
-//			$('#background_color').val('<?php echo ( isset( $data['users'][0]->background_color) ? $data['users'][0]->background_color:'white' )    ?>')
+//			$('body').css({background:'<?php echo ( isset( $data['users']['backgrounds']['background_color']) ? $data['users']['backgrounds']['background_color']:'white' )    ?>'});
+//			$('#background_color').val('<?php echo ( isset( $data['users']['backgrounds']['background_color']) ? $data['users']['backgrounds']['background_color']:'white' )    ?>')
 			
-			$('#full_name_readonly').css({color:'<?php echo ( isset( $data['users'][0]->font_color) ? $data['users'][0]->font_color:'black' )    ?>'});
-			$('#font_color').val('<?php echo ( isset( $data['users'][0]->font_color) ? $data['users'][0]->font_color:'black' )    ?>');			
+			$('#full_name_readonly').css({color:'<?php echo ( isset( $data['users']['backgrounds']['font_color']) ? $data['users']['backgrounds']['font_color']:'black' )    ?>'});
+			$('#font_color').val('<?php echo ( isset( $data['users']['backgrounds']['font_color']) ? $data['users']['backgrounds']['font_color']:'black' )    ?>');			
 			
-			$('#full_name_readonly').css({'font-size':'<?php echo ( isset( $data['users'][0]->font_size) ? $data['users'][0]->font_size:'11px' )    ?>'});			
-			$('#font_size').val('<?php echo ( isset( $data['users'][0]->font_size) ? $data['users'][0]->font_size:'11px' )    ?>');
+			$('#full_name_readonly').css({'font-size':'<?php echo ( isset( $data['users']['backgrounds']['font_size']) ? $data['users']['backgrounds']['font_size']:'11px' )    ?>'});			
+			$('#font_size').val('<?php echo ( isset( $data['users']['backgrounds']['font_size']) ? $data['users']['backgrounds']['font_size']:'11px' )    ?>');
 
 
-			<?php if( $data['users'][0]->edit_mode == 0){?>
+			<?php if( $data['users']['backgrounds']['edit_mode'] == 0){?>
 									$('#edit_mode').text('edit').attr('on', 0);	
 									edit_mode_off();									
 			<?php }else{?>
@@ -527,11 +529,11 @@ function get_stored_configurations(){
 			
 			
 			
-			$('#transparency').val('<?php echo ( isset( $data['users'][0]->transparency) ? $data['users'][0]->transparency:'6' )    ?>');			
+			$('#transparency').val('<?php echo ( isset( $data['users']['backgrounds']['transparency']) ? $data['users']['backgrounds']['transparency']:'6' )    ?>');			
 		
 			<?php if( $this->tools->browserIsExplorer() ){?>
 			
-						var hex = Math.floor(0.1 * <?php  echo ( isset( $data['users'][0]->transparency) ? $data['users'][0]->transparency:'6' )    ?> * 255).toString(16);
+						var hex = Math.floor(0.1 * <?php  echo ( isset( $data['users']['backgrounds']['transparency']) ? $data['users']['backgrounds']['transparency']:'6' )    ?> * 255).toString(16);
 			
 						$( '#head-line-box' ).css({
 							'zoom':'1',
@@ -544,7 +546,7 @@ function get_stored_configurations(){
 			<?php }else{ ?>
 
 				$( '#head-line-box' ).css({
-								'background-color':'rgba(0, 0, 0, 0.'+ <?php  echo ( isset( $data['users'][0]->transparency) ? $data['users'][0]->transparency:'6' )    ?> +')'
+								'background-color':'rgba(0, 0, 0, 0.'+ <?php  echo ( isset( $data['users']['backgrounds']['transparency']) ? $data['users']['backgrounds']['transparency']:'6' )    ?> +')'
 				})	
 			
 			<?php }?>		

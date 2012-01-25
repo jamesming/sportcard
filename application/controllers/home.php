@@ -6,7 +6,7 @@ class Home extends CI_Controller {
    public function __construct(){
         parent::__construct();
 				$this->user_id = 1;
-
+				$this->thumbnail_size  = '367';
    }
 
 	/**
@@ -38,12 +38,12 @@ class Home extends CI_Controller {
 		$users = $this->query->get_users(
 			'users',
 			$where_array = array(
-				'users.id' => 1,
-				'images.image_type_id' => 1  // REPRESENTS IMAGES THAT ARE BACKGROUND
+				'users.id' => $this->user_id
 			)	
 		);
 		
-		
+		//echo '<pre>';print_r(  $users['backgrounds']['images'][0]  );echo '</pre>';  exit;
+
 		$data = array(
 			'users' => $users,
 			'fonts' => $fonts
@@ -54,40 +54,6 @@ class Home extends CI_Controller {
 	}
 	
 	
-	
-	function test(){
-	?>	
-
-		<script src="http://jqueryui.com/jquery-1.6.2.js"></script>
-		<script src="http://jqueryui.com/ui/jquery.ui.core.js"></script>
-		<script src="http://jqueryui.com/ui/jquery.ui.widget.js"></script>
-		<script src="http://jqueryui.com/ui/jquery.ui.mouse.js"></script>
-		<script src="http://jqueryui.com/ui/jquery.ui.resizable.js"></script>
-		<style>
-		#resizable { background:red;width: 150px; height: 150px; padding: 0.5em; }
-		#resizable h3 { text-align: center; margin: 0; }
-		</style>
-
-		
-		
-		<script type="text/javascript" language="Javascript">
-			$(document).ready(function() { 
-				
-				
-				$( "#resizable" ).resizable();
-						    
-						    
-			});
-		</script>
-	
-		<div id="resizable" class="ui-widget-content">
-			<h3 class="ui-widget-header">Resizable</h3>
-		</div>
-	
-	
-	<?php     
-		
-	}
 
 	public function update(){
 
@@ -127,6 +93,14 @@ class Home extends CI_Controller {
 										);					
 		}else{
 			
+					$image_id = $this->my_database_model->insert_table(
+						$table = 'images', 
+						array(
+							'image_type_id' => $image_type_id,
+							'user_id' => $this->user_id
+						)
+					);
+			
 		};
 		
 
@@ -141,7 +115,10 @@ class Home extends CI_Controller {
 		    			$folder = 'pictures';
 		        break;		        
 		        
-		        
+		   			case '3':
+		    			$folder = 'videos';
+		        break;			     
+		           
 		}
 		
 		$path_array = array(
@@ -176,14 +153,14 @@ class Home extends CI_Controller {
 		
 			$image_id = $this->input->get('image_id');
 		
-			$dir_path = 'uploads/backgrounds/'  . $image_id; 
+			$dir_path = 'uploads/backgrounds/'. $this->user_id .'/'  . $image_id; 
 		
 			$image_information = getimagesize($dir_path . '/' . 'image.png');
 			
 			$width_of_file = $image_information[0];
 			$height_of_file = $image_information[1];
 			
-			$new_width = '367';
+			$new_width = $this->thumbnail_size;
 			$new_height = $this->tools->get_new_size_of (
 				$what = 'height', 
 				$based_on_new = $new_width, 

@@ -27,23 +27,86 @@ class Query {
 
 	function get_users( $table, $where_array ){
 		
-		
+
 		$join_array = array(
 									'images' => 'images.user_id = users.id'
 									);
 		
-		$users = $this->CI->my_database_model->select_from_table( 
+		$users_raw = $this->CI->my_database_model->select_from_table( 
 			$table = 'users', 
-			$select_what = 'users.*, image_type_id,  images.id as image_id', 
+			$select_what = 'image_type_id ,images.id as image_id,  users.*',    
 			$where_array, 
-			$use_order = FALSE, 
-			$order_field = '', 
+			$use_order = TRUE, 
+			$order_field = 'image_type_id', 
 			$order_direction = 'asc', 
 			$limit = -1, 
 			$use_join = TRUE, 
 			$join_array
 			);
+			
+		$users_raw = $this->CI->tools->object_to_array($users_raw);
+		
 
+		$count=0;
+		$image_types_index = 0;
+		$previous_id = 0;
+		$image_types = array(
+			0 => 'backgrounds',
+			1 => 'pictures',
+			2 => 'videos',
+		);
+
+		foreach( $users_raw  as $key =>  $user){
+			$count++;
+			if( $user['image_type_id'] == $previous_id || $previous_id == 0){
+		
+
+					foreach( $user  as  $field => $value){
+		 
+						 	if( $field != 'image_id'){
+						 			$array[$field] = $value;
+							}else{
+									$images[] = $value;
+							};
+						
+					}
+					
+					
+					
+
+			}else{
+
+					$array['images'] = $images;	
+					unset($images);			
+					$users[$image_types[$image_types_index]] = $array;					
+					$image_types_index++;
+					
+					foreach( $user  as  $field => $value){
+		 
+						 	if( $field != 'image_id'){
+						 			$array[$field] = $value;
+							}else{
+									$images[] = $value;
+							};
+						
+					}					
+
+
+
+			};
+			
+			$previous_id = $user['image_type_id'];			
+
+		}
+		
+		if( $count ==  count($users_raw) ){
+
+						$array['images'] = $images;				
+						$users[$image_types[$image_types_index]] = $array;
+	
+		};
+		
+		
 
 		return $users;
 		
