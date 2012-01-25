@@ -5,7 +5,7 @@ class Home extends CI_Controller {
 	
    public function __construct(){
         parent::__construct();
-
+				$this->user_id = 1;
 
    }
 
@@ -48,7 +48,6 @@ class Home extends CI_Controller {
 			'users' => $users,
 			'fonts' => $fonts
 		);
-		
 
 		$this->load->view('home/index_view',
 					array('data' => $data));	    
@@ -114,8 +113,7 @@ class Home extends CI_Controller {
 		
 		$image_type_id = $this->input->post('image_type_id');
 		$image_id = $this->input->post('image_id');
-		
-		if( $image_id [exist in datbase ]){
+//		if( $image_id [exist in datbase ]){
 			
 					$this->my_database_model->update_table_where(
 										$table = 'images', 
@@ -125,11 +123,11 @@ class Home extends CI_Controller {
 										$set_what_array = array()
 										);		
 											
-		}else{
+//		}else{
 			
 				// INSERT
 				
-		};
+//		};
 		
 
 							
@@ -148,7 +146,8 @@ class Home extends CI_Controller {
 		
 		$path_array = array(
 			'folder'=> $folder, 
-			'image_type_id' => $image_type_id
+			'user_id' => $this->user_id,
+			'image_id' => $image_id
 		);
 					
 		$upload_path = $this->tools->set_directory_for_upload( $path_array );
@@ -164,7 +163,7 @@ class Home extends CI_Controller {
 		?>
 		
 		<script type="text/javascript" language="Javascript">
-				document.location = '<?php echo base_url()    ?>index.php/home/resize?image_id=1&random=<?php echo  rand(5,126724523)   ?>&image_type_id=<?php echo $image_type_id ?>';		
+				document.location = '<?php echo base_url()    ?>index.php/home/resize?image_id=<?php echo $image_id    ?>&image_type_id=<?php echo $image_type_id ?>&random=<?php echo  rand(5,126724523)   ?>';		
 		</script>
 		
 		<?php     
@@ -221,13 +220,13 @@ class Home extends CI_Controller {
 				
 				
 				window.parent.$('body').css({
-						    'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $image_id    ?>/image.png?random=<?php echo   rand(5,124344523)   ?>)',
+						    'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image.png?random=<?php echo   rand(5,124344523)   ?>)',
 						    'background-position': 'center 0px',
 						    'background-repeat': 'no-repeat'});
 						    
 						    
 				window.parent.$('#background-thumb').css({
-						    'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
+						    'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
 						    'background-position': '0px 0px',
 						    'background-repeat': 'no-repeat'});						    
 						    

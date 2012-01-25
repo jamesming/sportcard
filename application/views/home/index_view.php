@@ -4,7 +4,7 @@
 <?php     	$this->load->view('header/blueprint_css.php');  ?>
 <style>
 	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users'][0]->image_id    ?>/image.png);
+  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users'][0]->id    ?>/<?php echo $data['users'][0]->image_id    ?>/image.png);
   background-position:center 0px;
   background-repeat:no-repeat;
 	}
@@ -144,7 +144,7 @@
 	}
 
 	#control-panel-box ul#panels_ul #background-thumb{
-	  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users'][0]->image_id    ?>/image_thumb.png);
+	  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users'][0]->id    ?>/<?php echo $data['users'][0]->image_id    ?>/image_thumb.png);
 	  background-position:0px 0px;
 	  background-repeat:no-repeat;
 		height:150px;
@@ -395,7 +395,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 															text-align:right;
 														}
 														</style>
-														<div image_type_id='1' class='upload_button'>upload
+														<div image_id='<?php echo $data['users'][0]->image_id    ?>' image_type_id='1' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -673,6 +673,7 @@ function bind_events(){
 
 			$('.upload_button').click(function(event) {
 				$('#image_type_id').val(  $(this).attr('image_type_id')  );
+				$('#image_id').val(  $(this).attr('image_id')  );
 				$('#Filedata').click();
 			});
 			
@@ -817,7 +818,7 @@ function store_position( dom_element ){
 							
 								$('#y').val(data);
 								
-								//$('#control-panel-box').show();
+								$('#control-panel-box').show();
 								
 								$('#head-line-box .handle').mouseout(function(event) {
 
