@@ -113,21 +113,21 @@ class Home extends CI_Controller {
 		
 		$image_type_id = $this->input->post('image_type_id');
 		$image_id = $this->input->post('image_id');
-//		if( $image_id [exist in datbase ]){
-			
+		
+		
+		if( $this->my_database_model->check_if_exist(
+							$where_array = array('id'=>$image_id), $table = 'images' )
+		){
 					$this->my_database_model->update_table_where(
 										$table = 'images', 
 										$where_array = array(
 											'id' => 1
 										),
 										$set_what_array = array()
-										);		
-											
-//		}else{
+										);					
+		}else{
 			
-				// INSERT
-				
-//		};
+		};
 		
 
 							
