@@ -6,7 +6,7 @@ class Home extends CI_Controller {
    public function __construct(){
         parent::__construct();
 				$this->user_id = 1;
-				$this->thumbnail_size_width  = '360';
+				$this->thumbnail_size_width  = '367';
    }
 
 	/**
@@ -208,23 +208,27 @@ class Home extends CI_Controller {
 			$(document).ready(function() { 
 				
 
-
-					window.parent.$('body').css({
-							    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image.png?random=<?php echo   rand(5,124344523)   ?>)',
-							    'background-position': 'center 0px',
-							    'background-repeat': 'no-repeat'});
-							    
-							    
-					<?php if( $li_index != -1 ){?>	
+					<?php if( $image_types[$image_type_id] == 'backgrounds-div' ){?>
+							
+							window.parent.$('body').css({
+									    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image.png?random=<?php echo   rand(5,124344523)   ?>)',
+									    'background-position': 'center 0px',
+									    'background-repeat': 'no-repeat'});
 						
-
+						
+					<?php } ?>
+							    
+							    
+							    
+							    
+					<?php if( $li_index != -1 ){?>  /* UPDATE THUMB*/
 							    
 							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li:eq(<?php echo $li_index    ?>)').css({
 									    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
 									    'background-position': '0px 0px',
 									    'background-repeat': 'no-repeat'});						
 							
-					<?php }else{ ?>
+					<?php }else{ ?>  /* INSERT THUMB */
 						
 
 							var copy_li = window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li:eq(0)').clone(true);

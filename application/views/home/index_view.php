@@ -134,7 +134,20 @@
 		}		
 		#control-panel-box #panel-tabs_container li#panel-tab-2{
 			background:white;
-		}		
+		}
+		
+		
+		
+	.upload_button{
+		height:30px;
+		margin:0px 0px 0px 0px;
+		padding:0px 0px 0px 0px;
+		cursor:pointer;
+		background:yellow;
+		text-align:right;
+	}
+		
+				
 
 	#control-panel-box ul#panels_ul li.panels{
 	display:none;	
@@ -142,6 +155,48 @@
 			#control-panel-box ul#panels_ul li.panels div.div-panel{
 			padding:20px;	
 			}
+			
+			
+													#control-panel-box  ul#panels_ul div.thumbs-div{
+												    background: none repeat scroll 0 0 white;
+												    height: 185px;
+												    margin-top: 13px;
+												    overflow:auto;
+  													overflow-y:hidden;
+												    padding: 0;
+												    width: 366px;
+													}										
+													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul{
+														height:168px;
+														overflow:hidden;
+													}	
+													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li{
+														list-style:none;
+														float:left !important;
+														height:168px;
+														width:<?php echo $data['thumbnail_size_width']    ?>px;
+														overflow:hidden;
+													}
+													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel{
+												    float: right;
+												    height: 22px;
+												    position: relative;
+												    width: 71px;
+												    padding-top: 3px;
+												    display:none;
+													}	
+													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel div{
+														color:white;
+												    float: right;
+												    height: 19px;
+												    margin-right: 2px;
+												    width: 20px;
+												    text-align: center;
+												    cursor:pointer
+													}		
+			
+			
+			
 			
 /* WHICH TAB IS SELECTED BY DEFAULT */			
 #control-panel-box #panel-tabs_container li#panel-tab-2{
@@ -336,15 +391,11 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<td>
 													<select   id='transparency' name='transparency'>
 														
-													<?php 
-													
-
-													
-																for( $transparency_setting = 0;  $transparency_setting <= 9;  $transparency_setting++ ){ ?>	
+													<?php for( $transparency_setting = 0;  $transparency_setting <= 9;  $transparency_setting++ ){ ?>	
 								
 																		<option value='<?php  echo $transparency_setting   ?>'><?php  echo $transparency_setting   ?></option>
 																
-																<?php } ?>
+													<?php } ?>
 													
 													</select>
 												</td>
@@ -386,61 +437,11 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 
 													<td >
-														<style>
-														.upload_button{
-															height:30px;
-															margin:0px 0px 0px 0px;
-															padding:0px 0px 0px 0px;
-															cursor:pointer;
-															background:yellow;
-															text-align:right;
-														}
-														</style>
 														<div image_id='0' image_type_id='1' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
-												<style>
-													#control-panel-box  ul#panels_ul div.thumbs-div{
-												    background: none repeat scroll 0 0 white;
-												    height: 185px;
-												    margin-top: 13px;
-												    overflow:auto;
-  													overflow-y:hidden;
-												    padding: 0;
-												    width: 366px;
-													}										
-													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul{
-														height:168px;
-														overflow:hidden;
-													}	
-													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li{
-														list-style:none;
-														float:left !important;
-														height:168px;
-														width:<?php echo $data['thumbnail_size_width']    ?>px;
-														overflow:hidden;
-													}
-													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel{
-												    float: right;
-												    height: 22px;
-												    position: relative;
-												    width: 71px;
-												    padding-top: 3px;
-												    display:none;
-													}	
-													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel div{
-														color:white;
-												    float: right;
-												    height: 19px;
-												    margin-right: 2px;
-												    width: 20px;
-												    text-align: center;
-												    cursor:pointer
-													}
-													
 
-												</style>
 												<tr>
 													<td>
 														<div  id='backgrounds-div' class='thumbs-div'>
@@ -465,66 +466,89 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													</td>
 												</tr>												
 											</table>
-											<script type="text/javascript" language="Javascript">
-											$(document).ready(function() { 
 
-												$('.background-img').mouseover(function(event) {
-													$(this).children('.small_icons_panel').show()
-												}).mouseout(function(event) {
-													$(this).children('.small_icons_panel').hide()
-												});	
-												$('.swap').click(function(event) {
-													$('body').css({
-														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.png)'
-														})		
-												})												
-												$('.update-image').click(function(event) {
-														$('#li_index').val($(this).parent().parent().index());
-														$('#image_type_id').val(  $(this).parent().parent().attr('image_type_id')  );
-														$('#image_id').val(  $(this).parent().parent().attr('image_id')  );
-														$('#Filedata').click();
-												});
-												$('.delete').click(function(event) {
-													
-														thisUL = $(this).parent('div.small_icons_panel').parent('li').parent('ul');
-													
-														$(this).parent('div.small_icons_panel').parent('li').parent('ul')
-															.css({width:(<?php echo $data['thumbnail_size_width'] ?> * (thisUL.children('li').length -1 ))+'px'})		    																											
-														$(this).parent('div.small_icons_panel').parent('li').remove();
-														
-														$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
-														image_id:$(this).parent().parent().attr('image_id')
-														},function(data) {
-															
-															last_li = thisUL.children('li').last();
-															
-															if( last_li.attr('image_type_id') == 1){
-
-																	$('body').css({
-															    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/' + last_li.attr('image_id') + '/image.png?random=<?php echo   rand(5,124344523)   ?>)',
-															    'background-position': 'center 0px',
-															    'background-repeat': 'no-repeat'});	
-															    															
-															};
-
-															
-															
-														});	
-														
-												});	
-											});
-											</script>
 										</div>							
 									</li>
-									<li   class='panels ' >
+									
+									
+									
+									<li  id='panel-3'    class='panels ' >
 										<div class='div-panel '>
-											panel 3
-										</div>
+										
+											<table>
+												<tr>
+
+													<td >
+														<div image_id='0' image_type_id='2' class='upload_button'>upload
+														</div>
+													</td>													
+												</tr>
+
+												<tr>
+													<td>
+														<div  id='pictures-div' class='thumbs-div'>
+															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['pictures']['images'])    ?>px'  >
+																<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
+
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																		<div  class='small_icons_panel transparent' >
+																			<div  class='delete ' >[X]
+																			</div>
+																			<div  class='update-image ' ' >[E]
+																			</div>
+																			<div  class='swap ' >[C]
+																			</div>																																							
+																		</div>
+																	</li>
+																
+																<?php } ?>
+															</ul>															
+														</div>
+
+													</td>
+												</tr>												
+											</table>
+
+										</div>		
 									</li>
-									<li   class='panels ' >
+									<li   id='panel-4'    class='panels ' >
 										<div class='div-panel '>
-										panel 4
-										</div>
+										
+											<table>
+												<tr>
+
+													<td >
+														<div image_id='0' image_type_id='3' class='upload_button'>upload
+														</div>
+													</td>													
+												</tr>
+
+												<tr>
+													<td>
+														<div  id='videos-div' class='thumbs-div'>
+															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['videos']['images'])    ?>px'  >
+																<?php foreach( $data['users']['videos']['images']  as $image_id){?>
+
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																		<div  class='small_icons_panel transparent' >
+																			<div  class='delete ' >[X]
+																			</div>
+																			<div  class='update-image ' ' >[E]
+																			</div>
+																			<div  class='swap ' >[C]
+																			</div>																																							
+																		</div>
+																	</li>
+																
+																<?php } ?>
+															</ul>															
+														</div>
+
+													</td>
+												</tr>												
+											</table>
+
+										</div>	
 									</li>									
 							</ul>
 				</div>
@@ -579,6 +603,7 @@ $(document).ready(function() {
 			get_stored_configurations();
 			store_custom_configuration();
 			activate_fonts_for_selection();
+			thumbnail_controls();
 			bind_events();
 
 });
@@ -940,6 +965,58 @@ function store_position( dom_element ){
 						});		
 	
 	
+}
+
+
+function thumbnail_controls(){
+
+												$('.background-img').mouseover(function(event) {
+													$(this).children('.small_icons_panel').show()
+												}).mouseout(function(event) {
+													$(this).children('.small_icons_panel').hide()
+												});	
+												
+												$('.swap').click(function(event) {
+													$('body').css({
+														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.png)'
+														})		
+												})	
+																							
+												$('.update-image').click(function(event) {
+														$('#li_index').val($(this).parent().parent().index());
+														$('#image_type_id').val(  $(this).parent().parent().attr('image_type_id')  );
+														$('#image_id').val(  $(this).parent().parent().attr('image_id')  );
+														$('#Filedata').click();
+												})
+												
+												$('.delete').click(function(event) {
+													
+														thisUL = $(this).parent('div.small_icons_panel').parent('li').parent('ul');
+													
+														$(this).parent('div.small_icons_panel').parent('li').parent('ul')
+															.css({width:(<?php echo $data['thumbnail_size_width'] ?> * (thisUL.children('li').length -1 ))+'px'})		    																											
+														$(this).parent('div.small_icons_panel').parent('li').remove();
+														
+														$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
+														image_id:$(this).parent().parent().attr('image_id')
+														},function(data) {
+															
+															last_li = thisUL.children('li').last();
+															
+															/* CHANGING BACKGROUND */
+															if( last_li.attr('image_type_id') == 1){ 
+
+																	$('body').css({
+															    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/' + last_li.attr('image_id') + '/image.png?random=<?php echo   rand(5,124344523)   ?>)',
+															    'background-position': 'center 0px',
+															    'background-repeat': 'no-repeat'});	
+															    															
+															};
+															
+														});	
+														
+												});	
+
 }
 </script>
 
