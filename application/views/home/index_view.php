@@ -490,7 +490,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['pictures']['images'])    ?>px'  >
 																<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
@@ -529,7 +529,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['videos']['images'])    ?>px'  >
 																<?php foreach( $data['users']['videos']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='3'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
