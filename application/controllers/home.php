@@ -6,7 +6,7 @@ class Home extends CI_Controller {
    public function __construct(){
         parent::__construct();
 				$this->user_id = 1;
-				$this->thumbnail_size  = '367';
+				$this->thumbnail_size_width  = '367';
    }
 
 	/**
@@ -46,7 +46,8 @@ class Home extends CI_Controller {
 
 		$data = array(
 			'users' => $users,
-			'fonts' => $fonts
+			'fonts' => $fonts,
+			'thumbnail_size_width' => $this->thumbnail_size_width
 		);
 
 		$this->load->view('home/index_view',
@@ -160,7 +161,7 @@ class Home extends CI_Controller {
 			$width_of_file = $image_information[0];
 			$height_of_file = $image_information[1];
 			
-			$new_width = $this->thumbnail_size;
+			$new_width = $this->thumbnail_size_width;
 			$new_height = $this->tools->get_new_size_of (
 				$what = 'height', 
 				$based_on_new = $new_width, 

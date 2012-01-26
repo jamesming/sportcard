@@ -409,7 +409,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 	  background-position:0px 0px;
 	  background-repeat:no-repeat;
 	*/
-		width:3000px;  
+		width:<?php echo $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images'])    ?>px;  
 		height:150px;
 		overflow:visible;
 	}	
@@ -417,7 +417,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 		list-style:none;
 		float:left !important;
 		height:150px;
-		width:372px;
+		width:<?php echo $data['thumbnail_size_width']    ?>px;
 		overflow:hidden;
 	}
 
@@ -426,10 +426,10 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													<td>
 														<div  id='background-thumbs-div'>
 															<ul id='background-thumbs-ul'>
-																<?php foreach( $data['users']['backgrounds']['images']  as $image){?>
+																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 																
 																	<li>
-																		<img src='<?php echo base_url()     ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $image    ?>/image_thumb.png' />	
+																		<img image_id='<?php  echo $image_id   ?>' class='background-img ' src='<?php echo base_url()     ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png' />	
 																	</li>
 																
 																<?php } ?>
@@ -439,7 +439,15 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													</td>
 												</tr>												
 											</table>
-
+											<script type="text/javascript" language="Javascript">
+											$(document).ready(function() { 
+												$('.background-img').click(function(event) {
+													$('body').css({
+														  'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).attr('image_id') + '/image.png)'
+														})		
+												});	
+											});
+											</script>
 										</div>							
 									</li>
 									<li   class='panels ' >
