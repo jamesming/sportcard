@@ -6,7 +6,7 @@ class Home extends CI_Controller {
    public function __construct(){
         parent::__construct();
 				$this->user_id = 1;
-				$this->thumbnail_size_width  = '367';
+				$this->thumbnail_size_width  = '360';
    }
 
 	/**
@@ -74,6 +74,32 @@ class Home extends CI_Controller {
 	
 	
 	
+	public function remove(){
+
+		
+		$image_id = $this->input->post('image_id');
+		
+		$dir_path = 'uploads/' 
+		. $this->user_id . '/'  
+		.  $image_id . '/';
+		
+
+		$this->tools->recursiveDelete($dir_path);
+		
+		$where_array = array(
+	  	'id' => $image_id
+  	);
+
+		$table  = 'images';
+					
+		$this->my_database_model->delete_from_table( $table, $where_array);	
+		
+		
+	}	
+	
+	
+		
+	
 	
 	public function upload(){
 		
@@ -136,6 +162,12 @@ class Home extends CI_Controller {
 	
 	public function resize(){
 		
+			$image_types = array(
+				'1' => 'backgrounds-div',
+				'2' => 'pictures-div',
+				'3' => 'videos-div',
+			);
+		
 			$image_id = $this->input->get('image_id');
 			$image_type_id = $this->input->get('image_type_id');
 			$li_index = $this->input->get('li_index');
@@ -165,6 +197,8 @@ class Home extends CI_Controller {
 			
 			
 		
+		
+		
 		?>
 
 		<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
@@ -174,9 +208,7 @@ class Home extends CI_Controller {
 			$(document).ready(function() { 
 				
 
-				
-			<?php if( $image_type_id == 1){?>	
-				
+
 					window.parent.$('body').css({
 							    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image.png?random=<?php echo   rand(5,124344523)   ?>)',
 							    'background-position': 'center 0px',
@@ -187,7 +219,7 @@ class Home extends CI_Controller {
 						
 
 							    
-							window.parent.$('#background-div.thumbs-div li:eq(<?php echo $li_index    ?>)').css({
+							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li:eq(<?php echo $li_index    ?>)').css({
 									    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
 									    'background-position': '0px 0px',
 									    'background-repeat': 'no-repeat'});						
@@ -195,25 +227,19 @@ class Home extends CI_Controller {
 					<?php }else{ ?>
 						
 
-							var copy_li = window.parent.$('#background-div.thumbs-div li:eq(0)').clone(true);
-							window.parent.$('#background-div.thumbs-div ul').append(copy_li);
-							window.parent.$('#background-div.thumbs-div ul li').last()
+							var copy_li = window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li:eq(0)').clone(true);
+							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul').append(copy_li);
+							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul li').last()
 								.attr('image_type_id',<?php  echo $image_type_id   ?>)
 								.attr('image_id',<?php  echo $image_id   ?>)
 								.css({'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
 									    'background-position': '0px 0px',
 									    'background-repeat': 'no-repeat'})
-							window.parent.$('#background-div.thumbs-div ul.thumbs-ul')
-								.css({width:(<?php echo $this->thumbnail_size_width ?> * window.parent.$('#background-div.thumbs-div li').length )+'px'})		    
+							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul.thumbs-ul')
+								.css({width:(<?php echo $this->thumbnail_size_width ?> * window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li').length )+'px'})		    
 									    							
 					<?php } ?>
 
-							    
-	
-							    				
-			<?php }else{?>
-				
-			<?php } ?>
 						    
 			});
 		</script>

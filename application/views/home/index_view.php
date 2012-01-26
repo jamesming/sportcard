@@ -443,7 +443,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												</style>
 												<tr>
 													<td>
-														<div  id='background-div' class='thumbs-div'>
+														<div  id='backgrounds-div' class='thumbs-div'>
 															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images'])    ?>px'  >
 																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 
@@ -483,6 +483,34 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 														$('#image_type_id').val(  $(this).parent().parent().attr('image_type_id')  );
 														$('#image_id').val(  $(this).parent().parent().attr('image_id')  );
 														$('#Filedata').click();
+												});
+												$('.delete').click(function(event) {
+													
+														thisUL = $(this).parent('div.small_icons_panel').parent('li').parent('ul');
+													
+														$(this).parent('div.small_icons_panel').parent('li').parent('ul')
+															.css({width:(<?php echo $data['thumbnail_size_width'] ?> * (thisUL.children('li').length -1 ))+'px'})		    																											
+														$(this).parent('div.small_icons_panel').parent('li').remove();
+														
+														$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
+														image_id:$(this).parent().parent().attr('image_id')
+														},function(data) {
+															
+															last_li = thisUL.children('li').last();
+															
+															if( last_li.attr('image_type_id') == 1){
+
+																	$('body').css({
+															    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/' + last_li.attr('image_id') + '/image.png?random=<?php echo   rand(5,124344523)   ?>)',
+															    'background-position': 'center 0px',
+															    'background-repeat': 'no-repeat'});	
+															    															
+															};
+
+															
+															
+														});	
+														
 												});	
 											});
 											</script>
