@@ -426,8 +426,9 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												    float: right;
 												    height: 22px;
 												    position: relative;
-												    width: 46px;
+												    width: 71px;
 												    padding-top: 3px;
+												    display:none;
 													}	
 													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel div{
 														color:white;
@@ -449,8 +450,10 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
-																			<div  class='swap ' image_id='<?php  echo $image_id   ?>'  image_type_id='1' >[E]
-																			</div>																			
+																			<div  class='update-image ' image_id='<?php  echo $image_id   ?>'  image_type_id='1' >[E]
+																			</div>
+																			<div  class='swap ' image_id='<?php  echo $image_id   ?>'  >[S]
+																			</div>																																							
 																		</div>
 																	</li>
 																
@@ -463,12 +466,18 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 											</table>
 											<script type="text/javascript" language="Javascript">
 											$(document).ready(function() { 
-												$('.background-img').click(function(event) {
+
+												$('.background-img').mouseover(function(event) {
+													$(this).children('.small_icons_panel').show()
+												}).mouseout(function(event) {
+													$(this).children('.small_icons_panel').hide()
+												});	
+												$('.swap').click(function(event) {
 													$('body').css({
 														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).attr('image_id') + '/image.png)'
 														})		
-												});
-												$('.swap').click(function(event) {
+												})												
+												$('.update-image').click(function(event) {
 														$('#li_index').val($(this).parent().parent().index());
 														$('#image_type_id').val(  $(this).attr('image_type_id')  );
 														$('#image_id').val(  $(this).attr('image_id')  );
