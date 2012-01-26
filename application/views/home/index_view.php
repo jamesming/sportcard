@@ -411,7 +411,6 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												    width: 366px;
 													}										
 													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul{
-														width:<?php echo $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images'])    ?>px;  
 														height:168px;
 														overflow:hidden;
 													}	
@@ -438,21 +437,23 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												    width: 20px;
 												    text-align: center;
 												    cursor:pointer
-													}																										
+													}
+													
+
 												</style>
 												<tr>
 													<td>
 														<div  id='background-div' class='thumbs-div'>
-															<ul class='thumbs-ul'>
+															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images'])    ?>px'  >
 																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
-																			<div  class='update-image ' image_id='<?php  echo $image_id   ?>'  image_type_id='1' >[E]
+																			<div  class='update-image ' ' >[E]
 																			</div>
-																			<div  class='swap ' image_id='<?php  echo $image_id   ?>'  >[S]
+																			<div  class='swap ' >[C]
 																			</div>																																							
 																		</div>
 																	</li>
@@ -474,13 +475,13 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												});	
 												$('.swap').click(function(event) {
 													$('body').css({
-														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).attr('image_id') + '/image.png)'
+														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.png)'
 														})		
 												})												
 												$('.update-image').click(function(event) {
 														$('#li_index').val($(this).parent().parent().index());
-														$('#image_type_id').val(  $(this).attr('image_type_id')  );
-														$('#image_id').val(  $(this).attr('image_id')  );
+														$('#image_type_id').val(  $(this).parent().parent().attr('image_type_id')  );
+														$('#image_id').val(  $(this).parent().parent().attr('image_id')  );
 														$('#Filedata').click();
 												});	
 											});

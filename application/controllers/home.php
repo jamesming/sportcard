@@ -173,6 +173,8 @@ class Home extends CI_Controller {
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function() { 
 				
+
+				
 			<?php if( $image_type_id == 1){?>	
 				
 					window.parent.$('body').css({
@@ -181,10 +183,33 @@ class Home extends CI_Controller {
 							    'background-repeat': 'no-repeat'});
 							    
 							    
-					window.parent.$('#background-div.thumbs-div li:eq(<?php echo $li_index    ?>)').css({
-							    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
-							    'background-position': '0px 0px',
-							    'background-repeat': 'no-repeat'});	
+					<?php if( $li_index != -1 ){?>	
+						
+
+							    
+							window.parent.$('#background-div.thumbs-div li:eq(<?php echo $li_index    ?>)').css({
+									    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
+									    'background-position': '0px 0px',
+									    'background-repeat': 'no-repeat'});						
+							
+					<?php }else{ ?>
+						
+
+							var copy_li = window.parent.$('#background-div.thumbs-div li:eq(0)').clone(true);
+							window.parent.$('#background-div.thumbs-div ul').append(copy_li);
+							window.parent.$('#background-div.thumbs-div ul li').last()
+								.attr('image_type_id',<?php  echo $image_type_id   ?>)
+								.attr('image_id',<?php  echo $image_id   ?>)
+								.css({'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
+									    'background-position': '0px 0px',
+									    'background-repeat': 'no-repeat'})
+							window.parent.$('#background-div.thumbs-div ul.thumbs-ul')
+								.css({width:(<?php echo $this->thumbnail_size_width ?> * window.parent.$('#background-div.thumbs-div li').length )+'px'})		    
+									    							
+					<?php } ?>
+
+							    
+	
 							    				
 			<?php }else{?>
 				
