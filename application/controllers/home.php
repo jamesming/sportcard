@@ -42,7 +42,6 @@ class Home extends CI_Controller {
 			)	
 		);
 		
-		//echo '<pre>';print_r(  $users['backgrounds']['images'][0]  );echo '</pre>';  exit;
 
 		$data = array(
 			'users' => $users,
@@ -88,7 +87,7 @@ class Home extends CI_Controller {
 					$this->my_database_model->update_table_where(
 										$table = 'images', 
 										$where_array = array(
-											'id' => 1
+											'id' => $image_id
 										),
 										$set_what_array = array()
 										);					
@@ -105,25 +104,9 @@ class Home extends CI_Controller {
 		};
 		
 
-							
-		switch ( $image_type_id ) {
-			
-		   			case '1':
-		    			$folder = 'backgrounds';
-		        break;
-		        
-		   			case '2':
-		    			$folder = 'pictures';
-		        break;		        
-		        
-		   			case '3':
-		    			$folder = 'videos';
-		        break;			     
-		           
-		}
+
 		
 		$path_array = array(
-			'folder'=> $folder, 
 			'user_id' => $this->user_id,
 			'image_id' => $image_id
 		);
@@ -153,8 +136,9 @@ class Home extends CI_Controller {
 	public function resize(){
 		
 			$image_id = $this->input->get('image_id');
+			$image_type_id = $this->input->get('image_type_id');
 		
-			$dir_path = 'uploads/backgrounds/'. $this->user_id .'/'  . $image_id; 
+			$dir_path = 'uploads/'. $this->user_id .'/'  . $image_id; 
 		
 			$image_information = getimagesize($dir_path . '/' . 'image.png');
 			
@@ -180,35 +164,29 @@ class Home extends CI_Controller {
 			
 		
 		?>
-		<!-- 
-		<script type="text/javascript" 
-		        src="http://www.google.com/jsapi"></script>
-		<script type="text/javascript">
-		 
-		  google.load("jquery", "1.7.1");
-		 	google.load("jqueryui", "1.8.16");
-		
-		</script>		
-		 -->
+
 		<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
 
 
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function() { 
 				
+			<?php if( $image_type_id == 1){?>	
 				
-				window.parent.$('body').css({
-						    'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image.png?random=<?php echo   rand(5,124344523)   ?>)',
-						    'background-position': 'center 0px',
-						    'background-repeat': 'no-repeat'});
-						    
-						    
-				window.parent.$('#background-thumb').css({
-						    'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
-						    'background-position': '0px 0px',
-						    'background-repeat': 'no-repeat'});						    
-						    
-						    
+					window.parent.$('body').css({
+							    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image.png?random=<?php echo   rand(5,124344523)   ?>)',
+							    'background-position': 'center 0px',
+							    'background-repeat': 'no-repeat'});
+							    
+							    
+					window.parent.$('#background-div.thumbs-div').html('').css({
+							    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
+							    'background-position': '0px 0px',
+							    'background-repeat': 'no-repeat'});	
+							    				
+			<?php }else{?>
+				
+			<?php } ?>
 						    
 			});
 		</script>

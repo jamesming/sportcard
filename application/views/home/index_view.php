@@ -4,7 +4,7 @@
 <?php     	$this->load->view('header/blueprint_css.php');  ?>
 <style>
 	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']   ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image.png);
+  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image.png);
   background-position:center 0px;
   background-repeat:no-repeat;
   -webkit-background-size:1500px 1500px;
@@ -132,18 +132,24 @@
 			border-bottom:1px solid gray;
 			text-align:center;
 		}		
-
+		#control-panel-box #panel-tabs_container li#panel-tab-2{
+			background:white;
+		}		
 
 	#control-panel-box ul#panels_ul li.panels{
 	display:none;	
 	}
-			#control-panel-box ul#panels_ul li.panels div{
+			#control-panel-box ul#panels_ul li.panels div.div-panel{
 			padding:20px;	
-			}		
-	
-	#control-panel-box ul#panels_ul li#panel-2{
-	display:block;	
-	}
+			}
+			
+/* WHICH TAB IS SELECTED BY DEFAULT */			
+#control-panel-box #panel-tabs_container li#panel-tab-2{
+	background:white;
+}		
+#control-panel-box ul#panels_ul li#panel-2{
+display:block;	
+}
 
 	
 </style>
@@ -227,19 +233,19 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 				</div>
 				<div  id='panel-tabs_container'>
 					<ul>
-						<li>1
+						<li  id='panel-tab-1'>1
 						</li>
-						<li>2
+						<li  id='panel-tab-2'>2
 						</li>
-						<li>3
+						<li  id='panel-tab-3'>3
 						</li>
-						<li>4
+						<li  id='panel-tab-4'>4
 						</li>																		
 				</div>
 				<div  class='insides' >
 							<ul  id='panels_ul'>
 								<li id='panel-1'  class='panels ' >
-									<div >
+									<div  class='div-panel ' >
 										<table>
 											<tr>
 												<td>Name
@@ -374,7 +380,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 										</table>
 									</li>
 									<li id='panel-2'   class='panels ' >
-										<div >
+										<div class='div-panel '>
 										
 											<table>
 												<tr>
@@ -382,7 +388,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													<td >
 														<style>
 														.upload_button{
-															height:5px;
+															height:30px;
 															margin:0px 0px 0px 0px;
 															padding:0px 0px 0px 0px;
 															cursor:pointer;
@@ -395,41 +401,58 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													</td>													
 												</tr>
 												<style>
-	#control-panel-box  ul#panels_ul div#background-thumbs-div{
-    background: none repeat scroll 0 0 orange;
-    height: 167px;
-    overflow: auto;
-    width: 366px;
-    padding: 0px;
-    margin-top: 13px;
-	}										
-	#control-panel-box ul#panels_ul  div#background-thumbs-div ul#background-thumbs-ul{
-/*		
-	  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image_thumb.png);
-	  background-position:0px 0px;
-	  background-repeat:no-repeat;
-	*/
-		width:<?php echo $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images'])    ?>px;  
-		height:150px;
-		overflow:visible;
-	}	
-	#control-panel-box ul#panels_ul  div#background-thumbs-div ul#background-thumbs-ul li{
-		list-style:none;
-		float:left !important;
-		height:150px;
-		width:<?php echo $data['thumbnail_size_width']    ?>px;
-		overflow:hidden;
-	}
-
+													#control-panel-box  ul#panels_ul div.thumbs-div{
+												    background: none repeat scroll 0 0 white;
+												    height: 185px;
+												    margin-top: 13px;
+												    overflow:auto;
+  													overflow-y:hidden;
+												    padding: 0;
+												    width: 366px;
+													}										
+													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul{
+														width:<?php echo $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images'])    ?>px;  
+														height:168px;
+														overflow:hidden;
+													}	
+													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li{
+														list-style:none;
+														float:left !important;
+														height:168px;
+														width:<?php echo $data['thumbnail_size_width']    ?>px;
+														overflow:hidden;
+													}
+													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel{
+												    background: none repeat scroll 0 0 white;
+												    float: right;
+												    height: 22px;
+												    position: relative;
+												    width: 46px;
+												    padding-top: 3px;
+													}	
+													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel div{
+												    background: none repeat scroll 0 0 lightgray;
+												    float: right;
+												    height: 19px;
+												    margin-right: 2px;
+												    width: 20px;
+												    text-align: center;
+												    cursor:pointer
+													}																										
 												</style>
 												<tr>
 													<td>
-														<div  id='background-thumbs-div'>
-															<ul id='background-thumbs-ul'>
+														<div  id='background-div' class='thumbs-div'>
+															<ul class='thumbs-ul'>
 																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
-																
-																	<li>
-																		<img image_id='<?php  echo $image_id   ?>' class='background-img ' src='<?php echo base_url()     ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png' />	
+
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  >
+																		<div  class='small_icons_panel ' >
+																			<div  class='delete ' >[X]
+																			</div>
+																			<div  class='swap ' image_id='<?php  echo $image_id   ?>'  image_type_id='1' >[E]
+																			</div>																			
+																		</div>
 																	</li>
 																
 																<?php } ?>
@@ -443,20 +466,25 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 											$(document).ready(function() { 
 												$('.background-img').click(function(event) {
 													$('body').css({
-														  'background-image': 'url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).attr('image_id') + '/image.png)'
+														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).attr('image_id') + '/image.png)'
 														})		
+												});
+												$('.swap').click(function(event) {	
+														$('#image_type_id').val(  $(this).attr('image_type_id')  );
+														$('#image_id').val(  $(this).attr('image_id')  );
+														$('#Filedata').click();
 												});	
 											});
 											</script>
 										</div>							
 									</li>
 									<li   class='panels ' >
-										<div>
+										<div class='div-panel '>
 											panel 3
 										</div>
 									</li>
 									<li   class='panels ' >
-										<div>
+										<div class='div-panel '>
 										panel 4
 										</div>
 									</li>									
@@ -746,7 +774,9 @@ function bind_events(){
 
 			$('#panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
 						$('#control-panel-box ul#panels_ul li.panels').hide();
-						$('#control-panel-box ul#panels_ul li.panels:eq('+$(this).index()+')').show();
+						$('#control-panel-box ul#panels_ul li.panels:eq('+$(this).index()+')').show()
+						$(this).parent().children('li').css({background:'lightblue'});
+						$(this).css({background:'white'});
 						
 			});	
 			

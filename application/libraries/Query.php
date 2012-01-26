@@ -37,7 +37,7 @@ class Query {
 			$select_what = 'image_type_id ,images.id as image_id, users.id as user_id, users.*',    
 			$where_array, 
 			$use_order = TRUE, 
-			$order_field = 'image_type_id', 
+			$order_field = 'image_type_id, images.created', 
 			$order_direction = 'asc', 
 			$limit = -1, 
 			$use_join = TRUE, 
