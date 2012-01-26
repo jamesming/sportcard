@@ -423,7 +423,6 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 														overflow:hidden;
 													}
 													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel{
-												    background: none repeat scroll 0 0 white;
 												    float: right;
 												    height: 22px;
 												    position: relative;
@@ -431,7 +430,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												    padding-top: 3px;
 													}	
 													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel div{
-												    background: none repeat scroll 0 0 lightgray;
+														color:white;
 												    float: right;
 												    height: 19px;
 												    margin-right: 2px;
@@ -447,7 +446,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 
 																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  >
-																		<div  class='small_icons_panel ' >
+																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
 																			<div  class='swap ' image_id='<?php  echo $image_id   ?>'  image_type_id='1' >[E]
@@ -469,7 +468,8 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).attr('image_id') + '/image.png)'
 														})		
 												});
-												$('.swap').click(function(event) {	
+												$('.swap').click(function(event) {
+														$('#li_index').val($(this).parent().parent().index());
 														$('#image_type_id').val(  $(this).attr('image_type_id')  );
 														$('#image_id').val(  $(this).attr('image_id')  );
 														$('#Filedata').click();
@@ -513,6 +513,7 @@ form#form_background input[type=file]{
 	>
 	<input  id='image_type_id' name="image_type_id"  type="" value="">
 	<input  id='image_id' name="image_id"  type="" value="">
+	<input  id='li_index' name="li_index"  type="" value="">
 	<input type="file"  id='Filedata' name="Filedata"  value="">
 	
 </form>	
@@ -741,6 +742,7 @@ function store_custom_configuration(){
 function bind_events(){
 
 			$('.upload_button').click(function(event) {
+				$('#li_index').val(-1);			
 				$('#image_type_id').val(  $(this).attr('image_type_id')  );
 				$('#image_id').val(  $(this).attr('image_id')  );
 				$('#Filedata').click();

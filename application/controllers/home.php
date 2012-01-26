@@ -79,6 +79,7 @@ class Home extends CI_Controller {
 		
 		$image_type_id = $this->input->post('image_type_id');
 		$image_id = $this->input->post('image_id');
+		$li_index = $this->input->post('li_index');
 		
 		
 		if( $this->my_database_model->check_if_exist(
@@ -124,7 +125,7 @@ class Home extends CI_Controller {
 		?>
 		
 		<script type="text/javascript" language="Javascript">
-				document.location = '<?php echo base_url()    ?>index.php/home/resize?image_id=<?php echo $image_id    ?>&image_type_id=<?php echo $image_type_id ?>&random=<?php echo  rand(5,126724523)   ?>';		
+				document.location = '<?php echo base_url()    ?>index.php/home/resize?li_index=<?php  echo $li_index   ?>&image_id=<?php echo $image_id    ?>&image_type_id=<?php echo $image_type_id ?>&random=<?php echo  rand(5,126724523)   ?>';		
 		</script>
 		
 		<?php     
@@ -137,6 +138,7 @@ class Home extends CI_Controller {
 		
 			$image_id = $this->input->get('image_id');
 			$image_type_id = $this->input->get('image_type_id');
+			$li_index = $this->input->get('li_index');
 		
 			$dir_path = 'uploads/'. $this->user_id .'/'  . $image_id; 
 		
@@ -179,7 +181,7 @@ class Home extends CI_Controller {
 							    'background-repeat': 'no-repeat'});
 							    
 							    
-					window.parent.$('#background-div.thumbs-div').html('').css({
+					window.parent.$('#background-div.thumbs-div li:eq(<?php echo $li_index    ?>)').css({
 							    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
 							    'background-position': '0px 0px',
 							    'background-repeat': 'no-repeat'});	
