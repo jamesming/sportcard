@@ -34,7 +34,7 @@ class Query {
 		
 		$users_raw = $this->CI->my_database_model->select_from_table( 
 			$table = 'users', 
-			$select_what = 'image_type_id ,images.id as image_id,  users.*',    
+			$select_what = 'image_type_id ,images.id as image_id, users.id as user_id, users.*',    
 			$where_array, 
 			$use_order = TRUE, 
 			$order_field = 'image_type_id', 

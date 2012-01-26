@@ -4,7 +4,7 @@
 <?php     	$this->load->view('header/blueprint_css.php');  ?>
 <style>
 	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['id']   ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image.png);
+  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']   ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image.png);
   background-position:center 0px;
   background-repeat:no-repeat;
   -webkit-background-size:1500px 1500px;
@@ -144,13 +144,6 @@
 	#control-panel-box ul#panels_ul li#panel-2{
 	display:block;	
 	}
-
-	#control-panel-box ul#panels_ul #background-thumb{
-	  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['id']    ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image_thumb.png);
-	  background-position:0px 0px;
-	  background-repeat:no-repeat;
-		height:150px;
-	}	
 
 	
 </style>
@@ -401,10 +394,48 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 														</div>
 													</td>													
 												</tr>
+												<style>
+	#control-panel-box  ul#panels_ul div#background-thumbs-div{
+    background: none repeat scroll 0 0 orange;
+    height: 167px;
+    overflow: auto;
+    width: 366px;
+    padding: 0px;
+    margin-top: 13px;
+	}										
+	#control-panel-box ul#panels_ul  div#background-thumbs-div ul#background-thumbs-ul{
+/*		
+	  background-image: url(<?php  echo base_url()   ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image_thumb.png);
+	  background-position:0px 0px;
+	  background-repeat:no-repeat;
+	*/
+		width:3000px;  
+		height:150px;
+		overflow:visible;
+	}	
+	#control-panel-box ul#panels_ul  div#background-thumbs-div ul#background-thumbs-ul li{
+		list-style:none;
+		float:left !important;
+		height:150px;
+		width:372px;
+		overflow:hidden;
+	}
+
+												</style>
 												<tr>
 													<td>
-														<div  id='background-thumb'>&nbsp;
+														<div  id='background-thumbs-div'>
+															<ul id='background-thumbs-ul'>
+																<?php foreach( $data['users']['backgrounds']['images']  as $image){?>
+																
+																	<li>
+																		<img src='<?php echo base_url()     ?>uploads/backgrounds/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $image    ?>/image_thumb.png' />	
+																	</li>
+																
+																<?php } ?>
+															</ul>															
 														</div>
+
 													</td>
 												</tr>												
 											</table>
