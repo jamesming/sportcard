@@ -495,9 +495,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																			<div  class='delete ' >[X]
 																			</div>
 																			<div  class='update-image ' ' >[E]
-																			</div>
-																			<div  class='swap ' >[C]
-																			</div>																																							
+																			</div>																																				
 																		</div>
 																	</li>
 																
@@ -534,9 +532,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																			<div  class='delete ' >[X]
 																			</div>
 																			<div  class='update-image ' ' >[E]
-																			</div>
-																			<div  class='swap ' >[C]
-																			</div>																																							
+																			</div>																																					
 																		</div>
 																	</li>
 																
