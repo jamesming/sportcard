@@ -198,6 +198,28 @@ class Home extends CI_Controller {
 			);
 		
 	}		
+	
+	
+	
+	
+	
+	function get_video_url(){
+		
+
+		
+		$images = $this->my_database_model->select_from_table( 
+					$table = 'images', 
+					$select_what = 'video_url',    
+					$where_array = array('id'=>$this->input->post('image_id')), 
+					$use_order = FALSE, 
+					$order_field = '', 
+					$order_direction = 'asc', 
+					$limit = -1
+					);		
+					
+		echo $images[0]->video_url;					
+		
+	}
 
     
 	function update_video(){

@@ -522,28 +522,21 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 														</style>
 														
 														
-<form 
-	id='form_video' 
-	target='results' 
-	enctype='multipart/form-data' 	
-	method='POST'  
-	action='<?php echo base_url();    ?>index.php/home/update_video'
-	>
-	<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
-	<input name="image_type_id"  type="hidden" value="3">
-	<input name="image_id"  type="hidden" value="0">
-	<input name="li_index"  type="hidden" value="-1">
-	
-</form>	
+														<form 
+															id='form_video' 
+															target='results' 
+															enctype='multipart/form-data' 	
+															method='POST'  
+															action='<?php echo base_url();    ?>index.php/home/update_video'
+															>
+															<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
+															<input name="image_type_id"  type="hidden" value="3">
+															<input name="image_id"  type="hidden" value="0">
+															<input name="li_index"  type="hidden" value="-1">
+															
+														</form>	
 														
-<script type="text/javascript" language="Javascript">
-	$(document).ready(function() { 
 
-		$('#video_submit').click(function(event) {
-			$('#form_video').submit();
-		});	
-	});
-</script>
 													</td>													
 												</tr>
 
@@ -559,7 +552,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																			<div  class='small_icons_panel transparent' >
 																				<div  class='delete ' >[X]
 																				</div>
-																				<div  class='update-image ' ' >[E]
+																				<div  class='update-video_url '  >[E]
 																				</div>																																					
 																			</div>
 																		</li>
@@ -575,7 +568,32 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													</td>
 												</tr>												
 											</table>
+<script type="text/javascript" language="Javascript">
+	$(document).ready(function() { 
 
+		$('#video_submit').click(function(event) {
+			$('#form_video').submit();
+		});	
+		
+		$('#video_url').click(function(event) {
+				$(this).val('');		
+		});	
+		
+		$('.update-video_url').click(function(event) {
+			thisElem = $(this);
+			$.post("<?php echo base_url(). 'index.php/home/get_video_url';    ?>",{
+			image_id:$(this).parent().parent().attr('image_id')
+			},function(data) {
+				$('#video_url').val(data);
+				$('#form_video input[name=li_index]').val( thisElem.parent().parent().index() );
+				$('#form_video input[name=image_id]').val(   thisElem.parent().parent().attr('image_id')  );
+				$('#form_video input[name=image_type_id]').val( thisElem.parent().parent().attr('image_type_id') );
+				
+			});		
+		});	
+		
+	});
+</script>
 										</div>	
 									</li>									
 							</ul>
