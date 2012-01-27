@@ -333,7 +333,14 @@ class Home extends CI_Controller {
 						
 					<?php } ?>
 							    
-							    
+					<?php if( $image_types[$image_type_id] == 'videos-div' ){?>
+							
+							window.parent.$('#form_video input[name=li_index]').val(-1);
+							window.parent.$('#form_video input[name=image_id]').val(0);
+							window.parent.$('#form_video input[name=video_url]').val('');
+						
+						
+					<?php } ?>							    
 							    
 							    
 					<?php if( $li_index != -1 ){?>  /* UPDATE THUMB*/
