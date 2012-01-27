@@ -162,11 +162,7 @@ class Home extends CI_Controller {
 	
 	public function resize(){
 		
-			$image_types = array(
-				'1' => 'backgrounds-div',
-				'2' => 'pictures-div',
-				'3' => 'videos-div',
-			);
+
 		
 			$image_id = $this->input->get('image_id');
 			$image_type_id = $this->input->get('image_type_id');
@@ -195,9 +191,106 @@ class Home extends CI_Controller {
 				$height = $new_height
 				);
 			
+			$this->update_thumbnail_panel(
+				$image_id,
+				$image_type_id,
+				$li_index
+			);
+		
+	}		
+
+    
+	function update_video(){
+
+		
+		
+		$table = 'images';
+		$video_url = $this->input->post('video_url');
+		$image_id = $this->input->post('image_id');
+		$image_type_id = $this->input->post('image_type_id');
+		$li_index = $this->input->post('li_index');
+
+	  if( $image_id != 0){
+	  	
+				$set_what_array = array(
+										'video_url' => $video_url,
+										'youtube_video_id' => $this->tools->extract_video_id_from_youtube_url($video_url)
+										);		
+										
+				$this->my_database_model->update_table( 
+				$table, 
+				$primary_key = $image_id, 
+				$set_what_array 
+				);
+
+	  }else{
+	  	
+	  			$youtube_video_id = $this->tools->extract_video_id_from_youtube_url($video_url);
+					
+					if( $youtube_video_id =='error'){
+								
+					}else{
+								$insert_what = array(
+											'video_url' => $video_url,
+											'user_id' => $this->user_id,
+											'image_type_id' => 3,
+											'youtube_video_id' => $youtube_video_id
+											);	
 			
+								$image_id =  $this->my_database_model->insert_table(
+																$table, 
+																$insert_what
+																); 						
+					};
+									
+	      
+	  };
+
+
+
+	  
+		$path_array = array(
+			'user_id'=> $this->user_id, 
+			'image_id'=> $image_id
+		);
+		
+		$upload_path = $this->tools->set_directory_for_upload( $path_array );
+
+		$filename = $this->tools->get_thumbnail_from_youtube_video_id(
+			$this->tools->extract_video_id_from_youtube_url($video_url)
+		);
 		
 		
+		$this->tools->create_thumbnail_of(
+			$filename, 
+			$new_width = $this->thumbnail_size_width, 
+			$location = $upload_path . '/image_thumb.png'
+		);	  
+		
+
+		$this->update_thumbnail_panel(
+			$image_id,
+			$image_type_id,
+			$li_index
+		);
+
+		
+	}
+	
+	
+	
+	function update_thumbnail_panel(
+		$image_id,
+		$image_type_id,
+		$li_index
+	){
+		
+			
+			$image_types = array(
+				'1' => 'backgrounds-div',
+				'2' => 'pictures-div',
+				'3' => 'videos-div',
+			);
 		
 		?>
 
@@ -241,19 +334,16 @@ class Home extends CI_Controller {
 									    'background-repeat': 'no-repeat'})
 							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul.thumbs-ul')
 								.css({width:(<?php echo $this->thumbnail_size_width ?> * window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li').length )+'px'})		    
-									    							
+									    						
 					<?php } ?>
 
 						    
 			});
 		</script>
 		
-		<?php 		
+		<?php
 		
-	}		
-
-    
-
+	}
 	
 	
 	public function a3_insert(){

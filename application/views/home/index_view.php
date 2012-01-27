@@ -132,9 +132,7 @@
 			border-bottom:1px solid gray;
 			text-align:center;
 		}		
-		#control-panel-box #panel-tabs_container li#panel-tab-2{
-			background:white;
-		}
+
 		
 		
 		
@@ -199,10 +197,10 @@
 			
 			
 /* WHICH TAB IS SELECTED BY DEFAULT */			
-#control-panel-box #panel-tabs_container li#panel-tab-2{
+#control-panel-box #panel-tabs_container li#panel-tab-4{
 	background:white;
 }		
-#control-panel-box ul#panels_ul li#panel-2{
+#control-panel-box ul#panels_ul li#panel-4{
 display:block;	
 }
 
@@ -516,8 +514,36 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 
 													<td >
-														<div image_id='0' image_type_id='3' class='upload_button'>upload
-														</div>
+														<style>
+															li#panel-4 input[type=text]{
+																width: 299px;
+																margin-right: 5px;
+															}														
+														</style>
+														
+														
+<form 
+	id='form_video' 
+	target='results' 
+	enctype='multipart/form-data' 	
+	method='POST'  
+	action='<?php echo base_url();    ?>index.php/home/update_video'
+	>
+	<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
+	<input name="image_type_id"  type="hidden" value="3">
+	<input name="image_id"  type="hidden" value="0">
+	<input name="li_index"  type="hidden" value="-1">
+	
+</form>	
+														
+<script type="text/javascript" language="Javascript">
+	$(document).ready(function() { 
+
+		$('#video_submit').click(function(event) {
+			$('#form_video').submit();
+		});	
+	});
+</script>
 													</td>													
 												</tr>
 
@@ -525,18 +551,24 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													<td>
 														<div  id='videos-div' class='thumbs-div'>
 															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['videos']['images'])    ?>px'  >
-																<?php foreach( $data['users']['videos']['images']  as $image_id){?>
-
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='3'  >
-																		<div  class='small_icons_panel transparent' >
-																			<div  class='delete ' >[X]
+																<?php
+																	if( isset($data['users']['videos'])){
+																	 foreach( $data['users']['videos']['images']  as $image_id){?>
+	
+																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='3'  >
+																			<div  class='small_icons_panel transparent' >
+																				<div  class='delete ' >[X]
+																				</div>
+																				<div  class='update-image ' ' >[E]
+																				</div>																																					
 																			</div>
-																			<div  class='update-image ' ' >[E]
-																			</div>																																					
-																		</div>
-																	</li>
+																		</li>
+																<?php 
+																	};
+																} 
 																
-																<?php } ?>
+																
+																?>
 															</ul>															
 														</div>
 
@@ -552,18 +584,18 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 </div>
 
 <style>
-form#form_background input{
+form#form_image input{
 	display:block;
 	width:20px;
 }
-form#form_background input[type=file]{
+form#form_image input[type=file]{
 	visibility:hidden;
 	display:block;
 }
 
 </style>
 <form 
-	id='form_background' 
+	id='form_image' 
 	target='results' 
 	method='POST' 
 	enctype='multipart/form-data' 
@@ -578,7 +610,7 @@ form#form_background input[type=file]{
 <iframe  
 	id="results"   
 	name="results"
-	style='border:0px solid gray;width:0px;height:0px'  
+	style='background:white;border:0px solid gray;width:0px;height:0px'  
 	border="1" 
 	frameborder="1" 
 	scrolling="auto" 
@@ -808,7 +840,7 @@ function bind_events(){
 			});
 			
 			$('#Filedata').change(function(event) {	
-				$('#form_background').submit()
+				$('#form_image').submit()
 			});	
 	
 			$( ".draggable" ).draggable({ 

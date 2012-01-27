@@ -513,8 +513,9 @@ function extract_video_id_from_youtube_url($youtubeurl) {
 				
 
 					//** TAKEN FROM http://stackoverflow.com/questions/3392993/php-regex-to-get-youtube-video-id
-					parse_str( parse_url( $youtubeurl, PHP_URL_QUERY ) );
-					return $v;
+					parse_str( parse_url( $youtubeurl, PHP_URL_QUERY ), $my_array_of_vars );
+					
+					return ( count($my_array_of_vars )!=0 ?$my_array_of_vars['v'] :'error' );
 
 			}
 
@@ -639,7 +640,7 @@ function create_iframe_html_from_youtube_video_id( $youtube_video_id, $width, $h
       imagecopyresampled($thumb, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);  
 
 	
-	    header("Content-type: {$mimetype}");  
+	    // header("Content-type: {$mimetype}");  
 	    switch($mimetype) {  
 	        case 'image/jpeg': imagejpeg($thumb, $location); break;  
 	        case 'image/png': imagepng($thumb, $location); break;  
