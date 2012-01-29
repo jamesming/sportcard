@@ -88,8 +88,9 @@
 	height:20px;	
 	}	
 	.draggable div.handle {
-	background: url("<?php  echo base_url()   ?>images/icons.png") no-repeat scroll -14px -480px yellow;
-	cursor: move; 
+		background: url("<?php  echo base_url()   ?>images/icons.png") no-repeat scroll -14px -480px yellow;
+		cursor: move;
+		z-index:1; 
 	}
 	.draggable div.close-window {
 	background: url("<?php  echo base_url()   ?>images/icons.png") no-repeat scroll -14px -172px yellow;
@@ -108,14 +109,14 @@
 	padding-left:10px;
 	white-space:nowrap;
 	margin-top:13px;
-
+	z-index:-1;
 	}
 	.window-controls-container{
 	height:21px;
 	background:gray;
-	
-	
+	z-index:0;
 	}
+
 	#control-panel-box{
 	background:red;
 	width:875px;
@@ -678,13 +679,6 @@ function get_stored_configurations(){
 			})
 
 
-			$('#control-panel-box').css({
-				'position':'absolute',
-				'left':($(window).width() / 2),
-				'top':'50px',
-				'margin-left':'-430px',
-			})
-
 			var full_name = '<?php echo ( isset( $data['users'][0]['full_name'] ) ? $data['users'][0]['full_name']:'' )    ?>';
 			
 			$('#full_name').val( full_name );
@@ -860,6 +854,14 @@ function store_custom_configuration(){
 
 function bind_events(){
 
+
+
+			$('#control-panel-box').css({
+				'position':'absolute',
+				'left':($(window).width() / 2),
+				'top':'150px',
+				'margin-left':'-430px',
+			})
 			
 			$('#Filedata').change(function(event) {	
 				$('#form_image').submit()
