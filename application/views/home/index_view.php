@@ -108,7 +108,7 @@
 	color:gray;	
 	padding-left:10px;
 	white-space:nowrap;
-	margin-top:13px;
+	margin-top:20px;
 	z-index:-1;
 	}
 	.window-controls-container{
@@ -690,9 +690,7 @@ function get_stored_configurations(){
 			
 			$('#full_name_readonly').html( full_name );
 			
-//			$('body').css({background:'<?php echo ( isset( $data['users'][0]['background_color']) ? $data['users'][0]['background_color']:'white' )    ?>'});
-//			$('#background_color').val('<?php echo ( isset( $data['users'][0]['background_color']) ? $data['users'][0]['background_color']:'white' )    ?>')
-			
+		
 			$('#full_name_readonly').css({color:'<?php echo ( isset( $data['users'][0]['font_color']) ? $data['users'][0]['font_color']:'black' )    ?>'});
 			$('#font_color').val('<?php echo ( isset( $data['users'][0]['font_color']) ? $data['users'][0]['font_color']:'black' )    ?>');			
 			
