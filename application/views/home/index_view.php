@@ -569,6 +569,8 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												</tr>												
 											</table>
 <script type="text/javascript" language="Javascript">
+
+	
 	$(document).ready(function() { 
 
 		$('#video_submit').click(function(event) {
@@ -957,16 +959,16 @@ $.fn.bind_mouse_events = function(){
 function edit_mode_on(){
 
 						$('#control-panel-box').show();
-						$('.draggable, #main-box, #header');
-						$('#head-line-box .window-controls-container, .coordinates').css({'visibility':'visible'});
+						$('#head-line-box .window-controls-container, .coordinates')
+						.css({'visibility':'visible'});
 						
 }
 
 function edit_mode_off(){
 
 							$('#control-panel-box').hide();
-							$('.draggable, #main-box, #header').css({border:'0px'});
-							$('#head-line-box .window-controls-container, .coordinates').css({'visibility':'hidden'});
+							$('#head-line-box .window-controls-container, .coordinates')
+							.css({'visibility':'hidden'});
 	
 						
 }
@@ -999,15 +1001,19 @@ function store_position( dom_element ){
 							},function(data) {
 							
 								$('#y').val(data);
+
+								if( $('#edit_mode').attr('on') == 1){
+										$('#control-panel-box').show();
 								
-								$('#control-panel-box').show();
-								
+								};
+
+<!--								
 								$('#head-line-box .handle').mouseout(function(event) {
 
 								//		$('#control-panel-box').show();
 														
 								})
-		
+		-->
 						});		
 	
 	
