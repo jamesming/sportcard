@@ -374,7 +374,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													
 
 													
-																for( $size = 5;  $size <= 125;  $size++ ){ ?>	
+																for( $size = 5;  $size <= 225;  $size++ ){ ?>	
 								
 																		<option value='<?php  echo $size   ?>px'><?php  echo $size   ?>px</option>
 																
