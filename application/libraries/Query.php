@@ -101,11 +101,10 @@ class Query {
 		
 		if( $count ==  count($users_raw) ){
 
-						$array['images'] = $images;				
+						$array['images'] = ( isset($images ) ? $images :array());				
 						$users[$image_types[$image_types_index]] = $array;
 	
 		};
-		
 		
 
 		return $users;

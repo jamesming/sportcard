@@ -6,7 +6,8 @@ class Home extends CI_Controller {
    public function __construct(){
         parent::__construct();
 				$this->user_id = 1;
-				$this->thumbnail_size_width  = '367';
+				$this->thumbnail_size_width  = '181';
+				$this->thumbnail_size_height = '106';
    }
 
 	/**
@@ -46,7 +47,9 @@ class Home extends CI_Controller {
 		$data = array(
 			'users' => $users,
 			'fonts' => $fonts,
-			'thumbnail_size_width' => $this->thumbnail_size_width
+			'thumbnail_size_width' => $this->thumbnail_size_width,
+			'thumbnail_size_height' => $this->thumbnail_size_height,
+			'user_id' => $this->user_id
 		);
 
 		$this->load->view('home/index_view',

@@ -4,7 +4,7 @@
 <?php     	$this->load->view('header/blueprint_css.php');  ?>
 <style>
 	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/<?php echo $data['users']['backgrounds']['images'][0]    ?>/image.png);
+  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/<?php echo ( isset( $data['users']['backgrounds']['images'][0]) ? $data['users']['backgrounds']['images'][0]:'0' )    ?>/image.png);
   background-position:center 0px;
   background-repeat:no-repeat;
   -webkit-background-size:1500px 1500px;
@@ -118,8 +118,8 @@
 	}
 	#control-panel-box{
 	background:red;
-	width:406px;
-	height: 300px;			
+	width:875px;
+	height: 600px;			
 	}		
 		#control-panel-box #panel-tabs_container{
 		height:19px;
@@ -156,22 +156,23 @@
 			
 			
 													#control-panel-box  ul#panels_ul div.thumbs-div{
-												    background: none repeat scroll 0 0 white;
-												    height: 185px;
-												    margin-top: 13px;
-												    overflow:auto;
-  													overflow-y:hidden;
-												    padding: 0;
-												    width: 366px;
+															background: none repeat scroll 0 0 white;
+															height: <?php echo $data['thumbnail_size_height']    ?>px;
+															margin-top: 13px;
+															overflow-x: auto;
+															overflow-y: hidden;
+															padding: 0;
+															width: 774px;
+															margin-left: 30px;
 													}										
 													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul{
-														height:168px;
+														height:<?php echo $data['thumbnail_size_height']    ?>px;
 														overflow:hidden;
 													}	
 													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li{
 														list-style:none;
 														float:left !important;
-														height:168px;
+														height:<?php echo $data['thumbnail_size_height']    ?>px;
 														width:<?php echo $data['thumbnail_size_width']    ?>px;
 														overflow:hidden;
 													}
@@ -197,10 +198,10 @@
 			
 			
 /* WHICH TAB IS SELECTED BY DEFAULT */			
-#control-panel-box #panel-tabs_container li#panel-tab-4{
+#control-panel-box #panel-tabs_container li#panel-tab-2{
 	background:white;
 }		
-#control-panel-box ul#panels_ul li#panel-4{
+#control-panel-box ul#panels_ul li#panel-2{
 display:block;	
 }
 
@@ -443,10 +444,13 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 													<td>
 														<div  id='backgrounds-div' class='thumbs-div'>
-															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images'])    ?>px'  >
+															<ul class='thumbs-ul'   style='width:<?php echo ( count($data['users']['backgrounds']['images']) > 0 ? $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images']) : $data['thumbnail_size_width'] )    ?>px'  >
+																
+<?php if( count($data['users']['backgrounds']['images']) > 0 ){?>
+																
 																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['backgrounds']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
@@ -458,6 +462,24 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																	</li>
 																
 																<?php } ?>
+<?php }else{?>
+
+																	<li   style='background:orange'  class='background-img ' image_id='0'  image_type_id='1'  >
+																		<div  class='small_icons_panel transparent' >
+																			<div  class='delete ' >[X]
+																			</div>
+																			<div  class='update-image ' ' >[E]
+																			</div>
+																			<div  class='swap ' >[C]
+																			</div>																																							
+																		</div>
+																	</li>
+																
+<?php } ?>
+
+																
+																
+																
 															</ul>															
 														</div>
 
@@ -485,7 +507,11 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 													<td>
 														<div  id='pictures-div' class='thumbs-div'>
-															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['pictures']['images'])    ?>px'  >
+															<ul class='thumbs-ul'   style='width:<?php echo (  isset(  $data['users']['pictures']['images']) ? $data['thumbnail_size_width'] * count(  $data['users']['pictures']['images']): $data['thumbnail_size_width'] )    ?>px'  >
+
+
+<?php if(  isset($data['users']['pictures']['images'])  ){?>
+
 																<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
 
 																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
@@ -498,6 +524,25 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																	</li>
 																
 																<?php } ?>
+<?php }else{?>
+
+
+																	<li   style='background:purple'  class='background-img ' image_id='0'  image_type_id='2'  >
+																		<div  class='small_icons_panel transparent' >
+																			<div  class='delete ' >[X]
+																			</div>
+																			<div  class='update-image ' ' >[E]
+																			</div>																																				
+																		</div>
+																	</li>
+	
+<?php } ?>
+
+
+																
+																
+																
+																
 															</ul>															
 														</div>
 
@@ -543,10 +588,11 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 													<td>
 														<div  id='videos-div' class='thumbs-div'>
-															<ul class='thumbs-ul'   style='width:<?php echo $data['thumbnail_size_width'] * count($data['users']['videos']['images'])    ?>px'  >
-																<?php
-																	if( isset($data['users']['videos'])){
-																	 foreach( $data['users']['videos']['images']  as $image_id){?>
+															<ul class='thumbs-ul'   style='width:<?php echo ( isset( $data['users']['videos']['images']) ? $data['thumbnail_size_width'] * count($data['users']['videos']['images']) :$data['thumbnail_size_width'] )    ?>px'  >
+																
+<?php if( isset($data['users']['videos']['images']) ){?>
+
+																<?php foreach( $data['users']['videos']['images']  as $image_id){?>
 	
 																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='3'  >
 																			<div  class='small_icons_panel transparent' >
@@ -556,12 +602,28 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																				</div>																																					
 																			</div>
 																		</li>
-																<?php 
-																	};
-																} 
+																		
+																<?php };?>
+																
+<?php }else{?>
+
+
+																		<li   style='background:green'  class='background-img ' image_id='0'  image_type_id='3'  >
+																			<div  class='small_icons_panel transparent' >
+																				<div  class='delete ' >[X]
+																				</div>
+																				<div  class='update-video_url '  >[E]
+																				</div>																																					
+																			</div>
+																		</li>
+
+<?php } ?>
+																
+
 																
 																
-																?>
+																
+																
 															</ul>															
 														</div>
 
@@ -673,8 +735,8 @@ function get_stored_configurations(){
 			$('#control-panel-box').css({
 				'position':'absolute',
 				'left':($(window).width() / 2),
-				'top':'100px',
-				'margin-left':'30px',
+				'top':'50px',
+				'margin-left':'-430px',
 			})
 
 			var full_name = '<?php echo ( isset( $data['users']['backgrounds']['full_name'] ) ? $data['users']['backgrounds']['full_name']:'' )    ?>';
@@ -698,7 +760,7 @@ function get_stored_configurations(){
 			$('#font_size').val('<?php echo ( isset( $data['users']['backgrounds']['font_size']) ? $data['users']['backgrounds']['font_size']:'11px' )    ?>');
 
 
-			<?php if( $data['users']['backgrounds']['edit_mode'] == 0){?>
+			<?php if( isset($data['users']['backgrounds']['edit_mode']) && $data['users']['backgrounds']['edit_mode'] == 0){?>
 									$('#edit_mode').text('edit').attr('on', 0);	
 									edit_mode_off();									
 			<?php }else{?>
@@ -1030,7 +1092,7 @@ function thumbnail_controls(){
 												
 												$('.swap').click(function(event) {
 													$('body').css({
-														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users']['backgrounds']['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.png)'
+														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.png)'
 														})		
 												})	
 																							
