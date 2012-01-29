@@ -1104,33 +1104,35 @@ function thumbnail_controls(){
 
 
 												
-												$('.swap').click(function(event) {
+												$('.swap').live("click", function(){
 													$('body').css({
 														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.png)'
 														})		
 												})	
 																							
-												$('.update-image').click(function(event) {
+												$('.update-image').live("click", function(){
+												
+														uploadButton = thisUL.closest('table').find('.upload_button');
+														uploadButton.css({background:'green'}).attr('li_index', -1);
 														$('#li_index').val($(this).parent().parent().index());
 														$('#image_type_id').val(  $(this).parent().parent().attr('image_type_id')  );
 														$('#image_id').val(  $(this).parent().parent().attr('image_id')  );
 														$('#Filedata').click();
 												})
 												
-												$('.delete').click(function(event) {
+												$('.delete').live("click", function(){
 													
 														thisUL = $(this).parent('div.small_icons_panel').parent('li').parent('ul');
-														
-														if( thisUL.has("li").length){
+														if( thisUL.children("li").length == 1){
 															uploadButton = thisUL.closest('table').find('.upload_button');
-															uploadButton.attr('li_index', 0);
-															thisUL.append("<li   style='background:purple'  class='background-img ' image_id='0'  image_type_id='" + uploadButton.attr('image_type_id') + "'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='update-image ' ' >[E]</div></div></li>");
-														
+															uploadButton.css({background:'green'}).attr('li_index', 0);															
+															thisUL.append("<li style='background:brown'  class='background-img ' image_id='0'  image_type_id='" + uploadButton.attr('image_type_id') + "'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='update-image ' ' >[E]</div></div></li>");
 														};
-													
+																													
 														$(this).parent('div.small_icons_panel').parent('li').parent('ul')
 															.css({width:(<?php echo $data['thumbnail_size_width'] ?> * (thisUL.children('li').length -1 ))+'px'})		    																											
 														$(this).parent('div.small_icons_panel').parent('li').remove();
+														
 														
 														$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
 														image_id:$(this).parent().parent().attr('image_id')
