@@ -233,7 +233,6 @@ class Home extends CI_Controller {
 		$table = 'images';
 		$video_url = $this->input->post('video_url');
 		$image_id = $this->input->post('image_id');
-		$image_type_id = $this->input->post('image_type_id');
 		$li_index = $this->input->post('li_index');
 
 	  if( $image_id != 0){
@@ -259,7 +258,7 @@ class Home extends CI_Controller {
 								$insert_what = array(
 											'video_url' => $video_url,
 											'user_id' => $this->user_id,
-											'image_type_id' => 3,
+											'image_type_id' => 2,
 											'youtube_video_id' => $youtube_video_id
 											);	
 			
@@ -296,7 +295,7 @@ class Home extends CI_Controller {
 
 		$this->update_thumbnail_panel(
 			$image_id,
-			$image_type_id,
+			$image_type_id = 2,
 			$li_index
 		);
 

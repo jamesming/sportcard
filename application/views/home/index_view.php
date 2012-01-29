@@ -578,7 +578,6 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																		action='<?php echo base_url();    ?>index.php/home/update_video'
 																		>
 																		<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
-																		<input name="image_type_id"  type="hidden" value="2">
 																		<input name="image_id"  type="hidden" value="0">
 																		<input name="li_index"  type="hidden" value="-1">
 																		
@@ -616,7 +615,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 <?php }else{?>
 
 
-																		<li   style='background:green'  class='background-img ' image_id='0'  image_type_id='3'  >
+																		<li   style='background:green'  class='background-img ' image_id='0'  image_type_id='2'  >
 																			<div  class='small_icons_panel transparent' >
 																				<div  class='delete ' >[X]
 																				</div>
