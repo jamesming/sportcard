@@ -444,9 +444,9 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 													<td>
 														<div  id='backgrounds-div' class='thumbs-div'>
-															<ul class='thumbs-ul'   style='width:<?php echo ( count($data['users']['backgrounds']['images']) > 0 ? $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images']) : $data['thumbnail_size_width'] )    ?>px'  >
+															<ul class='thumbs-ul'   style='width:<?php echo ( isset($data['users']['backgrounds']['images']) ? $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images']) : $data['thumbnail_size_width'] )    ?>px'  >
 																
-<?php if( count($data['users']['backgrounds']['images']) > 0 ){?>
+<?php if( isset($data['users']['backgrounds']['images']) ){?>
 																
 																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 
@@ -559,27 +559,35 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 
 													<td >
-														<style>
-															li#panel-4 input[type=text]{
-																width: 299px;
-																margin-right: 5px;
-															}														
-														</style>
 														
-														
-														<form 
-															id='form_video' 
-															target='results' 
-															enctype='multipart/form-data' 	
-															method='POST'  
-															action='<?php echo base_url();    ?>index.php/home/update_video'
-															>
-															<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
-															<input name="image_type_id"  type="hidden" value="3">
-															<input name="image_id"  type="hidden" value="0">
-															<input name="li_index"  type="hidden" value="-1">
+														<div   style='height:30px'  >
 															
-														</form>	
+																	<style>
+																		li#panel-4 input[type=text]{
+																			width: 299px;
+																			margin-right: 5px;
+																		}														
+																	</style>
+																	
+																	
+																	<form 
+																		id='form_video' 
+																		target='results' 
+																		enctype='multipart/form-data' 	
+																		method='POST'  
+																		action='<?php echo base_url();    ?>index.php/home/update_video'
+																		>
+																		<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
+																		<input name="image_type_id"  type="hidden" value="3">
+																		<input name="image_id"  type="hidden" value="0">
+																		<input name="li_index"  type="hidden" value="-1">
+																		
+																	</form>																
+															
+														</div>
+														
+														
+
 														
 
 													</td>													
@@ -727,8 +735,8 @@ function get_stored_configurations(){
 			$('#head-line-box').css({
 				'position':'absolute',
 				'left':($(window).width() / 2),
-				'top':'<?php echo ( isset( $data['users']['backgrounds']['y']) ? $data['users']['backgrounds']['y']:'0' ) ?>px',
-				'margin-left':(0-(<?php echo ( isset( $data['users']['backgrounds']['margin_left_of_center']) ? $data['users']['backgrounds']['margin_left_of_center']:'0' ) ?>))+'px',
+				'top':'<?php echo ( isset( $data['users'][0]['y']) ? $data['users'][0]['y']:'0' ) ?>px',
+				'margin-left':(0-(<?php echo ( isset( $data['users'][0]['margin_left_of_center']) ? $data['users'][0]['margin_left_of_center']:'0' ) ?>))+'px',
 			})
 
 
@@ -739,28 +747,28 @@ function get_stored_configurations(){
 				'margin-left':'-430px',
 			})
 
-			var full_name = '<?php echo ( isset( $data['users']['backgrounds']['full_name'] ) ? $data['users']['backgrounds']['full_name']:'' )    ?>';
+			var full_name = '<?php echo ( isset( $data['users'][0]['full_name'] ) ? $data['users'][0]['full_name']:'' )    ?>';
 			
 			$('#full_name').val( full_name );
 			
 			
-			Cufon.replace('#full_name_readonly',{ fontFamily: '<?php echo ( isset( $data['users']['backgrounds']['font_name'] ) ? $data['users']['backgrounds']['font_name']:'' )    ?>', hover: true });
+			Cufon.replace('#full_name_readonly',{ fontFamily: '<?php echo ( isset( $data['users'][0]['font_name'] ) ? $data['users'][0]['font_name']:'' )    ?>', hover: true });
 				
-			$('#full_name_readonly').attr('font_name', '<?php echo ( isset( $data['users']['backgrounds']['font_name'] ) ? $data['users']['backgrounds']['font_name']:'' )    ?>');
+			$('#full_name_readonly').attr('font_name', '<?php echo ( isset( $data['users'][0]['font_name'] ) ? $data['users'][0]['font_name']:'' )    ?>');
 			
 			$('#full_name_readonly').html( full_name );
 			
-//			$('body').css({background:'<?php echo ( isset( $data['users']['backgrounds']['background_color']) ? $data['users']['backgrounds']['background_color']:'white' )    ?>'});
-//			$('#background_color').val('<?php echo ( isset( $data['users']['backgrounds']['background_color']) ? $data['users']['backgrounds']['background_color']:'white' )    ?>')
+//			$('body').css({background:'<?php echo ( isset( $data['users'][0]['background_color']) ? $data['users'][0]['background_color']:'white' )    ?>'});
+//			$('#background_color').val('<?php echo ( isset( $data['users'][0]['background_color']) ? $data['users'][0]['background_color']:'white' )    ?>')
 			
-			$('#full_name_readonly').css({color:'<?php echo ( isset( $data['users']['backgrounds']['font_color']) ? $data['users']['backgrounds']['font_color']:'black' )    ?>'});
-			$('#font_color').val('<?php echo ( isset( $data['users']['backgrounds']['font_color']) ? $data['users']['backgrounds']['font_color']:'black' )    ?>');			
+			$('#full_name_readonly').css({color:'<?php echo ( isset( $data['users'][0]['font_color']) ? $data['users'][0]['font_color']:'black' )    ?>'});
+			$('#font_color').val('<?php echo ( isset( $data['users'][0]['font_color']) ? $data['users'][0]['font_color']:'black' )    ?>');			
 			
-			$('#full_name_readonly').css({'font-size':'<?php echo ( isset( $data['users']['backgrounds']['font_size']) ? $data['users']['backgrounds']['font_size']:'11px' )    ?>'});			
-			$('#font_size').val('<?php echo ( isset( $data['users']['backgrounds']['font_size']) ? $data['users']['backgrounds']['font_size']:'11px' )    ?>');
+			$('#full_name_readonly').css({'font-size':'<?php echo ( isset( $data['users'][0]['font_size']) ? $data['users'][0]['font_size']:'11px' )    ?>'});			
+			$('#font_size').val('<?php echo ( isset( $data['users'][0]['font_size']) ? $data['users'][0]['font_size']:'11px' )    ?>');
 
 
-			<?php if( isset($data['users']['backgrounds']['edit_mode']) && $data['users']['backgrounds']['edit_mode'] == 0){?>
+			<?php if( isset($data['users'][0]['edit_mode']) && $data['users'][0]['edit_mode'] == 0){?>
 									$('#edit_mode').text('edit').attr('on', 0);	
 									edit_mode_off();									
 			<?php }else{?>
@@ -770,11 +778,11 @@ function get_stored_configurations(){
 			
 			
 			
-			$('#transparency').val('<?php echo ( isset( $data['users']['backgrounds']['transparency']) ? $data['users']['backgrounds']['transparency']:'6' )    ?>');			
+			$('#transparency').val('<?php echo ( isset( $data['users'][0]['transparency']) ? $data['users'][0]['transparency']:'6' )    ?>');			
 		
 			<?php if( $this->tools->browserIsExplorer() ){?>
 			
-						var hex = Math.floor(0.1 * <?php  echo ( isset( $data['users']['backgrounds']['transparency']) ? $data['users']['backgrounds']['transparency']:'6' )    ?> * 255).toString(16);
+						var hex = Math.floor(0.1 * <?php  echo ( isset( $data['users'][0]['transparency']) ? $data['users'][0]['transparency']:'6' )    ?> * 255).toString(16);
 			
 						$( '#head-line-box' ).css({
 							'zoom':'1',
@@ -787,7 +795,7 @@ function get_stored_configurations(){
 			<?php }else{ ?>
 
 				$( '#head-line-box' ).css({
-								'background-color':'rgba(0, 0, 0, 0.'+ <?php  echo ( isset( $data['users']['backgrounds']['transparency']) ? $data['users']['backgrounds']['transparency']:'6' )    ?> +')'
+								'background-color':'rgba(0, 0, 0, 0.'+ <?php  echo ( isset( $data['users'][0]['transparency']) ? $data['users'][0]['transparency']:'6' )    ?> +')'
 				})	
 			
 			<?php }?>		

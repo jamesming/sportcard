@@ -45,7 +45,25 @@ class Query {
 			);
 			
 		$users_raw = $this->CI->tools->object_to_array($users_raw);
-		
+
+
+		if( count($users_raw) == 0 ){
+			
+				$users_raw = $this->CI->my_database_model->select_from_table( 
+					$table = 'users', 
+					$select_what = 'users.id as user_id, users.*',    
+					$where_array, 
+					$use_order = FALSE, 
+					$order_field = '', 
+					$order_direction = 'asc', 
+					$limit = -1
+					);
+					
+					$users = $this->CI->tools->object_to_array($users_raw);
+
+				return $users;		
+			
+		};
 
 		$count=0;
 		$image_types_index = 0;
@@ -106,6 +124,8 @@ class Query {
 	
 		};
 		
+		$users[] = $users['backgrounds'];
+
 
 		return $users;
 		

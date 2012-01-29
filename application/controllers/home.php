@@ -44,6 +44,7 @@ class Home extends CI_Controller {
 		);
 		
 
+
 		$data = array(
 			'users' => $users,
 			'fonts' => $fonts,
