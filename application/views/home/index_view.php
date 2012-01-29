@@ -436,7 +436,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 
 													<td >
-														<div image_id='0' image_type_id='0' class='upload_button'>upload
+														<div image_id='0' image_type_id='0' li_index='<?php  echo ( isset($data['users']['backgrounds']['images'] ) ? -1:'0' )   ?>' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -499,7 +499,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 
 													<td >
-														<div image_id='0' image_type_id='1' class='upload_button'>upload
+														<div image_id='0' image_type_id='1'  li_index='<?php  echo ( isset($data['users']['pictures']['images'] ) ? -1:'0' )   ?>' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -921,12 +921,6 @@ function store_custom_configuration(){
 
 function bind_events(){
 
-			$('.upload_button').click(function(event) {
-				$('#li_index').val(-1);			
-				$('#image_type_id').val(  $(this).attr('image_type_id')  );
-				$('#image_id').val(  $(this).attr('image_id')  );
-				$('#Filedata').click();
-			});
 			
 			$('#Filedata').change(function(event) {	
 				$('#form_image').submit()
@@ -1091,11 +1085,24 @@ function store_position( dom_element ){
 
 function thumbnail_controls(){
 
-												$('.background-img').mouseover(function(event) {
-													$(this).children('.small_icons_panel').show()
-												}).mouseout(function(event) {
-													$(this).children('.small_icons_panel').hide()
-												});	
+
+												$('.upload_button').click(function(event) {
+													$('#li_index').val(   $(this).attr('li_index'));	
+													$(this).attr('li_index', -1);		
+													$('#image_type_id').val(  $(this).attr('image_type_id')  );
+													$('#image_id').val(  $(this).attr('image_id')  );
+													$('#Filedata').click();
+												});
+
+
+												$('.background-img').live("mouseover", function(){
+															$(this).children('.small_icons_panel').show()
+												 }).live("mouseout", function(){
+															$(this).children('.small_icons_panel').hide()
+												 });
+
+
+
 												
 												$('.swap').click(function(event) {
 													$('body').css({
@@ -1113,6 +1120,13 @@ function thumbnail_controls(){
 												$('.delete').click(function(event) {
 													
 														thisUL = $(this).parent('div.small_icons_panel').parent('li').parent('ul');
+														
+														if( thisUL.has("li").length){
+															uploadButton = thisUL.closest('table').find('.upload_button');
+															uploadButton.attr('li_index', 0);
+															thisUL.append("<li   style='background:purple'  class='background-img ' image_id='0'  image_type_id='" + uploadButton.attr('image_type_id') + "'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='update-image ' ' >[E]</div></div></li>");
+														
+														};
 													
 														$(this).parent('div.small_icons_panel').parent('li').parent('ul')
 															.css({width:(<?php echo $data['thumbnail_size_width'] ?> * (thisUL.children('li').length -1 ))+'px'})		    																											
