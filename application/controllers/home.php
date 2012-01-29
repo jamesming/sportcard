@@ -313,9 +313,9 @@ class Home extends CI_Controller {
 		
 			
 			$image_types = array(
-				'1' => 'backgrounds-div',
-				'2' => 'pictures-div',
-				'3' => 'videos-div',
+				'0' => 'backgrounds-div',
+				'1' => 'pictures-div',
+				'2' => 'videos-div',
 			);
 		
 		?>

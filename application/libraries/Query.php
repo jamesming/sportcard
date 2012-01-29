@@ -66,18 +66,19 @@ class Query {
 		};
 
 		$count=0;
-		$image_types_index = 0;
-		$previous_id = 0;
+
+		$previous_id = -1;
+			
 		$image_types = array(
 			0 => 'backgrounds',
 			1 => 'pictures',
 			2 => 'videos',
 		);
+		
 
 		foreach( $users_raw  as $key =>  $user){
 			$count++;
-			if( $user['image_type_id'] == $previous_id || $previous_id == 0){
-		
+			if( $user['image_type_id'] == $previous_id || $previous_id == -1){
 
 					foreach( $user  as  $field => $value){
 		 
@@ -96,9 +97,8 @@ class Query {
 
 					$array['images'] = $images;	
 					unset($images);			
-					$users[$image_types[$image_types_index]] = $array;					
-					$image_types_index++;
-					
+					$users[$image_types[  $previous_id  ]] = $array;					
+			
 					foreach( $user  as  $field => $value){
 		 
 						 	if( $field != 'image_id'){
@@ -120,12 +120,11 @@ class Query {
 		if( $count ==  count($users_raw) ){
 
 						$array['images'] = ( isset($images ) ? $images :array());				
-						$users[$image_types[$image_types_index]] = $array;
+						$users[$image_types[   $previous_id  ]] = $array;
 	
 		};
 		
-		$users[] = $users['backgrounds'];
-
+		$users[] = $users[  $image_types[  $previous_id  ] ];  // IE: $users['backgrounds']
 
 		return $users;
 		

@@ -436,7 +436,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 
 													<td >
-														<div image_id='0' image_type_id='1' class='upload_button'>upload
+														<div image_id='0' image_type_id='0' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -450,7 +450,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																
 																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
@@ -499,7 +499,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 
 													<td >
-														<div image_id='0' image_type_id='2' class='upload_button'>upload
+														<div image_id='0' image_type_id='1' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -514,7 +514,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 
 																<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
@@ -578,7 +578,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																		action='<?php echo base_url();    ?>index.php/home/update_video'
 																		>
 																		<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
-																		<input name="image_type_id"  type="hidden" value="3">
+																		<input name="image_type_id"  type="hidden" value="2">
 																		<input name="image_id"  type="hidden" value="0">
 																		<input name="li_index"  type="hidden" value="-1">
 																		
@@ -602,7 +602,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 
 																<?php foreach( $data['users']['videos']['images']  as $image_id){?>
 	
-																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='3'  >
+																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
 																			<div  class='small_icons_panel transparent' >
 																				<div  class='delete ' >[X]
 																				</div>
