@@ -1126,7 +1126,7 @@ function thumbnail_controls(){
 															last_li = thisUL.children('li').last();
 															
 															/* CHANGING BACKGROUND */
-															if( last_li.attr('image_type_id') == 1){ 
+															if( last_li.attr('image_type_id') == 0){ 
 
 																	$('body').css({
 															    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/' + last_li.attr('image_id') + '/image.png?random=<?php echo   rand(5,124344523)   ?>)',
