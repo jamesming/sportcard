@@ -324,7 +324,6 @@ class Home extends CI_Controller {
 
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function() { 
-				
 
 					<?php if( $image_types[$image_type_id] == 'backgrounds-div' ){?>
 							
@@ -344,8 +343,7 @@ class Home extends CI_Controller {
 						
 						
 					<?php } ?>							    
-							    
-							    
+
 					<?php if( $li_index != -1 ){?>  /* UPDATE THUMB*/
 							    
 							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li:eq(<?php echo $li_index    ?>)').css({
@@ -354,10 +352,22 @@ class Home extends CI_Controller {
 									    'background-repeat': 'no-repeat'});						
 							
 					<?php }else{ ?>  /* INSERT THUMB */
-						
 
-							var copy_li = window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li:eq(0)').clone(true);
-							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul').append(copy_li);
+							if( window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li').length > 0   ){
+								
+								var copy_li = window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li:eq(0)').clone(true);
+								window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul').append(copy_li);			
+								
+													
+							}else{
+
+									thumbs_div = window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div');
+									uploadButton = thumbs_div.find('.upload_button');
+									thumbs_div.children('ul').append("<li style='background:brown'  class='background-img ' image_id='0'  image_type_id='" + uploadButton.attr('image_type_id') + "'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='<?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?> ' ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' >[C]</div>": "")    ?></div></li>");
+
+							};
+							
+							
 							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul li').last()
 								.attr('image_type_id',<?php  echo $image_type_id   ?>)
 								.attr('image_id',<?php  echo $image_id   ?>)

@@ -436,7 +436,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 
 													<td >
-														<div image_id='0' image_type_id='0' li_index='<?php  echo ( isset($data['users']['backgrounds']['images'] ) ? -1:'0' )   ?>' class='upload_button'>upload
+														<div image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -462,19 +462,8 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																	</li>
 																
 																<?php } ?>
-<?php }else{?>
 
-																	<li   style='background:orange'  class='background-img ' image_id='0'  image_type_id='1'  >
-																		<div  class='small_icons_panel transparent' >
-																			<div  class='delete ' >[X]
-																			</div>
-																			<div  class='update-image ' ' >[E]
-																			</div>
-																			<div  class='swap ' >[C]
-																			</div>																																							
-																		</div>
-																	</li>
-																
+														
 <?php } ?>
 
 																
@@ -499,7 +488,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 												<tr>
 
 													<td >
-														<div image_id='0' image_type_id='1'  li_index='<?php  echo ( isset($data['users']['pictures']['images'] ) ? -1:'0' )   ?>' class='upload_button'>upload
+														<div image_id='0' image_type_id='1'  li_index='-1' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -524,18 +513,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																	</li>
 																
 																<?php } ?>
-<?php }else{?>
 
-
-																	<li   style='background:purple'  class='background-img ' image_id='0'  image_type_id='2'  >
-																		<div  class='small_icons_panel transparent' >
-																			<div  class='delete ' >[X]
-																			</div>
-																			<div  class='update-image ' ' >[E]
-																			</div>																																				
-																		</div>
-																	</li>
-	
 <?php } ?>
 
 
@@ -611,18 +589,6 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 																		</li>
 																		
 																<?php };?>
-																
-<?php }else{?>
-
-
-																		<li   style='background:green'  class='background-img ' image_id='0'  image_type_id='2'  >
-																			<div  class='small_icons_panel transparent' >
-																				<div  class='delete ' >[X]
-																				</div>
-																				<div  class='update-video_url '  >[E]
-																				</div>																																					
-																			</div>
-																		</li>
 
 <?php } ?>
 																
@@ -637,34 +603,7 @@ var Cufon=(function(){var m=function(){return m.replace.apply(null,arguments)};v
 													</td>
 												</tr>												
 											</table>
-<script type="text/javascript" language="Javascript">
 
-	
-	$(document).ready(function() { 
-
-		$('#video_submit').click(function(event) {
-			$('#form_video').submit();
-		});	
-		
-		$('#video_url').click(function(event) {
-				$(this).val('');		
-		});	
-		
-		$('.update-video_url').click(function(event) {
-			thisElem = $(this);
-			$.post("<?php echo base_url(). 'index.php/home/get_video_url';    ?>",{
-			image_id:$(this).parent().parent().attr('image_id')
-			},function(data) {
-				$('#video_url').val(data);
-				$('#form_video input[name=li_index]').val( thisElem.parent().parent().index() );
-				$('#form_video input[name=image_id]').val(   thisElem.parent().parent().attr('image_id')  );
-				$('#form_video input[name=image_type_id]').val( thisElem.parent().parent().attr('image_type_id') );
-				
-			});		
-		});	
-		
-	});
-</script>
 										</div>	
 									</li>									
 							</ul>
@@ -699,7 +638,7 @@ form#form_image input[type=file]{
 <iframe  
 	id="results"   
 	name="results"
-	style='background:white;border:0px solid gray;width:0px;height:0px'  
+	style='background:white;border:1px solid gray;width:200px;height:200px'  
 	border="1" 
 	frameborder="1" 
 	scrolling="auto" 
@@ -1111,9 +1050,7 @@ function thumbnail_controls(){
 												})	
 																							
 												$('.update-image').live("click", function(){
-												
-														uploadButton = thisUL.closest('table').find('.upload_button');
-														uploadButton.css({background:'green'}).attr('li_index', -1);
+
 														$('#li_index').val($(this).parent().parent().index());
 														$('#image_type_id').val(  $(this).parent().parent().attr('image_type_id')  );
 														$('#image_id').val(  $(this).parent().parent().attr('image_id')  );
@@ -1123,11 +1060,7 @@ function thumbnail_controls(){
 												$('.delete').live("click", function(){
 													
 														thisUL = $(this).parent('div.small_icons_panel').parent('li').parent('ul');
-														if( thisUL.children("li").length == 1){
-															uploadButton = thisUL.closest('table').find('.upload_button');
-															uploadButton.css({background:'green'}).attr('li_index', 0);															
-															thisUL.append("<li style='background:brown'  class='background-img ' image_id='0'  image_type_id='" + uploadButton.attr('image_type_id') + "'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='update-image ' ' >[E]</div></div></li>");
-														};
+
 																													
 														$(this).parent('div.small_icons_panel').parent('li').parent('ul')
 															.css({width:(<?php echo $data['thumbnail_size_width'] ?> * (thisUL.children('li').length -1 ))+'px'})		    																											
@@ -1153,6 +1086,31 @@ function thumbnail_controls(){
 														});	
 														
 												});	
+												
+												
+												
+						$('#video_submit').click(function(event) {
+							$('#form_video').submit();
+						});	
+						
+						$('#video_url').click(function(event) {
+								$(this).val('');		
+						});	
+						
+						$('.update-video_url').live("click", function(){
+							thisElem = $(this);
+							$.post("<?php echo base_url(). 'index.php/home/get_video_url';    ?>",{
+							image_id:$(this).parent().parent().attr('image_id')
+							},function(data) {
+								$('#video_url').val(data);
+								$('#form_video input[name=li_index]').val( thisElem.parent().parent().index() );
+								$('#form_video input[name=image_id]').val(   thisElem.parent().parent().attr('image_id')  );
+								$('#form_video input[name=image_type_id]').val( thisElem.parent().parent().attr('image_type_id') );
+								
+							});		
+						});	
+												
+												
 
 }
 </script>
