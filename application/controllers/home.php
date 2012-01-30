@@ -377,18 +377,18 @@ class Home extends CI_Controller {
 							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul.thumbs-ul')
 								.css({width:(<?php echo $this->thumbnail_size_width ?> * window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li').length )+'px'})		    
 					
-							window.parent.clearModelCarousel();
-							
-					    window.parent.$(".jcarousel").jCarouselLite({
-					        btnNext: ".next",
-					        btnPrev: ".prev",
-							    easing: "backout",
-							    speed: 750,
-	 								circular: false,
-	 								mouseWheel: true,
-	  							scroll: 1,
-									visible: 4
-					    });
+//							window.parent.clearModelCarousel();
+//							
+//					    window.parent.$(".jcarousel").jCarouselLite({
+//					        btnNext: ".next",
+//					        btnPrev: ".prev",
+//							    easing: "backout",
+//							    speed: 750,
+//	 								circular: false,
+//	 								mouseWheel: true,
+//	  							scroll: 1,
+//									visible: 4
+//					    });
 															    
 									    						
 					<?php } ?>

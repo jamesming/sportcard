@@ -1029,18 +1029,18 @@ function thumbnail_controls(){
 
 												$('.direction').css({cursor:'pointer'});
 												
-												var theModelCarousel = null;
-												$(".jcarousel").jCarouselLite({
-													        btnNext: ".next",
-													        btnPrev: ".prev",
-															    easing: "backout",
-															    speed: 750,
-									 								circular: false,
-									 								mouseWheel: true,
-									  							scroll: 1,
-																	visible: 4,
-																	initCallback: modelCarousel_initCallback
-													    });
+//												var theModelCarousel = null;
+//												$(".jcarousel").jCarouselLite({
+//													        btnNext: ".next",
+//													        btnPrev: ".prev",
+//															    easing: "backout",
+//															    speed: 750,
+//									 								circular: false,
+//									 								mouseWheel: true,
+//									  							scroll: 1,
+//																	visible: 4,
+//																	initCallback: modelCarousel_initCallback
+//													    });
 
 												$('.upload_button').click(function(event) {
 													$('#li_index').val(   $(this).attr('li_index'));	
@@ -1084,18 +1084,18 @@ function thumbnail_controls(){
 														$(this).parent('div.small_icons_panel').parent('li').remove();
 														
 														
-														clearModelCarousel();
-														
-														$(".jcarousel").jCarouselLite({
-															        btnNext: ".next",
-															        btnPrev: ".prev",
-																	    easing: "backout",
-																	    speed: 750,
-											 								circular: false,
-											 								mouseWheel: true,
-											  							scroll: 1,
-    																	visible: 4
-															    });
+//														clearModelCarousel();
+//														
+//														$(".jcarousel").jCarouselLite({
+//															        btnNext: ".next",
+//															        btnPrev: ".prev",
+//																	    easing: "backout",
+//																	    speed: 750,
+//											 								circular: false,
+//											 								mouseWheel: true,
+//											  							scroll: 1,
+//    																	visible: 4
+//															    });
 														
 														$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
 														image_id:$(this).parent().parent().attr('image_id')
@@ -1152,9 +1152,9 @@ theModelCarousel = carousel;
 
 function clearModelCarousel() {
 theModelCarousel.reset();
-theModelCarousel.add(0,someImageURL1);
-theModelCarousel.add(1,someImageURL2);
-theModelCarousel.size(2);
+//theModelCarousel.add(0,someImageURL1);
+//theModelCarousel.add(1,someImageURL2);
+//theModelCarousel.size(2);
 }
 
 
