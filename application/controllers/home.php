@@ -7,7 +7,7 @@ class Home extends CI_Controller {
         parent::__construct();
 				$this->user_id = 1;
 				$this->thumbnail_size_width  = '181';
-				$this->thumbnail_size_height = '106';
+				$this->thumbnail_size_height = '120';
    }
 
 	/**
@@ -376,6 +376,20 @@ class Home extends CI_Controller {
 									    'background-repeat': 'no-repeat'})
 							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul.thumbs-ul')
 								.css({width:(<?php echo $this->thumbnail_size_width ?> * window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li').length )+'px'})		    
+					
+							window.parent.clearModelCarousel();
+							
+					    window.parent.$(".jcarousel").jCarouselLite({
+					        btnNext: ".next",
+					        btnPrev: ".prev",
+							    easing: "backout",
+							    speed: 750,
+	 								circular: false,
+	 								mouseWheel: true,
+	  							scroll: 1,
+									visible: 4
+					    });
+															    
 									    						
 					<?php } ?>
 
