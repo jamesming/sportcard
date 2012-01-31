@@ -442,11 +442,7 @@ display:block;
 															<span  class='prev direction' ><<</span>
 															<span  class='next direction' >>></span>
 														</div>
-														<script type="text/javascript" language="Javascript">
-															$(document).ready(function() { 
-	
-															});
-														</script >
+
 														<div  id='backgrounds-div' class='thumbs-div jcarousel'>
 															<ul class='thumbs-ul'   style='width:<?php echo ( isset($data['users']['backgrounds']['images']) ? $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images']) : $data['thumbnail_size_width'] )    ?>px'  >
 																
@@ -1024,23 +1020,29 @@ function store_position( dom_element ){
 	
 }
 
+var theModelCarousel = null;
+
+function carousel_callback(carousel, state) {
+alert('');
+theModelCarousel = carousel;
+};
 
 function thumbnail_controls(){
 
 												$('.direction').css({cursor:'pointer'});
 												
-//												var theModelCarousel = null;
-//												$(".jcarousel").jCarouselLite({
-//													        btnNext: ".next",
-//													        btnPrev: ".prev",
-//															    easing: "backout",
-//															    speed: 750,
-//									 								circular: false,
-//									 								mouseWheel: true,
-//									  							scroll: 1,
-//																	visible: 4,
-//																	initCallback: modelCarousel_initCallback
-//													    });
+												
+												$(".jcarousel").jCarouselLite({
+													        btnNext: ".next",
+													        btnPrev: ".prev",
+															    easing: "backout",
+															    speed: 750,
+									 								circular: false,
+									 								mouseWheel: true,
+									  							scroll: 1,
+																	visible: 4,
+																	initCallback:  carousel_callback
+													    });
 
 												$('.upload_button').click(function(event) {
 													$('#li_index').val(   $(this).attr('li_index'));	
@@ -1084,18 +1086,23 @@ function thumbnail_controls(){
 														$(this).parent('div.small_icons_panel').parent('li').remove();
 														
 														
-//														clearModelCarousel();
-//														
-//														$(".jcarousel").jCarouselLite({
-//															        btnNext: ".next",
-//															        btnPrev: ".prev",
-//																	    easing: "backout",
-//																	    speed: 750,
-//											 								circular: false,
-//											 								mouseWheel: true,
-//											  							scroll: 1,
-//    																	visible: 4
-//															    });
+														theModelCarousel.reset();
+														theModelCarousel.size( 2 );
+
+/*														clearModelCarousel();
+														
+														$(".jcarousel").jCarouselLite({
+															        btnNext: ".next",
+															        btnPrev: ".prev",
+																	    easing: "backout",
+																	    speed: 750,
+											 								circular: false,
+											 								mouseWheel: true,
+											  							scroll: 1,
+    																	visible: 4
+															    });*/
+															    
+															    
 														
 														$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
 														image_id:$(this).parent().parent().attr('image_id')
@@ -1146,15 +1153,15 @@ function thumbnail_controls(){
 
 
 
-function modelCarousel_initCallback(carousel) {
-theModelCarousel = carousel;
-};
+
 
 function clearModelCarousel() {
+
+theModelCarousel.size( 2 );
 theModelCarousel.reset();
 //theModelCarousel.add(0,someImageURL1);
 //theModelCarousel.add(1,someImageURL2);
-//theModelCarousel.size(2);
+//
 }
 
 
