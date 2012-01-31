@@ -219,12 +219,16 @@ class Home extends CI_Controller {
 		    if (state != 'init')
 		    return;
 
-				carousel.size( 0 )
+				//carousel.size( 0 )
 				
 				$('#reset-caro').click( function( evt ) {
 					carousel.reset();
 				});
 				
+				$('#go').click(function(event) {
+
+						carousel.scroll(parseInt($('#see').val()),true);
+				});	
 				
 				$('#add-to').click( function( evt ) {
 				
@@ -237,11 +241,13 @@ class Home extends CI_Controller {
 					carousel.add(  (carousel.size()) , "<li>" + (carousel.size()) +"</li>");					
 					
 					$('#see2').val(carousel.size())
-				   
+					
+
+				  carousel.scroll(parseInt(carousel.size()),true);
 				});
 				
 				$('#remove').click( function( evt ) {
-				
+	
 					var li_array = new Array();
 
 					var e = carousel.get(  $('#see').val() );
@@ -280,6 +286,7 @@ class Home extends CI_Controller {
 					$('#see2').val(carousel.size())
 					
 					carousel.reload()
+					
 
 				});	
 
@@ -304,11 +311,21 @@ class Home extends CI_Controller {
 
   <a id="add-to" href="#">add</a>  
   <a id="remove" href="#">remove</a> 
+  <a id="go" href="#">go</a> 
   <input id="see" type="" value=""> 
   <input id="see2" type="" value=""> 
 
   <ul id="mycarousel" class="jcarousel-skin-tango">
-
+    <li><img src="http://static.flickr.com/66/199481236_dc98b5abb3_s.jpg" width="75" height="75" alt="" /></li>
+    <li><img src="http://static.flickr.com/75/199481072_b4a0d09597_s.jpg" width="75" height="75" alt="" /></li>
+    <li><img src="http://static.flickr.com/57/199481087_33ae73a8de_s.jpg" width="75" height="75" alt="" /></li>
+  	<li><img src="http://static.flickr.com/77/199481108_4359e6b971_s.jpg" width="75" height="75" alt="" /></li>
+    <li><img src="http://static.flickr.com/58/199481143_3c148d9dd3_s.jpg" width="75" height="75" alt="" /></li>
+    <li><img src="http://static.flickr.com/72/199481203_ad4cdcf109_s.jpg" width="75" height="75" alt="" /></li>
+    <li><img src="http://static.flickr.com/58/199481218_264ce20da0_s.jpg" width="75" height="75" alt="" /></li>
+    <li><img src="http://static.flickr.com/69/199481255_fdfe885f87_s.jpg" width="75" height="75" alt="" /></li>
+    <li><img src="http://static.flickr.com/60/199480111_87d4cb3e38_s.jpg" width="75" height="75" alt="" /></li>
+    <li><img src="http://static.flickr.com/70/229228324_08223b70fa_s.jpg" width="75" height="75" alt="" /></li>
   </ul>
      <?php
 	}
