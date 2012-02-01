@@ -145,66 +145,147 @@
 		background:yellow;
 		text-align:right;
 	}
-		
-				
 
-	#control-panel-box ul#panels_ul li.panels{
-	display:none;	
-	}
 			#control-panel-box ul#panels_ul li.panels div.div-panel{
 			padding:20px;	
 			}
 			
 			
-													#control-panel-box  ul#panels_ul div.thumbs-div{
-															background: none repeat scroll 0 0 transparent;
-															height: <?php echo $data['thumbnail_size_height']    ?>px;
-															margin-top: 13px;
-															overflow-x: auto;
-															overflow-y: hidden;
-															padding: 0;
-															width: 774px;
-															margin-left: 30px;
-													}										
-													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul{
-														height:<?php echo $data['thumbnail_size_height']    ?>px;
-														overflow:hidden;
-													}	
-													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li{
-														list-style:none;
-														float:left !important;
-														height:<?php echo $data['thumbnail_size_height']    ?>px;
-														width:<?php echo $data['thumbnail_size_width']    ?>px;
-														overflow:hidden;
-													}
-													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel{
-												    float: right;
-												    height: 22px;
-												    position: relative;
-												    width: 71px;
-												    padding-top: 3px;
-												    display:none;
-													}	
-													#control-panel-box ul#panels_ul  div.thumbs-div ul.thumbs-ul li div.small_icons_panel div{
-														color:white;
-												    float: right;
-												    height: 19px;
-												    margin-right: 2px;
-												    width: 20px;
-												    text-align: center;
-												    cursor:pointer
-													}		
 			
-			
-			
-			
-/* WHICH TAB IS SELECTED BY DEFAULT */			
-#control-panel-box #panel-tabs_container li#panel-tab-2{
-	background:white;
+.jcarousel-skin-tango ul.thumbs-ul li div.small_icons_panel{
+  float: right;
+  height: 22px;
+  position: relative;
+  width: 71px;
+  padding-top: 3px;
+  display:none;
+}	
+.jcarousel-skin-tango ul.thumbs-ul li div.small_icons_panel div{
+	color:white;
+  float: right;
+  height: 19px;
+  margin-right: 2px;
+  width: 20px;
+  text-align: center;
+  cursor:pointer
 }		
-#control-panel-box ul#panels_ul li#panel-2{
-display:block;	
+					
+	  
+.jcarousel-skin-tango .jcarousel-container {
+
+    border: 1px solid blue;
 }
+
+.jcarousel-skin-tango .jcarousel-direction-rtl {
+	direction: rtl;
+}
+
+.jcarousel-skin-tango .jcarousel-container-horizontal {
+    width:<?php echo $data['thumbnail_panel_width']    ?>px;
+    padding: 20px 40px;
+}
+
+
+.jcarousel-skin-tango .jcarousel-clip {
+    overflow: hidden;
+}
+
+.jcarousel-skin-tango .jcarousel-clip-horizontal {
+    width: <?php echo $data['thumbnail_panel_width']    ?>px;
+    height: <?php echo $data['thumbnail_size_height']    ?>px;
+}
+
+
+.jcarousel-skin-tango .jcarousel-item {
+    width: <?php echo $data['thumbnail_size_width']    ?>px;
+    height: <?php echo $data['thumbnail_size_height']    ?>px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-horizontal {
+	margin-left: 0;
+	margin-right: 10px;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left: 10px;
+	margin-right: 0;
+}
+
+
+.jcarousel-skin-tango .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+
+/**
+ *  Horizontal Buttons
+ */
+.jcarousel-skin-tango .jcarousel-next-horizontal {
+    position: absolute;
+    top: <?php echo $data['top_direction_arrow']    ?>px;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(http://sorgalla.com/projects/jcarousel/skins/tango/next-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-next-horizontal {
+    left: 5px;
+    right: auto;
+    background-image: url(http://sorgalla.com/projects/jcarousel/skins/tango/prev-horizontal.png);
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal {
+    position: absolute;
+    top:  <?php echo $data['top_direction_arrow']    ?>px;
+    left: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(http://sorgalla.com/projects/jcarousel/skins/tango/prev-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal {
+    left: auto;
+    right: 5px;
+    background-image: url(http://sorgalla.com/projects/jcarousel/skins/tango/next-horizontal.png);
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:hover, 
+.jcarousel-skin-tango .jcarousel-prev-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
 
 	
 </style>
@@ -218,9 +299,9 @@ display:block;
 	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.position.min.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.resizable.min.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.dialog.min.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/jCarousel.js"></script> 
+	<script src="<?php echo  base_url();   ?>js/jCarousel.min.js"></script> <!--
 	<script src="<?php echo  base_url();   ?>js/easing/jquery.easing.1.1.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/mousewheel.js"></script> 
+	<script src="<?php echo  base_url();   ?>js/mousewheel.js"></script> -->
 	<script src="<?php echo  base_url();   ?>js/cufon.js"></script> 
 
 <!--
@@ -438,23 +519,20 @@ display:block;
 
 												<tr>
 													<td>
-														<div>
-															<span  class='prev direction' ><<</span>
-															<span  class='next direction' >>></span>
-														</div>
 
-														<div  id='backgrounds-div' class='thumbs-div jcarousel'>
-															<ul class='thumbs-ul'   style='width:<?php echo ( isset($data['users']['backgrounds']['images']) ? $data['thumbnail_size_width'] * count($data['users']['backgrounds']['images']) : $data['thumbnail_size_width'] )    ?>px'  >
+
+														<div  id='backgrounds-div' class='mycarousel jcarousel-skin-tango'>
+															<ul class='thumbs-ul'   >
 																
 <?php if( isset($data['users']['backgrounds']['images']) ){?>
 																
 																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
-																			<div  class='update-image ' ' >[E]
+																			<div  class='update-image ' >[E]
 																			</div>
 																			<div  class='swap ' >[C]
 																			</div>																																							
@@ -495,19 +573,19 @@ display:block;
 
 												<tr>
 													<td>
-														<div  id='pictures-div' class='thumbs-div'>
-															<ul class='thumbs-ul'   style='width:<?php echo (  isset(  $data['users']['pictures']['images']) ? $data['thumbnail_size_width'] * count(  $data['users']['pictures']['images']): $data['thumbnail_size_width'] )    ?>px'  >
+														<div  id='pictures-div' class='mycarousel jcarousel-skin-tango'>
+															<ul class='thumbs-ul'   >
 
 
 <?php if(  isset($data['users']['pictures']['images'])  ){?>
 
 																<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
-																			<div  class='update-image ' ' >[E]
+																			<div  class='update-image ' >[E]
 																			</div>																																				
 																		</div>
 																	</li>
@@ -572,14 +650,14 @@ display:block;
 
 												<tr>
 													<td>
-														<div  id='videos-div' class='thumbs-div'>
-															<ul class='thumbs-ul'   style='width:<?php echo ( isset( $data['users']['videos']['images']) ? $data['thumbnail_size_width'] * count($data['users']['videos']['images']) :$data['thumbnail_size_width'] )    ?>px'  >
+														<div  id='videos-div' class='mycarousel jcarousel-skin-tango'>
+															<ul class='thumbs-ul'   >
 																
 <?php if( isset($data['users']['videos']['images']) ){?>
 
 																<?php foreach( $data['users']['videos']['images']  as $image_id){?>
 	
-																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='background-img ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
+																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
 																			<div  class='small_icons_panel transparent' >
 																				<div  class='delete ' >[X]
 																				</div>
@@ -661,6 +739,8 @@ $(document).ready(function() {
 			activate_fonts_for_selection();
 			thumbnail_controls();
 			bind_events();
+
+			$('#control-panel-box #panel-tabs_container li#panel-tab-1').click()
 
 });
 
@@ -1020,29 +1100,24 @@ function store_position( dom_element ){
 	
 }
 
-var theModelCarousel = null;
 
-function carousel_callback(carousel, state) {
-alert('');
-theModelCarousel = carousel;
+function mycarousel_initCallback(carousel, state) {
+		
+		    if (state != 'init')
+		    return;
+		    
+
+    
 };
 
 function thumbnail_controls(){
 
-												$('.direction').css({cursor:'pointer'});
-												
-												
-												$(".jcarousel").jCarouselLite({
-													        btnNext: ".next",
-													        btnPrev: ".prev",
-															    easing: "backout",
-															    speed: 750,
-									 								circular: false,
-									 								mouseWheel: true,
-									  							scroll: 1,
-																	visible: 4,
-																	initCallback:  carousel_callback
-													    });
+												$(".mycarousel").jcarousel({
+												        scroll: 1,
+												        initCallback: mycarousel_initCallback
+												});	
+
+
 
 												$('.upload_button').click(function(event) {
 													$('#li_index').val(   $(this).attr('li_index'));	
@@ -1053,7 +1128,7 @@ function thumbnail_controls(){
 												});
 
 
-												$('.background-img').live("mouseover", function(){
+												$('.hovering').live("mouseover", function(){
 															$(this).children('.small_icons_panel').show()
 												 }).live("mouseout", function(){
 															$(this).children('.small_icons_panel').hide()
@@ -1086,23 +1161,6 @@ function thumbnail_controls(){
 														$(this).parent('div.small_icons_panel').parent('li').remove();
 														
 														
-														theModelCarousel.reset();
-														theModelCarousel.size( 2 );
-
-/*														clearModelCarousel();
-														
-														$(".jcarousel").jCarouselLite({
-															        btnNext: ".next",
-															        btnPrev: ".prev",
-																	    easing: "backout",
-																	    speed: 750,
-											 								circular: false,
-											 								mouseWheel: true,
-											  							scroll: 1,
-    																	visible: 4
-															    });*/
-															    
-															    
 														
 														$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
 														image_id:$(this).parent().parent().attr('image_id')
@@ -1151,18 +1209,6 @@ function thumbnail_controls(){
 
 }
 
-
-
-
-
-function clearModelCarousel() {
-
-theModelCarousel.size( 2 );
-theModelCarousel.reset();
-//theModelCarousel.add(0,someImageURL1);
-//theModelCarousel.add(1,someImageURL2);
-//
-}
 
 
 </script>
