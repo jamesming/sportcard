@@ -112,7 +112,7 @@ class Home extends CI_Controller {
 	
 	
 	public function upload(){
-		
+     
 		$image_type_id = $this->input->post('image_type_id');
 		$image_id = $this->input->post('image_id');
 		$li_index = $this->input->post('li_index');

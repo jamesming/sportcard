@@ -299,9 +299,10 @@
  	// google.load("jqueryui", "1.8.16");
 
 </script>
-  <!--  
-  http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chrome
-  -->
+
+<!--  
+http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chrome
+-->
 <!--
 	<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
 -->
@@ -698,11 +699,12 @@
 <style>
 form#form_image input{
 	display:block;
-	width:20px;
+	width:90px;
 }
 form#form_image input[type=file]{
-	visibility:hidden;
+	visibility:visible;
 	display:block;
+	width:220px;
 }
 
 </style>
@@ -716,8 +718,8 @@ form#form_image input[type=file]{
 	<input  id='image_type_id' name="image_type_id"  type="" value="">
 	<input  id='image_id' name="image_id"  type="" value="">
 	<input  id='li_index' name="li_index"  type="" value="">
-	<input type="file"  id='Filedata' name="Filedata"  value="">
-	
+	<input type="file"  id='Filedata' name="Filedata"  value=""   >
+	<input id="file_image" type="submit" value="submit">
 </form>	
 <iframe  
 	id="results"   
@@ -747,6 +749,7 @@ $(document).ready(function() {
 			bind_events();
 
 			$('#control-panel-box #panel-tabs_container li#panel-tab-2').click()
+
 
 });
 
@@ -945,10 +948,7 @@ function bind_events(){
 				'top':'150px',
 				'margin-left':'-430px',
 			})
-			
-			$('#Filedata').change(function(event) {	
-				$('#form_image').submit()
-			});	
+
 	
 			$( ".draggable" ).draggable({ 
 					handle: "div.handle"
@@ -1123,6 +1123,12 @@ function mycarousel_initCallback_3(carousel, state) {
 				window.myCarousel_3 = carousel;
 };
 
+function submit_image(){
+
+	setTimeout('$(\'#form_image\').submit()', 2000)
+	
+}
+
 function thumbnail_controls(){
 
 												$("#backgrounds-div").jcarousel({
@@ -1145,6 +1151,14 @@ function thumbnail_controls(){
 													$('#image_id').val(  $(this).attr('image_id')  );
 													$('#Filedata').click();
 												});
+												
+												
+												$("#Filedata").attr("onChange", "submit_image()");
+			
+//												$('#Filedata').change(function() {	
+//													//$('#form_image').submit()
+//													alert('I changed')
+//												});													
 
 												$('.hovering').live("mouseover", function(){
 															$(this).children('.small_icons_panel').show()
