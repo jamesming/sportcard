@@ -289,7 +289,23 @@
 
 	
 </style>
+
+
+<script type="text/javascript" 
+        src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+ 
+  google.load("jquery", "1.4.2");
+ 	// google.load("jqueryui", "1.8.16");
+
+</script>
+  <!--  
+  http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chrome
+  -->
+<!--
 	<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
+-->
+
 	<link rel="stylesheet" href="<?php echo  base_url();   ?>js/jquery-ui/themes/base/jquery.ui.all.css"> 
 	<script src="<?php echo  base_url();   ?>js/external/jquery.bgiframe-2.1.2.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.core.min.js"></script> 
@@ -299,21 +315,11 @@
 	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.position.min.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.resizable.min.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/jquery-ui/jquery.ui.dialog.min.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/jCarousel.min.js"></script> <!--
+	<script src="<?php echo  base_url();   ?>js/jquery.jcarousel.js"></script> <!--
 	<script src="<?php echo  base_url();   ?>js/easing/jquery.easing.1.1.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/mousewheel.js"></script> -->
 	<script src="<?php echo  base_url();   ?>js/cufon.js"></script> 
 
-<!--
-<script type="text/javascript" 
-        src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
- 
-  // google.load("jquery", "1.7.1");
- 	// google.load("jqueryui", "1.8.16");
-
-</script>
-  -->
 
 
 </head>
@@ -512,7 +518,7 @@
 												<tr>
 
 													<td >
-														<div image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
+														<div  id='add-to' image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
 														</div>
 													</td>													
 												</tr>
@@ -521,7 +527,7 @@
 													<td>
 
 
-														<div  id='backgrounds-div' class='mycarousel jcarousel-skin-tango'>
+														<div  id='backgrounds-div' class='mycarousel1 jcarousel-skin-tango'>
 															<ul class='thumbs-ul'   >
 																
 <?php if( isset($data['users']['backgrounds']['images']) ){?>
@@ -1105,14 +1111,14 @@ function mycarousel_initCallback(carousel, state) {
 		
 		    if (state != 'init')
 		    return;
-		    
 
-    
+				window.myCarousel = carousel;
+
 };
 
 function thumbnail_controls(){
 
-												$(".mycarousel").jcarousel({
+												$(".mycarousel1").jcarousel({
 												        scroll: 1,
 												        initCallback: mycarousel_initCallback
 												});	
@@ -1153,33 +1159,71 @@ function thumbnail_controls(){
 												
 												$('.delete').live("click", function(){
 													
-														thisUL = $(this).parent('div.small_icons_panel').parent('li').parent('ul');
+													thisLi = $(this).parent('div.small_icons_panel').parent('li');
+													
+													indexOf = thisLi.index()+1;
 
-																													
-														$(this).parent('div.small_icons_panel').parent('li').parent('ul')
-															.css({width:(<?php echo $data['thumbnail_size_width'] ?> * (thisUL.children('li').length -1 ))+'px'})		    																											
-														$(this).parent('div.small_icons_panel').parent('li').remove();
-														
-														
-														
-														$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
-														image_id:$(this).parent().parent().attr('image_id')
-														},function(data) {
-															
-															last_li = thisUL.children('li').last();
-															
-															/* CHANGING BACKGROUND */
-															if( last_li.attr('image_type_id') == 0){ 
+													var li_array = new Array();
 
-																	$('body').css({
-															    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/' + last_li.attr('image_id') + '/image.png?random=<?php echo   rand(5,124344523)   ?>)',
-															    'background-position': 'center 0px',
-															    'background-repeat': 'no-repeat'});	
-															    															
-															};
-															
-														});	
+													var e = window.myCarousel.get( indexOf );
+								
+													theParentUL = e.parent()
+													theChildren = e.parent().find("li");
+								
+								
+									        var count = 0; 
+									        $.each(theChildren,function(){
+									        		if( $(this).attr('jcarouselindex') != indexOf ){
+									          	 	$(this).removeAttr("class").removeAttr("jcarouselindex");
+									              li_array[count] = $(this); 	 
+									              count++;       			
+									        		}
+									            
+									        });
+									        
+								
+									        window.myCarousel.reset();
+													
+								          count = 1;
+								
+								          $.each(li_array, function(key, value){
+								
+								              if(value != null) {
+								              		value.addClass('hovering');
+								                 	window.myCarousel.add(count,  value);
+								                  count++;
+								              }
+								          });
+								          
+								
+													window.myCarousel.size( li_array.length)          
+								          
+													
+													window.myCarousel.reload()
+													
+													
+													window.myCarousel.scroll(parseInt( indexOf ),true);
+													
+													
+													$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
+													image_id:$(this).parent().parent().attr('image_id')
+													},function(data) {
 														
+														last_li = theParentUL.children('li').last();
+														
+														/* CHANGING BACKGROUND */
+														if( last_li.attr('image_type_id') == 0){ 
+
+																$('body').css({
+														    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/' + last_li.attr('image_id') + '/image.png?random=<?php echo   rand(5,124344523)   ?>)',
+														    'background-position': 'center 0px',
+														    'background-repeat': 'no-repeat'});	
+														    															
+														};
+														
+													});	
+													
+													
 												});	
 												
 												
