@@ -1171,6 +1171,9 @@ function thumbnail_controls(){
 												    },
 						                onComplete: function(id, fileName, responseJSON){
 						                	alert(responseJSON['image_id']);
+						                	
+						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/home/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
+						                	
 						                },
 						                debug: true
 						            });  
