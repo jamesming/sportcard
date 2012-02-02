@@ -286,62 +286,26 @@
     background-position: -96px 0;
 }
 
-.qq-uploader { position:relative; width: 100%;}
 
-.qq-upload-button {
-		float:right;
-    display:block; /* or inline-block */
-    width: 105px; padding: 7px 0; text-align:center;    
-    background:#880000; border-bottom:1px solid #ddd;color:#fff;
-}
-.qq-upload-button-hover {background:#cc0000;}
-.qq-upload-button-focus {outline:1px dotted black;}
-
-.qq-upload-drop-area, .qq-upload-extra-drop-area {
-    position:absolute; top:0; left:0; width:100%; height:100%; min-height: 70px; z-index:2;
-    background:#FF9797; text-align:center; 
-}
-.qq-upload-drop-area span {
-    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
-}
-.qq-upload-extra-drop-area { position: relative; margin-top: 50px; font-size: 16px; padding-top: 30px; height: 20px; min-height: 40px; }
-.qq-upload-drop-area-active {background:#FF7171;}
-
-.qq-upload-list {margin:15px 35px; padding:0; list-style:disc;}
-.qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
-.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
-    margin-right: 7px;
-}
-
-.qq-upload-file {}
-.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
-.qq-upload-size,.qq-upload-cancel {font-size:11px;}
-
-.qq-upload-failed-text {display:none;}
-.qq-upload-fail .qq-upload-failed-text {display:inline;}
-
-
-.qq-upload-drop-area, .qq-upload-list{
-display:none;	
-}
+	
 </style>
 
-<!--
+
 <script type="text/javascript" 
         src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
  
   google.load("jquery", "1.4.2");
- 	google.load("jqueryui", "1.8.16");
+ 	// google.load("jqueryui", "1.8.16");
 
 </script>
--->
+
 <!--  
 http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chrome
 -->
-
+<!--
 	<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
-
+-->
 
 	<link rel="stylesheet" href="<?php echo  base_url();   ?>js/jquery-ui/themes/base/jquery.ui.all.css"> 
 	<script src="<?php echo  base_url();   ?>js/external/jquery.bgiframe-2.1.2.js"></script> 
@@ -356,7 +320,6 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 	<script src="<?php echo  base_url();   ?>js/easing/jquery.easing.1.1.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/mousewheel.js"></script> -->
 	<script src="<?php echo  base_url();   ?>js/cufon.js"></script> 
-	<script src="<?php echo  base_url();   ?>js/fileuploader.js"></script> 
 
 
 
@@ -555,19 +518,9 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 											<table>
 												<tr>
 
-													<td ><!--
+													<td >
 														<div  id='add-to' image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
-														</div>-->
-														
-														
-													<div id="upload_button_backgrounds"  >		
-														<noscript>			
-															<p>Please enable JavaScript to use file uploader.</p>
-															<!-- or put a simple form for upload here -->
-														</noscript>         
-													</div>
-														
-														
+														</div>
 													</td>													
 												</tr>
 
@@ -755,7 +708,19 @@ form#form_image input[type=file]{
 }
 
 </style>
-	
+<form 
+	id='form_image' 
+	target='results' 
+	method='POST' 
+	enctype='multipart/form-data' 
+	action='<?php echo base_url();    ?>index.php/home/upload'
+	>
+	<input  id='image_type_id' name="image_type_id"  type="" value="0">
+	<input  id='image_id' name="image_id"  type="" value="">
+	<input  id='li_index' name="li_index"  type="" value="-1">
+	<input type="file"  id='Filedata' name="Filedata"  value="" Xonpropertychange=submit_image()>
+	<input id="submit_button" type="submit" value="submit">
+</form>	
 <iframe  
 	id="results"   
 	name="results"
@@ -1158,23 +1123,16 @@ function mycarousel_initCallback_3(carousel, state) {
 				window.myCarousel_3 = carousel;
 };
 
+function submit_image(){
+//  setTimeout(function() {
+//      //$('#Filedata').val($('#Filedata').val());
+//      
+//  }, 1000);		
+//alert('');
+$('#form_image').submit();
+}
 
 function thumbnail_controls(){
-
-						            var uploader = new qq.FileUploader({
-						                element: document.getElementById('upload_button_backgrounds'),
-						                action: '<?php echo base_url();    ?>index.php/home/upload',
-						                params: {
-												        image_id: 0,
-												        image_type_id: 0,
-												        li_index: -1
-												    },
-						                onComplete: function(id, fileName, responseJSON){
-						                	alert(responseJSON['image_id']);
-						                },
-						                debug: true
-						            });  
-	
 
 												$("#backgrounds-div").jcarousel({
 												        scroll: 1,
@@ -1189,6 +1147,48 @@ function thumbnail_controls(){
 												        initCallback: mycarousel_initCallback_3
 												});													
 
+												$('.upload_button').click(function(event) {
+													$('#li_index').val(   $(this).attr('li_index'));	
+													$(this).attr('li_index', -1);		
+													$('#image_type_id').val(  $(this).attr('image_type_id')  );
+													$('#image_id').val(  $(this).attr('image_id')  );
+													$('#Filedata').click();
+												
+												});
+												
+    $('#Filedata').live('click', function(e) {
+        var self = this;
+        var blur = function() {
+            $(self).blur();
+        }
+        setTimeout(blur, 0);
+    });	
+												
+												
+												
+//												$('#Filedata').change(function(event) {
+//															$('#form_image').submit();
+//												});	
+												
+												
+// $('#Filedata').click(function(event)
+//    {
+//        setTimeout(function()
+//        {
+//           // $('#form_image').submit()
+//        }, 3000);
+// 		});
+												
+												// http://stackoverflow.com/questions/2389341/jquery-change-event-to-input-file-on-ie
+												// http://stackoverflow.com/questions/5315528/triggering-change-event-on-file-input-when-invoked-from-javascript-ie-headache
+												// http://stackoverflow.com/questions/7067782/jquery-live-change-event-not-working-with-file-input
+												
+												//$("#Filedata").attr("onChange", "submit_image()");
+			
+//												$('#Filedata').change(function() {	
+//													//$('#form_image').submit()
+//													alert('I changed')
+//												});													
 
 												$('.hovering').live("mouseover", function(){
 															$(this).children('.small_icons_panel').show()

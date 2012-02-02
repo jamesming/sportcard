@@ -12,6 +12,39 @@ class Test extends CI_Controller {
 				$this->top_direction_arrow = '62';	
    }
 
+
+	function mytest(){
+?>
+
+<script type="text/javascript" 
+        src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+ 
+  google.load("jquery", "1.6.4");
+ 	// google.load("jqueryui", "1.8.16");
+
+</script>
+<script type="text/javascript" language="Javascript">
+$(document).ready(function() { 
+	
+});
+</script>
+<form 
+	id='form_image' 
+	method='POST' 
+	enctype='multipart/form-data' 
+	action='<?php echo base_url();    ?>index.php/home/upload'
+	>
+	<input  id='image_type_id' name="image_type_id"  type="" value="0">
+	<input  id='image_id' name="image_id"  type="" value="">
+	<input  id='li_index' name="li_index"  type="" value="-1">
+	<input type="file"  id='Filedata' name="Filedata"  value="" >
+	<input id="submit_button" type="submit" value="submit">
+</form>	
+<?php     
+	}
+
+
 	public function index(){
 		$select_what =  '*';
 		

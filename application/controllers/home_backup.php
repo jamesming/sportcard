@@ -139,6 +139,8 @@ class Home extends CI_Controller {
 					);
 			
 		};
+		
+
 
 		
 		$path_array = array(
@@ -148,39 +150,21 @@ class Home extends CI_Controller {
 					
 		$upload_path = $this->tools->set_directory_for_upload( $path_array );
 		
-		
-		$this->load->library('qquploadedfilexhr');
-		
-		// list of valid extensions, ex. array("jpeg", "xml", "bmp")
-		$allowedExtensions = array("jpeg", "bmp", "jpg", "png");
-		// max file size in bytes
-		$sizeLimit = 1 * 1024 * 1024;
-		
-		$uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-		$result = $uploader->handleUpload($upload_path . '/');
-
-		?>
-		{success:true,image_id:'<?php echo $image_id; ?>', image_type_id:'<?php echo $image_type_id; ?>', li_index:'<?php echo $li_index; ?>'}
-		<?php   	
-		
-/*	
-
-		ADAPT FILE UPLOADER FOR CODEIGNIGHTER TO BE FOUND:
-		http://codeigniter.com/forums/viewthread/175970/#941905  #3
-
-
 		$config['upload_path'] = './' . $upload_path;
 		$config['allowed_types'] = 'bmp|jpeg|gif|jpg|png';
 		$config['overwrite'] = 'TRUE';
 		$config['file_name'] = 'image.png';
 		
 		$this->load->library('upload', $config);
-		$this->upload->do_upload("qqfile");
-			
-
+		$this->upload->do_upload("Filedata");
 		
-*/		
-		  
+		?>
+		
+		<script type="text/javascript" language="Javascript">
+				document.location = '<?php echo base_url()    ?>index.php/home/resize?li_index=<?php  echo $li_index   ?>&image_id=<?php echo $image_id    ?>&image_type_id=<?php echo $image_type_id ?>&random=<?php echo  rand(5,126724523)   ?>';		
+		</script>
+		
+		<?php     
 	}	
 	
 	
