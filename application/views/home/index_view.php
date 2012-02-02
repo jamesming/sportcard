@@ -1107,21 +1107,36 @@ function store_position( dom_element ){
 }
 
 
-function mycarousel_initCallback(carousel, state) {
-		
+function mycarousel_initCallback_1(carousel, state) {
 		    if (state != 'init')
 		    return;
-
 				window.myCarousel_1 = carousel;
-
+};
+function mycarousel_initCallback_2(carousel, state) {
+		    if (state != 'init')
+		    return;
+				window.myCarousel_2 = carousel;
+};
+function mycarousel_initCallback_3(carousel, state) {
+		    if (state != 'init')
+		    return;
+				window.myCarousel_3 = carousel;
 };
 
 function thumbnail_controls(){
 
 												$("#backgrounds-div").jcarousel({
 												        scroll: 1,
-												        initCallback: mycarousel_initCallback
+												        initCallback: mycarousel_initCallback_1
 												});	
+												$("#pictures-div").jcarousel({
+												        scroll: 1,
+												        initCallback: mycarousel_initCallback_2
+												});													
+												$("#videos-div").jcarousel({
+												        scroll: 1,
+												        initCallback: mycarousel_initCallback_3
+												});													
 
 												$('.upload_button').click(function(event) {
 													$('#li_index').val(   $(this).attr('li_index'));	
@@ -1157,11 +1172,21 @@ function thumbnail_controls(){
 													thisLi = $(this).parent('div.small_icons_panel').parent('li');
 													thisParentUL = thisLi.parent();
 													
+													whichPanel = thisParentUL.parent().parent().attr('id');
+
+													if( whichPanel == 'backgrounds-div'){
+														whichCarousel = window.myCarousel_1;
+													}else if( whichPanel == 'pictures-div'){
+														whichCarousel = window.myCarousel_2;														
+													}else if( whichPanel == 'videos-div'){
+														whichCarousel = window.myCarousel_3;														
+													};
+
 													indexOf = thisLi.index()+1;
 
 													var li_array = new Array();
 
-													var e = window.myCarousel_1.get( indexOf );
+													var e = whichCarousel.get( indexOf );
 
 													theChildren = e.parent().find("li");
 								
@@ -1177,7 +1202,7 @@ function thumbnail_controls(){
 									        });
 									        
 								
-									        window.myCarousel_1.reset();
+									        whichCarousel.reset();
 													
 								          count = 1;
 								
@@ -1185,19 +1210,19 @@ function thumbnail_controls(){
 								
 								              if(value != null) {
 								              		value.addClass('hovering');
-								                 	window.myCarousel_1.add(count,  value);
+								                 	whichCarousel.add(count,  value);
 								                  count++;
 								              }
 								          });
 								          
 								
-													window.myCarousel_1.size( li_array.length)          
+													whichCarousel.size( li_array.length)          
 								          
 													
-													window.myCarousel_1.reload()
+													whichCarousel.reload()
 													
 													
-													window.myCarousel_1.scroll(parseInt( indexOf ),true);
+													whichCarousel.scroll(parseInt( indexOf ),true);
 													
 													
 													$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{

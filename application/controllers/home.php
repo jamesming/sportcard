@@ -360,19 +360,27 @@ class Home extends CI_Controller {
 							
 					<?php }else{ ?>  /* INSERT THUMB */
 						
-
-						myCarousel_1 = window.parent.window.myCarousel_1;
-
-						if( myCarousel_1.size() > -1 ){
-							myCarousel_1.size( myCarousel_1.size() + 1)
+						
+						
+						<?php if( $image_types[$image_type_id] == 'backgrounds-div' ){?>
+								whichCarousel = window.parent.window.myCarousel_1;
+						<?php }elseif( $image_types[$image_type_id] == 'pictures-div' ){ ?>	
+								whichCarousel = window.parent.window.myCarousel_2;						
+						<?php }elseif( $image_types[$image_type_id] == 'videos-div' ){ ?>	
+								whichCarousel = window.parent.window.myCarousel_3;						
+						<?php } ?>
+						
+						
+						if( whichCarousel.size() > -1 ){
+							whichCarousel.size( whichCarousel.size() + 1)
 						}else{
-							myCarousel_1.size( 0 )
+							whichCarousel.size( 0 )
 						};
 						
-						myCarousel_1.add(  (myCarousel_1.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='<?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?> ' ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' >[C]</div>": "")    ?></div></li>");					
+						whichCarousel.add(  (whichCarousel.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='<?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?> ' ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' >[C]</div>": "")    ?></div></li>");					
 	
 	
-					  myCarousel_1.scroll(parseInt(myCarousel_1.size()),true);
+					  whichCarousel.scroll(parseInt(whichCarousel.size()),true);
 					  
 						window.parent.$('#<?php echo $image_types[$image_type_id] ?> ul li').last()
 							.attr('image_type_id',<?php  echo $image_type_id   ?>)
