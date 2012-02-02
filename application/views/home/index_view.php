@@ -527,7 +527,7 @@
 													<td>
 
 
-														<div  id='backgrounds-div' class='mycarousel1 jcarousel-skin-tango'>
+														<div  id='backgrounds-div' class=' jcarousel-skin-tango'>
 															<ul class='thumbs-ul'   >
 																
 <?php if( isset($data['users']['backgrounds']['images']) ){?>
@@ -746,7 +746,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 
-			$('#control-panel-box #panel-tabs_container li#panel-tab-1').click()
+			$('#control-panel-box #panel-tabs_container li#panel-tab-2').click()
 
 });
 
@@ -1112,18 +1112,16 @@ function mycarousel_initCallback(carousel, state) {
 		    if (state != 'init')
 		    return;
 
-				window.myCarousel = carousel;
+				window.myCarousel_1 = carousel;
 
 };
 
 function thumbnail_controls(){
 
-												$(".mycarousel1").jcarousel({
+												$("#backgrounds-div").jcarousel({
 												        scroll: 1,
 												        initCallback: mycarousel_initCallback
 												});	
-
-
 
 												$('.upload_button').click(function(event) {
 													$('#li_index').val(   $(this).attr('li_index'));	
@@ -1133,14 +1131,11 @@ function thumbnail_controls(){
 													$('#Filedata').click();
 												});
 
-
 												$('.hovering').live("mouseover", function(){
 															$(this).children('.small_icons_panel').show()
 												 }).live("mouseout", function(){
 															$(this).children('.small_icons_panel').hide()
 												 });
-
-
 
 												
 												$('.swap').live("click", function(){
@@ -1160,14 +1155,14 @@ function thumbnail_controls(){
 												$('.delete').live("click", function(){
 													
 													thisLi = $(this).parent('div.small_icons_panel').parent('li');
+													thisParentUL = thisLi.parent();
 													
 													indexOf = thisLi.index()+1;
 
 													var li_array = new Array();
 
-													var e = window.myCarousel.get( indexOf );
-								
-													theParentUL = e.parent()
+													var e = window.myCarousel_1.get( indexOf );
+
 													theChildren = e.parent().find("li");
 								
 								
@@ -1182,7 +1177,7 @@ function thumbnail_controls(){
 									        });
 									        
 								
-									        window.myCarousel.reset();
+									        window.myCarousel_1.reset();
 													
 								          count = 1;
 								
@@ -1190,26 +1185,26 @@ function thumbnail_controls(){
 								
 								              if(value != null) {
 								              		value.addClass('hovering');
-								                 	window.myCarousel.add(count,  value);
+								                 	window.myCarousel_1.add(count,  value);
 								                  count++;
 								              }
 								          });
 								          
 								
-													window.myCarousel.size( li_array.length)          
+													window.myCarousel_1.size( li_array.length)          
 								          
 													
-													window.myCarousel.reload()
+													window.myCarousel_1.reload()
 													
 													
-													window.myCarousel.scroll(parseInt( indexOf ),true);
+													window.myCarousel_1.scroll(parseInt( indexOf ),true);
 													
 													
 													$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
 													image_id:$(this).parent().parent().attr('image_id')
 													},function(data) {
 														
-														last_li = theParentUL.children('li').last();
+														last_li = thisParentUL.children('li').last();
 														
 														/* CHANGING BACKGROUND */
 														if( last_li.attr('image_type_id') == 0){ 

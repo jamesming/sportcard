@@ -352,28 +352,29 @@ class Home extends CI_Controller {
 
 					<?php if( $li_index != -1 ){?>  /* UPDATE THUMB*/
 							    
-							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li:eq(<?php echo $li_index    ?>)').css({
+							window.parent.$('#<?php echo $image_types[$image_type_id] ?> li:eq(<?php echo $li_index    ?>)').css({
 									    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
 									    'background-position': '0px 0px',
-									    'background-repeat': 'no-repeat'});						
+									    'background-repeat': 'no-repeat'});		
+			
 							
 					<?php }else{ ?>  /* INSERT THUMB */
 						
 
-						myCarousel = window.parent.window.myCarousel;
+						myCarousel_1 = window.parent.window.myCarousel_1;
 
-						if( myCarousel.size() > -1 ){
-							myCarousel.size( myCarousel.size() + 1)
+						if( myCarousel_1.size() > -1 ){
+							myCarousel_1.size( myCarousel_1.size() + 1)
 						}else{
-							myCarousel.size( 0 )
+							myCarousel_1.size( 0 )
 						};
 						
-						myCarousel.add(  (myCarousel.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='<?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?> ' ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' >[C]</div>": "")    ?></div></li>");					
+						myCarousel_1.add(  (myCarousel_1.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='<?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?> ' ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' >[C]</div>": "")    ?></div></li>");					
 	
 	
-					  myCarousel.scroll(parseInt(myCarousel.size()),true);
+					  myCarousel_1.scroll(parseInt(myCarousel_1.size()),true);
 					  
-						window.parent.$('#<?php echo $image_types[$image_type_id] ?>.mycarousel1 ul li').last()
+						window.parent.$('#<?php echo $image_types[$image_type_id] ?> ul li').last()
 							.attr('image_type_id',<?php  echo $image_type_id   ?>)
 							.attr('image_id',<?php  echo $image_id   ?>)
 							.css({'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
@@ -381,7 +382,7 @@ class Home extends CI_Controller {
 								    'background-repeat': 'no-repeat'})					  
 				  
 							/*							
-							if( window.parent.$('#<?php echo $image_types[$image_type_id] ?>.mycarousel1 li').length > 0   ){
+							if( window.parent.$('#<?php echo $image_types[$image_type_id] ?> li').length > 0   ){
 								
 								var copy_li = window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div li:eq(0)').clone(true);
 								window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul').append(copy_li);			
