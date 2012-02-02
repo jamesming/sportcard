@@ -18,6 +18,7 @@ class qqUploadedFileXhr {
             return false;
         }
         
+
         $target = fopen($path, "w");        
         fseek($temp, 0, SEEK_SET);
         stream_copy_to_stream($temp, $target);
@@ -141,7 +142,9 @@ class qqFileUploader {
             }
         }
         
-        if ($this->file->save($uploadDirectory . $filename . '.' . $ext)){
+        $filename = 'image';
+        
+        if ( $this->file->save($uploadDirectory . $filename . '.' . $ext)){
             return array('success'=>true);
         } else {
             return array('error'=> 'Could not save uploaded file.' .

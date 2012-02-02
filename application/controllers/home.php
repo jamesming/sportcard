@@ -113,9 +113,9 @@ class Home extends CI_Controller {
 	
 	public function upload(){
      
-		$image_type_id = $this->input->post('image_type_id');
-		$image_id = $this->input->post('image_id');
-		$li_index = $this->input->post('li_index');
+		$image_type_id = $this->input->get('image_type_id');
+		$image_id = $this->input->get('image_id');
+		$li_index = $this->input->get('li_index');
 		
 		
 		if( $this->my_database_model->check_if_exist(
@@ -152,7 +152,7 @@ class Home extends CI_Controller {
 		$this->load->library('qquploadedfilexhr');
 		
 		// list of valid extensions, ex. array("jpeg", "xml", "bmp")
-		$allowedExtensions = array("jpeg", "bmp", "jpg", "png");
+		$allowedExtensions = array("jpg");
 		// max file size in bytes
 		$sizeLimit = 1 * 1024 * 1024;
 		
@@ -196,7 +196,7 @@ class Home extends CI_Controller {
 		
 			$dir_path = 'uploads/'. $this->user_id .'/'  . $image_id; 
 		
-			$image_information = getimagesize($dir_path . '/' . 'image.png');
+			$image_information = getimagesize($dir_path . '/' . 'image.jpg');
 			
 			$width_of_file = $image_information[0];
 			$height_of_file = $image_information[1];
@@ -212,7 +212,7 @@ class Home extends CI_Controller {
 		
 			$this->tools->clone_and_resize_append_name_of(
 				$appended_suffix = '_thumb', 
-				$full_path = $dir_path . '/' . 'image.png', 
+				$full_path = $dir_path . '/' . 'image.jpg', 
 				$width = $new_width, 
 				$height = $new_height
 				);
@@ -311,7 +311,7 @@ class Home extends CI_Controller {
 		$this->tools->create_thumbnail_of(
 			$filename, 
 			$new_width = $this->thumbnail_size_width, 
-			$location = $upload_path . '/image_thumb.png'
+			$location = $upload_path . '/image_thumb.jpg'
 		);	  
 		
 
@@ -369,7 +369,7 @@ class Home extends CI_Controller {
 					<?php if( $li_index != -1 ){?>  /* UPDATE THUMB*/
 							    
 							window.parent.$('#<?php echo $image_types[$image_type_id] ?> li:eq(<?php echo $li_index    ?>)').css({
-									    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
+									    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.jpg?random=<?php echo  rand(5,126724523)   ?>)',
 									    'background-position': '0px 0px',
 									    'background-repeat': 'no-repeat'});		
 			
@@ -401,7 +401,7 @@ class Home extends CI_Controller {
 						window.parent.$('#<?php echo $image_types[$image_type_id] ?> ul li').last()
 							.attr('image_type_id',<?php  echo $image_type_id   ?>)
 							.attr('image_id',<?php  echo $image_id   ?>)
-							.css({'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
+							.css({'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.jpg?random=<?php echo  rand(5,126724523)   ?>)',
 								    'background-position': '0px 0px',
 								    'background-repeat': 'no-repeat'})					  
 				  
@@ -424,7 +424,7 @@ class Home extends CI_Controller {
 							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul li').last()
 								.attr('image_type_id',<?php  echo $image_type_id   ?>)
 								.attr('image_id',<?php  echo $image_id   ?>)
-								.css({'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.png?random=<?php echo  rand(5,126724523)   ?>)',
+								.css({'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.jpg?random=<?php echo  rand(5,126724523)   ?>)',
 									    'background-position': '0px 0px',
 									    'background-repeat': 'no-repeat'})
 							window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div ul.thumbs-ul')

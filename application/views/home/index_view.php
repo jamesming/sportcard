@@ -326,7 +326,7 @@ display:none;
 }
 </style>
 
-<!--
+
 <script type="text/javascript" 
         src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
@@ -335,13 +335,13 @@ display:none;
  	google.load("jqueryui", "1.8.16");
 
 </script>
--->
+
 <!--  
 http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chrome
 -->
-
+<!--
 	<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
-
+-->
 
 	<link rel="stylesheet" href="<?php echo  base_url();   ?>js/jquery-ui/themes/base/jquery.ui.all.css"> 
 	<script src="<?php echo  base_url();   ?>js/external/jquery.bgiframe-2.1.2.js"></script> 
@@ -582,7 +582,7 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 																
 																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
@@ -1170,8 +1170,7 @@ function thumbnail_controls(){
 												        li_index: -1
 												    },
 						                onComplete: function(id, fileName, responseJSON){
-						                	alert(responseJSON['image_id']);
-						                	
+
 						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/home/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
 						                	
 						                },
