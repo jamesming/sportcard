@@ -349,7 +349,7 @@ class Home extends CI_Controller {
 									    'background-position': 'center 0px',
 									    'background-repeat': 'no-repeat'});
 						
-							window.parent.window.uploader.setParams({
+							window.parent.window.uploader_backgrounds.setParams({
 					        image_id:  0,
 					        image_type_id: 0,
 					        li_index: -1

@@ -586,7 +586,7 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
-																			<div  class='update-image ' >[<?php echo $image_id     ?>]
+																			<div  class='update-image backgrounds_update_button' >[<?php echo $image_id     ?>]
 																			</div>
 																			<div  class='swap ' >[C]
 																			</div>																																							
@@ -620,8 +620,16 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 												<tr>
 
 													<td >
+<!--														
 														<div image_id='0' image_type_id='1'  li_index='-1' class='upload_button'>upload
 														</div>
+														-->
+													<div id="upload_button_pictures"  >		
+														<noscript>			
+															<p>Please enable JavaScript to use file uploader.</p>
+															<!-- or put a simple form for upload here -->
+														</noscript>         
+													</div>
 													</td>													
 												</tr>
 
@@ -639,7 +647,7 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
-																			<div  class='update-image ' >[E]
+																			<div  class='update-image  pictures_update_button' >[E]
 																			</div>																																				
 																		</div>
 																	</li>
@@ -1150,7 +1158,7 @@ function mycarousel_initCallback_3(carousel, state) {
 
 function thumbnail_controls(){
 
-						            window.uploader = new qq.FileUploader({
+						            window.uploader_backgrounds = new qq.FileUploader({
 						                element: document.getElementById('upload_button_backgrounds'),
 						                action: '<?php echo base_url();    ?>index.php/home/upload',
 						                params: {
@@ -1166,11 +1174,25 @@ function thumbnail_controls(){
 						                debug: true
 						            }); 
 						            
-
+						            window.uploader_pictures = new qq.FileUploader({
+						                element: document.getElementById('upload_button_pictures'),
+						                action: '<?php echo base_url();    ?>index.php/home/upload',
+						                params: {
+												        image_id: 0,
+												        image_type_id: 1,
+												        li_index: -1
+												    },
+						                onComplete: function(id, fileName, responseJSON){
+															//alert(JSON.stringify(responseJSON));
+						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/home/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
+						                	
+						                },
+						                debug: true
+						            }); 
 						            
-												$('.update-image').live("click", function(){
+												$('.update-image.backgrounds_update_button').live("click", function(){
 
-														window.uploader.setParams({
+														window.uploader_backgrounds.setParams({
 												        image_id:  $(this).parent().parent().attr('image_id') ,
 												        image_type_id: $(this).parent().parent().attr('image_type_id') ,
 												        li_index: $(this).parent().parent().index()
