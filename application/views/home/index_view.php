@@ -1240,7 +1240,28 @@ function thumbnail_controls(){
 												
 												$('.thumbs-ul li .videos_preview.inside_li').click(function(event) {						             
 
-															$('#preview_box_inside').html("<iframe src='http://www.msnbc.com' name='preview_video'	style='background:white;border:1px solid gray;width:833px;height:281px'  	border='1' 	frameborder='1' 	scrolling='auto' 	align='center' 	hspace='0' 	vspace=''	/>");
+
+//													$.post("<?php echo base_url(). 'index.php/home/remove';    ?>",{
+//													image_id:$(this).parent().parent().attr('image_id')
+//													},function(data) {
+//														
+//														last_li = thisParentUL.children('li').last();
+//														
+//														/* CHANGING BACKGROUND */
+//														if( last_li.attr('image_type_id') == 0){ 
+//
+//																$('body').css({
+//														    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/' + last_li.attr('image_id') + '/image.jpg?random=<?php echo   rand(5,124344523)   ?>)',
+//														    'background-position': 'center 0px',
+//														    'background-repeat': 'no-repeat'});	
+//														    															
+//														};
+//														
+//													});																
+
+
+															// $('#preview_box_inside').html(data);
+															 $('#preview_box_inside').html("<iframe src='http://www.msnbc.com' name='preview_video'	style='background:white;border:1px solid gray;width:833px;height:281px'  	border='1' 	frameborder='1' 	scrolling='auto' 	align='center' 	hspace='0' 	vspace=''	/>");
 		
 												});													
 	

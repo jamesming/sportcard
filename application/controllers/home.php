@@ -445,6 +445,28 @@ class Home extends CI_Controller {
 	}
 	
 	
+	function get_video_iframe(){
+		
+	$images	= $this->my_database_model->select_from_table(
+			$table = 'images', 
+			$select_what = 'youtube_video_id', 
+			$where_array = array('id' => $this->input->post('image_id')), 
+			$use_order = false, 
+			$order_field = 'id', 
+			$order_direction = 'asc', 
+			$limit = -1
+			);
+		
+	$youtube_video_id = $images[0]->youtube_video_id;
+	
+	echo $this->tools->create_iframe_html_from_youtube_video_id( 
+		$youtube_video_id, 
+		$width = 833, 
+		$height = 281
+		);
+		
+	}
+	
 	public function a3_insert(){
 		
 		$string = '';
