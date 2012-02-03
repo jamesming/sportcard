@@ -4,7 +4,7 @@
 <?php     	$this->load->view('header/blueprint_css.php');  ?>
 <style>
 	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/<?php echo ( isset( $data['users']['backgrounds']['images'][0]) ? $data['users']['backgrounds']['images'][0]:'0' )    ?>/image.png);
+  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/<?php echo ( isset( $data['users']['backgrounds']['images'][0]) ? $data['users']['backgrounds']['images'][0]:'0' )    ?>/image.jpg);
   background-position:center 0px;
   background-repeat:no-repeat;
   -webkit-background-size:1500px 1500px;
@@ -586,7 +586,7 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
-																			<div  class='update-image ' >[E]
+																			<div  class='update-image ' >[<?php echo $image_id     ?>]
 																			</div>
 																			<div  class='swap ' >[C]
 																			</div>																																							
@@ -743,18 +743,7 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 			</div>
 </div>
 
-<style>
-form#form_image input{
-	display:block;
-	width:90px;
-}
-form#form_image input[type=file]{
-	visibility:visible;
-	display:block;
-	width:220px;
-}
 
-</style>
 	
 <iframe  
 	id="results"   
@@ -1161,7 +1150,7 @@ function mycarousel_initCallback_3(carousel, state) {
 
 function thumbnail_controls(){
 
-						            var uploader = new qq.FileUploader({
+						            window.uploader = new qq.FileUploader({
 						                element: document.getElementById('upload_button_backgrounds'),
 						                action: '<?php echo base_url();    ?>index.php/home/upload',
 						                params: {
@@ -1175,7 +1164,20 @@ function thumbnail_controls(){
 						                	
 						                },
 						                debug: true
-						            });  
+						            }); 
+						            
+
+						            
+												$('.update-image').live("click", function(){
+
+														window.uploader.setParams({
+												        image_id:  $(this).parent().parent().attr('image_id') ,
+												        image_type_id: $(this).parent().parent().attr('image_type_id') ,
+												        li_index: $(this).parent().parent().index()
+														});
+														$('#btnUpload').click();// REFER TO fileuploader.js line 864. added  id='btnUpload'
+														
+												})						             
 	
 
 												$("#backgrounds-div").jcarousel({
@@ -1201,17 +1203,11 @@ function thumbnail_controls(){
 												
 												$('.swap').live("click", function(){
 													$('body').css({
-														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.png)'
+														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.jpg)'
 														})		
 												})	
 																							
-												$('.update-image').live("click", function(){
 
-														$('#li_index').val($(this).parent().parent().index());
-														$('#image_type_id').val(  $(this).parent().parent().attr('image_type_id')  );
-														$('#image_id').val(  $(this).parent().parent().attr('image_id')  );
-														$('#Filedata').click();
-												})
 												
 												$('.delete').live("click", function(){
 													

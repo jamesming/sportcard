@@ -119,15 +119,10 @@ class Home extends CI_Controller {
 		
 		
 		if( $this->my_database_model->check_if_exist(
-							$where_array = array('id'=>$image_id), $table = 'images' )
+							$where_array = array('id' => $image_id), $table = 'images' )
 		){
-					$this->my_database_model->update_table_where(
-										$table = 'images', 
-										$where_array = array(
-											'id' => $image_id
-										),
-										$set_what_array = array()
-										);					
+
+			
 		}else{
 			
 					$image_id = $this->my_database_model->insert_table(
@@ -353,6 +348,13 @@ class Home extends CI_Controller {
 									    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image.png?random=<?php echo   rand(5,124344523)   ?>)',
 									    'background-position': 'center 0px',
 									    'background-repeat': 'no-repeat'});
+						
+							window.parent.window.uploader.setParams({
+					        image_id:  0,
+					        image_type_id: 0,
+					        li_index: -1
+							});
+		
 						
 						
 					<?php } ?>
