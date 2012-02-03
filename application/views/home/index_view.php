@@ -1190,6 +1190,8 @@ function thumbnail_controls(){
 						                debug: true
 						            }); 
 						            
+						            
+						            
 												$('.update-image.backgrounds_update_button').live("click", function(){
 
 														window.uploader_backgrounds.setParams({
@@ -1199,7 +1201,10 @@ function thumbnail_controls(){
 														});
 														$('#btnUpload').click();// REFER TO fileuploader.js line 864. added  id='btnUpload'
 														
-												})						             
+												})
+												
+												
+																				             
 	
 
 												$("#backgrounds-div").jcarousel({
