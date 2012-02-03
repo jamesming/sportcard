@@ -1159,7 +1159,7 @@ function thumbnail_controls(){
 												        li_index: -1
 												    },
 						                onComplete: function(id, fileName, responseJSON){
-
+															//alert(JSON.stringify(responseJSON));
 						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/home/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
 						                	
 						                },
@@ -1277,7 +1277,7 @@ function thumbnail_controls(){
 														if( last_li.attr('image_type_id') == 0){ 
 
 																$('body').css({
-														    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/' + last_li.attr('image_id') + '/image.png?random=<?php echo   rand(5,124344523)   ?>)',
+														    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/' + last_li.attr('image_id') + '/image.jpg?random=<?php echo   rand(5,124344523)   ?>)',
 														    'background-position': 'center 0px',
 														    'background-repeat': 'no-repeat'});	
 														    															
