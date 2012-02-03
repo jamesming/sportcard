@@ -150,7 +150,12 @@
 			padding:20px;	
 			}
 			
-			
+.inside_li{
+    clear: both;
+    height: 75px;
+    width: 181px;
+    cursor:pointer;
+}			
 			
 .jcarousel-skin-tango ul.thumbs-ul li div.small_icons_panel{
   float: right;
@@ -227,13 +232,13 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(http://sorgalla.com/projects/jcarousel/skins/tango/next-horizontal.png) no-repeat 0 0;
+    background: transparent url(<?php echo base_url()     ?>images/next-horizontal.png) no-repeat 0 0;
 }
 
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-next-horizontal {
     left: 5px;
     right: auto;
-    background-image: url(http://sorgalla.com/projects/jcarousel/skins/tango/prev-horizontal.png);
+    background-image: url(<?php echo base_url()     ?>images/prev-horizontal.png);
 }
 
 .jcarousel-skin-tango .jcarousel-next-horizontal:hover,
@@ -260,13 +265,13 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: transparent url(http://sorgalla.com/projects/jcarousel/skins/tango/prev-horizontal.png) no-repeat 0 0;
+    background: transparent url(<?php echo base_url()     ?>images/prev-horizontal.png) no-repeat 0 0;
 }
 
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal {
     left: auto;
     right: 5px;
-    background-image: url(http://sorgalla.com/projects/jcarousel/skins/tango/next-horizontal.png);
+    background-image: url(<?php echo base_url()     ?>images/next-horizontal.png);
 }
 
 .jcarousel-skin-tango .jcarousel-prev-horizontal:hover, 
@@ -591,6 +596,8 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 																			<div  class='swap ' >[C]
 																			</div>																																							
 																		</div>
+																		<div  class='inside_li images_preview' >
+																		</div>
 																	</li>
 																
 																<?php } ?>
@@ -643,13 +650,15 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 
 																<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
 
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.png)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
 																		<div  class='small_icons_panel transparent' >
 																			<div  class='delete ' >[X]
 																			</div>
 																			<div  class='update-image  pictures_update_button' >[E]
 																			</div>																																				
 																		</div>
+																		<div  class='inside_li images_preview' >
+																		</div>																		
 																	</li>
 																
 																<?php } ?>
@@ -726,6 +735,8 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 																				<div  class='update-video_url '  >[E]
 																				</div>																																					
 																			</div>
+																		<div  class='inside_li videos_preview' >
+																		</div>																			
 																		</li>
 																		
 																<?php };?>
@@ -747,6 +758,20 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 										</div>	
 									</li>									
 							</ul>
+							<style>
+							#preview_box{
+								padding:20px;	
+							}
+							#preview_box_inside{
+						    background: none repeat scroll 0 0 white;
+						    border: 0px solid gray;
+						    height: 281px;
+							}
+							</style>
+							<div  id='preview_box'>
+								<div  id='preview_box_inside'>
+								</div>
+							</div>
 				</div>
 			</div>
 </div>
@@ -756,7 +781,7 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 <iframe  
 	id="results"   
 	name="results"
-	style='background:white;border:1px solid gray;width:200px;height:200px'  
+	style='background:white;border:0px solid gray;width:0px;height:0px'  
 	border="1" 
 	frameborder="1" 
 	scrolling="auto" 
@@ -780,7 +805,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 
-			$('#control-panel-box #panel-tabs_container li#panel-tab-2').click()
+			$('#control-panel-box #panel-tabs_container li#panel-tab-4').click()
 
 
 });
@@ -1204,7 +1229,20 @@ function thumbnail_controls(){
 												})
 												
 												
-																				             
+												$('.thumbs-ul li .images_preview.inside_li').click(function(event) {						             
+
+															
+															$('#preview_box_inside').html('').css({
+														    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/'  + $(this).parent().attr('image_id') + '/image.jpg?random=<?php echo   rand(5,124344523)   ?>)',
+														    'background-position': 'center 0px',
+														    'background-repeat': 'no-repeat'});
+												});	
+												
+												$('.thumbs-ul li .videos_preview.inside_li').click(function(event) {						             
+
+															$('#preview_box_inside').html("<iframe src='http://www.msnbc.com' name='preview_video'	style='background:white;border:1px solid gray;width:833px;height:281px'  	border='1' 	frameborder='1' 	scrolling='auto' 	align='center' 	hspace='0' 	vspace=''	/>");
+		
+												});													
 	
 
 												$("#backgrounds-div").jcarousel({
