@@ -1482,14 +1482,14 @@ $.fn.htmlbox=function(options){
 																	<div  class='input-label ' >First Name
 																	</div>
 																	<div>
-																		<input  class='bio_inputs '  name="first_name" type="" value="">
+																		<input  class='bio_inputs '  id='first_name' name="first_name" type="" value="">
 																	</div>
 																</td>
 																<td>
 																	<div  class='input-label ' >Last Name
 																	</div>
 																	<div>
-																		<input   class='bio_inputs ' name="last_name"  type="" value="">
+																		<input   class='bio_inputs '  id='last_name' name="last_name"  type="" value="">
 																	</div>																				
 																</td>
 															</tr>
@@ -1498,14 +1498,14 @@ $.fn.htmlbox=function(options){
 																	<div  class='input-label ' >Position or Title
 																	</div>
 																	<div>
-																		<input   class='bio_inputs ' name="position" type="" value="">
+																		<input   class='bio_inputs '  id='position' name="position" type="" value="">
 																	</div>
 																</td>
 																<td>
 																	<div  class='input-label ' >School, Team, or Organization
 																	</div>
 																	<div>
-																		<input   class='bio_inputs '  name="organization" type="" value="">
+																		<input   class='bio_inputs '  id='organization' name="organization" type="" value="">
 																	</div>																				
 																</td>
 															</tr>
@@ -1514,7 +1514,7 @@ $.fn.htmlbox=function(options){
 																	<div  class='input-label ' >Hometown or Location
 																	</div>
 																	<div>
-																		<input   class='bio_inputs '  name="location" type="" value="">
+																		<input   class='bio_inputs '  id='location' name="location" type="" value="">
 																	</div>																		
 																</td>
 																<td>
@@ -1524,7 +1524,7 @@ $.fn.htmlbox=function(options){
 																<td>
 																	<div  class='input-label ' >sports
 																	</div>	
-																	<select   class='bio_inputs ' name='sports'>
+																	<select   class='bio_inputs '  id='sports' name='sports'>
 																		<option>Football</option>
 																		<option>Baseball</option>
 																		<option>Soccer</option>
@@ -1582,7 +1582,7 @@ $.fn.htmlbox=function(options){
 																	</div>
 																
 																	<div id='textarea_div' class='clearfix ' >
-																			<textarea  name='bio' class='bio_inputs clearfix' id='text_area'><?php  echo 'test'  ?></textarea>
+																			<textarea  name='bio' class='bio_inputs clearfix' id='text_area'><?php echo ( isset( $data['users'][0]['bio'] ) ? $data['users'][0]['bio']:'' )    ?></textarea>
 																	</div>
 
 														
@@ -1649,6 +1649,13 @@ $(document).ready(function() {
 
 function get_stored_configurations(){
 	
+			$('#first_name').val('<?php echo ( isset( $data['users'][0]['first_name'] ) ? $data['users'][0]['first_name']:'' )    ?>');
+			$('#last_name').val('<?php echo ( isset( $data['users'][0]['last_name'] ) ? $data['users'][0]['last_name']:'' )    ?>');
+			$('#position').val('<?php echo ( isset( $data['users'][0]['position'] ) ? $data['users'][0]['position']:'' )    ?>');
+			$('#organization').val('<?php echo ( isset( $data['users'][0]['organization'] ) ? $data['users'][0]['organization']:'' )    ?>');
+			$('#location').val('<?php echo ( isset( $data['users'][0]['location'] ) ? $data['users'][0]['location']:'' )    ?>');
+			$('#sports').val('<?php echo ( isset( $data['users'][0]['sports'] ) ? $data['users'][0]['sports']:'' )    ?>');
+
 
 			$('#head-line-box').css({
 				'position':'absolute',
@@ -1725,7 +1732,7 @@ function store_custom_configuration(){
 				
 				$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
 				table:'users',
-				id:1,
+				id:<?php echo $data['user_id']    ?>,
 				set_what:font_name_serialized
 				},function(data) {
 				
@@ -1869,7 +1876,9 @@ function bind_events(){
 						$(this).parent().children('li').css({background:'lightblue'});
 						$(this).css({background:'white'});
 						
-						if( $(this).attr('id') == 'panel-tab-5'){
+						if( $(this).attr('id') == 'panel-tab-5' ||
+								$(this).attr('id') == 'panel-tab-1' 
+						){
 							$('#preview_box').hide()
 						}else{
 							$('#preview_box').show()
@@ -1899,30 +1908,46 @@ function bind_events(){
 				var mbox = $("#text_area").css({
 						height:"380px",
 						width:"100%"
-						}).htmlbox({skin:"gray"});
+						}).htmlbox({
+toolbars:[
+ [
+						// Cut, Copy, Paste
+						"code","separator","cut","copy","paste",
+						// Undo, Redo
+						"separator","undo","redo",
+						// Bold, Italic, Underline
+						"separator","bold","italic","underline",
+						// Left, Right, Center, Justify
+						"separator","justify","left","center","right"
+						
+						]
+					],
+					skin:"gray"
+					});
 				
 
 				$('.save, #save_text').click(function(event) {
 					
 						$('#text_area').val(mbox.get_html());
-					
-						alert($('#panel-5 .bio_inputs').serialize());
-					
+
 						var save_dom = $('.save'); 
 					
 						save_dom.removeClass('save').addClass('loading');
 					
-						$.post("<?php echo base_url(). 'index.php/main/update_wysiwyg'; ?>",{
-							field:'test',
-							value: mbox.get_html()
-							},function(data) {
+	
+						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+						table:'users',
+						id:<?php echo $data['user_id']    ?>,
+						set_what:$('.bio_inputs').serialize()
+						},function(data) {
+									alert(data);
+									setTimeout(function() { 											
+									save_dom.removeClass('loading').addClass('save');
+																}, 300);	
 								
-							setTimeout(function() { 											
-							save_dom.removeClass('loading').addClass('save');
-														}, 300);	
-								
+							
+						});	
 
-							});
 	
 				})	
 					

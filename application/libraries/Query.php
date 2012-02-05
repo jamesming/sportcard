@@ -164,7 +164,7 @@ class Query {
 				$field_key_value = explode("=",$field);
 				$key = urldecode($field_key_value[0]);
 				$value = urldecode($field_key_value[1]);
-				eval("$$key = \"$value\";");
+				//eval("$$key = \"$value\";");
 				$set_what_array[$key] = $value;
 			};	  
 
