@@ -1461,6 +1461,7 @@ $.fn.htmlbox=function(options){
 											}
 									</style>
 									<li  id='panel-5'    class='panels ' >
+									
 										<div class='div-panel '>
 										
 												<div  class='large_header ' >Edit you Bio
@@ -1481,14 +1482,14 @@ $.fn.htmlbox=function(options){
 																	<div  class='input-label ' >First Name
 																	</div>
 																	<div>
-																		<input name="" id="" type="" value="">
+																		<input  class='bio_inputs '  name="first_name" type="" value="">
 																	</div>
 																</td>
 																<td>
 																	<div  class='input-label ' >Last Name
 																	</div>
 																	<div>
-																		<input name="" id="" type="" value="">
+																		<input   class='bio_inputs ' name="last_name"  type="" value="">
 																	</div>																				
 																</td>
 															</tr>
@@ -1497,14 +1498,14 @@ $.fn.htmlbox=function(options){
 																	<div  class='input-label ' >Position or Title
 																	</div>
 																	<div>
-																		<input name="" id="" type="" value="">
+																		<input   class='bio_inputs ' name="position" type="" value="">
 																	</div>
 																</td>
 																<td>
 																	<div  class='input-label ' >School, Team, or Organization
 																	</div>
 																	<div>
-																		<input name="" id="" type="" value="">
+																		<input   class='bio_inputs '  name="organization" type="" value="">
 																	</div>																				
 																</td>
 															</tr>
@@ -1513,7 +1514,7 @@ $.fn.htmlbox=function(options){
 																	<div  class='input-label ' >Hometown or Location
 																	</div>
 																	<div>
-																		<input name="" id="" type="" value="">
+																		<input   class='bio_inputs '  name="location" type="" value="">
 																	</div>																		
 																</td>
 																<td>
@@ -1523,7 +1524,7 @@ $.fn.htmlbox=function(options){
 																<td>
 																	<div  class='input-label ' >sports
 																	</div>	
-																	<select>
+																	<select   class='bio_inputs ' name='sports'>
 																		<option>Football</option>
 																		<option>Baseball</option>
 																		<option>Soccer</option>
@@ -1580,8 +1581,8 @@ $.fn.htmlbox=function(options){
 																				</div>
 																	</div>
 																
-																	<div  id='textarea_div' class='clearfix ' >
-																			<textarea  class=' clearfix' id='text_area'><?php  echo 'test'  ?></textarea>
+																	<div id='textarea_div' class='clearfix ' >
+																			<textarea  name='bio' class='bio_inputs clearfix' id='text_area'><?php  echo 'test'  ?></textarea>
 																	</div>
 
 														
@@ -1896,11 +1897,16 @@ function bind_events(){
 			
 			
 				var mbox = $("#text_area").css({
-						height:"380px"
+						height:"380px",
+						width:"100%"
 						}).htmlbox({skin:"gray"});
 				
 
 				$('.save, #save_text').click(function(event) {
+					
+						$('#text_area').val(mbox.get_html());
+					
+						alert($('#panel-5 .bio_inputs').serialize());
 					
 						var save_dom = $('.save'); 
 					
