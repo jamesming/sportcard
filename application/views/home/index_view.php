@@ -1909,16 +1909,12 @@ function bind_events(){
 						height:"380px",
 						width:"100%"
 						}).htmlbox({
-toolbars:[
- [
-						// Cut, Copy, Paste
+						toolbars:[
+ 						[
 						"code","separator",
-						
-						// Bold, Italic, Underline
-						"separator","bold","italic","underline","fontsize",
-						// Left, Right, Center, Justify
-						"separator","justify","left","center","right"
-						
+						"undo","redo","separator",
+						"bold","italic","underline","fontsize","separator",
+						"justify","left","center","right"
 						]
 					],
 					skin:"gray"
