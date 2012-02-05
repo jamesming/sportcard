@@ -1912,11 +1912,10 @@ function bind_events(){
 toolbars:[
  [
 						// Cut, Copy, Paste
-						"code","separator","cut","copy","paste",
-						// Undo, Redo
-						"separator","undo","redo",
+						"code","separator",
+						
 						// Bold, Italic, Underline
-						"separator","bold","italic","underline",
+						"separator","bold","italic","underline","fontsize",
 						// Left, Right, Center, Justify
 						"separator","justify","left","center","right"
 						
@@ -1940,7 +1939,7 @@ toolbars:[
 						id:<?php echo $data['user_id']    ?>,
 						set_what:$('.bio_inputs').serialize()
 						},function(data) {
-									alert(data);
+
 									setTimeout(function() { 											
 									save_dom.removeClass('loading').addClass('save');
 																}, 300);	
