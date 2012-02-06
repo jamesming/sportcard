@@ -13,6 +13,59 @@ class Test extends CI_Controller {
    }
 
 
+	function palorama(){
+
+		$objects = $this->CI->my_database_model->select_from_table( 
+			$table = 'users_objects', 
+			$select_what = 'id',    
+			$where_array = array(
+				'user_id' => $this->user_id,
+				'rate >=' => 2,
+			), 
+			$use_order = TRUE, 
+			$order_field = 'user_id', 
+			$order_direction = 'asc', 
+			$limit = -1
+			);		
+
+		foreach( $objects  as  $key => $object){
+			
+				$users_object = $this->CI->my_database_model->select_from_table( 
+					$table = 'users_objects', 
+					$select_what = 'user_id',    
+					$where_array = array(
+						'object_id' => $object->id,
+						'rate >=' => 2,
+					), 
+					$use_order = TRUE, 
+					$order_field = 'user_id', 
+					$order_direction = 'asc', 
+					$limit = -1
+					);
+
+				foreach( $users_object  as  $user){
+					$users_set[] = $user->user_id;
+				};
+				
+				$user_sets[$key] = $users_set;
+				
+				if( isset( $user_sets[$key - 1] ) ){
+					
+						$user_sets[$key] = $this->custom->intersect_array(
+							$user_sets[$key],
+							$user_sets[$key - 1]
+						);					
+						
+				};
+
+		}
+
+		echo '<pre>';print_r( $user_sets[$key]  );echo '</pre>';  exit;  
+		
+	}
+	
+	
+
 	function mytest(){
 ?>
 

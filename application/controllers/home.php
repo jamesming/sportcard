@@ -64,6 +64,14 @@ class Home extends CI_Controller {
 	}
 	
 	
+	
+	public function confirm_existing_password(){
+		
+			echo 'ok';
+		
+		
+	}
+	
 
 	public function update(){
 

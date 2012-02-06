@@ -117,16 +117,16 @@
 	z-index:0;
 	}
 
-	#control-panel-box{
+	#profile_box{
 	background:red;
 	width:875px;
 	height: 600px;			
 	}		
-		#control-panel-box #panel-tabs_container{
+		#profile_box #panel-tabs_container{
 		height:19px;
 		background:lightblue;	
 		}
-		#control-panel-box #panel-tabs_container li{
+		#profile_box #panel-tabs_container li{
 			float:left;
 			border-right:1px solid gray;
 			width:100px;
@@ -146,7 +146,7 @@
 		text-align:right;
 	}
 
-			#control-panel-box ul#panels_ul li.panels div.div-panel{
+			#profile_box ul#panels_ul li.panels div.div-panel{
 			padding:20px;	
 			}
 			
@@ -362,11 +362,6 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 	<script src="<?php echo  base_url();   ?>js/mousewheel.js"></script> -->
 	<script src="<?php echo  base_url();   ?>js/cufon.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/fileuploader.js"></script> 
-	<script language="Javascript" src="<?php  echo base_url();   ?>js/htmlbox/htmlbox.colors.js" type="text/javascript"></script>
-	<script language="Javascript" src="<?php  echo base_url();   ?>js/htmlbox/htmlbox.styles.js" type="text/javascript"></script>
-	<script language="Javascript" src="<?php  echo base_url();   ?>js/htmlbox/htmlbox.syntax.js" type="text/javascript"></script>
-	<script language="Javascript" src="<?php  echo base_url();   ?>js/htmlbox/xhtml.js" type="text/javascript"></script>
-
 <script type="text/javascript" language="Javascript">
 (function($){ 
 $.fn.htmlbox=function(options){
@@ -1046,7 +1041,13 @@ $.fn.htmlbox=function(options){
 	return this;
 };
 })(jQuery);
-</script>
+</script>	
+	<script language="Javascript" src="<?php  echo base_url();   ?>js/htmlbox/htmlbox.colors.js" type="text/javascript"></script>
+	<script language="Javascript" src="<?php  echo base_url();   ?>js/htmlbox/htmlbox.styles.js" type="text/javascript"></script>
+	<script language="Javascript" src="<?php  echo base_url();   ?>js/htmlbox/htmlbox.syntax.js" type="text/javascript"></script>
+	<script language="Javascript" src="<?php  echo base_url();   ?>js/htmlbox/xhtml.js" type="text/javascript"></script>
+
+
 </head>
 
 <html>
@@ -1084,8 +1085,159 @@ $.fn.htmlbox=function(options){
 				<div  id='full_name_readonly'>
 				</div>
 			</div>
+
+			<style>
+			#settings-box{
+		    background: none repeat scroll 0 0 white;
+		    height: 500px;
+		    width: 800px;
+		    margin: 50px;
+			}
+			#settings-box li.settings_tabs{
+			float:left;
+			padding:5px;
+			border:1px solid gray;
+			cursor:pointer;
+			}
+			</style>
+			<div  id='settings-box' class="draggable">
+				<div  class='window-controls-container'>
+					<div class="handle icon-boxes">
+					</div>	
+				</div>
+				<div>
+					<div>Settings
+					</div>
+					<div>
+						<ul>
+							<li activate='account_section' class='account_tab settings_tabs' >
+								Account
+							</li>
+							<li activate='password_section'  class='password_tab  settings_tabs' >
+								Password
+							</li>							
+						</ul>
+					</div>
+					<table  id='account_section' class='settings_sections '>
+						<tr>
+							<td>
+								<div  class='input-label ' >url
+								</div>
+								<div>
+									<input  class='account_section_inputs '  id='url' name="url" type="" value="">
+								</div>
+							</td>
+						</tr>	
+						<tr>
+							<td>
+								<div  class='input-label ' >email
+								</div>
+								<div>
+									<input   class='account_section_inputs '  id='email' name="email"  type="" value="">
+								</div>																				
+							</td>
+						</tr>
+						<tr>
+							<td>
+								
+								<div>
+									<input  id='account_section_submit' type="submit" value="submit">
+								</div>																				
+							</td>
+						</tr>																																																										
+					</table>
+					<script type="text/javascript" language="Javascript">			
+						$(document).ready(function() { 
+							
+								$('#password_section').hide();
+								
+								$('.settings_tabs').click(function(event) {
+											
+										$('.settings_sections').hide();
+										$('#'+$(this).attr('activate')).show();
+								
+								});	
+							
+								$('#password_section_submit').click(function(event) {
+									
+									$.post("<?php echo base_url(). 'index.php/home/confirm_existing_password';    ?>",{
+											table:'users',
+											id:<?php echo $data['user_id']    ?>,
+											current_password:$('#current_password').val()
+											},function(data) {
+												
+												if( data == 'ok' ){
+												
+																if( $('#current_password').val() == $('#user_password').val() ){
+																
+																			$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+																					table:'users',
+																					id:<?php echo $data['user_id']    ?>,
+																					set_what:$('#user_password').serialize()
+																					},function(data) {
+																					
+																							alert(data);
+																					
+																					});	
+																
+																}else{
+																
+																	alert('password does not match');
+																
+																};			
+																										
+												}else{
+													alert('current set password does not match.');
+												};
+											
+											});	
+								})	
+						});
+					</script>
+					<table  id='password_section'  class='settings_sections ' >
+						<tr>
+							<td>
+								<div  class='input-label ' >Current Password
+								</div>
+								<div>
+									<input id='current_password' name="current_password" type="" value="">
+								</div>
+							</td>
+						</tr>	
+						<tr>
+							<td>
+								<div  class='input-label ' >New Password
+								</div>
+								<div>
+									<input  id='user_password' name="password"  type="" value="">
+								</div>																				
+							</td>
+						</tr>						
+						
+						<tr>
+							<td>
+								<div  class='input-label ' >Confirm Password
+								</div>
+								<div>
+									<input  id='confirm_password' name="confirm_password"  type="" value="">
+								</div>																				
+							</td>
+						</tr>
+						<tr>
+							<td>
+								
+								<div>
+									<input  id='password_section_submit' type="submit" value="submit">
+								</div>																				
+							</td>
+						</tr>																																																										
+					</table>	
+				</div>
+
+			</div>
 			
-			<div  id='control-panel-box' class="draggable" >
+			
+			<div  id='profile_box' class="draggable" >
 				<div  class='window-controls-container'>
 					<div class="handle icon-boxes">
 					</div>
@@ -1215,12 +1367,12 @@ $.fn.htmlbox=function(options){
 												</td>
 												<td>
 													<style>
-													#control-panel-box ul#panels_ul li.panels table ul{
+													#profile_box ul#panels_ul li.panels table ul{
 														height:100px;
 														overflow-y:scroll;
 														overflow-x:hidden;
 													}
-													#control-panel-box ul#panels_ul li.panels table ul#fonts_ul li.fonts_li{
+													#profile_box ul#panels_ul li.panels table ul#fonts_ul li.fonts_li{
 														background:white;	
 														border-bottom:1px solid gray;
 														height:45px;
@@ -1639,7 +1791,8 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 
-			$('#control-panel-box #panel-tabs_container li#panel-tab-5').click()
+			$('#profile_box #panel-tabs_container li#panel-tab-5').click()
+
 
 
 });
@@ -1655,6 +1808,8 @@ function get_stored_configurations(){
 			$('#organization').val('<?php echo ( isset( $data['users'][0]['organization'] ) ? $data['users'][0]['organization']:'' )    ?>');
 			$('#location').val('<?php echo ( isset( $data['users'][0]['location'] ) ? $data['users'][0]['location']:'' )    ?>');
 			$('#sports').val('<?php echo ( isset( $data['users'][0]['sports'] ) ? $data['users'][0]['sports']:'' )    ?>');
+			$('#url').val('<?php echo ( isset( $data['users'][0]['url'] ) ? $data['users'][0]['url']:'' )    ?>');
+			$('#email').val('<?php echo ( isset( $data['users'][0]['email'] ) ? $data['users'][0]['email']:'' )    ?>');
 
 
 			$('#head-line-box').css({
@@ -1840,7 +1995,7 @@ function bind_events(){
 
 
 
-			$('#control-panel-box').css({
+			$('#profile_box').css({
 				'position':'absolute',
 				'left':($(window).width() / 2),
 				'top':'150px',
@@ -1855,11 +2010,11 @@ function bind_events(){
 			$('#head-line-box .handle')
 			.mouseout(function(event) {
 				
-									$('#control-panel-box').show();
+									$('#profile_box').show();
 									
 			}).mousedown(function() {
 				
-						$('#control-panel-box').hide();
+						$('#profile_box').hide();
 				
 			  		$('#head-line-box .handle').unbind('mouseout');
 			  		
@@ -1870,9 +2025,9 @@ function bind_events(){
 				$(this).parent().parent().hide();
 			});	
 
-			$('#panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
-						$('#control-panel-box ul#panels_ul li.panels').hide();
-						$('#control-panel-box ul#panels_ul li.panels:eq('+$(this).index()+')').show()
+			$('#profile_box #panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
+						$('#profile_box ul#panels_ul li.panels').hide();
+						$('#profile_box ul#panels_ul li.panels:eq('+$(this).index()+')').show()
 						$(this).parent().children('li').css({background:'lightblue'});
 						$(this).css({background:'white'});
 						
@@ -1946,7 +2101,22 @@ function bind_events(){
 	
 				})	
 					
-			
+				$('#account_section_submit').click(function(event) {
+
+						$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
+						table:'users',
+						id:<?php echo $data['user_id']    ?>,
+						set_what:$('.account_section_inputs').serialize()
+						},function(data) {
+
+									alert(data);
+							
+						});	
+
+	
+				})
+
+				
 }
 
 
@@ -1997,7 +2167,7 @@ $.fn.bind_mouse_events = function(){
 
 function edit_mode_on(){
 
-						$('#control-panel-box').show();
+						$('#profile_box').show();
 						$('#head-line-box .window-controls-container, .coordinates')
 						.css({'visibility':'visible'});
 						
@@ -2005,7 +2175,7 @@ function edit_mode_on(){
 
 function edit_mode_off(){
 
-							$('#control-panel-box').hide();
+							$('#profile_box').hide();
 							$('#head-line-box .window-controls-container, .coordinates')
 							.css({'visibility':'hidden'});
 	
@@ -2042,14 +2212,14 @@ function store_position( dom_element ){
 								$('#y').val(data);
 
 								if( $('#edit_mode').attr('on') == 1){
-										$('#control-panel-box').show();
+										$('#profile_box').show();
 								
 								};
 
 								
 //								$('#head-line-box .handle').mouseout(function(event) {
 //
-//								//		$('#control-panel-box').show();
+//								//		$('#profile_box').show();
 //														
 //								})
 		
