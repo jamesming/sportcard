@@ -67,10 +67,52 @@ class Home extends CI_Controller {
 	
 	public function confirm_existing_password(){
 		
-			echo 'ok';
+			$this->load->helper('security');
 		
+			$select_what =  '*';
+
+			$where_array = array(
+			'id' => $this->user_id
+			);		
+
+			$users = $this->my_database_model->select_from_table( 
+				$table = 'users', 
+				$select_what, 
+				$where_array, 
+				$use_order = FALSE, 
+				$order_field = '', 
+				$order_direction = 'desc', 
+				$limit = 1);
+
+			if( $users[0]->password == do_hash(  $this->input->post('current_password'), 'md5' )){
+				
+				echo '1';
+				
+			}else{
+				
+				echo '0';
+				
+			}
 		
 	}
+	
+	
+	public function update_password(){	
+	
+		$this->load->helper('security');
+	
+		$set_what_array = array(
+						'password' => do_hash( $this->input->post('user_password'), 'md5' )
+						);			
+						
+		echo $this->my_database_model->update_table( 
+			$table = 'users', 
+			$primary_key = $this->user_id, 
+			$set_what_array 
+		);
+				
+	
+	}	
 	
 
 	public function update(){

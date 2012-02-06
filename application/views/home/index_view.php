@@ -1159,21 +1159,21 @@ $.fn.htmlbox=function(options){
 								});	
 							
 								$('#password_section_submit').click(function(event) {
+
 									
 									$.post("<?php echo base_url(). 'index.php/home/confirm_existing_password';    ?>",{
 											table:'users',
 											id:<?php echo $data['user_id']    ?>,
 											current_password:$('#current_password').val()
-											},function(data) {
+											},function(validated) {
 												
-												if( data == 'ok' ){
+
+												if( validated == 1 ){
 												
 																if( $('#current_password').val() == $('#user_password').val() ){
 																
-																			$.post("<?php echo base_url(). 'index.php/home/update';    ?>",{
-																					table:'users',
-																					id:<?php echo $data['user_id']    ?>,
-																					set_what:$('#user_password').serialize()
+																			$.post("<?php echo base_url(). 'index.php/home/update_password';    ?>",{
+																					user_password:$('#user_password').val()
 																					},function(data) {
 																					
 																							alert(data);
@@ -1187,7 +1187,9 @@ $.fn.htmlbox=function(options){
 																};			
 																										
 												}else{
-													alert('current set password does not match.');
+													
+													alert('Your password does not match what was initially set.');
+													
 												};
 											
 											});	
@@ -1209,7 +1211,7 @@ $.fn.htmlbox=function(options){
 								<div  class='input-label ' >New Password
 								</div>
 								<div>
-									<input  id='user_password' name="password"  type="" value="">
+									<input  id='user_password' name="password"  type="password" value="">
 								</div>																				
 							</td>
 						</tr>						
@@ -1219,7 +1221,7 @@ $.fn.htmlbox=function(options){
 								<div  class='input-label ' >Confirm Password
 								</div>
 								<div>
-									<input  id='confirm_password' name="confirm_password"  type="" value="">
+									<input  id='confirm_password' name="confirm_password"  type="password" value="">
 								</div>																				
 							</td>
 						</tr>
@@ -1793,7 +1795,7 @@ $(document).ready(function() {
 
 			$('#profile_box #panel-tabs_container li#panel-tab-5').click()
 
-
+			
 
 });
 
@@ -1998,7 +2000,7 @@ function bind_events(){
 			$('#profile_box').css({
 				'position':'absolute',
 				'left':($(window).width() / 2),
-				'top':'150px',
+				'top':'450px',
 				'margin-left':'-430px',
 			})
 
