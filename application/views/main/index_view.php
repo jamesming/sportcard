@@ -2438,7 +2438,7 @@ function thumbnail_controls(){
 												        li_index: -1
 												    },
 						                onComplete: function(id, fileName, responseJSON){
-															//alert(JSON.stringify(responseJSON));
+															
 						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/main/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
 						                	
 						                },
@@ -2462,18 +2462,18 @@ function thumbnail_controls(){
 						            }); 
 						            
 						            
-						            
-												$('.update-image.backgrounds_update_button').live("click", function(){
-
-														window.uploader_backgrounds.setParams({
-												        image_id:  $(this).parent().parent().attr('image_id') ,
-												        image_type_id: $(this).parent().parent().attr('image_type_id') ,
-												        li_index: $(this).parent().parent().index()
-														});
-														$('#btnUpload').click();// REFER TO fileuploader.js line 864. added  id='btnUpload'
-														
-												})
-												
+//						            
+//												$('.update-image.backgrounds_update_button').live("click", function(){
+//													
+//														window.uploader_backgrounds.setParams({
+//												        image_id:  $(this).parent().parent().attr('image_id') ,
+//												        image_type_id: $(this).parent().parent().attr('image_type_id') ,
+//												        li_index: $(this).parent().parent().index()
+//														});
+//														$('#btnUpload').click();// REFER TO fileuploader.js line 864. added  id='btnUpload'
+//														
+//												})
+//												
 												
 												$('.thumbs-ul li .images_preview.inside_li').live("click", function(){					             
 
