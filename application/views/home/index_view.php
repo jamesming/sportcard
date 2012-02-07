@@ -224,6 +224,10 @@ cursor:pointer;
 width: 500px; 
 height: 200px;	
 position:absolute;
+z-index:5;
+}
+
+#head-line-box.push-back{
 z-index:-1;
 }
 
@@ -1872,6 +1876,8 @@ function account_menu(){
 							e.preventDefault();
 			        $("fieldset#account_menu").toggle();
 							$(".myaccount").toggleClass("menu-open");
+							
+							$('#head-line-box').toggleClass("push-back");				
             });
 
 						$("fieldset#account_menu").mouseup(function() {
@@ -1880,8 +1886,6 @@ function account_menu(){
 
 						$("#account_menu a").css({cursor:'pointer'}).click(function(e) {          
 							e.preventDefault();
-							
-							$('#head-line-box').css({'z-index':'-1'})
 							
 							$('.box').hide();
 							
@@ -1905,7 +1909,7 @@ function account_menu(){
 									$(".myaccount").removeClass("menu-open");
 									$("fieldset#account_menu").hide();
 								}
-								$('#head-line-box').css({'z-index':'5'})
+								$('#head-line-box').removeClass('push-back');
 							});	
 														
 							
