@@ -52,6 +52,16 @@
 	.clearfix{
 	clear:both;	
 	}
+	
+	.large_header{
+	font-size:17px;
+	margin-bottom:20px;
+	}
+	.input-label{
+	font-size:9px;
+	margin-top:5px;	
+	}	
+	
 	div.container{
 	min-height:30px;	
 	border:0px solid gray;
@@ -84,26 +94,148 @@
 	background: url("<?php  echo base_url()   ?>images/icons.png") no-repeat scroll -14px -172px yellow;
 	cursor: pointer; 
 	}
-	#head-line-box{
-	width: 500px; 
-	height: 200px;	
-	position:absolute;
-	}
 	
-	#head-line-box #full_name_readonly{
-	font-size:15px;
-	font-weight:bold;
-	color:gray;	
-	padding-left:10px;
-	white-space:nowrap;
-	margin-top:20px;
-	z-index:-1;
-	}
 	.window-controls-container{
 	height:21px;
 	background:gray;
 	z-index:0;
-	}
+	}	
+	
+div#header .coordinates{
+	width:200px;
+}
+div#header div.sides{
+float:left;
+}	
+div#header .right_panel{
+background:white;
+margin-left:400px;
+}	
+
+div#header .right_panel .edit-panel{
+ width:200px;
+ background:lightgray;
+}
+div#header .right_panel #myaccount_container {
+	width:350px;
+	background:transparent;
+}
+
+				/* BEGIN TWITTER LOGIN CSS */
+				#myaccount_container #topnav {
+					font-size:13px;
+					line-height:23px;
+					text-align:right;
+					color:#8AA823;
+				}
+				#myaccount_container #topnav a.myaccount {
+					text-decoration:none;
+					font-size:12px;	
+					background:#A8C739;
+					padding:4px 6px 6px;
+					text-decoration:none;
+					font-weight:bold;
+					color:#F2F2F2;
+					border-top-left-radius: 5px;
+					-moz-border-radius-topleft: 5px;
+					-webkit-border-top-left-radius: 5px;
+					border-top-right-radius: 5px;
+					-moz-border-radius-topright: 5px;
+					-webkit-border-top-right-radius: 5px;
+					border-bottom-left-radius: 5px;
+					-moz-border-radius-bottomleft: 5px;
+					-webkit-border-bottom-left-radius: 5px;
+					border-bottom-right-radius: 5px;
+					-moz-border-radius-bottomright: 5px;
+					-webkit-border-bottom-right-radius: 5px;											
+				}
+				#myaccount_container #topnav a.myaccount:hover {
+					background:#D5E8B4;
+					color:#8AA823!important;
+					text-decoration:none!important;
+				}
+				#myaccount_container #topnav a.myaccount, #topnav a.myaccount:hover {
+					*background-position:0 3px!important;
+				}
+				
+				#myaccount_container #topnav div#greeting{
+				font-size: 15px;
+				padding-right: 15px;
+				padding-top: 5px;
+				color:white;
+				}
+				
+				#myaccount_container #topnav a.myaccount {
+					position:relative;
+					margin-left:3px;
+				}
+				#myaccount_container #topnav a.myaccount span {
+					background-image:url(<?php echo base_url()    ?>images/twitter_login/toggle_down_light.png);
+					background-repeat:no-repeat;
+					background-position:100% 50%;
+					padding:4px 16px 6px 0;
+				}
+				#myaccount_container #topnav a.myaccount.menu-open {
+					background:#D5E8B4!important;
+					color:#666!important;
+					outline:none;
+				}
+				
+				#myaccount_container #topnav a.myaccount.menu-open span {
+					background-image:url(<?php echo base_url()    ?>images/twitter_login/toggle_up_dark.png);
+					color:#789;
+				}
+				
+				#myaccount_container #account_menu {
+						margin-top:-3px;
+				    border-bottom-left-radius: 5px;
+				    border-bottom-right-radius: 5px;
+				    border-top-left-radius: 5px;
+				    background-color: #D5E8B4;    
+				    color: gray;
+				    display: none;
+				    font-size: 12px;
+				    padding-top: 12px;
+				    padding-bottom: 12px;
+				    text-align: left;
+				    z-index: 100;
+				    width:106px;
+				}
+
+#main-box div.box{
+	padding:0px;
+}
+		
+#main-box #settings-box{
+	background:white;
+  height: 300px;
+  width: 300px;
+  display:none;
+  position:absolute;
+}
+#main-box #settings-box li.settings_tabs{
+float:left;
+padding:5px;
+border:1px solid gray;
+cursor:pointer;
+}
+			
+#head-line-box{
+width: 500px; 
+height: 200px;	
+position:absolute;
+z-index:-1;
+}
+
+#head-line-box #full_name_readonly{
+font-size:15px;
+font-weight:bold;
+color:gray;	
+padding-left:10px;
+white-space:nowrap;
+margin-top:20px;
+}
+
 
 	#profile_box{
 	background:red;
@@ -137,6 +269,23 @@
 			#profile_box ul#panels_ul li.panels div.div-panel{
 			padding:20px;	
 			}
+			
+#profile_box .insides  #panel-5 .div-panel .middle div.halves{
+	width: 397px;
+	height:441px;
+	float:left;
+	padding:10px;
+	
+}
+#profile_box .insides  #preview_box{
+padding:20px;	
+clear:both;
+}
+#profile_box .insides  #preview_box_inside{
+background: none repeat scroll 0 0 white;
+border: 0px solid gray;
+height: 281px;
+}				
 			
 .inside_li{
     clear: both;
@@ -1041,178 +1190,683 @@ $.fn.htmlbox=function(options){
 <html>
 
 <body>
-<style>
-div#header .coordinates{
-	width:200px;
-}
-div#header div.sides{
-float:left;
-}	
-div#header .right_panel{
-background:white;
-margin-left:400px;
-}	
-
-div#header .right_panel .edit-panel{
- width:200px;
- background:lightgray;
-}
-div#header .right_panel #myaccount_container {
-	width:350px;
-	background:transparent;
-}
-
-				/* BEGIN TWITTER LOGIN CSS */
-				#myaccount_container #topnav {
-					font-size:13px;
-					line-height:23px;
-					text-align:right;
-					color:#8AA823;
-				}
-				#myaccount_container #topnav a.myaccount {
-					text-decoration:none;
-					font-size:12px;	
-					background:#A8C739;
-					padding:4px 6px 6px;
-					text-decoration:none;
-					font-weight:bold;
-					color:#F2F2F2;
-					border-top-left-radius: 5px;
-					-moz-border-radius-topleft: 5px;
-					-webkit-border-top-left-radius: 5px;
-					border-top-right-radius: 5px;
-					-moz-border-radius-topright: 5px;
-					-webkit-border-top-right-radius: 5px;
-					border-bottom-left-radius: 5px;
-					-moz-border-radius-bottomleft: 5px;
-					-webkit-border-bottom-left-radius: 5px;
-					border-bottom-right-radius: 5px;
-					-moz-border-radius-bottomright: 5px;
-					-webkit-border-bottom-right-radius: 5px;											
-				}
-				#myaccount_container #topnav a.myaccount:hover {
-					background:#D5E8B4;
-					color:#8AA823!important;
-					text-decoration:none!important;
-				}
-				#myaccount_container #topnav a.myaccount, #topnav a.myaccount:hover {
-					*background-position:0 3px!important;
-				}
-				
-				#myaccount_container #topnav div#greeting{
-				font-size: 15px;
-				padding-right: 15px;
-				padding-top: 5px;
-				color:white;
-				}
-				
-				#myaccount_container #topnav a.myaccount {
-					position:relative;
-					margin-left:3px;
-				}
-				#myaccount_container #topnav a.myaccount span {
-					background-image:url(<?php echo base_url()    ?>images/twitter_login/toggle_down_light.png);
-					background-repeat:no-repeat;
-					background-position:100% 50%;
-					padding:4px 16px 6px 0;
-				}
-				#myaccount_container #topnav a.myaccount.menu-open {
-					background:#D5E8B4!important;
-					color:#666!important;
-					outline:none;
-				}
-				
-				#myaccount_container #topnav a.myaccount.menu-open span {
-					background-image:url(<?php echo base_url()    ?>images/twitter_login/toggle_up_dark.png);
-					color:#789;
-				}
-				
-				#myaccount_container #account_menu {
-						margin-top:-3px;
-				    border-bottom-left-radius: 5px;
-				    border-bottom-right-radius: 5px;
-				    border-top-left-radius: 5px;
-				    background-color: #D5E8B4;    
-				    color: gray;
-				    display: none;
-				    font-size: 12px;
-				    padding-top: 12px;
-				    padding-bottom: 12px;
-				    text-align: left;
-				    z-index: 1;
-				    width:76px;
-				}
 	
-</style>
-<div  id='header' class='container '  >
-	<div class='coordinates '>
-		<style>
-		#form0 input{
-		width:30px;	
-		display:none;
-		}
-		</style>
-		<form id='form0'>
-			<input name="x" id="x" type="" value="">
-			<input name="y" id="y" type="" value="">
-			<input name="margin_left_of_center" id="margin_left_of_center" type="" value="">
-		</form>
-	</div>
-	<div class='right_panel'  >
-			<div  class='edit-panel float_left' >
-				<span  id='edit_mode' on='1'>preview</span>
-			</div>
-			<div  id='myaccount_container' class='float_left '  >
+	<div  id='header' class='container '  >
+		<div class='coordinates left_panel'>
+			<style>
+			#form0 input{
+			width:30px;	
+			display:none;
+			}
+			</style>
+			<form id='form0'>
+				<input name="x" id="x" type="" value="">
+				<input name="y" id="y" type="" value="">
+				<input name="margin_left_of_center" id="margin_left_of_center" type="" value="">
+			</form>
+		</div>
+		<div class='right_panel'  >
+				<div  class='edit-panel float_left' >
+					<span  id='edit_mode' on='1'>preview</span>
+				</div>
+				<div  id='myaccount_container' class='float_left '  >
+			
+						<div id="topnav" class="topnav clearfix">
+							
+						 	<a  href="" class="float_right myaccount" onfocus="this.blur()">
+						 		<span>My SportCard</span>
+						 	</a>  
+						 		
+						 	<div id='greeting' class='float_right ' >Welcome James.
+						 	</div>
+						
+						</div>
+
+						<div  class=' clearfix ' >
+								<fieldset id="account_menu"    class='float_right '   >
+									<ul>
+										<li><a id='edit_profile_menu_item'>Edit Profile</a></li>
+										<li><a id='settings_menu_item'>Settings</a></li>
+										<li><a id='logout'>Log Out</a></li>
+									</ul>
+								</fieldset>						
+							
+						</div>
 		
-					<div id="topnav" class="topnav clearfix">
 						
-					 	<a  href="" class="float_right myaccount" onfocus="this.blur()">
-					 		<span>My Account</span>
-					 	</a>  
-					 		
-					 	<div id='greeting' class='float_right ' >Welcome TEST.
-					 	</div>
-					
+				</div> 
+		</div>
+	</div>
+	
+	<div  id='main-box' class='container '>
+	
+				<div  id='head-line-box' class="transparent rounded draggable box" >
+					<div class='window-controls-container top-right-rounded'>
+						<div class="handle icon-boxes top-right-rounded"></div>
 					</div>
-					<div  class=' clearfix ' >
-							<fieldset id="account_menu"    class='float_right '   >
-								<ul>
-									<li><a id='myprofile'>My Profile</a></li>
-									<li><a id='mypayment'>My Payment</a></li>
-									<li   style='display:none'  ><a id='mycredits'>My Credits</a></li>
-									<li><a id='mydeals'>My Deals</a></li>
-									<li   style='display:none'  ><a id='mypetgallery'>My Pet Gallery</a></li>
-									<li><a id='logout'>Log Out</a></li>
-								</ul>
-							</fieldset>						
-						
+					<div  class='insides' >
+					</div>
+					<div  id='full_name_readonly'>
+					</div>
+				</div>
+	
+				<div  id='settings-box' class="draggable box"   >
+					<div  class='window-controls-container'>
+						<div class="handle icon-boxes">
+						</div>	
+					</div>
+					<div>
+						<div>Settings
+						</div>
+						<div>
+							<ul>
+								<li activate='account_section' class='account_tab settings_tabs' >
+									Account
+								</li>
+								<li activate='password_section'  class='password_tab  settings_tabs' >
+									Password
+								</li>							
+							</ul>
+						</div>
+						<table  id='account_section' class='settings_sections '>
+							<tr>
+								<td>
+									<div  class='input-label ' >url
+									</div>
+									<div>
+										<input  class='account_section_inputs '  id='url' name="url" type="" value="">
+									</div>
+								</td>
+							</tr>	
+							<tr>
+								<td>
+									<div  class='input-label ' >email
+									</div>
+									<div>
+										<input   class='account_section_inputs '  id='email' name="email"  type="" value="">
+									</div>																				
+								</td>
+							</tr>
+							<tr>
+								<td>
+									
+									<div>
+										<input  id='account_section_submit' type="submit" value="submit">
+									</div>																				
+								</td>
+							</tr>																																																										
+						</table>
+	
+						<table  id='password_section'  class='settings_sections ' >
+							<tr>
+								<td>
+									<div  class='input-label ' >Current Password
+									</div>
+									<div>
+										<input id='current_password' name="current_password" type="" value="">
+									</div>
+								</td>
+							</tr>	
+							<tr>
+								<td>
+									<div  class='input-label ' >New Password
+									</div>
+									<div>
+										<input  id='user_password' name="password"  type="password" value="">
+									</div>																				
+								</td>
+							</tr>						
+							
+							<tr>
+								<td>
+									<div  class='input-label ' >Confirm Password
+									</div>
+									<div>
+										<input  id='confirm_password' name="confirm_password"  type="password" value="">
+									</div>																				
+								</td>
+							</tr>
+							<tr>
+								<td>
+									
+									<div>
+										<input  id='password_section_submit' type="submit" value="submit">
+									</div>																				
+								</td>
+							</tr>																																																										
+						</table>	
 					</div>
 	
+				</div>
+				
+				<div  id='profile_box' class="draggable box" >
+					<div  class='window-controls-container'>
+						<div class="handle icon-boxes">
+						</div>
+						<div  class='close-window icon-boxes' >
+						</div>					
+					</div>
+					<div  id='panel-tabs_container'>
+						<ul>
 					
-			</div> 
-	</div>
-</div>
-<script type="text/javascript" language="Javascript">
-        $(document).ready(function() {
-
-            $("#account_menu a").click(function(e) {          
-							e.preventDefault();
+							<li  id='panel-tab-1'>Color and Fonts
+							</li>
+							<li  id='panel-tab-2'>Background
+							</li>
+							<li  id='panel-tab-3'>Photos
+							</li>
+							<li  id='panel-tab-4'>Videos
+							</li>	
+							<li  id='panel-tab-5'>Bio
+							</li>	
+						</ul>	
+					</div>
+					<div  class='insides' >
+								<ul  id='panels_ul'>
+										<li id='panel-1'  class='panels ' >
+											<div  class='div-panel ' >
+												<table>
+													<tr>
+														<td>Name
+														</td>
+														<td><input  name='full_name' id="full_name" type="" value="">
+														</td>
+													</tr>
+		<!--											
+													<tr>
+														<td>Background
+														</td>
+		
+														<td>
+															<select  id='background_color' name='background_color'>
+																
+															<?php 
+															
+															$colors = array(
+																'red',
+																'blue',
+																'orange',
+																'yellow',
+																'green',
+																'white',
+															);
+															
+															foreach( $colors  as  $key => $color ){ ?>	
+							
+																	<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
+															
+															<?php } ?>
+															
+															</select>
+														</td>
+													</tr>
+													-->
+													<tr>
+														<td>Font Color
+														</td>
+														<td>
+															<select  id='font_color' name='font_color'>
+																
+															<?php 
+															
+															$colors = array(
+																'black',
+																'red',
+																'blue',
+																'orange',
+																'yellow',
+																'green',
+																'white',
+															);
+															
+															foreach( $colors  as  $key => $color ){ ?>	
+							
+																	<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
+															
+															<?php } ?>
+															
+															</select>
+														</td>
+													</tr>		
+													
+													<tr>
+														<td>Font Size
+														</td>
+														<td>
+															<select   id='font_size' name='font_size'>
+																
+															<?php 
+															
+		
+															
+																		for( $size = 5;  $size <= 225;  $size++ ){ ?>	
 										
-								if( $(this).attr('id') == 'logout'){
-									
-									<?php if( $_SERVER['HTTP_HOST'] == 'localhost' ){?>
-											document.location.href='http://localhost/zekeszoo/index.php/home/index?logout=1';	
-									<?php }else{?>
-											// document.location.href='<?php echo  base_url().$_SERVER['REQUEST_URI'];   ?>?logout=1';									
-											document.location.href='<?php echo  base_url(); ?>home/index?logout=1';									
-									<?php } ?>
+																				<option value='<?php  echo $size   ?>px'><?php  echo $size   ?>px</option>
+																		
+																		<?php } ?>
+															
+															</select>
+														</td>
+													</tr>			
+													
+													<tr>
+														<td>Transparency
+														</td>
+														<td>
+															<select   id='transparency' name='transparency'>
+																
+															<?php for( $transparency_setting = 0;  $transparency_setting <= 9;  $transparency_setting++ ){ ?>	
+										
+																				<option value='<?php  echo $transparency_setting   ?>'><?php  echo $transparency_setting   ?></option>
+																		
+															<?php } ?>
+															
+															</select>
+														</td>
+													</tr>														
+													
+													<tr>
+														<td>Font
+														</td>
+														<td>
+															<style>
+															#profile_box ul#panels_ul li.panels table ul{
+																height:100px;
+																overflow-y:scroll;
+																overflow-x:hidden;
+															}
+															#profile_box ul#panels_ul li.panels table ul#fonts_ul li.fonts_li{
+																background:white;	
+																border-bottom:1px solid gray;
+																height:45px;
+																font-size:28px;
+															}
+															
+															</style>
+															<ul  id='fonts_ul'>
+																<?php foreach($data['fonts'] as $font ){?>
+																	
+																	<li  class='fonts_li ' font_name='<?php echo $font->name    ?>'><?php  echo $font->name   ?></li>
+																
+																<?php }?>
+															</ul>
+														</td>
+													</tr>																										
+												</table>
+											</div>
+										</li>
+										<li id='panel-2'   class='panels ' >
+											<div class='div-panel '>
+											
+												<table>
+													<tr>
+	
+														<td ><!--
+															<div  id='add-to' image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
+															</div>-->
+															
+															
+														<div id="upload_button_backgrounds"  >		
+															<noscript>			
+																<p>Please enable JavaScript to use file uploader.</p>
+																<!-- or put a simple form for upload here -->
+															</noscript>         
+														</div>
+															
+															
+														</td>													
+													</tr>
+	
+													<tr>
+														<td>
+	
+	
+															<div  id='backgrounds-div' class=' jcarousel-skin-tango'>
+																<ul class='thumbs-ul'   >
+																	
+																<?php if( isset($data['users']['backgrounds']['images']) ){?>
+																	
+																	<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
+	
+																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
+																			<div  class='small_icons_panel transparent' >
+																				<div  class='delete ' >[X]
+																				</div>
+																				<div  class='update-image backgrounds_update_button' >[<?php echo $image_id     ?>]
+																				</div>
+																				<div  class='swap ' >[C]
+																				</div>																																							
+																			</div>
+																			<div  class='inside_li images_preview' >
+																			</div>
+																		</li>
+																	
+																	<?php } ?>
+	
+															
+																<?php } ?>
+																	
+																	
+																</ul>															
+															</div>
+	
+														</td>
+													</tr>												
+												</table>
+	
+											</div>							
+										</li>
+										<li  id='panel-3'    class='panels ' >
+											<div class='div-panel '>
+											
+												<table>
+													<tr>
+	
+														<td >
+	<!--														
+															<div image_id='0' image_type_id='1'  li_index='-1' class='upload_button'>upload
+															</div>
+															-->
+														<div id="upload_button_pictures"  >		
+															<noscript>			
+																<p>Please enable JavaScript to use file uploader.</p>
+																<!-- or put a simple form for upload here -->
+															</noscript>         
+														</div>
+														</td>													
+													</tr>
+	
+													<tr>
+														<td>
+															<div  id='pictures-div' class='mycarousel jcarousel-skin-tango'>
+																<ul class='thumbs-ul'   >
+	
+	
+	<?php if(  isset($data['users']['pictures']['images'])  ){?>
+	
+																	<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
+	
+																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																			<div  class='small_icons_panel transparent' >
+																				<div  class='delete ' >[X]
+																				</div>
+																				<div  class='update-image  pictures_update_button' >[E]
+																				</div>																																				
+																			</div>
+																			<div  class='inside_li images_preview' >
+																			</div>																		
+																		</li>
+																	
+																	<?php } ?>
+	
+	<?php } ?>
+	
+	
+																	
+																	
+																	
+																	
+																</ul>															
+															</div>
+	
+														</td>
+													</tr>												
+												</table>
+	
+											</div>		
+										</li>
+										<li   id='panel-4'    class='panels ' >
+											<div class='div-panel '>
+											
+												<table>
+													<tr>
+	
+														<td >
+															
+															<div   style='height:30px'  >
+																
+																		<style>
+																			li#panel-4 input[type=text]{
+																				width: 299px;
+																				margin-right: 5px;
+																			}														
+																		</style>
+																		
+																		
+																		<form 
+																			id='form_video' 
+																			target='results' 
+																			enctype='multipart/form-data' 	
+																			method='POST'  
+																			action='<?php echo base_url();    ?>index.php/home/update_video'
+																			>
+																			<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
+																			<input name="image_id"  type="hidden" value="0">
+																			<input name="li_index"  type="hidden" value="-1">
+																			
+																		</form>																
+																
+															</div>
+															
+															
+	
+															
+	
+														</td>													
+													</tr>
+	
+													<tr>
+														<td>
+															<div  id='videos-div' class='mycarousel jcarousel-skin-tango'>
+																<ul class='thumbs-ul'   >
+																	
+	<?php if( isset($data['users']['videos']['images']) ){?>
+	
+																	<?php foreach( $data['users']['videos']['images']  as $image_id){?>
+		
+																			<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
+																				<div  class='small_icons_panel transparent' >
+																					<div  class='delete ' >[X]
+																					</div>
+																					<div  class='update-video_url '  >[E]
+																					</div>																																					
+																				</div>
+																			<div  class='inside_li videos_preview' >
+																			</div>																			
+																			</li>
+																			
+																	<?php };?>
+	
+	<?php } ?>
+																	
+	
+																	
+																	
+																	
+																	
+																</ul>															
+															</div>
+	
+														</td>
+													</tr>												
+												</table>
+	
+											</div>	
+										</li>
+	
+										<li  id='panel-5'    class='panels ' >
+										
+											<div class='div-panel '>
+											
+													<div  class='large_header ' >Edit you Bio
+													</div>
+	
+													
+													<div  class='middle ' >
+														<div   class='halves '  >
+													
+															<table>
+																<tr>
+																	<td colspan=2>
+																		General Info
+																	</td>
+																</tr>		
+																<tr>
+																	<td>
+																		<div  class='input-label ' >First Name
+																		</div>
+																		<div>
+																			<input  class='bio_inputs '  id='first_name' name="first_name" type="" value="">
+																		</div>
+																	</td>
+																	<td>
+																		<div  class='input-label ' >Last Name
+																		</div>
+																		<div>
+																			<input   class='bio_inputs '  id='last_name' name="last_name"  type="" value="">
+																		</div>																				
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div  class='input-label ' >Position or Title
+																		</div>
+																		<div>
+																			<input   class='bio_inputs '  id='position' name="position" type="" value="">
+																		</div>
+																	</td>
+																	<td>
+																		<div  class='input-label ' >School, Team, or Organization
+																		</div>
+																		<div>
+																			<input   class='bio_inputs '  id='organization' name="organization" type="" value="">
+																		</div>																				
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div  class='input-label ' >Hometown or Location
+																		</div>
+																		<div>
+																			<input   class='bio_inputs '  id='location' name="location" type="" value="">
+																		</div>																		
+																	</td>
+																	<td>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div  class='input-label ' >sports
+																		</div>	
+																		<select   class='bio_inputs '  id='sports' name='sports'>
+																			<option>Football</option>
+																			<option>Baseball</option>
+																			<option>Soccer</option>
+																		</select>																																	
+																	</td>
+																	<td>
+	
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																	</td>
+																	<td>
+																	</td>
+																</tr>																																																												
+															</table>
+														</div>
+														<div    class='halves ' >
+															
+																	<style>
+																	#wysiwyg_div{
+																	width:400px;
+																	height: 580px;
+																	margin:0px 0px 0px 0px;
+																	padding:10px 0px 0px 0px;
+																	}
+																	.save{
+																	background-image: url(<?php echo base_url()    ?>images/disk_save.png);
+																	background-position: 3px 3px;
+																	background-repeat: no-repeat;	
+																	height: 22px;
+																	width: 22px;
+																	cursor:pointer;
+																	}
+																	#save_text{
+																	color:gray;
+																	margin:5px 0px 0px 5px;	
+																	font-weight:bold;
+																	cursor:pointer;
+																	}
+																	.loading{
+																	background-image: url(<?php echo base_url()    ?>images/ajax-loader.gif);
+																	background-position: 5px 4px;
+																	background-repeat: no-repeat;
+																	height: 22px;
+																	width: 22px;	
+																	}
+																	</style>
+																	
+																		<div>
+																					<div  class='save float_left'  title='Save'>
+																					</div>
+																					<div  id='save_text' class='float_left' >Save
+																					</div>
+																		</div>
+																	
+																		<div id='wysiwyg_div' class='clearfix ' >
+																				<textarea  name='bio' class='bio_inputs clearfix' id='wysiwyg_text_area'><?php echo ( isset( $data['users'][0]['bio'] ) ? $data['users'][0]['bio']:'' )    ?></textarea>
+																		</div>
+	
+															
+														</div>
+													</div>
+											</div>		
+										</li>																	
+								</ul>
+	
+								<div  id='preview_box'>
+									<div  id='preview_box_inside'>
+									</div>
+								</div>
+					</div>
+				</div>
+				
+	</div>
+		
+	<iframe  
+		id="results"   
+		name="results"
+		style='background:white;border:0px solid gray;width:0px;height:0px'  
+		border="1" 
+		frameborder="1" 
+		scrolling="auto" 
+		align="center" 
+		hspace="0" 
+		vspace="">
+	</iframe>
+	
 
-								}else{
-									
-									document.location.href='<?php echo  base_url();   ?>index.php/home/'  + $(this).attr('id');									
-									
-								};
-            });
+</body>
+</html>
+
+<script type="text/javascript" language="Javascript">
+	
+$(document).ready(function() { 
+			account_menu();
+			settings_box();
+			get_stored_configurations();
+			store_custom_configuration();
+			activate_fonts_for_selection();
+			thumbnail_controls();
+			bind_events();
+			
+			$('#profile_box #panel-tabs_container li#panel-tab-5').click()
+
+});
+
+function account_menu(){
 
             $(".myaccount").click(function(e) {          
 							e.preventDefault();
@@ -1223,92 +1877,55 @@ div#header .right_panel #myaccount_container {
 						$("fieldset#account_menu").mouseup(function() {
 							return false
 						});
-						
-						$(document).mouseup(function(e) {
-							if($(e.target).parent("a.myaccount").length==0) {
-								$(".myaccount").removeClass("menu-open");
-								$("fieldset#account_menu").hide();
-							}
-						});		
-	
-        });
-</script>
-<div  id='main-box' class='container '>
-	
 
-			<div  id='head-line-box' class="transparent rounded draggable " >
-				<div class='window-controls-container top-right-rounded'>
-					<div class="handle icon-boxes top-right-rounded"></div>
-				</div>
-				<div  class='insides' >
-				</div>
-				<div  id='full_name_readonly'>
-				</div>
-			</div>
+						$("#account_menu a").css({cursor:'pointer'}).click(function(e) {          
+							e.preventDefault();
+							
+							$('#head-line-box').css({'z-index':'-1'})
+							
+							$('.box').hide();
+							
+							if( $(this).attr('id') == 'edit_profile_menu_item'){
+							
+								$('#head-line-box, #profile_box').show();
 
-			<style>
-			#settings-box{
-		    background: none repeat scroll 0 0 white;
-		    height: 500px;
-		    width: 800px;
-		    margin: 50px;
-		    display:none;
-			}
-			#settings-box li.settings_tabs{
-			float:left;
-			padding:5px;
-			border:1px solid gray;
-			cursor:pointer;
-			}
-			</style>
-			<div  id='settings-box' class="draggable">
-				<div  class='window-controls-container'>
-					<div class="handle icon-boxes">
-					</div>	
-				</div>
-				<div>
-					<div>Settings
-					</div>
-					<div>
-						<ul>
-							<li activate='account_section' class='account_tab settings_tabs' >
-								Account
-							</li>
-							<li activate='password_section'  class='password_tab  settings_tabs' >
-								Password
-							</li>							
-						</ul>
-					</div>
-					<table  id='account_section' class='settings_sections '>
-						<tr>
-							<td>
-								<div  class='input-label ' >url
-								</div>
-								<div>
-									<input  class='account_section_inputs '  id='url' name="url" type="" value="">
-								</div>
-							</td>
-						</tr>	
-						<tr>
-							<td>
-								<div  class='input-label ' >email
-								</div>
-								<div>
-									<input   class='account_section_inputs '  id='email' name="email"  type="" value="">
-								</div>																				
-							</td>
-						</tr>
-						<tr>
-							<td>
+							}else if($(this).attr('id') == 'settings_menu_item'){
 								
-								<div>
-									<input  id='account_section_submit' type="submit" value="submit">
-								</div>																				
-							</td>
-						</tr>																																																										
-					</table>
-					<script type="text/javascript" language="Javascript">			
-						$(document).ready(function() { 
+								$('#settings-box').show();
+
+							
+							}else if($(this).attr('id') == 'logout'){
+
+								document.location.href='<?php echo  base_url(); ?>home/index?logout=1';									
+																
+							};
+						
+							$(document).mouseup(function(e) {
+								if($(e.target).parent("a.myaccount").length==0) {
+									$(".myaccount").removeClass("menu-open");
+									$("fieldset#account_menu").hide();
+								}
+								$('#head-line-box').css({'z-index':'5'})
+							});	
+														
+							
+							$(document).mouseup();
+							
+						});
+						
+							
+}
+
+function settings_box(){
+	
+	
+							$('#settings-box').css({
+								'position':'absolute',
+								'left':($(window).width() / 2),
+								'top':'250px',
+								'margin-left':'-430px',
+							})
+	
 							
 								$('#password_section').hide();
 								
@@ -1355,612 +1972,8 @@ div#header .right_panel #myaccount_container {
 											
 											});	
 								})	
-						});
-					</script>
-					<table  id='password_section'  class='settings_sections ' >
-						<tr>
-							<td>
-								<div  class='input-label ' >Current Password
-								</div>
-								<div>
-									<input id='current_password' name="current_password" type="" value="">
-								</div>
-							</td>
-						</tr>	
-						<tr>
-							<td>
-								<div  class='input-label ' >New Password
-								</div>
-								<div>
-									<input  id='user_password' name="password"  type="password" value="">
-								</div>																				
-							</td>
-						</tr>						
-						
-						<tr>
-							<td>
-								<div  class='input-label ' >Confirm Password
-								</div>
-								<div>
-									<input  id='confirm_password' name="confirm_password"  type="password" value="">
-								</div>																				
-							</td>
-						</tr>
-						<tr>
-							<td>
-								
-								<div>
-									<input  id='password_section_submit' type="submit" value="submit">
-								</div>																				
-							</td>
-						</tr>																																																										
-					</table>	
-				</div>
-
-			</div>
-			
-			
-			<div  id='profile_box' class="draggable" >
-				<div  class='window-controls-container'>
-					<div class="handle icon-boxes">
-					</div>
-					<div  class='close-window icon-boxes' >
-					</div>					
-				</div>
-				<div  id='panel-tabs_container'>
-					<ul>
-				
-						<li  id='panel-tab-1'>Color and Fonts
-						</li>
-						<li  id='panel-tab-2'>Background
-						</li>
-						<li  id='panel-tab-3'>Photos
-						</li>
-						<li  id='panel-tab-4'>Videos
-						</li>	
-						<li  id='panel-tab-5'>Bio
-						</li>																									
-				</div>
-				<div  class='insides' >
-							<ul  id='panels_ul'>
-								<li id='panel-1'  class='panels ' >
-									<div  class='div-panel ' >
-										<table>
-											<tr>
-												<td>Name
-												</td>
-												<td><input  name='full_name' id="full_name" type="" value="">
-												</td>
-											</tr>
-<!--											
-											<tr>
-												<td>Background
-												</td>
-
-												<td>
-													<select  id='background_color' name='background_color'>
-														
-													<?php 
-													
-													$colors = array(
-														'red',
-														'blue',
-														'orange',
-														'yellow',
-														'green',
-														'white',
-													);
-													
-													foreach( $colors  as  $key => $color ){ ?>	
-					
-															<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
-													
-													<?php } ?>
-													
-													</select>
-												</td>
-											</tr>
-											-->
-											<tr>
-												<td>Font Color
-												</td>
-												<td>
-													<select  id='font_color' name='font_color'>
-														
-													<?php 
-													
-													$colors = array(
-														'black',
-														'red',
-														'blue',
-														'orange',
-														'yellow',
-														'green',
-														'white',
-													);
-													
-													foreach( $colors  as  $key => $color ){ ?>	
-					
-															<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
-													
-													<?php } ?>
-													
-													</select>
-												</td>
-											</tr>		
-											
-											<tr>
-												<td>Font Size
-												</td>
-												<td>
-													<select   id='font_size' name='font_size'>
-														
-													<?php 
-													
-
-													
-																for( $size = 5;  $size <= 225;  $size++ ){ ?>	
-								
-																		<option value='<?php  echo $size   ?>px'><?php  echo $size   ?>px</option>
-																
-																<?php } ?>
-													
-													</select>
-												</td>
-											</tr>			
-											
-											<tr>
-												<td>Transparency
-												</td>
-												<td>
-													<select   id='transparency' name='transparency'>
-														
-													<?php for( $transparency_setting = 0;  $transparency_setting <= 9;  $transparency_setting++ ){ ?>	
-								
-																		<option value='<?php  echo $transparency_setting   ?>'><?php  echo $transparency_setting   ?></option>
-																
-													<?php } ?>
-													
-													</select>
-												</td>
-											</tr>														
-											
-											<tr>
-												<td>Font
-												</td>
-												<td>
-													<style>
-													#profile_box ul#panels_ul li.panels table ul{
-														height:100px;
-														overflow-y:scroll;
-														overflow-x:hidden;
-													}
-													#profile_box ul#panels_ul li.panels table ul#fonts_ul li.fonts_li{
-														background:white;	
-														border-bottom:1px solid gray;
-														height:45px;
-														font-size:28px;
-													}
-													
-													</style>
-													<ul  id='fonts_ul'>
-														<?php foreach($data['fonts'] as $font ){?>
-															
-															<li  class='fonts_li ' font_name='<?php echo $font->name    ?>'><?php  echo $font->name   ?></li>
-														
-														<?php }?>
-													</ul>
-												</td>
-											</tr>																										
-										</table>
-									</li>
-									<li id='panel-2'   class='panels ' >
-										<div class='div-panel '>
-										
-											<table>
-												<tr>
-
-													<td ><!--
-														<div  id='add-to' image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
-														</div>-->
-														
-														
-													<div id="upload_button_backgrounds"  >		
-														<noscript>			
-															<p>Please enable JavaScript to use file uploader.</p>
-															<!-- or put a simple form for upload here -->
-														</noscript>         
-													</div>
-														
-														
-													</td>													
-												</tr>
-
-												<tr>
-													<td>
-
-
-														<div  id='backgrounds-div' class=' jcarousel-skin-tango'>
-															<ul class='thumbs-ul'   >
-																
-<?php if( isset($data['users']['backgrounds']['images']) ){?>
-																
-																<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
-
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
-																		<div  class='small_icons_panel transparent' >
-																			<div  class='delete ' >[X]
-																			</div>
-																			<div  class='update-image backgrounds_update_button' >[<?php echo $image_id     ?>]
-																			</div>
-																			<div  class='swap ' >[C]
-																			</div>																																							
-																		</div>
-																		<div  class='inside_li images_preview' >
-																		</div>
-																	</li>
-																
-																<?php } ?>
-
-														
-<?php } ?>
-
-																
-																
-																
-															</ul>															
-														</div>
-
-													</td>
-												</tr>												
-											</table>
-
-										</div>							
-									</li>
-									
-									
-									
-									<li  id='panel-3'    class='panels ' >
-										<div class='div-panel '>
-										
-											<table>
-												<tr>
-
-													<td >
-<!--														
-														<div image_id='0' image_type_id='1'  li_index='-1' class='upload_button'>upload
-														</div>
-														-->
-													<div id="upload_button_pictures"  >		
-														<noscript>			
-															<p>Please enable JavaScript to use file uploader.</p>
-															<!-- or put a simple form for upload here -->
-														</noscript>         
-													</div>
-													</td>													
-												</tr>
-
-												<tr>
-													<td>
-														<div  id='pictures-div' class='mycarousel jcarousel-skin-tango'>
-															<ul class='thumbs-ul'   >
-
-
-<?php if(  isset($data['users']['pictures']['images'])  ){?>
-
-																<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
-
-																	<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
-																		<div  class='small_icons_panel transparent' >
-																			<div  class='delete ' >[X]
-																			</div>
-																			<div  class='update-image  pictures_update_button' >[E]
-																			</div>																																				
-																		</div>
-																		<div  class='inside_li images_preview' >
-																		</div>																		
-																	</li>
-																
-																<?php } ?>
-
-<?php } ?>
-
-
-																
-																
-																
-																
-															</ul>															
-														</div>
-
-													</td>
-												</tr>												
-											</table>
-
-										</div>		
-									</li>
-									<li   id='panel-4'    class='panels ' >
-										<div class='div-panel '>
-										
-											<table>
-												<tr>
-
-													<td >
-														
-														<div   style='height:30px'  >
-															
-																	<style>
-																		li#panel-4 input[type=text]{
-																			width: 299px;
-																			margin-right: 5px;
-																		}														
-																	</style>
-																	
-																	
-																	<form 
-																		id='form_video' 
-																		target='results' 
-																		enctype='multipart/form-data' 	
-																		method='POST'  
-																		action='<?php echo base_url();    ?>index.php/home/update_video'
-																		>
-																		<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
-																		<input name="image_id"  type="hidden" value="0">
-																		<input name="li_index"  type="hidden" value="-1">
-																		
-																	</form>																
-															
-														</div>
-														
-														
-
-														
-
-													</td>													
-												</tr>
-
-												<tr>
-													<td>
-														<div  id='videos-div' class='mycarousel jcarousel-skin-tango'>
-															<ul class='thumbs-ul'   >
-																
-<?php if( isset($data['users']['videos']['images']) ){?>
-
-																<?php foreach( $data['users']['videos']['images']  as $image_id){?>
 	
-																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
-																			<div  class='small_icons_panel transparent' >
-																				<div  class='delete ' >[X]
-																				</div>
-																				<div  class='update-video_url '  >[E]
-																				</div>																																					
-																			</div>
-																		<div  class='inside_li videos_preview' >
-																		</div>																			
-																		</li>
-																		
-																<?php };?>
-
-<?php } ?>
-																
-
-																
-																
-																
-																
-															</ul>															
-														</div>
-
-													</td>
-												</tr>												
-											</table>
-
-										</div>	
-									</li>
-									
-									<style>
-											.large_header{
-											font-size:17px;
-											margin-bottom:20px;
-											}
-											.input-label{
-											font-size:9px;
-											margin-top:5px;	
-											}
-											#panel-5 .div-panel .middle div.halves{
-												width: 397px;
-												height:441px;
-												float:left;
-												padding:10px;
-												
-											}
-									</style>
-									<li  id='panel-5'    class='panels ' >
-									
-										<div class='div-panel '>
-										
-												<div  class='large_header ' >Edit you Bio
-												</div>
-
-												
-												<div  class='middle ' >
-													<div   class='halves '  >
-												
-														<table>
-															<tr>
-																<td colspan=2>
-																	General Info
-																</td>
-															</tr>		
-															<tr>
-																<td>
-																	<div  class='input-label ' >First Name
-																	</div>
-																	<div>
-																		<input  class='bio_inputs '  id='first_name' name="first_name" type="" value="">
-																	</div>
-																</td>
-																<td>
-																	<div  class='input-label ' >Last Name
-																	</div>
-																	<div>
-																		<input   class='bio_inputs '  id='last_name' name="last_name"  type="" value="">
-																	</div>																				
-																</td>
-															</tr>
-															<tr>
-																<td>
-																	<div  class='input-label ' >Position or Title
-																	</div>
-																	<div>
-																		<input   class='bio_inputs '  id='position' name="position" type="" value="">
-																	</div>
-																</td>
-																<td>
-																	<div  class='input-label ' >School, Team, or Organization
-																	</div>
-																	<div>
-																		<input   class='bio_inputs '  id='organization' name="organization" type="" value="">
-																	</div>																				
-																</td>
-															</tr>
-															<tr>
-																<td>
-																	<div  class='input-label ' >Hometown or Location
-																	</div>
-																	<div>
-																		<input   class='bio_inputs '  id='location' name="location" type="" value="">
-																	</div>																		
-																</td>
-																<td>
-																</td>
-															</tr>
-															<tr>
-																<td>
-																	<div  class='input-label ' >sports
-																	</div>	
-																	<select   class='bio_inputs '  id='sports' name='sports'>
-																		<option>Football</option>
-																		<option>Baseball</option>
-																		<option>Soccer</option>
-																	</select>																																	
-																</td>
-																<td>
-
-																</td>
-															</tr>
-															<tr>
-																<td>
-																</td>
-																<td>
-																</td>
-															</tr>																																																												
-														</table>
-													</div>
-													<div    class='halves ' >
-														
-																<style>
-																#textarea_div{
-																width:400px;
-																height: 580px;
-																margin:0px 0px 0px 0px;
-																padding:10px 0px 0px 0px;
-																}
-																.save{
-																background-image: url(<?php echo base_url()    ?>images/disk_save.png);
-																background-position: 3px 3px;
-																background-repeat: no-repeat;	
-																height: 22px;
-																width: 22px;
-																cursor:pointer;
-																}
-																#save_text{
-																color:gray;
-																margin:5px 0px 0px 5px;	
-																font-weight:bold;
-																cursor:pointer;
-																}
-																.loading{
-																background-image: url(<?php echo base_url()    ?>images/ajax-loader.gif);
-																background-position: 5px 4px;
-																background-repeat: no-repeat;
-																height: 22px;
-																width: 22px;	
-																}
-																</style>
-																
-																	<div>
-																				<div  class='save float_left'  title='Save'>
-																				</div>
-																				<div  id='save_text' class='float_left' >Save
-																				</div>
-																	</div>
-																
-																	<div id='textarea_div' class='clearfix ' >
-																			<textarea  name='bio' class='bio_inputs clearfix' id='text_area'><?php echo ( isset( $data['users'][0]['bio'] ) ? $data['users'][0]['bio']:'' )    ?></textarea>
-																	</div>
-
-														
-													</div>
-												</div>
-										</div>		
-									</li>																	
-							</ul>
-							<style>
-							#preview_box{
-								padding:20px;	
-								clear:both;
-							}
-							#preview_box_inside{
-						    background: none repeat scroll 0 0 white;
-						    border: 0px solid gray;
-						    height: 281px;
-							}
-							</style>
-							<div  id='preview_box'>
-								<div  id='preview_box_inside'>
-								</div>
-							</div>
-				</div>
-			</div>
-</div>
-
-
-	
-<iframe  
-	id="results"   
-	name="results"
-	style='background:white;border:0px solid gray;width:0px;height:0px'  
-	border="1" 
-	frameborder="1" 
-	scrolling="auto" 
-	align="center" 
-	hspace="0" 
-	vspace="">
-</iframe>
-</body>
-</html>
-
-
-<script type="text/javascript" language="Javascript">
-	
-
-	
-$(document).ready(function() { 
-	
-			get_stored_configurations();
-			store_custom_configuration();
-			activate_fonts_for_selection();
-			thumbnail_controls();
-			bind_events();
-
-			$('#profile_box #panel-tabs_container li#panel-tab-5').click()
-
-
-});
-
-
-
+}
 
 function get_stored_configurations(){
 	
@@ -2035,7 +2048,6 @@ function get_stored_configurations(){
 
 
 }	
-
 
 function store_custom_configuration(){
 
@@ -2222,7 +2234,7 @@ function bind_events(){
 			
 			
 			
-				var mbox = $("#text_area").css({
+				var mbox = $("#wysiwyg_text_area").css({
 						height:"380px",
 						width:"100%"
 						}).htmlbox({
@@ -2240,7 +2252,7 @@ function bind_events(){
 
 				$('.save, #save_text').click(function(event) {
 					
-						$('#text_area').val(mbox.get_html());
+						$('#wysiwyg_text_area').val(mbox.get_html());
 
 						var save_dom = $('.save'); 
 					
@@ -2281,8 +2293,6 @@ function bind_events(){
 				
 }
 
-
-
 function activate_fonts_for_selection(){
 
 		
@@ -2322,10 +2332,6 @@ $.fn.bind_mouse_events = function(){
 		 	})
 	
 };
-
-
-
-
 
 function edit_mode_on(){
 
@@ -2389,7 +2395,6 @@ function store_position( dom_element ){
 	
 	
 }
-
 
 function mycarousel_initCallback_1(carousel, state) {
 		    if (state != 'init')
@@ -2617,9 +2622,6 @@ function thumbnail_controls(){
 												
 
 }
-
-
-
 </script>
 
 
