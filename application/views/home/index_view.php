@@ -95,6 +95,13 @@
 	cursor: pointer; 
 	}
 	
+.box{
+	z-index:5;	
+}
+.box.push-back{
+z-index:-1;
+}
+
 	.window-controls-container{
 	height:21px;
 	background:gray;
@@ -224,12 +231,9 @@ cursor:pointer;
 width: 500px; 
 height: 200px;	
 position:absolute;
-z-index:5;
+
 }
 
-#head-line-box.push-back{
-z-index:-1;
-}
 
 #head-line-box #full_name_readonly{
 font-size:15px;
@@ -246,6 +250,7 @@ margin-top:20px;
 	width:875px;
 	height: 600px;			
 	}		
+	
 		#profile_box #panel-tabs_container{
 		height:19px;
 		background:lightblue;	
@@ -1877,7 +1882,7 @@ function account_menu(){
 			        $("fieldset#account_menu").toggle();
 							$(".myaccount").toggleClass("menu-open");
 							
-							$('#head-line-box').toggleClass("push-back");				
+							$('.box').toggleClass("push-back");				
             });
 
 						$("fieldset#account_menu").mouseup(function() {
@@ -1885,6 +1890,7 @@ function account_menu(){
 						});
 
 						$("#account_menu a").css({cursor:'pointer'}).click(function(e) {          
+							
 							e.preventDefault();
 							
 							$('.box').hide();
@@ -1896,7 +1902,6 @@ function account_menu(){
 							}else if($(this).attr('id') == 'settings_menu_item'){
 								
 								$('#settings-box').show();
-
 							
 							}else if($(this).attr('id') == 'logout'){
 
@@ -1909,7 +1914,7 @@ function account_menu(){
 									$(".myaccount").removeClass("menu-open");
 									$("fieldset#account_menu").hide();
 								}
-								$('#head-line-box').removeClass('push-back');
+								$('.box').removeClass('push-back');
 							});	
 														
 							
