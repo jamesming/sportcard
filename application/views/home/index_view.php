@@ -98,7 +98,7 @@
 .box{
 	z-index:5;	
 }
-.box.push-back{
+.box.push-z-index-back{
 z-index:-1;
 }
 
@@ -1882,7 +1882,7 @@ function account_menu(){
 			        $("fieldset#account_menu").toggle();
 							$(".myaccount").toggleClass("menu-open");
 							
-							$('.box').toggleClass("push-back");				
+							$('.box').toggleClass("push-z-index-back");				
             });
 
 						$("fieldset#account_menu").mouseup(function() {
@@ -1914,7 +1914,7 @@ function account_menu(){
 									$(".myaccount").removeClass("menu-open");
 									$("fieldset#account_menu").hide();
 								}
-								$('.box').removeClass('push-back');
+								$('.box').removeClass('push-z-index-back');
 							});	
 														
 							
