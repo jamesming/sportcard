@@ -143,6 +143,7 @@ class qqFileUploader {
         }
         
         $filename = 'image';
+        $ext = 'jpg';
         
         if ( $this->file->save($uploadDirectory . $filename . '.' . $ext)){
             return array('success'=>true);

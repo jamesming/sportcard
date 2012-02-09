@@ -207,7 +207,7 @@ class Main extends CI_Controller {
 		$this->load->library('qquploadedfilexhr');
 		
 		// list of valid extensions, ex. array("jpeg", "xml", "bmp")
-		$allowedExtensions = array("jpg");
+		$allowedExtensions = array("jpg", "JPG");
 		// max file size in bytes
 		$sizeLimit = 1 * 1024 * 1024;
 		
