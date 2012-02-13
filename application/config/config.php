@@ -31,10 +31,10 @@ if( $_SERVER['HTTP_HOST'] == 'jamesming.whsites.net' ){
 	$config['base_url']	= "http://192.168.1.103/sportcard";
 }elseif( $_SERVER['HTTP_HOST'] == 'localhost' ){
 	$config['base_url']	= "http://localhost/sportcard";
-}elseif( $_SERVER['HTTP_HOST'] == 'www.sportcard.com' ){
-	$config['base_url']	= "http://www.sportcard.com";
-}elseif( $_SERVER['HTTP_HOST'] == 'sportcard.com' ){
-	$config['base_url']	= "http://sportcard.com";
+}elseif( $_SERVER['HTTP_HOST'] == 'www.sportcard.me' ){
+	$config['base_url']	= "http://www.sportcard.me";
+}elseif( $_SERVER['HTTP_HOST'] == 'sportcard.me' ){
+	$config['base_url']	= "http://sportcard.me";
 };
 
 	
