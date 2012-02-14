@@ -414,8 +414,9 @@ public function a3_insert(){
 		$select_what =  '*';
 		$where_array = array();
 		
-		$screenings = $this->my_database_model->select_from_table( 
-		$table = 'a3_emails', 
+		$dumps = $this->my_database_model->select_from_table( 
+		$table = $this->uri->segment(3), 
+		$set_what_array,
 		$select_what, 
 		$where_array, 
 		$use_order = TRUE, 
@@ -424,25 +425,8 @@ public function a3_insert(){
 		$limit = -1);
 		
 		
-		echo '<pre>';print_r(  $screenings  );echo '</pre>';  exit;
-	?>	
+		echo '<pre>';print_r(  $dumps  );echo '</pre>';  exit;
 	
-		<table>
-			<?php foreach( $screenings  as  $screening){?>
-			
-				<tr>
-					
-					<td>
-						<?php echo $screening->created    ?>
-					</td>
-					<td>
-						<?php echo $screening->created    ?>
-					</td>				
-				</tr>
-							
-			<?php } ?>
-		</table>
-	<?php     
 		
 	}
 
