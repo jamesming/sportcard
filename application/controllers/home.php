@@ -427,7 +427,8 @@ public function a3_insert(){
 		$limit = -1);
 		
 		
-		echo '<div  id='data'><pre>';print_r(  $dumps  );echo '</pre></div>';  exit;
+		
+		echo '<div  id="data"><pre>';print_r(  $dumps  );echo '</pre></div>';  exit;
 	
 		
 	}
