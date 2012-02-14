@@ -408,6 +408,36 @@ public function a3_insert(){
 
 		echo $this->query->insert( $post_array );
 	}
+	
+	function a3_table_dump(){
+	
+		$select_what =  '*';
+		$where_array = array();
+		
+		$screenings = $this->my_database_model->select_from_table( 
+		$table = 'fonts', 
+		$select_what, 
+		$where_array, 
+		$use_order = TRUE, 
+		$order_field = 'created', 
+		$order_direction = 'desc', 
+		$limit = -1);
+		
+		
+		echo '<pre>';print_r(  $screenings  );echo '</pre>';  exit;
+	?>	
+	
+
+			<?php foreach( $screenings  as  $screening){?>
+			
+							
+			
+			
+			<?php } ?>
+	
+	<?php     
+		
+	}
 
 
 /**
