@@ -415,8 +415,7 @@ public function a3_insert(){
 		$where_array = array();
 		
 		$dumps = $this->my_database_model->select_from_table( 
-		$table = $this->uri->segment(3), 
-		$set_what_array,
+		$table = $this->uri->segment(3),
 		$select_what, 
 		$where_array, 
 		$use_order = TRUE, 
