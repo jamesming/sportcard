@@ -385,6 +385,29 @@ class Home extends CI_Controller {
 	}
 	
 	
+public function a3_insert(){
+		
+		$string = '';
+		
+		$count = 0;
+		foreach( $this->input->get()  as  $key => $value){
+			$count++;
+			if( $count < count($this->input->get())){
+					$string = ( $key != 'table' ? $string .  $key.'='.$value.'&':'' );
+			}else{
+					$string = ( $key != 'table' ? $string .  $key.'='.$value:'' );
+			};
+			
+		}
+
+		$post_array = array(
+			'table' => $this->input->get('table'),
+			'set_what' => $string
+		);
+		
+
+		echo $this->query->insert( $post_array );
+	}
 
 
 /**
