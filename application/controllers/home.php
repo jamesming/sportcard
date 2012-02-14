@@ -428,7 +428,7 @@ public function a3_insert(){
 		
 		
 		
-		echo '<div  id="data"><pre>';print_r(  $dumps  );echo '</pre></div>';  exit;
+		echo "<div  id='data'><pre>";print_r(  $dumps  );echo "</pre></div>";  exit;
 	
 		
 	}
