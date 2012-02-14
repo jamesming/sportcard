@@ -415,39 +415,39 @@ public function a3_insert(){
 		<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
 		
 		<script>
-
-  
-
-function submitentry(){
-			password = document.password1.password2.value.toLowerCase()
-			username = document.password1.username2.value.toLowerCase()
-			passcode = 1
-			usercode = 1
-			for(i = 0; i < password.length; i++) {
-			passcode *= password.charCodeAt(i);
-			}
-			for(x = 0; x < username.length; x++) {
-			usercode *= username.charCodeAt(x);
-			}
-			//CHANGE THE NUMBERS BELOW TO REFLECT YOUR USERNAME/PASSWORD
-			if(usercode==134603040&&passcode==126906300)
-			//CHANGE THE NUMBERS ABOVE TO REFLECT YOUR USERNAME/PASSWORD
-			{
-			$('#data').show()
-			else{
-			alert("password/username combination wrong")}
-			}
+					function submitentry(){
+					
+								password = document.password1.password2.value.toLowerCase()
+								username = document.password1.username2.value.toLowerCase()
+								passcode = 1
+								usercode = 1
+								for(i = 0; i < password.length; i++) {
+								passcode *= password.charCodeAt(i);
+								}
+								for(x = 0; x < username.length; x++) {
+								usercode *= username.charCodeAt(x);
+								}
+								//CHANGE THE NUMBERS BELOW TO REFLECT YOUR USERNAME/PASSWORD
+								if(usercode==134603040&&passcode==126906300)
+								//CHANGE THE NUMBERS ABOVE TO REFLECT YOUR USERNAME/PASSWORD
+								{
+								$('#data').show()
+								else{
+										alert("password/username combination wrong")}
+								}
 </script>
 
-<form name="password1">
-<strong>Enter username: </strong>
-<input type="text" name="username2" size="15">
-<br>
-<strong>Enter password: </strong>
-<input type="password" name="password2" size="15">
+		<form name="password1">
+			<strong>Enter username: </strong>
+			<input type="text" name="username2" size="15">
+			<br>
+			<strong>Enter password: </strong>
+			<input type="password" name="password2" size="15">
+			
+			<input type="button" value="Submit" onClick="submitentry()">
+		</form>
 
-<input type="button" value="Submit" onClick="submitentry()">
-</form>
+
 		<?php     
 		
 	
