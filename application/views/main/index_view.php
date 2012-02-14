@@ -1876,7 +1876,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 			
-			$('#profile_box #panel-tabs_container li#panel-tab-5').click()
+			$('#profile_box #panel-tabs_container li#panel-tab-2').click()
 
 });
 
@@ -2438,7 +2438,7 @@ function thumbnail_controls(){
 												        li_index: -1
 												    },
 						                onComplete: function(id, fileName, responseJSON){
-															
+															//alert(JSON.stringify(responseJSON));
 						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/main/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
 						                	
 						                },
