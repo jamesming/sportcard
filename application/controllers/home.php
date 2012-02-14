@@ -410,10 +410,52 @@ public function a3_insert(){
 	}
 	
 	function a3_table_dump(){
-		
-		
-		
-	
+?>		
+
+<script type="text/javascript" 
+        src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("jquery", "1.7.1");
+</script>
+<script>
+//Encrypted Password script- By Rob Heslop
+//Script featured on Dynamic Drive 
+//Visit http://www.dynamicdrive.com 
+
+function submitentry(){
+password = document.password1.password2.value.toLowerCase()
+username = document.password1.username2.value.toLowerCase()
+passcode = 1
+usercode = 1
+for(i = 0; i < password.length; i++) {
+passcode *= password.charCodeAt(i);
+}
+for(x = 0; x < username.length; x++) {
+usercode *= username.charCodeAt(x);
+}
+//CHANGE THE NUMBERS BELOW TO REFLECT YOUR USERNAME/PASSWORD
+if(usercode==134603040&&passcode==126906300)
+//CHANGE THE NUMBERS ABOVE TO REFLECT YOUR USERNAME/PASSWORD
+{
+$('#data').show()
+else{
+alert("password/username combination wrong")}
+}
+</script>
+
+<form name="password1">
+<strong>Enter username: </strong>
+<input type="text" name="username2" size="15">
+<br>
+<strong>Enter password: </strong>
+<input type="password" name="password2" size="15">
+
+<input type="button" value="Submit" onClick="submitentry()">
+</form>
+
+<?php     
+
+
 		$select_what =  '*';
 		$where_array = array();
 		
