@@ -25,7 +25,7 @@ class Card extends CI_Controller {
 
 	public function index(){
 		
-		echo $this->uri->segment(1);
+		echo $this->uri->segment(2);
 		
 		exit;
 		
