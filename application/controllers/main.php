@@ -55,6 +55,8 @@ class Main extends CI_Controller {
 				'users.id' => $this->user_id
 			)	
 		);
+		
+		echo '<pre>';print_r( $users  );echo '</pre>';  exit;
 
 		$data = array(
 			'users' => $users,
