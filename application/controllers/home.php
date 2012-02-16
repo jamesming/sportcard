@@ -26,10 +26,25 @@ class Home extends CI_Controller {
 	 */
 	 
 	public function index(){
+		
+		$dir = "./images/collage/";
+		
+		$images = ( file_exists($dir) ? scandir( $dir ): array() );
+		
+		
+		
 		$select_what =  'name, code';
 		$where_array = array('name' => 'Vegur');
 		$font = $this->my_database_model->select_from_table( $table = 'fonts', $select_what, $where_array, $use_order = FALSE, $order_field = '', $order_direction = 'desc', $limit = -1);
-		$this->load->view('home/index_view', array( 'font' => $font ));
+		
+		$data = array(
+		 'font' => $font, 
+		 'images' => $images, 
+		 );
+		
+		
+		$this->load->view('home/index_view', 
+			array( 'data' => $data ));
 	}
 	
 	

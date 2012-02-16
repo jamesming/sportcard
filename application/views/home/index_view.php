@@ -15,7 +15,6 @@
 	
 		<div   class=' span-12'   >
 			
-				SPORTCARDLOGO HERE
 	
 		</div>
 	
@@ -38,9 +37,78 @@
 	
 	</div>	
 </div>
+<style>
+#logo_div{
+  background-image: url(<?php  echo base_url()   ?>images/sclogo_White.jpg);
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-size:contain;
+  height:60px;
+  margin-top:100px;
+  margin-bottom:10px;
+}
+#slogan{
+font-size:20px;
+text-align:center;	
+}
+.row{
+clear:both;	
+}
+.column{
+float:left;	
+}
+</style>
+<div  class='container'        >
+	<div  id='logo_div'>
+	</div>
+	<div   id='slogan' class='cufon ' >YOUR VIRTUAL TRADING CARD
+	</div>
+	
+	<div>
+		<div>
+			
+			<div  class='col ' >
+			<?php
+			$count=0;
+			foreach( $data['images']  as  $image ){ 
+				
+				$count++;  
+				
+				$image = str_replace(' ', '\ ', $image);
+				
+				?>
+			
+				<?php if( $count > 2){?>
+				
+						<div  class=' column'   style='
+						  background-image: url(<?php  echo base_url()   ?>images/collage/<?php echo $image     ?>);
+						  background-position:center center;
+						  background-repeat:no-repeat;
+						  background-size:contain;
+						  height:80px;
+						  width:100px;					
+						'  >
+						</div>
+						
+						
+						<?php if( in_array($count, array(10,18)) ){?>
+						
+							</div ><div  class='col ' >
+						
+						<?php } ?>
+				
+				<?php } ?>
+			
+			
+			<?php } ?>
+			
+			
+			</div>
+			
+		</div>
 
-<div  class='container'      style='border:1px solid gray;height:400px'    >
-Main Body
+		
+	</div>
 </div>
 
 			
@@ -60,10 +128,12 @@ Main Body
 
 </script>
 
+
+
 <?php  
 $this->load->view('fonts/cufon.php');
 ?>
 
 <script type="text/javascript" language="Javascript">
-<?php  echo $font[0]->code;   ?>	
+<?php  echo $data['font'][0]->code;   ?>	
 </script>

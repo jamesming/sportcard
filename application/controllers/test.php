@@ -10,8 +10,17 @@ class Test extends CI_Controller {
 
 
 	function html5player(){
+	?>
 	
-	test	
+	<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+	<script src="http://vjs.zencdn.net/c/video.js"></script>
+	<video id="my_video_1" class="video-js vjs-default-skin" controls
+	  preload="auto" width="640" height="264" poster="my_video_poster.png"
+	  data-setup="{}">
+	  <source src="<?php  echo base_url()   ?>images/pongo.mp4" type='video/mp4'>
+	</video>
+	
+	<?php     
 		
 	}
 
@@ -107,9 +116,8 @@ class Test extends CI_Controller {
 
 			}
 
-		}
 
-		$users_preferences =  $this->CI->my_database_model->select_from_table( 
+		$users_preferences =  $this->my_database_model->select_from_table( 
 			$table = 'users_objects', 
 			$select_what = 'user_id, object_id, rate',    
 			$where_array, 
@@ -176,7 +184,7 @@ class Test extends CI_Controller {
 	
 		};
 		
-		$users[] = $users[ ???  ]; 
+		//$users[] = $users[ ???  ]; 
 		
 		
 		foreach( $users  as  $user){
