@@ -7,8 +7,8 @@
   background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/<?php echo ( isset( $data['users']['backgrounds']['images'][0]) ? $data['users']['backgrounds']['images'][0]:'0' )    ?>/image.jpg);
   background-position:center 0px;
   background-repeat:no-repeat;/*
-  -webkit-background-size:1280px 1024px;
-  background-size:1280px 1024px;*/
+  -webkit-background-size:1280px 1024px;*/
+  background-size:cover;
 	}
 	.top-right-rounded{
 		border-top-right-radius: 6px;
