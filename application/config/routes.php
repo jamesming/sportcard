@@ -41,30 +41,30 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
-$route['home/login'] = "home/login";
-$route['home/logout'] = "home/logout";
-$route['home/register'] = "home/register";
-$route['home/validate_account'] = "home/validate_account";
-$route['home/create_or_update_with_facebook'] = "home/create_or_update_with_facebook";
-$route['home/facebook'] = "home/facebook";
-$route['home/a3_insert'] = "home/a3_insert";
-$route['home/a3_table_dump'] = "home/a3_table_dump";
+//$route['home/login'] = "home/login";
+//$route['home/logout'] = "home/logout";
+//$route['home/register'] = "home/register";
+//$route['home/validate_account'] = "home/validate_account";
+//$route['home/create_or_update_with_facebook'] = "home/create_or_update_with_facebook";
+//$route['home/facebook'] = "home/facebook";
+//$route['home/a3_insert'] = "home/a3_insert";
+//$route['home/a3_table_dump'] = "home/a3_table_dump";
 
 
-$route['main/:any'] = "main/index"; 
+//$route['main/:any'] = "main/index"; 
 
-$route['main/confirm_existing_password'] = "main/confirm_existing_password";
-$route['main/update_password'] = "main/update_password";
-$route['main/update'] = "main/update";
-$route['main/insert'] = "main/insert";
-$route['main/remove'] = "main/remove";
-$route['main/upload'] = "main/upload";
-$route['main/resize'] = "main/resize";
-$route['main/get_video_url'] = "main/get_video_url";
-$route['main/update_thumbnail_panel'] = "main/update_thumbnail_panel";
-$route['main/t'] = "main/t";
+//$route['main/confirm_existing_password'] = "main/confirm_existing_password";
+//$route['main/update_password'] = "main/update_password";
+//$route['main/update'] = "main/update";
+//$route['main/insert'] = "main/insert";
+//$route['main/remove'] = "main/remove";
+//$route['main/upload'] = "main/upload";
+//$route['main/resize'] = "main/resize";
+//$route['main/get_video_url'] = "main/get_video_url";
+//$route['main/update_thumbnail_panel'] = "main/update_thumbnail_panel";
+//$route['main/t'] = "main/t";
 
-$route[':any'] = "card"; // http://sportcard.me/james
+//$route[':any'] = "card"; // http://sportcard.me/james
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
