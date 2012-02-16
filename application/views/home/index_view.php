@@ -52,12 +52,14 @@
   background-size:contain;
   height:60px;
   margin-top:100px;
-  margin-bottom:10px;
+  margin-bottom:25px;
 }
 #slogan{
-font-size:20px;
+font-size:22px;
 text-align:center;
-margin-bottom:10px;	
+margin-bottom:25px;	
+color:blue;
+font-weight:bold;
 }
 .row{
 clear:both;	
@@ -69,7 +71,7 @@ clear:both;
     float: left;
     height: 80px;
     width: 106px;
-    margin-top: 9px;	
+    margin-top: 9px;
 }
 </style>
 <div  class='container'        >
