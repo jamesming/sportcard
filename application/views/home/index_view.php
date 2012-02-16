@@ -92,7 +92,7 @@ clear:both;
 				
 				?>
 			
-				<?php if( $count > 2){?>
+				<?php if( !in_array($count, array(1, 2, 27)) ){?>
 				
 						<div  class=' column'   style='
 						  background-image: url(<?php  echo base_url()   ?>images/collage/<?php echo $image     ?>);
