@@ -65,7 +65,7 @@ $route['home/a3_table_dump'] = "home/a3_table_dump";
 //$route['main/update_thumbnail_panel'] = "main/update_thumbnail_panel";
 //$route['main/t'] = "main/t";
 
-$route[':any'] = "card"; 
+//$route[':any'] = "card"; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
