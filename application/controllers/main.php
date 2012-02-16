@@ -56,7 +56,6 @@ class Main extends CI_Controller {
 			)	
 		);
 		
-		echo '<pre>';print_r( $users  );echo '</pre>';  exit;
 
 		$data = array(
 			'users' => $users,
