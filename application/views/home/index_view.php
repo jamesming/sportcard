@@ -63,7 +63,13 @@ margin-bottom:10px;
 clear:both;	
 }
 .column{
-float:left;	
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: left;
+    height: 80px;
+    width: 106px;
+    margin-top: 9px;	
 }
 </style>
 <div  class='container'        >
@@ -90,11 +96,6 @@ float:left;
 				
 						<div  class=' column'   style='
 						  background-image: url(<?php  echo base_url()   ?>images/collage/<?php echo $image     ?>);
-						  background-position:center center;
-						  background-repeat:no-repeat;
-						  background-size:contain;
-						  height:80px;
-						  width:100px;					
 						'  >
 						</div>
 						
