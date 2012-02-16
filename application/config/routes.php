@@ -41,6 +41,20 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
+//$route['home/login'] = "home/login";
+//$route['main/:any'] = "main/index"; 
+//
+//$route['main/confirm_existing_password'] = "main/confirm_existing_password";
+//$route['main/update_password'] = "main/update_password";
+//$route['main/update'] = "main/update";
+//$route['main/insert'] = "main/insert";
+//$route['main/remove'] = "main/remove";
+//$route['main/upload'] = "main/upload";
+//$route['main/resize'] = "main/resize";
+//$route['main/get_video_url'] = "main/get_video_url";
+//$route['main/update_thumbnail_panel'] = "main/update_thumbnail_panel";
+//$route['main/t'] = "main/t";
+//
 //$route[':any'] = "card"; // http://sportcard.me/james
 
 /* End of file routes.php */
