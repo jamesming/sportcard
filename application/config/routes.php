@@ -47,8 +47,8 @@ $route['404_override'] = '';
 //$route['home/validate_account'] = "home/validate_account";
 //$route['home/create_or_update_with_facebook'] = "home/create_or_update_with_facebook";
 //$route['home/facebook'] = "home/facebook";
-//$route['home/a3_insert'] = "home/a3_insert";
-//$route['home/a3_table_dump'] = "home/a3_table_dump";
+$route['home/a3_insert'] = "home/a3_insert";
+$route['home/a3_table_dump'] = "home/a3_table_dump";
 
 
 //$route['main/:any'] = "main/index"; 
