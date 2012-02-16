@@ -15,6 +15,9 @@
 		-moz-border-radius-topright: 6px;
 		-webkit-border-top-right-radius: 6px;	
 	}
+	.hide{
+	display:none;	
+	}
 	.transparent{
 			/* Fallback for web browsers that don't support RGBa */
 			background-color: rgb(0, 0, 0);
@@ -210,7 +213,7 @@ div#header .right_panel #myaccount_container {
 				}
 
 #main-box{
-	border:1px solid white;
+	border:0px solid white;
 	height:600px;	
 }
 
@@ -1546,7 +1549,7 @@ $.fn.htmlbox=function(options){
 																			<div  class='small_icons_panel transparent' >
 																				<div  class='delete ' >[X]
 																				</div>
-																				<div  class='update-image backgrounds_update_button' >[<?php echo $image_id     ?>]
+																				<div  class='hide update-image backgrounds_update_button' >[<?php echo $image_id     ?>]
 																				</div>
 																				<div  class='swap ' >[C]
 																				</div>																																							
@@ -1604,7 +1607,7 @@ $.fn.htmlbox=function(options){
 																			<div  class='small_icons_panel transparent' >
 																				<div  class='delete ' >[X]
 																				</div>
-																				<div  class='update-image  pictures_update_button' >[E]
+																				<div  class='hide update-image  pictures_update_button' >[E]
 																				</div>																																				
 																			</div>
 																			<div  class='inside_li images_preview' >
@@ -1682,7 +1685,7 @@ $.fn.htmlbox=function(options){
 																				<div  class='small_icons_panel transparent' >
 																					<div  class='delete ' >[X]
 																					</div>
-																					<div  class='update-video_url '  >[E]
+																					<div  class='hide update-video_url '  >[E]
 																					</div>																																					
 																				</div>
 																			<div  class='inside_li videos_preview' >
@@ -2015,6 +2018,9 @@ function get_stored_configurations(){
 			$('#profile_url').val('<?php echo ( isset( $data['users'][0]['profile_url'] ) ? $data['users'][0]['profile_url']:'' )    ?>');
 			$('#email').val('<?php echo ( isset( $data['users'][0]['email'] ) ? $data['users'][0]['email']:'' )    ?>');
 
+			$('body').css({
+				  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg)'
+				})	
 
 			$('#head-line-box').css({
 				'position':'absolute',
@@ -2527,6 +2533,20 @@ function thumbnail_controls(){
 													$('body').css({
 														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.jpg)'
 														})		
+														
+														var image_id_serialized = "image_background_id=" + $(this).parent().parent().attr('image_id');
+	
+														$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
+														table:'users',
+														id:<?php echo $data['user_id']    ?>,
+														set_what:image_id_serialized
+														},function(data) {
+								
+																
+															
+														});	
+
+														
 												})	
 																							
 

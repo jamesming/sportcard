@@ -55,8 +55,6 @@ class Main extends CI_Controller {
 				'users.id' => $this->user_id
 			)	
 		);
-		
-
 
 		$data = array(
 			'users' => $users,
@@ -457,7 +455,7 @@ class Main extends CI_Controller {
 							whichCarousel.size( 0 )
 						};
 						
-						whichCarousel.add(  (whichCarousel.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='<?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?>  ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' >[C]</div>": "")    ?></div><div  class='inside_li <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'videos_preview':'images_preview' )    ?>  ' ></div></li>");					
+						whichCarousel.add(  (whichCarousel.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='hide <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?>  ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' >[C]</div>": "")    ?></div><div  class='inside_li <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'videos_preview':'images_preview' )    ?>  ' ></div></li>");					
 	
 	
 					  whichCarousel.scroll(parseInt(whichCarousel.size()),true);
