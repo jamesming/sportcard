@@ -14,18 +14,25 @@
 	<div  class='container '  >
 	
 		<div   class=' span-12'   >
-			
-	
+		&nbsp;
 		</div>
+	
+	<style>
+	#header-menu li{
+		float:right;
+		padding:10px;
+		background:lightblue;
+	}
+	</style>
 	
 	<div    class=' span-12 last'  >
 
 	  <ul id="header-menu">
-<!--	
+	  	
+			<!--	
 	    <li><a href="/" title="Online invoicing and time tracking">Home</a></li>
 	    <li><a href="/tour" title="Learn more about our invoicing product">Tour</a></li>
 	    <li><a href="<?php  echo base_url()   ?>index.php/home/register">Pricing &amp; Signup</a></li>
-	    
 	    -->
 	    
 	    <li><a href="<?php  echo base_url()   ?>index.php/home/login">Log In</a></li>
@@ -49,7 +56,8 @@
 }
 #slogan{
 font-size:20px;
-text-align:center;	
+text-align:center;
+margin-bottom:10px;	
 }
 .row{
 clear:both;	

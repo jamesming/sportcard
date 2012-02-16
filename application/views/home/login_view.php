@@ -83,15 +83,24 @@ margin-top: 20px;
 															<div class="sub_top">&nbsp;</div>
 														</div>
 													  <div class="middle">
-													  	
-																<div id='logo' >
-																	SPORTCARD LOGO
-															
-																</div>
+													  	<style>
+													  	#logo_div{
+    background-image: url("http://localhost/sportcard/images/sclogo_White.jpg");
+    background-position: 19px center;
+    background-repeat: no-repeat;
+    background-size: 191px;
+    padding-top: 103px;
+    width: 222px;
+													  	}
+													  	</style>
+														  	
+														  		
+																
 																<div  class='wrapper '   style='margin:0px 0px 0px 30px;'  >	
 																	
 
-																		
+																		<div id='logo_div' >
+																		</div>
 																		<div id='box_inside_header' class=' header_style' >
 																									Log In	<span  class='or_redirect ' >&nbsp;(or <a href='<?php  echo base_url()   ?>index.php/home/register'>Sign Up</a>)</span>							
 																		</div>
