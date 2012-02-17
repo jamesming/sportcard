@@ -108,10 +108,6 @@ z-index:-1;
 	}	
 	
 
-	div#header{
-	display:none;	
-	}
-
 	
 div#header .coordinates{
 	width:200px;
