@@ -72,7 +72,8 @@ class Main extends CI_Controller {
 			'thumbnail_size_height' => $this->thumbnail_size_height,
 			'thumbnail_panel_width' => $this->thumbnail_panel_width,
 			'top_direction_arrow' => $this->top_direction_arrow,
-			'user_id' => $this->user_id
+			'user_id' => $this->user_id,
+			'preview_only' => ( !isset( $this->session->userdata['user_id'] ) ? 1: 0)
 		);
 		
 
