@@ -148,9 +148,6 @@ function get_stored_configurations(){
 			$('#profile_url').val('<?php echo ( isset( $data['users'][0]['profile_url'] ) ? $data['users'][0]['profile_url']:'' )    ?>');
 			$('#email').val('<?php echo ( isset( $data['users'][0]['email'] ) ? $data['users'][0]['email']:'' )    ?>');
 
-			$('body').css({
-				  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg)'
-				})	
 
 			$('#head-line-box').css({
 				'position':'absolute',

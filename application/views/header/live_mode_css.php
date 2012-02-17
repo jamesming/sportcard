@@ -1,6 +1,6 @@
 <style>
 	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/<?php echo ( isset( $data['users']['backgrounds']['images'][0]) ? $data['users']['backgrounds']['images'][0]:'0' )    ?>/image.jpg);
+  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg);
   background-position:center 0px;
   background-repeat:no-repeat;/*
   -webkit-background-size:1280px 1024px;*/
