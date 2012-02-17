@@ -18,6 +18,8 @@ class Main extends CI_Controller {
 		 
 		 				if( count($users) == 0 ){
 							redirect('/home/login');
+		 				}else{
+		 					$this->user_id = $users[0]->id;
 		 				};
 				
 				};
