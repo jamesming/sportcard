@@ -8,6 +8,14 @@ class Main extends CI_Controller {
 
 				if(  isset( $this->session->userdata['user_id'] )  ){
 					
+					if( $this->input->get('logout')){
+						
+							$this->session->sess_create();	
+							
+							redirect('/home/login');	
+							
+					};
+					
 					$this->user_id = $this->session->userdata['user_id'];
 
 				}else{
