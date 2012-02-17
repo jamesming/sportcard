@@ -61,7 +61,7 @@ $route['main/get_video_url'] = "main/get_video_url";
 $route['main/update_thumbnail_panel'] = "main/update_thumbnail_panel";
 $route['main/t'] = "main/t";
 
-$route[':any'] = "card"; 
+$route[':any'] = "main"; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

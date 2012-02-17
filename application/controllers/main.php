@@ -11,8 +11,14 @@ class Main extends CI_Controller {
 					$this->user_id = $this->session->userdata['user_id'];
 
 				}else{
-					
-					redirect('/home/login');
+        
+		 				$users = $this->custom->get_users_from_profile_url( 
+		 					$profile_url = $this->uri->segment(1) 
+		 				);
+		 
+		 				if( count($users) == 0 ){
+							redirect('/home/login');
+		 				};
 				
 				};
 
