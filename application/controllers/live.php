@@ -65,7 +65,7 @@ class Live extends CI_Controller {
 			'thumbnail_panel_width' => $this->thumbnail_panel_width,
 			'top_direction_arrow' => $this->top_direction_arrow,
 			'user_id' => $this->user_id,
-			'preview_only' => 1)
+			'preview_only' => 1
 		);
 		
 
