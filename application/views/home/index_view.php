@@ -50,7 +50,7 @@
   background-position:center center;
   background-repeat:no-repeat;
   background-size:contain;
-  height:60px;
+  height:260px;
   margin-top:100px;
   margin-bottom:25px;
 }
