@@ -5,7 +5,8 @@ class Card extends CI_Controller {
 	
    public function __construct(){
         parent::__construct();
-
+        
+        $this->user_id = 1;
 
 				$this->thumbnail_size_width  = '181';
 				$this->thumbnail_size_height = '120';
@@ -26,9 +27,7 @@ class Card extends CI_Controller {
 	public function index(){
 		
 		echo $this->uri->segment(1);
-		
-		exit;
-		
+
 		$select_what =  '*';
 		
 		$where_array = array('id !=' => 16);
@@ -58,7 +57,8 @@ class Card extends CI_Controller {
 			'thumbnail_size_height' => $this->thumbnail_size_height,
 			'thumbnail_panel_width' => $this->thumbnail_panel_width,
 			'top_direction_arrow' => $this->top_direction_arrow,
-			'user_id' => $this->user_id
+			'user_id' => $this->user_id,
+			'card' => 1
 		);
 		
 
