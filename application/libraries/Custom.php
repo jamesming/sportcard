@@ -17,6 +17,34 @@ private $CI;			// CodeIgniter instance
 
 
 
+
+	
+/**
+ * get_users_from_profile_url
+ *
+ * {@source }
+ * @package BackEnd
+ * @author James Ming <jamesming@gmail.com>
+ * @access public
+ * @return array $users */ 
+	
+	function get_users_from_profile_url(  $profile_url = '' ){
+		
+		
+			return $this->CI->my_database_model->select_from_table( 
+			$table = 'users', 
+			$select_what = '*', 
+			$where_array = array('profile_url' => $profile_url ), 
+			$use_order = FALSE, 
+			$order_field = '', 
+			$order_direction = 'desc', 
+			$limit = 1);
+			
+	}	
+
+
+
+
 	/**
 	 * register_process
 	 * @package BackEnd

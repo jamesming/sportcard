@@ -6,7 +6,13 @@ class Card extends CI_Controller {
    public function __construct(){
         parent::__construct();
         
-        $this->user_id = 1; // $this->uri->segment(1);
+        
+ 				$users = $this->custom->get_users_from_profile_url( 
+ 					$profile_url = $this->uri->segment(1) 
+// 					$profile_url = 'james'
+ 				);
+ 
+        $this->user_id = $users[0]->id; // $this->uri->segment(1);
 
 				$this->thumbnail_size_width  = '181';
 				$this->thumbnail_size_height = '120';
