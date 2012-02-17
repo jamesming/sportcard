@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php     	$this->load->view('header/blueprint_css.php');  ?>
+<?php	$this->load->view('header/blueprint_css.php');  ?>
 <style>
 	body{
   background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/<?php echo ( isset( $data['users']['backgrounds']['images'][0]) ? $data['users']['backgrounds']['images'][0]:'0' )    ?>/image.jpg);
@@ -110,6 +110,12 @@ z-index:-1;
 	background:gray;
 	z-index:0;
 	}	
+	
+<?php if( isset($data['card']) && $data['card'] == 1 ){?>	
+	div#header{
+	display:none;	
+	}
+<?php } ?>
 	
 div#header .coordinates{
 	width:200px;
@@ -2049,7 +2055,9 @@ function get_stored_configurations(){
 			$('#font_size').val('<?php echo ( isset( $data['users'][0]['font_size']) ? $data['users'][0]['font_size']:'11px' )    ?>');
 
 
-			<?php if( isset($data['users'][0]['edit_mode']) && $data['users'][0]['edit_mode'] == 0){?>
+			<?php if( isset($data['users'][0]['edit_mode']) && $data['users'][0]['edit_mode'] == 0
+						|| isset($data['card']) && $data['card'] == 1 
+						){?>
 									$('#edit_mode').text('edit').attr('on', 0);	
 									edit_mode_off();									
 			<?php }else{?>
