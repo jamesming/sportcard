@@ -58,6 +58,7 @@ $route['main/remove'] = "main/remove";
 $route['main/upload'] = "main/upload";
 $route['main/resize'] = "main/resize";
 $route['main/get_video_url'] = "main/get_video_url";
+$route['main/get_video_iframe'] = "main/get_video_iframe";
 $route['main/update_thumbnail_panel'] = "main/update_thumbnail_panel";
 $route['main/t'] = "main/t";
 
