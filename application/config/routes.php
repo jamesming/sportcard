@@ -62,7 +62,7 @@ $route['main/get_video_iframe'] = "main/get_video_iframe";
 $route['main/update_thumbnail_panel'] = "main/update_thumbnail_panel";
 $route['main/t'] = "main/t";
 
-$route[':any'] = "main"; 
+$route[':any'] = "live"; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

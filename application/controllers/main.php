@@ -6,31 +6,18 @@ class Main extends CI_Controller {
    public function __construct(){
         parent::__construct();
 
-				if(  isset( $this->session->userdata['user_id'] )  ){
 					
-					if( $this->input->get('logout')){
+				if( $this->input->get('logout')){
+					
+						$this->session->sess_create();	
 						
-							$this->session->sess_create();	
-							
-							redirect('/home/login');	
-							
-					};
-					
-					$this->user_id = $this->session->userdata['user_id'];
-
-				}else{
-        
-		 				$users = $this->custom->get_users_from_profile_url( 
-		 					$profile_url = $this->uri->segment(1) 
-		 				);
-		 
-		 				if( count($users) == 0 ){
-							redirect('/home/login');
-		 				}else{
-		 					$this->user_id = $users[0]->id;
-		 				};
-				
+						redirect('/home/login');	
+						
 				};
+				
+				$this->user_id = $this->session->userdata['user_id'];
+
+
 
 				$this->thumbnail_size_width  = '181';
 				$this->thumbnail_size_height = '120';
@@ -81,7 +68,7 @@ class Main extends CI_Controller {
 			'thumbnail_panel_width' => $this->thumbnail_panel_width,
 			'top_direction_arrow' => $this->top_direction_arrow,
 			'user_id' => $this->user_id,
-			'preview_only' => ( !isset( $this->session->userdata['user_id'] ) ? 1: 0)
+			'preview_only' => 0)
 		);
 		
 
