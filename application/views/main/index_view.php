@@ -7,7 +7,7 @@
 	if( $data['preview_only'] == 1 ){
 		$this->load->view('header/preview_mode_css.php');
 	}else{
-		$this->load->view('header/settings_dom.php');
+		$this->load->view('header/edit_mode.php');
 	};  
 ?> 
 	 	
