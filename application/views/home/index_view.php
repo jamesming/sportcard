@@ -77,9 +77,11 @@ clear:both;
 <div  class='container'        >
 	<div  id='logo_div'>
 	</div>
-	<div   id='slogan' class='cufon ' >YOUR VIRTUAL TRADING CARD
+	<div   id='slogan' class='cufon ' >LAUNCHING SOON
 	</div>
-	
+<?php if(1==2 ){?>
+
+
 	<div>
 		<div>
 			
@@ -120,6 +122,10 @@ clear:both;
 
 		
 	</div>
+	
+
+<?php } ?>
+	
 </div>
 
 			

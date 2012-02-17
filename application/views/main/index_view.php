@@ -111,7 +111,7 @@ z-index:-1;
 	z-index:0;
 	}	
 	
-<?php if( isset($data['card']) && $data['card'] == 1 ){?>	
+<?php if( isset($data['preview_only']) && $data['preview_only'] == 1 ){?>	
 	div#header{
 	display:none;	
 	}
@@ -2056,7 +2056,7 @@ function get_stored_configurations(){
 
 
 			<?php if( isset($data['users'][0]['edit_mode']) && $data['users'][0]['edit_mode'] == 0
-						|| isset($data['card']) && $data['card'] == 1 
+						|| isset($data['preview_only']) && $data['preview_only'] == 1 
 						){?>
 									$('#edit_mode').text('edit').attr('on', 0);	
 									edit_mode_off();									
