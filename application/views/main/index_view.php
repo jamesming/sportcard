@@ -304,7 +304,7 @@
 								
 										<li id='panel-3'  class='panels ' >
 											<div  class='div-panel ' >
-												<table>
+												<table  class='fonts_table ' >
 													<tr>
 														<td>Name
 														</td>
@@ -409,12 +409,13 @@
 														</td>
 														<td>
 															<style>
-															#profile_box ul#panels_ul li.panels table ul{
-																height:100px;
+															#profile_box ul#panels_ul li.panels table.fonts_table ul{
+																height:300px;
 																overflow-y:scroll;
 																overflow-x:hidden;
+																border:1px solid gray;
 															}
-															#profile_box ul#panels_ul li.panels table ul#fonts_ul li.fonts_li{
+															#profile_box ul#panels_ul li.panels table.fonts_table ul#fonts_ul li.fonts_li{
 																background:white;	
 																border-bottom:1px solid gray;
 																height:45px;
