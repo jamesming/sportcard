@@ -48,10 +48,6 @@ $route['404_override'] = '';
 //$route['home/create_or_update_with_facebook'] = "home/create_or_update_with_facebook";
 //$route['home/facebook'] = "home/facebook";
 
-$route['home/a3_insert'] = "home/a3_insert";
-$route['home/a3_table_dump'] = "home/a3_table_dump";
-
-
 //$route['main/:any'] = "main/index"; 
 
 //$route['main/confirm_existing_password'] = "main/confirm_existing_password";
@@ -65,7 +61,7 @@ $route['home/a3_table_dump'] = "home/a3_table_dump";
 //$route['main/update_thumbnail_panel'] = "main/update_thumbnail_panel";
 //$route['main/t'] = "main/t";
 
-//$route[':any'] = "card"; 
+$route[':any'] = "card"; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
