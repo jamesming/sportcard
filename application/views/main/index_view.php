@@ -4,7 +4,7 @@
 <?php	$this->load->view('header/blueprint_css.php');  ?>
 
 <?php 
-	if( $data['preview_only'] == 1 ){
+	if( $data['live_only'] == 1 ){
 		$this->load->view('header/preview_mode_css.php');
 	}else{
 		$this->load->view('header/edit_mode_css.php');
@@ -81,7 +81,7 @@
 				</div>
 	
 <?php 
-	if( $data['preview_only'] == 0 ){
+	if( $data['live_only'] == 0 ){
 		$this->load->view('main/edit_mode/settings_dom.php');
 	};  
 ?> 

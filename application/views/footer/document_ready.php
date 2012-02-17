@@ -180,7 +180,7 @@ function get_stored_configurations(){
 
 
 			<?php if( isset($data['users'][0]['edit_mode']) && $data['users'][0]['edit_mode'] == 0
-						||  $data['preview_only'] == 1 
+						||  $data['live_only'] == 1 
 						){?>
 									$('#edit_mode').text('edit').attr('on', 0);	
 									edit_mode_off();									
