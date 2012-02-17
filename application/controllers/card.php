@@ -12,6 +12,11 @@ class Card extends CI_Controller {
 // 					$profile_url = 'james'
  				);
  
+ 				if( count($users) == 0 ){
+ 					echo 'no sport card for url: http://sportcard.me/'.$this->uri->segment(1);
+ 					exit;
+ 				};
+ 
         $this->user_id = $users[0]->id; // $this->uri->segment(1);
 
 				$this->thumbnail_size_width  = '181';
