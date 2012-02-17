@@ -144,7 +144,8 @@ margin-top:20px;
 	#profile_box{
 	background:white;
 	width:875px;
-	height: 600px;			
+	height: 600px;
+	display:none;			
 	}		
 	
 		#profile_box #panel-tabs_container{
