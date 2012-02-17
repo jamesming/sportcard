@@ -5,7 +5,7 @@
 
 <?php 
 	if( $data['live_only'] == 1 ){
-		$this->load->view('header/preview_mode_css.php');
+		$this->load->view('header/live_mode_css.php');
 	}else{
 		$this->load->view('header/edit_mode_css.php');
 	};  
@@ -96,21 +96,213 @@
 					<div  id='panel-tabs_container'>
 						<ul>
 					
-							<li  id='panel-tab-1'>Color and Fonts
+							<li  id='panel-tab-1'>Background
 							</li>
-							<li  id='panel-tab-2'>Background
+							<li  id='panel-tab-2'>Bio
 							</li>
-							<li  id='panel-tab-3'>Photos
+							<li  id='panel-tab-3'>Color and Fonts
 							</li>
-							<li  id='panel-tab-4'>Videos
+							<li  id='panel-tab-4'>Photos
 							</li>	
-							<li  id='panel-tab-5'>Bio
+							<li  id='panel-tab-5'>Videos
 							</li>	
 						</ul>	
 					</div>
 					<div  class='insides' >
 								<ul  id='panels_ul'>
-										<li id='panel-1'  class='panels ' >
+										<li id='panel-1'   class='panels ' >
+											<div class='div-panel '>
+											
+												<table>
+													<tr>
+	
+														<td ><!--
+															<div  id='add-to' image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
+															</div>-->
+															
+															
+														<div id="upload_button_backgrounds"  >		
+															<noscript>			
+																<p>Please enable JavaScript to use file uploader.</p>
+																<!-- or put a simple form for upload here -->
+															</noscript>         
+														</div>
+															
+															
+														</td>													
+													</tr>
+	
+													<tr>
+														<td>
+	
+	
+															<div  id='backgrounds-div' class=' jcarousel-skin-tango'>
+																<ul class='thumbs-ul'   >
+																	
+																<?php if( isset($data['users']['backgrounds']['images']) ){?>
+																	
+																	<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
+	
+																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
+																			<div  class='small_icons_panel transparent' >
+																				<div  class='delete ' >[X]
+																				</div>
+																				<div  class='hide update-image backgrounds_update_button' >[<?php echo $image_id     ?>]
+																				</div>
+																				<div  class='swap ' >[C]
+																				</div>																																							
+																			</div>
+																			<div  class='inside_li images_preview' >
+																			</div>
+																		</li>
+																	
+																	<?php } ?>
+	
+															
+																<?php } ?>
+																	
+																	
+																</ul>															
+															</div>
+	
+														</td>
+													</tr>												
+												</table>
+	
+											</div>							
+										</li>		
+										<li  id='panel-2'    class='panels ' >
+										
+											<div class='div-panel '>
+											
+													<div  class='large_header ' >Edit you Bio
+													</div>
+	
+													
+													<div  class='middle ' >
+														<div   class='halves '  >
+													
+															<table>
+																<tr>
+																	<td colspan=2>
+																		General Info
+																	</td>
+																</tr>		
+																<tr>
+																	<td>
+																		<div  class='input-label ' >First Name
+																		</div>
+																		<div>
+																			<input  class='bio_inputs '  id='first_name' name="first_name" type="" value="">
+																		</div>
+																	</td>
+																	<td>
+																		<div  class='input-label ' >Last Name
+																		</div>
+																		<div>
+																			<input   class='bio_inputs '  id='last_name' name="last_name"  type="" value="">
+																		</div>																				
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div  class='input-label ' >Position or Title
+																		</div>
+																		<div>
+																			<input   class='bio_inputs '  id='position' name="position" type="" value="">
+																		</div>
+																	</td>
+																	<td>
+																		<div  class='input-label ' >School, Team, or Organization
+																		</div>
+																		<div>
+																			<input   class='bio_inputs '  id='organization' name="organization" type="" value="">
+																		</div>																				
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div  class='input-label ' >Hometown or Location
+																		</div>
+																		<div>
+																			<input   class='bio_inputs '  id='location' name="location" type="" value="">
+																		</div>																		
+																	</td>
+																	<td>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div  class='input-label ' >sports
+																		</div>	
+																		<select   class='bio_inputs '  id='sports' name='sports'>
+																			<option>Football</option>
+																			<option>Baseball</option>
+																			<option>Soccer</option>
+																		</select>																																	
+																	</td>
+																	<td>
+	
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																	</td>
+																	<td>
+																	</td>
+																</tr>																																																												
+															</table>
+														</div>
+														<div    class='halves ' >
+															
+																	<style>
+																	#wysiwyg_div{
+																	width:400px;
+																	height: 580px;
+																	margin:0px 0px 0px 0px;
+																	padding:10px 0px 0px 0px;
+																	}
+																	.save{
+																	background-image: url(<?php echo base_url()    ?>images/disk_save.png);
+																	background-position: 3px 3px;
+																	background-repeat: no-repeat;	
+																	height: 22px;
+																	width: 22px;
+																	cursor:pointer;
+																	}
+																	#save_text{
+																	color:gray;
+																	margin:5px 0px 0px 5px;	
+																	font-weight:bold;
+																	cursor:pointer;
+																	}
+																	.loading{
+																	background-image: url(<?php echo base_url()    ?>images/ajax-loader.gif);
+																	background-position: 5px 4px;
+																	background-repeat: no-repeat;
+																	height: 22px;
+																	width: 22px;	
+																	}
+																	</style>
+																	
+																		<div>
+																					<div  class='save float_left'  title='Save'>
+																					</div>
+																					<div  id='save_text' class='float_left' >Save
+																					</div>
+																		</div>
+																	
+																		<div id='wysiwyg_div' class='clearfix ' >
+																				<textarea  name='bio' class='bio_inputs clearfix' id='wysiwyg_text_area'><?php echo ( isset( $data['users'][0]['bio'] ) ? $data['users'][0]['bio']:'' )    ?></textarea>
+																		</div>
+	
+															
+														</div>
+													</div>
+											</div>		
+										</li>	
+								
+										<li id='panel-3'  class='panels ' >
 											<div  class='div-panel ' >
 												<table>
 													<tr>
@@ -242,68 +434,8 @@
 												</table>
 											</div>
 										</li>
-										<li id='panel-2'   class='panels ' >
-											<div class='div-panel '>
-											
-												<table>
-													<tr>
-	
-														<td ><!--
-															<div  id='add-to' image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
-															</div>-->
-															
-															
-														<div id="upload_button_backgrounds"  >		
-															<noscript>			
-																<p>Please enable JavaScript to use file uploader.</p>
-																<!-- or put a simple form for upload here -->
-															</noscript>         
-														</div>
-															
-															
-														</td>													
-													</tr>
-	
-													<tr>
-														<td>
-	
-	
-															<div  id='backgrounds-div' class=' jcarousel-skin-tango'>
-																<ul class='thumbs-ul'   >
-																	
-																<?php if( isset($data['users']['backgrounds']['images']) ){?>
-																	
-																	<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
-	
-																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
-																			<div  class='small_icons_panel transparent' >
-																				<div  class='delete ' >[X]
-																				</div>
-																				<div  class='hide update-image backgrounds_update_button' >[<?php echo $image_id     ?>]
-																				</div>
-																				<div  class='swap ' >[C]
-																				</div>																																							
-																			</div>
-																			<div  class='inside_li images_preview' >
-																			</div>
-																		</li>
-																	
-																	<?php } ?>
-	
-															
-																<?php } ?>
-																	
-																	
-																</ul>															
-															</div>
-	
-														</td>
-													</tr>												
-												</table>
-	
-											</div>							
-										</li>
-										<li  id='panel-3'    class='panels ' >
+
+										<li  id='panel-4'    class='panels ' >
 											<div class='div-panel '>
 											
 												<table>
@@ -362,7 +494,7 @@
 	
 											</div>		
 										</li>
-										<li   id='panel-4'    class='panels ' >
+										<li   id='panel-5'    class='panels ' >
 											<div class='div-panel '>
 											
 												<table>
@@ -441,136 +573,7 @@
 											</div>	
 										</li>
 	
-										<li  id='panel-5'    class='panels ' >
-										
-											<div class='div-panel '>
-											
-													<div  class='large_header ' >Edit you Bio
-													</div>
-	
-													
-													<div  class='middle ' >
-														<div   class='halves '  >
-													
-															<table>
-																<tr>
-																	<td colspan=2>
-																		General Info
-																	</td>
-																</tr>		
-																<tr>
-																	<td>
-																		<div  class='input-label ' >First Name
-																		</div>
-																		<div>
-																			<input  class='bio_inputs '  id='first_name' name="first_name" type="" value="">
-																		</div>
-																	</td>
-																	<td>
-																		<div  class='input-label ' >Last Name
-																		</div>
-																		<div>
-																			<input   class='bio_inputs '  id='last_name' name="last_name"  type="" value="">
-																		</div>																				
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div  class='input-label ' >Position or Title
-																		</div>
-																		<div>
-																			<input   class='bio_inputs '  id='position' name="position" type="" value="">
-																		</div>
-																	</td>
-																	<td>
-																		<div  class='input-label ' >School, Team, or Organization
-																		</div>
-																		<div>
-																			<input   class='bio_inputs '  id='organization' name="organization" type="" value="">
-																		</div>																				
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div  class='input-label ' >Hometown or Location
-																		</div>
-																		<div>
-																			<input   class='bio_inputs '  id='location' name="location" type="" value="">
-																		</div>																		
-																	</td>
-																	<td>
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div  class='input-label ' >sports
-																		</div>	
-																		<select   class='bio_inputs '  id='sports' name='sports'>
-																			<option>Football</option>
-																			<option>Baseball</option>
-																			<option>Soccer</option>
-																		</select>																																	
-																	</td>
-																	<td>
-	
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																	</td>
-																	<td>
-																	</td>
-																</tr>																																																												
-															</table>
-														</div>
-														<div    class='halves ' >
-															
-																	<style>
-																	#wysiwyg_div{
-																	width:400px;
-																	height: 580px;
-																	margin:0px 0px 0px 0px;
-																	padding:10px 0px 0px 0px;
-																	}
-																	.save{
-																	background-image: url(<?php echo base_url()    ?>images/disk_save.png);
-																	background-position: 3px 3px;
-																	background-repeat: no-repeat;	
-																	height: 22px;
-																	width: 22px;
-																	cursor:pointer;
-																	}
-																	#save_text{
-																	color:gray;
-																	margin:5px 0px 0px 5px;	
-																	font-weight:bold;
-																	cursor:pointer;
-																	}
-																	.loading{
-																	background-image: url(<?php echo base_url()    ?>images/ajax-loader.gif);
-																	background-position: 5px 4px;
-																	background-repeat: no-repeat;
-																	height: 22px;
-																	width: 22px;	
-																	}
-																	</style>
-																	
-																		<div>
-																					<div  class='save float_left'  title='Save'>
-																					</div>
-																					<div  id='save_text' class='float_left' >Save
-																					</div>
-																		</div>
-																	
-																		<div id='wysiwyg_div' class='clearfix ' >
-																				<textarea  name='bio' class='bio_inputs clearfix' id='wysiwyg_text_area'><?php echo ( isset( $data['users'][0]['bio'] ) ? $data['users'][0]['bio']:'' )    ?></textarea>
-																		</div>
-	
-															
-														</div>
-													</div>
-											</div>		
-										</li>																	
+																
 								</ul>
 	
 								<div  id='preview_box'>

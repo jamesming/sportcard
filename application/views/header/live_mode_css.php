@@ -108,107 +108,9 @@ z-index:-1;
 	}	
 	
 
-	
-div#header .coordinates{
-	width:200px;
-}
-div#header div.sides{
-float:left;
-}	
-div#header .right_panel{
-background:white;
-margin-left:400px;
-}	
-
-div#header .right_panel .edit-panel{
- width:200px;
- background:lightgray;
-}
-div#header .right_panel #myaccount_container {
-	width:350px;
-	background:transparent;
-}
-
-				/* BEGIN TWITTER LOGIN CSS */
-				#myaccount_container #topnav {
-					font-size:13px;
-					line-height:23px;
-					text-align:right;
-					color:#8AA823;
-				}
-				#myaccount_container #topnav a.myaccount {
-					text-decoration:none;
-					font-size:12px;	
-					background:#A8C739;
-					padding:4px 6px 6px;
-					text-decoration:none;
-					font-weight:bold;
-					color:#F2F2F2;
-					border-top-left-radius: 5px;
-					-moz-border-radius-topleft: 5px;
-					-webkit-border-top-left-radius: 5px;
-					border-top-right-radius: 5px;
-					-moz-border-radius-topright: 5px;
-					-webkit-border-top-right-radius: 5px;
-					border-bottom-left-radius: 5px;
-					-moz-border-radius-bottomleft: 5px;
-					-webkit-border-bottom-left-radius: 5px;
-					border-bottom-right-radius: 5px;
-					-moz-border-radius-bottomright: 5px;
-					-webkit-border-bottom-right-radius: 5px;											
-				}
-				#myaccount_container #topnav a.myaccount:hover {
-					background:#D5E8B4;
-					color:#8AA823!important;
-					text-decoration:none!important;
-				}
-				#myaccount_container #topnav a.myaccount, #topnav a.myaccount:hover {
-					*background-position:0 3px!important;
-				}
-				
-				#myaccount_container #topnav div#greeting{
-				font-size: 15px;
-				padding-right: 15px;
-				padding-top: 5px;
-				color:white;
-				}
-				
-				#myaccount_container #topnav a.myaccount {
-					position:relative;
-					margin-left:3px;
-				}
-				#myaccount_container #topnav a.myaccount span {
-					background-image:url(<?php echo base_url()    ?>images/twitter_login/toggle_down_light.png);
-					background-repeat:no-repeat;
-					background-position:100% 50%;
-					padding:4px 16px 6px 0;
-				}
-				#myaccount_container #topnav a.myaccount.menu-open {
-					background:#D5E8B4!important;
-					color:#666!important;
-					outline:none;
-				}
-				
-				#myaccount_container #topnav a.myaccount.menu-open span {
-					background-image:url(<?php echo base_url()    ?>images/twitter_login/toggle_up_dark.png);
-					color:#789;
-				}
-				
-				#myaccount_container #account_menu {
-						margin-top:-3px;
-				    border-bottom-left-radius: 5px;
-				    border-bottom-right-radius: 5px;
-				    border-top-left-radius: 5px;
-				    background-color: #D5E8B4;    
-				    color: gray;
-				    display: none;
-				    font-size: 12px;
-				    padding-top: 12px;
-				    padding-bottom: 12px;
-				    text-align: left;
-				    z-index: 100;
-				    width:106px;
-				}
+	div#header{
+	display:none;	
+	}
 
 #main-box{
 	border:0px solid white;
@@ -219,19 +121,7 @@ div#header .right_panel #myaccount_container {
 	padding:0px;
 }
 		
-#main-box #settings-box{
-	background:white;
-  height: 300px;
-  width: 300px;
-  display:none;
-  position:absolute;
-}
-#main-box #settings-box li.settings_tabs{
-float:left;
-padding:5px;
-border:1px solid gray;
-cursor:pointer;
-}
+
 			
 #head-line-box{
 width: 500px; 
@@ -308,6 +198,9 @@ height: 281px;
     width: 181px;
     cursor:pointer;
 }			
+			
 <?php  		$this->load->view('header/jcarousel_css.php');   ?>
 <?php  		$this->load->view('header/qq-uploader_css.php');   ?>
+
+
 </style>

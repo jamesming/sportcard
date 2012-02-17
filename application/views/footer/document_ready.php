@@ -372,8 +372,8 @@ function bind_events(){
 						$(this).parent().children('li').css({background:'lightblue'});
 						$(this).css({background:'white'});
 						
-						if( $(this).attr('id') == 'panel-tab-5' ||
-								$(this).attr('id') == 'panel-tab-1' 
+						if( $(this).attr('id') == 'panel-tab-3' ||
+								$(this).attr('id') == 'panel-tab-2' 
 						){
 							$('#preview_box').hide()
 						}else{
