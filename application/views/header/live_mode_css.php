@@ -1,7 +1,7 @@
 <style>
 	body{
   background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg);
-  background-position:center 60px;
+  background-position:center 40px;/* 40px to make the container go all the way to the bottom of the topbar */
   background-repeat:no-repeat;/*
   -webkit-background-size:1280px 1024px;*/
   background-size:cover;
