@@ -90,11 +90,7 @@
 	};  
 ?> 
 				
-				<div  id='profile_box' class="draggable box rounded"   style='
-  -webkit-box-shadow: 0 0 12px #dbc59e;
-  -moz-box-shadow: 0 0 6px #dbc59e;
-  box-shadow: 0 0 6px #dbc59e;
-					'   >
+				<div  id='profile_box' class="draggable box rounded shadowed" >
 					
 					
 					

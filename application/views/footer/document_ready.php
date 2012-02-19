@@ -10,6 +10,8 @@ $(document).ready(function() {
 			bind_events();
 			
 			$('li#panel-tab-3 a').click()
+			
+			$("#menu1 a#settings_menu_item").click()
 
 });
 
@@ -47,7 +49,7 @@ function settings_box(){
 	
 								$('#settings-box').css({
 									'position':'absolute',
-									'left':($(window).width() / 2) -430 ,
+									'left':($(window).width() / 2) - ($('#settings-box').width()/2) ,
 									'top':'250px'
 								})
 		

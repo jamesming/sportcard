@@ -48,6 +48,11 @@
 		-webkit-border-bottom-right-radius: 6px;
 		-webkit-border-bottom-left-radius: 6px;
 	}
+	.shadowed{
+	  -webkit-box-shadow: 0 0 12px #dbc59e;
+	  -moz-box-shadow: 0 0 6px #dbc59e;
+	  box-shadow: 0 0 6px #dbc59e;	
+	}
 	.float_left{
 	float:left;	
 	}
@@ -127,8 +132,8 @@ z-index:-1;
 		
 #main-box #settings-box{
 	background:white;
-  height: 300px;
-  width: 300px;
+  height: 340px;
+  width: 370px;
   display:none;
   position:absolute;
 }
@@ -179,13 +184,7 @@ margin-top:20px;
 			padding:20px;	
 			}
 			
-#profile_box .insides .div-panel .middle div.halves{
-	width: 397px;
-	height:441px;
-	float:left;
-	padding:10px;
-	
-}
+
 #preview_box{
 padding:20px;	
 clear:both;

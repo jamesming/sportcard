@@ -22,7 +22,7 @@ class Main extends CI_Controller {
 				$this->thumbnail_size_width  = '181';
 				$this->thumbnail_size_height = '120';
 				$this->thumbnail_panel_width = '755';
-				$this->top_direction_arrow = '52';						
+				$this->top_direction_arrow = '62';						
    }
 
 	/**
@@ -129,7 +129,24 @@ class Main extends CI_Controller {
 			)
 		);
 		
-
+		$input_account_array = array(
+			'size-class' => 'input-medium',
+			'inputs' => array(
+			
+				array('type' => 'text', 'label' => 'Profile Url', 'input_name'=>'profile_url'),
+				array('type' => 'text', 'label' => 'email', 'input_name'=>'email')
+			)
+		);
+		
+		$input_password_array = array(
+			'size-class' => 'input-medium',
+			'inputs' => array(
+			
+				array('type' => 'password', 'label' => 'Current Password', 'input_name'=>'current_password'),
+				array('type' => 'password', 'label' => 'Password', 'input_name'=>'password'),
+				array('type' => 'password', 'label' => 'Confirm Password', 'input_name'=>'confirm_password')
+			)
+		);		
 
 		$data = array(
 			'users' => $users,
@@ -140,6 +157,8 @@ class Main extends CI_Controller {
 			'top_direction_arrow' => $this->top_direction_arrow,
 			'input_bio_array' => $input_bio_array,
 			'input_style_array' => $input_style_array,
+			'input_account_array' => $input_account_array,
+			'input_password_array' => $input_password_array,
 			'user_id' => $this->user_id,
 			'live_only' => 0
 		);
