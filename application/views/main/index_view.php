@@ -130,7 +130,7 @@
 															
 								
 															
-														<div id="upload_button_backgrounds"  class='btn float_right' >		
+														<div id="upload_button_backgrounds"  class='btn float_right'   >		
 															
 														</div>
 															
@@ -177,91 +177,113 @@
 								</p>
 					    </div>
 					    <div class="tab-pane " id="2">
-					      <p>
-													<div  class='large_header ' >Edit you Bio
-													</div>
-	
-													
-													<div  class='middle ' >
-														<div   class='halves '  >
-													
-															<table>
-																<tr>
-																	<td colspan=2>
-																		General Info
-																	</td>
-																</tr>		
-																<tr>
-																	<td>
-																		<div  class='input-label ' >First Name
-																		</div>
-																		<div>
-																			<input  class='bio_inputs '  id='first_name' name="first_name" type="" value="">
-																		</div>
-																	</td>
-																	<td>
-																		<div  class='input-label ' >Last Name
-																		</div>
-																		<div>
-																			<input   class='bio_inputs '  id='last_name' name="last_name"  type="" value="">
-																		</div>																				
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div  class='input-label ' >Position or Title
-																		</div>
-																		<div>
-																			<input   class='bio_inputs '  id='position' name="position" type="" value="">
-																		</div>
-																	</td>
-																	<td>
-																		<div  class='input-label ' >School, Team, or Organization
-																		</div>
-																		<div>
-																			<input   class='bio_inputs '  id='organization' name="organization" type="" value="">
-																		</div>																				
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div  class='input-label ' >Hometown or Location
-																		</div>
-																		<div>
-																			<input   class='bio_inputs '  id='location' name="location" type="" value="">
-																		</div>																		
-																	</td>
-																	<td>
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div  class='input-label ' >sports
-																		</div>	
-																		<select   class='bio_inputs '  id='sports' name='sports'>
-																			<option>Football</option>
-																			<option>Baseball</option>
-																			<option>Soccer</option>
-																		</select>																																	
-																	</td>
-																	<td>
-	
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																	</td>
-																	<td>
-																	</td>
-																</tr>																																																												
-															</table>
-														</div>
-														<div    class='halves ' >
-															
+
+								
+								    <div class="span5">
+								
+								      <form class="form-horizontal">
+								
+								        <fieldset>
+								
+								          <legend >Edit you Bio</legend>
+								
+								          <div class="control-group">
+								
+								            <label class="control-label" for="input01">First Name</label>
+								
+								            <div class="controls">
+								
+								              <input type="text" class="input-medium"  class='bio_inputs '  id='first_name' name="first_name" type="" value="">
+								
+								            </div>
+								
+								          </div>
+								
+								          <div class="control-group">
+								
+								            <label class="control-label" for="input01">Last Name</label>
+								
+								            <div class="controls">
+								
+								              <input type="text" class="input-medium"  class='bio_inputs '  id='last_name' name="last_name"  type="" value="">
+								
+								            </div>
+								
+								          </div>
+								          
+								          <div class="control-group">
+								
+								            <label class="control-label" for="input01">Position</label>
+								
+								            <div class="controls">
+								
+								              <input type="text" class="input-medium"   class='bio_inputs '  id='position' name="position" type="" value="">
+								
+								            </div>
+								
+								          </div>
+								          <div class="control-group">
+								
+								            <label class="control-label" for="input01">School, Team, or Organization</label>
+								
+								            <div class="controls">
+								
+								              <input type="text" class="input-medium"   class='bio_inputs '  id='organization' name="organization" type="" value="">
+								
+								            </div>
+								
+								          </div>
+								          
+								          <div class="control-group">
+								
+								            <label class="control-label" for="input01">Hometown or Location</label>
+								
+								            <div class="controls">
+								
+								              <input type="text" class="input-medium"   class='bio_inputs '  id='location' name="location" type="" value="">
+								
+								            </div>
+								
+								          </div>          
+								          
+								          <div class="control-group">
+								
+								            <label class="control-label" for="select01">Sports</label>
+								
+								            <div class="controls">
+								
+								              <select  class="input-medium" id='sports' name='sports'>
+																											<option>Football</option>
+																											<option>Baseball</option>
+																											<option>Soccer</option>
+								
+								              </select>
+								
+								            </div>
+								
+								          </div>
+								
+													<br />
+								
+								          <div class="form-actions">
+								
+								            <button type="submit" class="btn btn-primary">Save changes</button>
+								
+								            <button type="reset" class="btn">Cancel</button>
+								
+								          </div>
+								
+								        </fieldset>
+								
+								      </form>
+								
+								    </div>
+								 		<div class="span5"    >
+
 																	<style>
 																	#wysiwyg_div{
 																	width:400px;
-																	height: 580px;
+																	height: 420px;
 																	margin:0px 0px 0px 0px;
 																	padding:10px 0px 0px 0px;
 																	}
@@ -297,13 +319,12 @@
 																	
 																		<div id='wysiwyg_div' class='clearfix ' >
 																				<textarea  name='bio' class='bio_inputs clearfix' id='wysiwyg_text_area'><?php echo ( isset( $data['users'][0]['bio'] ) ? $data['users'][0]['bio']:'' )    ?></textarea>
-																		</div>
+																		</div>								 			
+										</div>
+							</div>
 	
-															
-														</div>
-													</div>
-					      </p>
-					    </div>
+	
+	
 					    <div class="tab-pane " id="3">
 					      <p>
 												<table  class='fonts_table ' >

@@ -218,7 +218,12 @@ margin-top:5px;
     background:transparent; border-bottom:0px solid #ddd;color:gray;
     cursor:pointer;
 }
-.qq-upload-button-hover {background:transparent;}
-.qq-upload-button-focus {outline:1px dotted black;}
-
+.qq-upload-button-hover {background:transparent;cursor:pointer;}
+.qq-upload-button-focus {outline:1px dotted black;cursor:pointer;}
+.orange{
+background:orange;	
+}
+.yellow{
+background:yellow;	
+}
 </style>
