@@ -114,7 +114,7 @@
 					  <ul class="nav nav-tabs"   style='margin-top:10px;'  >
 					    <li  id='panel-tab-1' class="active"><a href="#1" data-toggle="tab">Background</a></li>
 					    <li  id='panel-tab-2' ><a href="#2" data-toggle="tab">Bio</a></li>
-					    <li  id='panel-tab-3' ><a href="#3" data-toggle="tab">Color and Fonts</a></li>
+					    <li  id='panel-tab-3' ><a href="#3" data-toggle="tab">Styles</a></li>
 					    <li  id='panel-tab-4' ><a href="#4" data-toggle="tab">Photos</a></li>
 					    <li  id='panel-tab-5' ><a href="#5" data-toggle="tab">Videos</a></li>
 					  </ul>
@@ -181,102 +181,62 @@
 								</p>
 					    </div>
 					    <div class="tab-pane " id="2">
-
-								
+								<div>
+										<legend >Edit you Bio</legend>
+								</div>
+								<div>
 								    <div class="span5">
 								
 								      <form class="form-horizontal">
 								
 								        <fieldset>
-								
-								          <legend >Edit you Bio</legend>
-								
-								          <div class="control-group">
-								
-								            <label class="control-label" for="input01">First Name</label>
-								
-								            <div class="controls">
-								
-								              <input type="text" class="input-medium"  class='bio_inputs '  id='first_name' name="first_name" type="" value="">
-								
-								            </div>
-								
-								          </div>
-								
-								          <div class="control-group">
-								
-								            <label class="control-label" for="input01">Last Name</label>
-								
-								            <div class="controls">
-								
-								              <input type="text" class="input-medium"  class='bio_inputs '  id='last_name' name="last_name"  type="" value="">
-								
-								            </div>
-								
-								          </div>
-								          
-								          <div class="control-group">
-								
-								            <label class="control-label" for="input01">Position</label>
-								
-								            <div class="controls">
-								
-								              <input type="text" class="input-medium"   class='bio_inputs '  id='position' name="position" type="" value="">
-								
-								            </div>
-								
-								          </div>
-								          <div class="control-group">
-								
-								            <label class="control-label" for="input01">School, Team, or Organization</label>
-								
-								            <div class="controls">
-								
-								              <input type="text" class="input-medium"   class='bio_inputs '  id='organization' name="organization" type="" value="">
-								
-								            </div>
-								
-								          </div>
-								          
-								          <div class="control-group">
-								
-								            <label class="control-label" for="input01">Hometown or Location</label>
-								
-								            <div class="controls">
-								
-								              <input type="text" class="input-medium"   class='bio_inputs '  id='location' name="location" type="" value="">
-								
-								            </div>
-								
-								          </div>          
-								          
-								          <div class="control-group">
-								
-								            <label class="control-label" for="select01">Sports</label>
-								
-								            <div class="controls">
-								
-								              <select  class="input-medium" id='sports' name='sports'>
-																											<option>Football</option>
-																											<option>Baseball</option>
-																											<option>Soccer</option>
-								
-								              </select>
-								
-								            </div>
-								
-								          </div>
-								
-													<br />
-								
-								          <div class="form-actions">
-								
-								            <button type="submit" class="btn btn-primary">Save changes</button>
-								
-								            <button type="reset" class="btn">Cancel</button>
-								
-								          </div>
-								
+
+       
+								         <?php foreach( $data['input_bio_array']['inputs']  as  $inputs){ 
+								         
+								         
+								         				if( $inputs['type'] == 'text'){?>
+								         					
+														          <div class="control-group">
+														
+														            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
+														
+														            <div class="controls">
+														
+														              <input type="text" class="<?php echo $data['input_bio_array']['size-class']    ?> bio_inputs '  id='<?php echo $inputs['input_name']    ?>' name="<?php echo $inputs['input_name']    ?>" type="" value="<?php  echo $data['users'][0][$inputs['input_name']]   ?>">
+														
+														            </div>
+														
+														          </div>										         				
+								         				
+								         				<?php
+								         				}elseif( $inputs['type'] == 'select'){
+								         				?>	
+								         					
+														          <div class="control-group">
+														
+														            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
+														
+														            <div class="controls">
+														
+														              <select  class="<?php echo $data['input_bio_array']['size-class']    ?> bio_inputs " id='<?php echo $inputs['input_name']    ?>' name='<?php echo $inputs['input_name']    ?>'>
+														              	
+														              						<?php foreach( $inputs['options']  as  $option){ ?>	
+														              							
+																																	<option value="<?php echo $option['value']    ?>"><?php echo $option['text']    ?></option>
+																																	
+																											<?php } ?>	
+														              </select>
+														
+														            </div>
+														
+														          </div>
+								         					
+								         				<?php
+								         				};
+								         			 
+								         } ?>
+
 								        </fieldset>
 								
 								      </form>
@@ -286,150 +246,97 @@
 
 																	<style>
 																	#wysiwyg_div{
-																	width:400px;
-																	height: 420px;
 																	margin:0px 0px 0px 0px;
-																	padding:10px 0px 0px 0px;
+																	padding:0px 0px 0px 0px;
 																	}
-																	.save{
-																	background-image: url(<?php echo base_url()    ?>images/disk_save.png);
-																	background-position: 3px 3px;
-																	background-repeat: no-repeat;	
-																	height: 22px;
-																	width: 22px;
-																	cursor:pointer;
-																	}
-																	#save_text{
-																	color:gray;
-																	margin:5px 0px 0px 5px;	
-																	font-weight:bold;
-																	cursor:pointer;
-																	}
-																	.loading{
-																	background-image: url(<?php echo base_url()    ?>images/ajax-loader.gif);
-																	background-position: 5px 4px;
-																	background-repeat: no-repeat;
-																	height: 22px;
-																	width: 22px;	
-																	}
+																	
 																	</style>
 																	
-																		<div>
-																					<div  class='save float_left'  title='Save'>
-																					</div>
-																					<div  id='save_text' class='float_left' >Save
-																					</div>
-																		</div>
+
 																	
 																		<div id='wysiwyg_div' class='clearfix ' >
 																				<textarea  name='bio' class='bio_inputs clearfix' id='wysiwyg_text_area'><?php echo ( isset( $data['users'][0]['bio'] ) ? $data['users'][0]['bio']:'' )    ?></textarea>
 																		</div>								 			
-										</div>
+										</div>									
+									
+								</div>
+			          <div class='clearfix'  style='padding:12px'  >
+			
+			            <button  id='save_bio_button' type="submit" class="float_right btn btn-primary">Save changes</button>
+			
+			          </div>
+
 							</div>
 	
 	
 	
 					    <div class="tab-pane " id="3">
+					    	
+								<div>
+										<legend >Edit you Styles</legend>
+								</div>	
+					    	
+								      <form class="form-horizontal">
+								
+								        <fieldset>
+
+       
+								         <?php foreach( $data['input_style_array']['inputs']  as  $inputs){ 
+								         
+								         
+								         				if( $inputs['type'] == 'text'){?>
+								         					
+														          <div class="control-group">
+														
+														            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
+														
+														            <div class="controls">
+														
+														              <input   id='<?php echo $inputs['input_name']    ?>' name='<?php echo $inputs['input_name']    ?>' class="<?php echo $data['input_bio_array']['size-class']    ?> style_inputs ' type="text" value="<?php  echo $data['users'][0][$inputs['input_name']]   ?>">
+														
+														            </div>
+														
+														          </div>										         				
+								         				
+								         				<?php
+								         				}elseif( $inputs['type'] == 'select'){
+								         				?>	
+								         					
+														          <div class="control-group">
+														
+														            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
+														
+														            <div class="controls">
+														
+														              <select  class="<?php echo $data['input_bio_array']['size-class']    ?> style_inputs " id='<?php echo $inputs['input_name']    ?>' name='<?php echo $inputs['input_name']    ?>'>
+														              	
+														              						<?php foreach( $inputs['options']  as  $option){ ?>	
+														              							
+																																	<option value="<?php echo $option['value']    ?>"><?php echo $option['text']    ?></option>
+																																	
+																											<?php } ?>	
+														              </select>
+														
+														            </div>
+														
+														          </div>
+								         					
+								         				<?php
+								         				};
+								         			 
+								         } ?>
+
+								        </fieldset>
+								
+								      </form>
+					    	
+					    	
+					    	
+					    	
 					      <p>
 												<table  class='fonts_table ' >
-													<tr>
-														<td>Name
-														</td>
-														<td><input  name='full_name' id="full_name" type="" value="">
-														</td>
-													</tr>
-		<!--											
-													<tr>
-														<td>Background
-														</td>
 		
-														<td>
-															<select  id='background_color' name='background_color'>
-																
-															<?php 
-															
-															$colors = array(
-																'red',
-																'blue',
-																'orange',
-																'yellow',
-																'green',
-																'white',
-															);
-															
-															foreach( $colors  as  $key => $color ){ ?>	
-							
-																	<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
-															
-															<?php } ?>
-															
-															</select>
-														</td>
-													</tr>
-													-->
-													<tr>
-														<td>Font Color
-														</td>
-														<td>
-															<select  id='font_color' name='font_color'>
-																
-															<?php 
-															
-															$colors = array(
-																'black',
-																'red',
-																'blue',
-																'orange',
-																'yellow',
-																'green',
-																'white',
-															);
-															
-															foreach( $colors  as  $key => $color ){ ?>	
-							
-																	<option value='<?php  echo $color   ?>'><?php  echo $color   ?></option>
-															
-															<?php } ?>
-															
-															</select>
-														</td>
-													</tr>		
-													
-													<tr>
-														<td>Font Size
-														</td>
-														<td>
-															<select   id='font_size' name='font_size'>
-																
-															<?php 
-															
-		
-															
-																		for( $size = 5;  $size <= 225;  $size++ ){ ?>	
-										
-																				<option value='<?php  echo $size   ?>px'><?php  echo $size   ?>px</option>
-																		
-																		<?php } ?>
-															
-															</select>
-														</td>
-													</tr>			
-													
-													<tr>
-														<td>Transparency
-														</td>
-														<td>
-															<select   id='transparency' name='transparency'>
-																
-															<?php for( $transparency_setting = 0;  $transparency_setting <= 9;  $transparency_setting++ ){ ?>	
-										
-																				<option value='<?php  echo $transparency_setting   ?>'><?php  echo $transparency_setting   ?></option>
-																		
-															<?php } ?>
-															
-															</select>
-														</td>
-													</tr>														
+																								
 													
 													<tr>
 														<td>Font

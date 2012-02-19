@@ -9,7 +9,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 			
-			$('li#panel-tab-2 a').click()
+			$('li#panel-tab-3 a').click()
 
 });
 
@@ -211,11 +211,11 @@ function store_custom_configuration(){
 					$('#y').val(data);
 					
 				});	
-				
 			});	
 
 	
-			$('#full_name').keyup(function(event) {
+			$('#full_name')
+			.keyup(function(event) {
 				$('#full_name_readonly').html( $(this).val() );	
 				Cufon.replace('#full_name_readonly',{ fontFamily: $('#full_name_readonly').attr('font_name'), hover: true });				
 			}).blur(function(event) {
@@ -339,14 +339,13 @@ function bind_events(){
 				$(this).parent().parent().hide();
 			});	
 
-			$('#panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
+			$('#panel-tabs_container ul.nav.nav-tabs li').css({cursor:'pointer'}).click(function(event) {
 						
 						if( $(this).attr('id') == 'panel-tab-3' ||
 								$(this).attr('id') == 'panel-tab-2' 
 						){
 							$('#preview_box').hide()
 						}else{
-
 							
 							$('#preview_box').show()
 						};
@@ -373,7 +372,7 @@ function bind_events(){
 			
 			
 				var mbox = $("#wysiwyg_text_area").css({
-						height:"380px",
+						height:"340px",
 						width:"420px"
 						}).htmlbox({
 						toolbars:[
@@ -388,24 +387,17 @@ function bind_events(){
 					});
 				
 
-				$('.save, #save_text').click(function(event) {
+				$('#save_bio_button').click(function(event) {
 					
 						$('#wysiwyg_text_area').val(mbox.get_html());
 
-						var save_dom = $('.save'); 
-					
-						save_dom.removeClass('save').addClass('loading');
-					
-	
 						$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
 						table:'users',
 						id:<?php echo $data['user_id']    ?>,
 						set_what:$('.bio_inputs').serialize()
 						},function(data) {
 
-									setTimeout(function() { 											
-									save_dom.removeClass('loading').addClass('save');
-																}, 300);	
+						alert(data);
 								
 							
 						});	

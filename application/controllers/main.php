@@ -60,6 +60,77 @@ class Main extends CI_Controller {
 		);
 		
 
+		$input_bio_array = array(
+			'size-class' => 'input-medium',
+			'inputs' => array(
+			
+				array('type' => 'text', 'label' => 'First Name', 'input_name'=>'first_name'),
+				array('type' => 'text', 'label' => 'Last Name', 'input_name'=>'last_name'),
+				array('type' => 'text', 'label' => 'Position', 'input_name'=>'position'),
+				array('type' => 'text', 'label' => 'Organization', 'input_name'=>'organization'),
+				array('type' => 'text', 'label' => 'Location', 'input_name'=>'location'),
+				array(
+						'type' => 'select', 
+						'label' => 'Sports', 
+						'input_name'=>'sports', 
+						'options' => array(
+								array('value' => '1','text' => 'football'),
+								array('value' => '2','text' => 'soccer'),
+								array('value' => '3','text' => 'baseball'),
+						)
+				)
+			)
+		);
+		
+		
+		for($i=1;$i<=400;$i++){
+			$font_size['value'] = $i.'px'; 
+			$font_size['text'] = $i.'px'; 
+			$font_sizes_array[] = $font_size;
+		}
+
+		for($i=0;$i<=9;$i++){
+			$transparency_shade['value'] = $i; 
+			$transparency_shade['text'] = $i; 
+			$transparency_shades_array[] = $transparency_shade;
+		}		
+
+		$input_style_array = array(
+			'size-class' => 'input-medium',
+			'inputs' => array(
+
+				array('type' => 'text', 'label' => 'Name', 'input_name'=>'full_name'),
+
+				array(
+						'type' => 'select', 
+						'label' => 'Font Color', 
+						'input_name' =>'font_color', 
+						'options' => array(
+								array('value' => 'red','text' => 'red'),
+								array('value' => 'blue','text' => 'blue'),
+								array('value' => 'green','text' => 'green'),
+						)
+				),
+				
+				array(
+						'type' => 'select', 
+						'label' => 'Font Size', 
+						'input_name' =>'font_size', 
+						'options' => $font_sizes_array
+				),
+				
+				array(
+						'type' => 'select', 
+						'label' => 'Transparency', 
+						'input_name' =>'transparency', 
+						'options' => $transparency_shades_array
+				)						
+				
+			)
+		);
+		
+
+
 		$data = array(
 			'users' => $users,
 			'fonts' => $fonts,
@@ -67,10 +138,13 @@ class Main extends CI_Controller {
 			'thumbnail_size_height' => $this->thumbnail_size_height,
 			'thumbnail_panel_width' => $this->thumbnail_panel_width,
 			'top_direction_arrow' => $this->top_direction_arrow,
+			'input_bio_array' => $input_bio_array,
+			'input_style_array' => $input_style_array,
 			'user_id' => $this->user_id,
 			'live_only' => 0
 		);
 		
+
 
 		$this->load->view('main/index_view',
 					array('data' => $data));	    
