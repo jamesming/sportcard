@@ -552,10 +552,6 @@ function thumbnail_controls(){
 						                	
 						                },
 						                debug: true,
-						                onSubmit : function(file, ext){
-																button.text('Uploading');
-																this.disable();
-														},
         										multiple: false
 														
 						            }); 
@@ -574,10 +570,6 @@ function thumbnail_controls(){
 						                	
 						                },
 						                debug: true,
-						                onSubmit : function(file, ext){
-																button.text('Uploading');
-																this.disable();
-														},
         										multiple: false
 						            }); 
 						            
