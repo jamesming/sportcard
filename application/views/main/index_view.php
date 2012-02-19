@@ -511,7 +511,7 @@
 																		
 																		<form 
 																			id='form_video' 
-																			target='results' 
+																			target='iframe_dom' 
 																			enctype='multipart/form-data' 	
 																			method='POST'  
 																			action='<?php echo base_url();    ?>index.php/main/update_video'
@@ -581,8 +581,8 @@
 	</div>
 		
 	<iframe  
-		id="results"   
-		name="results"
+		id="iframe_dom"   
+		name="iframe_dom"
 		style='background:white;border:0px solid gray;width:0px;height:0px'  
 		border="1" 
 		frameborder="1" 

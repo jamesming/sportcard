@@ -548,7 +548,23 @@ function thumbnail_controls(){
 												    },
 						                onComplete: function(id, fileName, responseJSON){
 															//alert(JSON.stringify(responseJSON));
-						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/main/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
+															
+															
+															var image_id_serialized = "image_background_id=" +  responseJSON['image_id'];
+		
+															$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
+															table:'users',
+															id:<?php echo $data['user_id']    ?>,
+															set_what:image_id_serialized
+															},function(data) {
+									
+																	
+																
+															});	
+															
+															
+															
+						                	$('#iframe_dom').attr('src','<?php echo base_url()    ?>index.php/main/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
 						                	
 						                },
 						                debug: true,
@@ -566,7 +582,7 @@ function thumbnail_controls(){
 												    },
 						                onComplete: function(id, fileName, responseJSON){
 															//alert(JSON.stringify(responseJSON));
-						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/main/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
+						                	$('#iframe_dom').attr('src','<?php echo base_url()    ?>index.php/main/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
 						                	
 						                },
 						                debug: true,
