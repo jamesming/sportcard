@@ -207,6 +207,7 @@ margin-right:auto;
 }			
 <?php  		$this->load->view('header/jcarousel_css.php');   ?>
 <?php  		$this->load->view('header/qq-uploader_css.php');   ?>
+
 .jcarousel-skin-tango{
 margin-top:5px;	
 }
@@ -215,7 +216,7 @@ margin-top:5px;
     display:inline-block; /* or inline-block */
     width: 60px; padding: 3px 0; text-align:center;    
     background:transparent; border-bottom:0px solid #ddd;color:gray;
-    
+    cursor:pointer;
 }
 .qq-upload-button-hover {background:transparent;}
 .qq-upload-button-focus {outline:1px dotted black;}
