@@ -322,48 +322,49 @@
 								         			 
 								         } ?>
 
+
+														          <div class="control-group">
+														
+														            <label class="control-label" for="">Fonts</label>
+														
+														            <div class="controls">
+																					<style>
+ul#fonts_ul {
+    border: 1px solid #CCCCCC;
+    height: 257px;
+    overflow-y: scroll;
+}
+ul#fonts_ul li {
+    padding: 9px;
+    border-bottom: 1px solid #CCCCCC;
+}
+																					</style>
+																					<ul  id='fonts_ul'  class="unstyled">
+																						<?php foreach($data['fonts'] as $font ){?>
+																							
+																							<li  class='fonts_li ' font_name='<?php echo $font->name    ?>' '  style='font-size:24px'  '><?php  echo $font->name   ?></li>
+																						
+																						<?php }?>
+																					</ul>
+																					
+																					
+														            </div>
+														
+														          </div>	
+
+
 								        </fieldset>
+								        
+								        
 								
 								      </form>
 					    	
 					    	
-					    	
-					    	
-					      <p>
-												<table  class='fonts_table ' >
-		
-																								
-													
-													<tr>
-														<td>Font
-														</td>
-														<td>
-															<style>
-															#profile_box ul#panels_ul li.panels table.fonts_table ul{
-																height:300px;
-																overflow-y:scroll;
-																overflow-x:hidden;
-																border:1px solid gray;
-															}
-															#profile_box ul#panels_ul li.panels table.fonts_table ul#fonts_ul li.fonts_li{
-																background:white;	
-																border-bottom:1px solid gray;
-																height:45px;
-																font-size:28px;
-															}
-															
-															</style>
-															<ul  id='fonts_ul'>
-																<?php foreach($data['fonts'] as $font ){?>
-																	
-																	<li  class='fonts_li ' font_name='<?php echo $font->name    ?>'><?php  echo $font->name   ?></li>
-																
-																<?php }?>
-															</ul>
-														</td>
-													</tr>																										
-												</table>					      	
-					      </p>
+
+
+
+
+
 					    </div>
 					    <div class="tab-pane " id="4">
 					      <p>
