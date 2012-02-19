@@ -625,15 +625,15 @@ function thumbnail_controls(){
 	
 
 												$("#backgrounds-div").jcarousel({
-												        scroll: 1,
+												        scroll: 4,
 												        initCallback: mycarousel_initCallback_1
 												});	
 												$("#pictures-div").jcarousel({
-												        scroll: 1,
+												        scroll: 4,
 												        initCallback: mycarousel_initCallback_2
 												});													
 												$("#videos-div").jcarousel({
-												        scroll: 1,
+												        scroll: 4,
 												        initCallback: mycarousel_initCallback_3
 												});													
 
