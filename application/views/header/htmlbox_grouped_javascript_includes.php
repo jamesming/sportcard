@@ -293,9 +293,10 @@ $.fn.htmlbox=function(options){
 		
 		// START: Skin
 		// default
-		var hb_border = "1px solid #7F7647";
+		var hb_border = "1px solid #CCCCCC";
 		var hb_background = "#DFDDD1";
-		var tb_border = "1px solid #7F7647";
+		var tb_border = "1px solid #CCCCCC";
+		
 		if(d.skin=="blue"){
 			hb_border = "1px solid #7E9DB9";
 			hb_background = "#D7E3F2";
