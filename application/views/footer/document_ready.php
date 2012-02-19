@@ -11,7 +11,7 @@ $(document).ready(function() {
 			
 			$('li#panel-tab-3 a').click()
 			
-			$("#menu1 a#settings_menu_item").click()
+			//$("#menu1 a#settings_menu_item").click()
 
 });
 

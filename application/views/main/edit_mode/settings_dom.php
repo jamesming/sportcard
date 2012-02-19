@@ -8,13 +8,13 @@
 						
 						
 					  <ul class="nav nav-tabs"   style='margin-top:10px;'  >
-					    <li  id='setting-tab-1' class="active"><a href="#1" data-toggle="tab">Account</a></li>
-					    <li  id='setting-tab-2' ><a href="#2" data-toggle="tab">Password</a></li>
+					    <li  id='setting-tab-1' class="active"><a href="#6" data-toggle="tab">Account</a></li>
+					    <li  id='setting-tab-2' ><a href="#7" data-toggle="tab">Password</a></li>
 					  </ul>
 					  
 					  
 					  <div class="tab-content">
-					    <div class="tab-pane active" id="1">
+					    <div class="tab-pane active" id="6">
 <style>
 .setting-padding-right{
 padding-right:30px;	
@@ -89,7 +89,7 @@ padding-right:30px;
 
 
 					    </div>
-					    <div class="tab-pane " id="2">
+					    <div class="tab-pane " id="7">
 								<div>
 										<legend >Edit you Password</legend>
 								</div>
