@@ -33,7 +33,12 @@
                 <ul class="nav  pull-right ">
 
 
-                  
+									<li class=" ">
+									
+										<a  id='edit_mode'>Preview</a>
+									
+									</li>
+
 			            <li class="dropdown">
 			
 			              <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Sportcard<b class="caret"></b></a>
@@ -43,12 +48,10 @@
 			                <li><a id='edit_profile_menu_item'>Edit Profile</a></li>
 			
 			                <li><a id='settings_menu_item'>Settings</a></li>
+	
+			                <li class="divider"></li>			                
 			
 			                <li><a id='logout'>Log Out</a></li>
-			
-			                <li class="divider"></li>
-			
-			                <li><a href="#">Separated link</a></li>
 			
 			              </ul>
 			
@@ -71,7 +74,9 @@
 	
 				<div  id='head-line-box' class=" transparent rounded draggable box " >
 					<div class='window-controls-container top-left-rounded top-right-rounded'>
-						<div class="handle icon-boxes top-right-rounded"></div>
+						<div class="handle icon-boxes top-right-rounded">
+						<i class="icon-move"></i>	
+						</div>
 					</div>
 					<div  class='insides' >
 					</div>
@@ -86,10 +91,15 @@
 ?> 
 				
 				<div  id='profile_box' class="draggable box rounded"  >
-					<div  class='window-controls-container rounded'>
+					
+					
+					
+					<div  class='window-controls-container rounded'   style='margin-bottom:-32px'  >
 						<div class="handle icon-boxes top-right-rounded">
+							<i class="icon-move"></i>
 						</div>
 						<div  class='close-window icon-boxes' >
+							<i class="icon-minus"></i>
 						</div>					
 					</div>
 					

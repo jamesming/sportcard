@@ -89,14 +89,14 @@
 	width:22px;
 	float:right;
 	height:20px;	
+	padding-top:4px;
 	}	
 	.draggable div.handle {
-		background: url("<?php  echo base_url()   ?>images/icons.png") no-repeat scroll -14px -480px;
+		
 		cursor: move;
 		z-index:1; 
 	}
 	.draggable div.close-window {
-	background: url("<?php  echo base_url()   ?>images/icons.png") no-repeat scroll -14px -172px;
 	cursor: pointer; 
 	}
 	

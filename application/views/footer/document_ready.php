@@ -158,10 +158,10 @@ function get_stored_configurations(){
 			<?php if( isset($data['users'][0]['edit_mode']) && $data['users'][0]['edit_mode'] == 0
 						||  $data['live_only'] == 1 
 						){?>
-									$('#edit_mode').text('edit').attr('on', 0);	
+									$('#edit_mode').text('Edit').attr('on', 0);	
 									edit_mode_off();									
 			<?php }else{?>
-									$('#edit_mode').text('preview').attr('on', 1);
+									$('#edit_mode').text('Preview').attr('on', 1);
 									edit_mode_on();
 			<?php } ?>
 			
@@ -285,10 +285,10 @@ function store_custom_configuration(){
 
 					if( $(this).attr('on') == 1){
 							edit_mode_off();	
-							$(this).text('edit').attr('on', 0);
+							$(this).text('Edit').attr('on', 0);
 			
 					}else{
-							$(this).text('preview').attr('on', 1);			
+							$(this).text('Preview').attr('on', 1);			
 							edit_mode_on();		
 					};
 					
@@ -325,7 +325,7 @@ function bind_events(){
 			})
 			
 			$('#head-line-box .handle')
-			.mouseout(function(event) {
+			.mouseup(function(event) {
 				
 									$('#profile_box').show();
 									
@@ -333,7 +333,7 @@ function bind_events(){
 				
 						$('#profile_box').hide();
 				
-			  		$('#head-line-box .handle').unbind('mouseout');
+			  		//$('#head-line-box .handle').unbind('mouseout');
 			  		
 			});
 			

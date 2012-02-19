@@ -18,7 +18,18 @@
 					
 	  
 .jcarousel-skin-tango .jcarousel-container {
-
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		-moz-border-radius-topleft: 4px;
+		-moz-border-radius-topright: 4px;
+		-webkit-border-top-right-radius: 4px;
+		-webkit-border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		-moz-border-radius-bottomleft: 4px;
+		-moz-border-radius-bottomright: 4px;
+		-webkit-border-bottom-right-radius: 4px;
+		-webkit-border-bottom-left-radius: 4px;
     border: 1px solid #DDDDDD;
 }
 
