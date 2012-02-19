@@ -31,48 +31,21 @@ padding-right:30px;
 
        
 								         <?php foreach( $data['input_account_array']['inputs']  as  $inputs){ 
-								         
-								         
-								         				if( $inputs['type'] == 'text'){?>
-								         					
+								         ?>
+
 														          <div class="control-group">
 														
 														            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
 														
 														            <div class="controls">
 														
-														              <input type="text" class="<?php echo $data['input_account_array']['size-class']    ?> account_inputs '  id='<?php echo $inputs['input_name']    ?>' name="<?php echo $inputs['input_name']    ?>" type="" value="<?php  echo $data['users'][0][$inputs['input_name']]   ?>">
+														              <input   id='<?php echo $inputs['input_name']    ?>' name="<?php echo $inputs['input_name']    ?>"   type="text" class="account_section_inputs   <?php echo $data['input_account_array']['size-class']    ?> ' value="<?php  echo $data['users'][0][$inputs['input_name']]   ?>">
 														
 														            </div>
 														
 														          </div>										         				
-								         				
-								         				<?php
-								         				}elseif( $inputs['type'] == 'select'){
-								         				?>	
-								         					
-														          <div class="control-group">
-														
-														            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
-														
-														            <div class="controls">
-														
-														              <select  class="<?php echo $data['input_account_array']['size-class']    ?> account_inputs " id='<?php echo $inputs['input_name']    ?>' name='<?php echo $inputs['input_name']    ?>'>
-														              	
-														              						<?php foreach( $inputs['options']  as  $option){ ?>	
-														              							
-																																	<option value="<?php echo $option['value']    ?>"><?php echo $option['text']    ?></option>
-																																	
-																											<?php } ?>	
-														              </select>
-														
-														            </div>
-														
-														          </div>
-								         					
-								         				<?php
-								         				};
-								         			 
+
+								         <?php			 
 								         } ?>
 
 								        </fieldset>
