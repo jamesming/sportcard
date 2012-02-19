@@ -56,6 +56,7 @@ $route['main/update'] = "main/update";
 $route['main/insert'] = "main/insert";
 $route['main/remove'] = "main/remove";
 $route['main/upload'] = "main/upload";
+$route['main/update_video'] = "main/update_video";
 $route['main/resize'] = "main/resize";
 $route['main/get_video_url'] = "main/get_video_url";
 $route['main/get_video_iframe'] = "main/get_video_iframe";

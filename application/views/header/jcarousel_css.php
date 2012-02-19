@@ -19,7 +19,7 @@
 	  
 .jcarousel-skin-tango .jcarousel-container {
 
-    border: 1px solid blue;
+    border: 1px solid #DDDDDD;
 }
 
 .jcarousel-skin-tango .jcarousel-direction-rtl {

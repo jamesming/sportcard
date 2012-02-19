@@ -15,19 +15,7 @@ $(document).ready(function() {
 
 function account_menu(){
 
-            $(".myaccount").click(function(e) {          
-							e.preventDefault();
-			        $("fieldset#account_menu").toggle();
-							$(".myaccount").toggleClass("menu-open");
-							
-							$('.box').toggleClass("push-z-index-back");				
-            });
-
-						$("fieldset#account_menu").mouseup(function() {
-							return false
-						});
-
-						$("#account_menu a").css({cursor:'pointer'}).click(function(e) {          
+						$("#menu1 a").css({cursor:'pointer'}).click(function(e) {          
 							
 							e.preventDefault();
 							
@@ -47,16 +35,7 @@ function account_menu(){
 																
 							};
 						
-							$(document).mouseup(function(e) {
-								if($(e.target).parent("a.myaccount").length==0) {
-									$(".myaccount").removeClass("menu-open");
-									$("fieldset#account_menu").hide();
-								}
-								$('.box').removeClass('push-z-index-back');
-							});	
-														
-							
-							$(document).mouseup();
+
 							
 						});
 						
@@ -363,21 +342,22 @@ function bind_events(){
 				$(this).parent().parent().hide();
 			});	
 
-			$('#profile_box #panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
-						$('#profile_box ul#panels_ul li.panels').hide();
-						$('#profile_box ul#panels_ul li.panels:eq('+$(this).index()+')').show()
-						$(this).parent().children('li').css({background:'lightblue'});
-						$(this).css({background:'white'});
-						
-						if( $(this).attr('id') == 'panel-tab-3' ||
-								$(this).attr('id') == 'panel-tab-2' 
-						){
-							$('#preview_box').hide()
-						}else{
-							$('#preview_box').show()
-						};
-						
-			});	
+//			$('#profile_box #panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
+//				
+//						$('#profile_box ul#panels_ul li.panels').hide();
+//						$('#profile_box ul#panels_ul li.panels:eq('+$(this).index()+')').show()
+//						$(this).parent().children('li').css({background:'lightblue'});
+//						$(this).css({background:'white'});
+//						
+//						if( $(this).attr('id') == 'panel-tab-3' ||
+//								$(this).attr('id') == 'panel-tab-2' 
+//						){
+//							$('#preview_box').hide()
+//						}else{
+//							$('#preview_box').show()
+//						};
+//						
+//			});	
 			
 			
 			<?php if( $this->tools->browserIsExplorer() ){?>

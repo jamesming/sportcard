@@ -1,12 +1,5 @@
-<script type="text/javascript" 
-        src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
- 
-  google.load("jquery", "1.4.2");
- 	google.load("jqueryui", "1.8.16");
 
-</script>
-
+    <script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
 <!--  
 http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chrome
 -->
@@ -27,3 +20,5 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 	<script src="<?php echo  base_url();   ?>js/cufon.js"></script> 
 	<script src="<?php echo  base_url();   ?>js/fileuploader.js"></script> 
 	<?php $this->load->view('header/htmlbox_grouped_javascript_includes.php');     ?>
+	<script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-tab.js"></script>
+	<script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-dropdown.js"></script>	

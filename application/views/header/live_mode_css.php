@@ -5,11 +5,17 @@
   background-repeat:no-repeat;/*
   -webkit-background-size:1280px 1024px;*/
   background-size:cover;
+  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 	}
 	.top-right-rounded{
 		border-top-right-radius: 6px;
 		-moz-border-radius-topright: 6px;
 		-webkit-border-top-right-radius: 6px;	
+	}
+	.top-left-rounded{
+		border-top-left-radius: 6px;
+		-moz-border-radius-topleft: 6px;
+		-webkit-border-top-left-radius: 6px;	
 	}
 	.hide{
 	display:none;	
@@ -103,7 +109,7 @@ z-index:-1;
 
 	.window-controls-container{
 	height:21px;
-	background:gray;
+	background:white;
 	z-index:0;
 	}	
 	

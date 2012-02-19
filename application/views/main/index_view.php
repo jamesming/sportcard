@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php	$this->load->view('header/blueprint_css.php');  ?>
 
+<link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php 
 	if( $data['live_only'] == 1 ){
 		$this->load->view('header/live_mode_css.php');
@@ -18,60 +18,59 @@
 </head>
 
 <html>
+	
+	
 
 <body>
-	
-	<div  id='header' class='container '  >
-		<div class='coordinates left_panel'>
-			<style>
-			#form0 input{
-			width:30px;	
-			display:none;
-			}
-			</style>
-			<form id='form0'>
-				<input name="x" id="x" type="" value="">
-				<input name="y" id="y" type="" value="">
-				<input name="margin_left_of_center" id="margin_left_of_center" type="" value="">
-			</form>
-		</div>
-		<div class='right_panel'  >
-				<div  class='edit-panel float_left' >
-					<span  id='edit_mode' on='1'>preview</span>
-				</div>
-				<div  id='myaccount_container' class='float_left '  >
-			
-						<div id="topnav" class="topnav clearfix">
-							
-						 	<a  href="" class="float_right myaccount" onfocus="this.blur()">
-						 		<span>My SportCard</span>
-						 	</a>  
-						 		
-						 	<div id='greeting' class='float_right ' >Welcome James.
-						 	</div>
-						
-						</div>
+          <div id="navbar-example" class="navbar  navbar-fixed-top">
 
-						<div  class=' clearfix ' >
-								<fieldset id="account_menu"    class='float_right '   >
-									<ul>
-										<li><a id='edit_profile_menu_item'>Edit Profile</a></li>
-										<li><a id='settings_menu_item'>Settings</a></li>
-										<li><a id='logout'>Log Out</a></li>
-									</ul>
-								</fieldset>						
-							
-						</div>
-		
-						
-				</div> 
-		</div>
-	</div>
+            <div class="navbar-inner">
+
+              <div class="container" >
+
+                <a class="brand" href="#">SPORTCARD</a>
+
+                <ul class="nav  pull-right ">
+
+
+                  
+			            <li class="dropdown">
+			
+			              <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Sportcard<b class="caret"></b></a>
+			
+			              <ul id="menu1" class="dropdown-menu">
+			
+			                <li><a id='edit_profile_menu_item'>Edit Profile</a></li>
+			
+			                <li><a id='settings_menu_item'>Settings</a></li>
+			
+			                <li><a id='logout'>Log Out</a></li>
+			
+			                <li class="divider"></li>
+			
+			                <li><a href="#">Separated link</a></li>
+			
+			              </ul>
+			
+			            </li>                  
+                  
+                </ul>
+
+                
+
+              </div>
+
+            </div>
+
+          </div>
+	
+	
+
 	
 	<div  id='main-box' class='container '>
 	
-				<div  id='head-line-box' class="transparent rounded draggable box" >
-					<div class='window-controls-container top-right-rounded'>
+				<div  id='head-line-box' class=" transparent rounded draggable box " >
+					<div class='window-controls-container top-left-rounded top-right-rounded'>
 						<div class="handle icon-boxes top-right-rounded"></div>
 					</div>
 					<div  class='insides' >
@@ -86,40 +85,37 @@
 	};  
 ?> 
 				
-				<div  id='profile_box' class="draggable box" >
-					<div  class='window-controls-container'>
-						<div class="handle icon-boxes">
+				<div  id='profile_box' class="draggable box rounded"  >
+					<div  class='window-controls-container rounded'>
+						<div class="handle icon-boxes top-right-rounded">
 						</div>
 						<div  class='close-window icon-boxes' >
 						</div>					
 					</div>
-					<div  id='panel-tabs_container'>
-						<ul>
 					
-							<li  id='panel-tab-1'>Background
-							</li>
-							<li  id='panel-tab-2'>Bio
-							</li>
-							<li  id='panel-tab-3'>Color and Fonts
-							</li>
-							<li  id='panel-tab-4'>Photos
-							</li>	
-							<li  id='panel-tab-5'>Videos
-							</li>	
-						</ul>	
-					</div>
-					<div  class='insides' >
-								<ul  id='panels_ul'>
-										<li id='panel-1'   class='panels ' >
-											<div class='div-panel '>
-											
-												<table>
+					
+					<div class="tabbable"   style='padding:10px'  >
+						
+						
+					  <ul class="nav nav-tabs"   style='margin-top:10px;'  >
+					    <li class="active"><a href="#1" data-toggle="tab">Background</a></li>
+					    <li><a href="#2" data-toggle="tab">Bio</a></li>
+					    <li><a href="#3" data-toggle="tab">Color and Fonts</a></li>
+					    <li><a href="#4" data-toggle="tab">Photos</a></li>
+					    <li><a href="#5" data-toggle="tab">Videos</a></li>
+					  </ul>
+					  
+					  
+					  <div class="tab-content">
+					    <div class="tab-pane active" id="1">
+					      <p>	
+					      	<table>
 													<tr>
 	
 														<td ><!--
 															<div  id='add-to' image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
 															</div>-->
-															
+														<a href="#"  class='btn ' ><i class="icon-upload"></i> Upload</a>
 															
 														<div id="upload_button_backgrounds"  >		
 															<noscript>			
@@ -168,13 +164,10 @@
 														</td>
 													</tr>												
 												</table>
-	
-											</div>							
-										</li>		
-										<li  id='panel-2'    class='panels ' >
-										
-											<div class='div-panel '>
-											
+								</p>
+					    </div>
+					    <div class="tab-pane " id="2">
+					      <p>
 													<div  class='large_header ' >Edit you Bio
 													</div>
 	
@@ -299,11 +292,10 @@
 															
 														</div>
 													</div>
-											</div>		
-										</li>	
-								
-										<li id='panel-3'  class='panels ' >
-											<div  class='div-panel ' >
+					      </p>
+					    </div>
+					    <div class="tab-pane " id="3">
+					      <p>
 												<table  class='fonts_table ' >
 													<tr>
 														<td>Name
@@ -432,13 +424,11 @@
 															</ul>
 														</td>
 													</tr>																										
-												</table>
-											</div>
-										</li>
-
-										<li  id='panel-4'    class='panels ' >
-											<div class='div-panel '>
-											
+												</table>					      	
+					      </p>
+					    </div>
+					    <div class="tab-pane " id="4">
+					      <p>
 												<table>
 													<tr>
 	
@@ -491,13 +481,11 @@
 	
 														</td>
 													</tr>												
-												</table>
-	
-											</div>		
-										</li>
-										<li   id='panel-5'    class='panels ' >
-											<div class='div-panel '>
-											
+												</table>					      	
+					      </p>
+					    </div>					    
+					    <div class="tab-pane " id="5">
+					      <p>
 												<table>
 													<tr>
 	
@@ -570,18 +558,16 @@
 														</td>
 													</tr>												
 												</table>
-	
-											</div>	
-										</li>
-	
-																
-								</ul>
-	
-								<div  id='preview_box'>
-									<div  id='preview_box_inside'>
-									</div>
-								</div>
+					      </p>
+					    </div>						    
+					  </div>
 					</div>
+					
+					<div  id='preview_box'>
+						<div  id='preview_box_inside'>
+						</div>
+					</div>
+
 				</div>
 				
 	</div>
