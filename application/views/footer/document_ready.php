@@ -63,7 +63,7 @@ function settings_box(){
 								
 								});	
 								
-								$('#account_section_submit').css({cursor:'pointer'}).click(function(event) {
+								$('#save_account_button').css({cursor:'pointer'}).click(function(event) {
 				
 										$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
 										table:'users',
@@ -80,7 +80,7 @@ function settings_box(){
 				
 																
 							
-								$('#password_section_submit').css({cursor:'pointer'}).click(function(event) {
+								$('#save_password_button').css({cursor:'pointer'}).click(function(event) {
 
 									$.post("<?php echo base_url(). 'index.php/main/confirm_existing_password';    ?>",{
 											table:'users',
