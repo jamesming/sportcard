@@ -222,10 +222,7 @@ function store_custom_configuration(){
 						store( $(this) );		
 			});	
 			
-//			$('#background_color').change(function(event) {
-//						$('body').css({background:$(this).val()});
-//						store( $(this) );
-//			});	
+
 			
 			$('#font_color').change(function(event) {
 						$('#full_name_readonly').css({color:$(this).val()});
@@ -554,7 +551,13 @@ function thumbnail_controls(){
 						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/main/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
 						                	
 						                },
-						                debug: true
+						                debug: true,
+						                onSubmit : function(file, ext){
+																button.text('Uploading');
+																this.disable();
+														},
+        										multiple: false
+														
 						            }); 
 						            
 						            window.uploader_pictures = new qq.FileUploader({
@@ -570,7 +573,12 @@ function thumbnail_controls(){
 						                	$('#results').attr('src','<?php echo base_url()    ?>index.php/main/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
 						                	
 						                },
-						                debug: true
+						                debug: true,
+						                onSubmit : function(file, ext){
+																button.text('Uploading');
+																this.disable();
+														},
+        										multiple: false
 						            }); 
 						            
 						            

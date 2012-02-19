@@ -1,7 +1,7 @@
 <style>
 	body{
   background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg);
-  background-position:center 0px;
+  background-position:center 40px;/* 40px to make the container go all the way to the bottom of the topbar */
   background-repeat:no-repeat;/*
   -webkit-background-size:1280px 1024px;*/
   background-size:cover;
@@ -108,7 +108,7 @@ z-index:-1;
 }
 
 	.window-controls-container{
-	height:21px;
+	height:23px;
 	background:white;
 	z-index:0;
 	}	
@@ -207,4 +207,17 @@ margin-right:auto;
 }			
 <?php  		$this->load->view('header/jcarousel_css.php');   ?>
 <?php  		$this->load->view('header/qq-uploader_css.php');   ?>
+.jcarousel-skin-tango{
+margin-top:5px;	
+}
+.qq-upload-button {
+		float:right;
+    display:inline-block; /* or inline-block */
+    width: 60px; padding: 3px 0; text-align:center;    
+    background:transparent; border-bottom:0px solid #ddd;color:gray;
+    
+}
+.qq-upload-button-hover {background:transparent;}
+.qq-upload-button-focus {outline:1px dotted black;}
+
 </style>

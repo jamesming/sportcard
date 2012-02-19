@@ -10,7 +10,7 @@
 		$this->load->view('header/edit_mode_css.php');
 	};  
 ?> 
-	 	
+
 <?php 
 		$this->load->view('header/javascript_includes.php');
 ?> 
@@ -94,7 +94,7 @@
 					
 					
 					
-					<div  class='window-controls-container rounded'   style='margin-bottom:-32px'  >
+					<div  class='window-controls-container rounded'   style='margin-bottom:-40px;padding-top: 8px;'  >
 						<div class="handle icon-boxes top-right-rounded">
 							<i class="icon-move"></i>
 						</div>
@@ -125,13 +125,13 @@
 														<td ><!--
 															<div  id='add-to' image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
 															</div>-->
-														<a href="#"  class='btn ' ><i class="icon-upload"></i> Upload</a>
+														
 															
-														<div id="upload_button_backgrounds"  >		
-															<noscript>			
-																<p>Please enable JavaScript to use file uploader.</p>
-																<!-- or put a simple form for upload here -->
-															</noscript>         
+															
+								
+															
+														<div id="upload_button_backgrounds"  class='btn float_right' >		
+															
 														</div>
 															
 															
@@ -447,18 +447,16 @@
 															<div image_id='0' image_type_id='1'  li_index='-1' class='upload_button'>upload
 															</div>
 															-->
-														<div id="upload_button_pictures"  >		
-															<noscript>			
-																<p>Please enable JavaScript to use file uploader.</p>
-																<!-- or put a simple form for upload here -->
-															</noscript>         
-														</div>
+															<div id="upload_button_pictures"   class='btn float_right'   >		
+																   
+															</div>
+															
 														</td>													
 													</tr>
 	
 													<tr>
 														<td>
-															<div  id='pictures-div' class='mycarousel jcarousel-skin-tango'>
+															<div  id='pictures-div' class='mycarousel jcarousel-skin-tango'  >
 																<ul class='thumbs-ul'   >
 	
 	
