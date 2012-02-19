@@ -134,7 +134,7 @@ class Main extends CI_Controller {
 			'inputs' => array(
 			
 				array('type' => 'text', 'label' => 'Profile Url', 'input_name'=>'profile_url'),
-				array('type' => 'text', 'label' => 'email', 'input_name'=>'email')
+				array('type' => 'text', 'label' => 'Email', 'input_name'=>'email')
 			)
 		);
 		
