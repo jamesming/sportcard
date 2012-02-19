@@ -9,7 +9,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 			
-			$('#profile_box #panel-tabs_container li#panel-tab-2').click()
+			$('li#panel-tab-1 a').click()
 
 });
 
@@ -342,22 +342,19 @@ function bind_events(){
 				$(this).parent().parent().hide();
 			});	
 
-//			$('#profile_box #panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
-//				
-//						$('#profile_box ul#panels_ul li.panels').hide();
-//						$('#profile_box ul#panels_ul li.panels:eq('+$(this).index()+')').show()
-//						$(this).parent().children('li').css({background:'lightblue'});
-//						$(this).css({background:'white'});
-//						
-//						if( $(this).attr('id') == 'panel-tab-3' ||
-//								$(this).attr('id') == 'panel-tab-2' 
-//						){
-//							$('#preview_box').hide()
-//						}else{
-//							$('#preview_box').show()
-//						};
-//						
-//			});	
+			$('#panel-tabs_container li').css({cursor:'pointer'}).click(function(event) {
+						
+						if( $(this).attr('id') == 'panel-tab-3' ||
+								$(this).attr('id') == 'panel-tab-2' 
+						){
+							$('#preview_box').hide()
+						}else{
+
+							
+							$('#preview_box').show()
+						};
+						
+			});	
 			
 			
 			<?php if( $this->tools->browserIsExplorer() ){?>

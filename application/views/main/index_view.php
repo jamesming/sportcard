@@ -104,15 +104,15 @@
 					</div>
 					
 					
-					<div class="tabbable"   style='padding:10px'  >
+					<div  id='panel-tabs_container' class="tabbable"   style='padding:10px'  >
 						
 						
 					  <ul class="nav nav-tabs"   style='margin-top:10px;'  >
-					    <li class="active"><a href="#1" data-toggle="tab">Background</a></li>
-					    <li><a href="#2" data-toggle="tab">Bio</a></li>
-					    <li><a href="#3" data-toggle="tab">Color and Fonts</a></li>
-					    <li><a href="#4" data-toggle="tab">Photos</a></li>
-					    <li><a href="#5" data-toggle="tab">Videos</a></li>
+					    <li  id='panel-tab-1' class="active"><a href="#1" data-toggle="tab">Background</a></li>
+					    <li  id='panel-tab-2' ><a href="#2" data-toggle="tab">Bio</a></li>
+					    <li  id='panel-tab-3' ><a href="#3" data-toggle="tab">Color and Fonts</a></li>
+					    <li  id='panel-tab-4' ><a href="#4" data-toggle="tab">Photos</a></li>
+					    <li  id='panel-tab-5' ><a href="#5" data-toggle="tab">Videos</a></li>
 					  </ul>
 					  
 					  

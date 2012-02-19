@@ -163,19 +163,7 @@ margin-top:20px;
 	height: 600px;			
 	}		
 	
-		#profile_box #panel-tabs_container{
-		height:19px;
-		background:lightblue;	
-		}
-		#profile_box #panel-tabs_container li{
-			float:left;
-			border-right:1px solid gray;
-			width:100px;
-			border-bottom:1px solid gray;
-			text-align:center;
-		}		
 
-		
 		
 		
 	.upload_button{
@@ -198,14 +186,17 @@ margin-top:20px;
 	padding:10px;
 	
 }
-#profile_box .insides  #preview_box{
+#preview_box{
 padding:20px;	
 clear:both;
 }
-#profile_box .insides  #preview_box_inside{
-background: none repeat scroll 0 0 white;
-border: 0px solid gray;
-height: 281px;
+#preview_box  #preview_box_inside{
+background: gray;
+border: 1px solid gray;
+width:400px;
+height: 250px;
+margin-left:auto;
+margin-right:auto;
 }				
 			
 .inside_li{

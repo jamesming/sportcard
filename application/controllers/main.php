@@ -526,8 +526,8 @@ class Main extends CI_Controller {
 	
 	echo $this->tools->create_iframe_html_from_youtube_video_id( 
 		$youtube_video_id, 
-		$width = 833, 
-		$height = 281
+		$width = 400, 
+		$height = 250
 		);
 		
 	}
