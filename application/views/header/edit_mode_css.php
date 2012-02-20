@@ -164,7 +164,7 @@ margin-top:20px;
 
 	#profile_box{
 	background:white;
-	width:875px;
+	width:860px;
 	height: 600px;			
 	}		
 	
