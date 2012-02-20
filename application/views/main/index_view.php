@@ -274,88 +274,101 @@
 					    	
 								      <form class="form-horizontal">
 								
-								        <fieldset>
+													<div  class=' span5e' >
+														
+											         <?php foreach( $data['input_style_array']['inputs']  as  $inputs){ 
+											         
+											         
+											         				if( $inputs['type'] == 'text'){?>
+											         					
+																	          <div class="control-group">
+																	
+																	            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
+																	
+																	            <div class="controls">
+																	
+																	              <input   id='<?php echo $inputs['input_name']    ?>' name='<?php echo $inputs['input_name']    ?>' class="<?php echo $data['input_bio_array']['size-class']    ?> style_inputs ' type="text" value="<?php  echo $data['users'][0][$inputs['input_name']]   ?>">
+																	
+																	            </div>
+																	
+																	          </div>										         				
+											         				
+											         				<?php
+											         				}elseif( $inputs['type'] == 'select'){
+											         				?>	
+											         					
+																	          <div class="control-group">
+																	
+																	            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
+																	
+																	            <div class="controls">
+																	
+																	              <select  class="<?php echo $data['input_bio_array']['size-class']    ?> style_inputs " id='<?php echo $inputs['input_name']    ?>' name='<?php echo $inputs['input_name']    ?>'>
+																	              	
+																	              						<?php foreach( $inputs['options']  as  $option){ ?>	
+																	              							
+																																				<option value="<?php echo $option['value']    ?>"><?php echo $option['text']    ?></option>
+																																				
+																														<?php } ?>	
+																	              </select>
+																	
+																	            </div>
+																	
+																	          </div>
+											         					
+											         				<?php
+											         				};
+											         			 
+											         } ?>														
+													</div>
+       										<div  class=' span5'>
+			
+										          <div class="control-group">
+										
+										            <label class="control-label" for="">Fonts</label>
+										
+										            <div class="controls">
+																	<style>
+																		ul#fonts_ul {
+																		    border: 1px solid #CCCCCC;
+																		    height: 220px;
+																		    overflow-y: scroll;
+																				border-top-left-radius: 3px;
+																				border-top-right-radius: 3px;
+																				-moz-border-radius-topleft: 3px;
+																				-moz-border-radius-topright: 3px;
+																				-webkit-border-top-right-radius: 3px;
+																				-webkit-border-top-left-radius: 3px;
+																				border-bottom-left-radius: 3px;
+																				border-bottom-right-radius: 3px;
+																				-moz-border-radius-bottomleft: 3px;
+																				-moz-border-radius-bottomright: 3px;
+																				-webkit-border-bottom-right-radius: 3px;
+																				-webkit-border-bottom-left-radius: 3px;																		    
+																		}
+																		ul#fonts_ul li {
+																		  	border-bottom: 1px solid #CCCCCC;
+																		 }
+																	</style>
+																	<ul  id='fonts_ul'  class=" unstyled">
+																		<?php foreach($data['fonts'] as $font ){?>
+																			
+																			<li  class='fonts_li ' font_name='<?php echo $font->name    ?>' '  style='font-size:24px'  '><?php  echo $font->name   ?></li>
+																		
+																		<?php }?>
+																	</ul>
+																	
+																	
+										            </div>
+										
+										         	</div>
+       											
+       											
+       										</div>
 
-       
-								         <?php foreach( $data['input_style_array']['inputs']  as  $inputs){ 
-								         
-								         
-								         				if( $inputs['type'] == 'text'){?>
-								         					
-														          <div class="control-group">
-														
-														            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
-														
-														            <div class="controls">
-														
-														              <input   id='<?php echo $inputs['input_name']    ?>' name='<?php echo $inputs['input_name']    ?>' class="<?php echo $data['input_bio_array']['size-class']    ?> style_inputs ' type="text" value="<?php  echo $data['users'][0][$inputs['input_name']]   ?>">
-														
-														            </div>
-														
-														          </div>										         				
-								         				
-								         				<?php
-								         				}elseif( $inputs['type'] == 'select'){
-								         				?>	
-								         					
-														          <div class="control-group">
-														
-														            <label class="control-label" for="<?php echo $inputs['input_name']    ?>"><?php echo $inputs['label']    ?></label>
-														
-														            <div class="controls">
-														
-														              <select  class="<?php echo $data['input_bio_array']['size-class']    ?> style_inputs " id='<?php echo $inputs['input_name']    ?>' name='<?php echo $inputs['input_name']    ?>'>
-														              	
-														              						<?php foreach( $inputs['options']  as  $option){ ?>	
-														              							
-																																	<option value="<?php echo $option['value']    ?>"><?php echo $option['text']    ?></option>
-																																	
-																											<?php } ?>	
-														              </select>
-														
-														            </div>
-														
-														          </div>
-								         					
-								         				<?php
-								         				};
-								         			 
-								         } ?>
 
 
-														          <div class="control-group">
-														
-														            <label class="control-label" for="">Fonts</label>
-														
-														            <div class="controls">
-																					<style>
-																						ul#fonts_ul {
-																						    border: 1px solid #CCCCCC;
-																						    height: 220px;
-																						    overflow-y: scroll;
-																						}
-																						ul#fonts_ul li {
-																						    padding: 9px;
-																						  	border-bottom: 1px solid #CCCCCC;
-																						 }
-																					</style>
-																					<ul  id='fonts_ul'  class="span4 unstyled">
-																						<?php foreach($data['fonts'] as $font ){?>
-																							
-																							<li  class='fonts_li ' font_name='<?php echo $font->name    ?>' '  style='font-size:24px'  '><?php  echo $font->name   ?></li>
-																						
-																						<?php }?>
-																					</ul>
-																					
-																					
-														            </div>
-														
-														         	</div>
 
-
-								        </fieldset>
-								        
-								        
 								
 								      </form>
 					    	
