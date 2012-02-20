@@ -565,7 +565,7 @@ class Main extends CI_Controller {
 							whichCarousel.size( 0 )
 						};
 						
-						whichCarousel.add(  (whichCarousel.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='hide <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?>  ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' >[C]</div>": "")    ?></div><div  class='inside_li <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'videos_preview':'images_preview' )    ?>  ' ></div></li>");					
+						whichCarousel.add(  (whichCarousel.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent '  <?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "  style='height:51px !important' ": "")    ?> ><div  class='delete ' ><i class='icon-trash icon-white'></i></div><div  class='hide <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?>  ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' ><i class='icon-refresh icon-white'></div>": "")    ?></div><div  class='inside_li <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'videos_preview':'images_preview' )    ?>  ' ></div></li>");					
 	
 	
 					  whichCarousel.scroll(parseInt(whichCarousel.size()),true);
@@ -588,7 +588,7 @@ class Main extends CI_Controller {
 
 									thumbs_div = window.parent.$('#<?php echo $image_types[$image_type_id] ?>.thumbs-div');
 									uploadButton = thumbs_div.find('.upload_button');
-									thumbs_div.children('ul').append("<li style='background:brown'  class='background-img ' image_id='0'  image_type_id='" + uploadButton.attr('image_type_id') + "'  ><div  class='small_icons_panel transparent' ><div  class='delete ' >[X]</div><div  class='<?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?> ' ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' >[C]</div>": "")    ?></div></li>");
+									thumbs_div.children('ul').append("<li style='background:brown'  class='background-img ' image_id='0'  image_type_id='" + uploadButton.attr('image_type_id') + "'  ><div  class='small_icons_panel transparent' ><div  class='delete ' ><i class='icon-trash icon-white'></i></div><div  class='<?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?> ' ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' ><i class='icon-refresh icon-white'></div>": "")    ?></div></li>");
 
 							};
 							

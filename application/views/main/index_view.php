@@ -78,8 +78,7 @@
 						<i class="icon-move"></i>	
 						</div>
 					</div>
-					<div  class='insides' >
-					</div>
+
 					<div  id='full_name_readonly'>
 					</div>
 				</div>
@@ -148,12 +147,12 @@
 																	<?php foreach( $data['users']['backgrounds']['images']  as $image_id){?>
 	
 																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='0'  >
-																			<div  class='small_icons_panel transparent' >
-																				<div  class='delete ' >[X]
-																				</div>
+																			<div  class='small_icons_panel transparent'   style='height:51px !important'  >
+																				<div  class='delete float_right' ><i class="icon-trash icon-white"></i>
+																				</div><!-- 
 																				<div  class='hide update-image backgrounds_update_button' >[<?php echo $image_id     ?>]
-																				</div>
-																				<div  class='swap ' >[C]
+																				</div> -->
+																				<div  class='swap float_right ' ><i class="icon-refresh icon-white"></i>
 																				</div>																																							
 																			</div>
 																			<div  class='inside_li images_preview' >
@@ -390,7 +389,7 @@
 											<td align='left' class='profile-label ' >Photo Gallery
 											</td>
 											<td >
-
+												<!-- STYLE ICON IN BUTTON USING js/fileuploader.js line 511  -->
 												<button id="upload_button_pictures"   class='btn float_right'    />															
 											</td>
 										</tr>
@@ -409,8 +408,8 @@
 																																						<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
 																						
 																																							<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
-																																								<div  class='small_icons_panel transparent' >
-																																									<div  class='delete ' >[X]
+																																								<div  class='small_icons_panel transparent'   >
+																																									<div  class='delete ' ><i class="icon-trash icon-white"></i>
 																																									</div>
 																																									<div  class='hide update-image  pictures_update_button' >[E]
 																																									</div>																																				
@@ -445,7 +444,7 @@
 																	
 																	
 																	<tr>
-																		<td align='left' class='profile-label ' >Photo Gallery
+																		<td align='left' class='profile-label ' >Video Gallery
 																		</td>
 																		<td >
 																		<form 
@@ -455,7 +454,7 @@
 																			method='POST'  
 																			action='<?php echo base_url();    ?>index.php/main/update_video'
 																			>
-																			<a id="video_submit" class='btn float_right'  >submit</a>	
+																			<a id="video_submit" class='btn float_right'   style='margin-left:10px'   ><i class="icon-facetime-video"></i> submit</a>	
 																			<input  class='float_right ' name="video_url" id="video_url" type="text" value="">
 																			
 																			<input name="image_id"  type="hidden" value="0">
@@ -478,7 +477,7 @@
 																			
 																																				<li style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
 																																					<div  class='small_icons_panel transparent' >
-																																						<div  class='delete ' >[X]
+																																						<div  class='delete ' ><i class="icon-trash icon-white"></i>
 																																						</div>
 																																						<div  class='hide update-video_url '  >[E]
 																																						</div>																																					

@@ -87,9 +87,7 @@
 /*	background:transparent;	*/
 	border:0px solid gray;
 	}
-	.draggable .insides{
-		clear:both;
-	}
+
 	.draggable .icon-boxes{
 	width:22px;
 	float:right;
@@ -148,7 +146,6 @@ cursor:pointer;
 width: 800px; 
 height: 200px;	
 position:absolute;
-
 }
 
 
@@ -184,6 +181,17 @@ margin-top:20px;
 			padding:20px;	
 			}
 			
+			.small_icons_panel{
+			height:25px !important;	
+			width:25px !important;
+			border-bottom-left-radius: 3px;
+			-moz-border-radius-bottomleft: 3px;
+			-webkit-border-bottom-left-radius: 3px;				
+			}			
+			.small_icons_panel div{
+			margin-top:5px;	
+			margin-right:5px;	
+			}
 
 #preview_box{
 padding:20px;	
