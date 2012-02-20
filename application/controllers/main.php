@@ -90,8 +90,8 @@ class Main extends CI_Controller {
 		}
 		
 		for($i=1;$i<=400;$i++){
-			$width_of_headline_size['value'] = $i.'px'; 
-			$width_of_headline_size['text'] = $i.'px'; 
+			$width_of_headline_size['value'] = ($i*2).'px'; 
+			$width_of_headline_size['text'] = ($i*2).'px'; 
 			$width_of_headline_sizes_array[] = $width_of_headline_size;
 		}		
 
