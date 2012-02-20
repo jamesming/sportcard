@@ -176,7 +176,7 @@
 										<legend >Edit you Bio</legend>
 								</div>
 								<div>
-								    <div class="span5">
+								    <div class="span4">
 								
 								      <form class="form-horizontal">
 								
@@ -233,11 +233,11 @@
 								      </form>
 								
 								    </div>
-								 		<div class="span5"    >
+								 		<div class="span51"    >
 
 																	<style>
 																	#wysiwyg_div{
-																	margin:0px 0px 0px 0px;
+																	margin:0px 0px 0px 50px;
 																	padding:0px 0px 0px 0px;
 																	}
 																	
@@ -251,7 +251,7 @@
 										</div>									
 									
 								</div>
-			          <div class='clearfix'  style='padding:12px'  >
+			          <div class='clearfix'  style='padding:26px'  >
 			
 			            <button  id='save_bio_button' type="submit" class="float_right btn btn-primary">Save changes</button>
 			

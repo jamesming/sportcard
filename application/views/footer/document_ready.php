@@ -9,7 +9,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 			
-			$('li#panel-tab-1 a').click()
+			$('li#panel-tab-2 a').click()
 			
 			//$("#menu1 a#settings_menu_item").click()
 
@@ -128,10 +128,12 @@ function get_stored_configurations(){
 			$('#sports').val('<?php echo ( isset( $data['users'][0]['sports'] ) ? $data['users'][0]['sports']:'' )    ?>');
 			$('#profile_url').val('<?php echo ( isset( $data['users'][0]['profile_url'] ) ? $data['users'][0]['profile_url']:'' )    ?>');
 			$('#email').val('<?php echo ( isset( $data['users'][0]['email'] ) ? $data['users'][0]['email']:'' )    ?>');
+			$('#box_width').val('<?php echo ( isset( $data['users'][0]['box_width'] ) ? $data['users'][0]['box_width']:'' )    ?>');
 
 
 			$('#head-line-box').css({
 				'position':'absolute',
+				'width':'<?php echo ( isset( $data['users'][0]['box_width']) ? $data['users'][0]['box_width']:'0' ) ?>',
 				'left':($(window).width() / 2),
 				'top':'<?php echo ( isset( $data['users'][0]['y']) ? $data['users'][0]['y']:'0' ) ?>px',
 				'margin-left':(0-(<?php echo ( isset( $data['users'][0]['margin_left_of_center']) ? $data['users'][0]['margin_left_of_center']:'0' ) ?>))+'px',
@@ -275,6 +277,14 @@ function store_custom_configuration(){
 
 						store( $(this) );	
 			});		
+			
+			$('#box_width').change(function(event) {
+			
+						$('#head-line-box').css({'width':$(this).val()});
+
+						store( $(this) );	
+			});					
+			
 			
 			$( "#head-line-box" ).mouseup(function(){
 						store_position( $(this) );
