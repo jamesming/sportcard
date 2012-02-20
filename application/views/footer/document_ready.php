@@ -9,7 +9,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 			
-			$('li#panel-tab-2 a').click()
+			$('li#panel-tab-1 a').click()
 			
 			//$("#menu1 a#settings_menu_item").click()
 

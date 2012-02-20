@@ -118,31 +118,29 @@
 					  
 					  <div class="tab-content">
 					    <div class="tab-pane active" id="1">
-					      <p>	
-					      	<table>
-													<tr>
-	
-														<td ><!--
-															<div  id='add-to' image_id='0' image_type_id='0' li_index='-1' class='upload_button'>upload
-															</div>-->
-														
-															
-															
-								
-															
-														<div id="upload_button_backgrounds"  class='btn float_right'   >		
-															
-														</div>
-															
-															
-														</td>													
-													</tr>
-	
-													<tr>
-														<td>
+					      
+
+															<div  class='clearfix'   >
+																
+																<table style='width:100%'  >
+																	
+																	
+																	<tr>
+																		<td align='left' class='profile-label ' >Backgrounds
+																		</td>
+																		<td >
+
+																			<button id="upload_button_backgrounds"  class='btn float_right'   >		
+																			</button>															
+																		</td>
+																	</tr>
+																</table>
+																
+
+															</div>
 	
 	
-															<div  id='backgrounds-div' class=' jcarousel-skin-tango'>
+															<div  id='backgrounds-div' class='clearfix jcarousel-skin-tango'>
 																<ul class='thumbs-ul'   >
 																	
 																<?php if( isset($data['users']['backgrounds']['images']) ){?>
@@ -170,11 +168,8 @@
 																	
 																</ul>															
 															</div>
-	
-														</td>
-													</tr>												
-												</table>
-								</p>
+
+							
 					    </div>
 					    <div class="tab-pane " id="2">
 								<div>
@@ -264,7 +259,12 @@
 
 							</div>
 	
-	
+							<style>
+							.profile-label{
+								font-size: 19.5px;
+								line-height: 36px;	
+							}
+							</style>
 	
 					    <div class="tab-pane " id="3">
 					    	
@@ -329,20 +329,19 @@
 														
 														            <div class="controls">
 																					<style>
-ul#fonts_ul {
-    border: 1px solid #CCCCCC;
-    height: 257px;
-    overflow-y: scroll;
-}
-ul#fonts_ul li {
-    padding: 9px;
-    border-bottom: 1px solid #CCCCCC;
-}
+																						ul#fonts_ul {
+																						    border: 1px solid #CCCCCC;
+																						    height: 257px;
+																						    overflow-y: scroll;
+																						}
+																						ul#fonts_ul li {
+																						    padding: 9px;
+																						  border-bottom: 1px solid #CCCCCC;}
 																					</style>
-																					<ul  id='fonts_ul'  class="unstyled">
+																					<ul  id='fonts_ul'  class="span4 unstyled">
 																						<?php foreach($data['fonts'] as $font ){?>
 																							
-																							<li  class='fonts_li ' font_name='<?php echo $font->name    ?>' '  style='font-size:24px'  '><?php  echo $font->name   ?></li>
+																							<li  class='span4  fonts_li ' font_name='<?php echo $font->name    ?>' '  style='font-size:24px'  '><?php  echo $font->name   ?></li>
 																						
 																						<?php }?>
 																					</ul>
@@ -350,7 +349,7 @@ ul#fonts_ul li {
 																					
 														            </div>
 														
-														          </div>	
+														         	</div>
 
 
 								        </fieldset>
@@ -367,47 +366,49 @@ ul#fonts_ul li {
 
 					    </div>
 					    <div class="tab-pane " id="4">
-					      <p>
-												<table>
-													<tr>
+
+								<div  class='clearfix'   >
+									
+									<table style='width:100%'  >
+										
+										
+										<tr>
+											<td align='left' class='profile-label ' >Photo Gallery
+											</td>
+											<td >
+
+												<button id="upload_button_pictures"   class='btn float_right'    />															
+											</td>
+										</tr>
+									</table>
+									
+
+								</div>									
 	
-														<td >
-	<!--														
-															<div image_id='0' image_type_id='1'  li_index='-1' class='upload_button'>upload
-															</div>
-															-->
-															<div id="upload_button_pictures"   class='btn float_right'   >		
-																   
-															</div>
-															
-														</td>													
-													</tr>
-	
-													<tr>
-														<td>
+								<div  class='clearfix ' >  
 															<div  id='pictures-div' class='mycarousel jcarousel-skin-tango'  >
 																<ul class='thumbs-ul'   >
 	
-	
-	<?php if(  isset($data['users']['pictures']['images'])  ){?>
-	
-																	<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
-	
-																		<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
-																			<div  class='small_icons_panel transparent' >
-																				<div  class='delete ' >[X]
-																				</div>
-																				<div  class='hide update-image  pictures_update_button' >[E]
-																				</div>																																				
-																			</div>
-																			<div  class='inside_li images_preview' >
-																			</div>																		
-																		</li>
-																	
-																	<?php } ?>
-	
-	<?php } ?>
-	
+																						
+																						<?php if(  isset($data['users']['pictures']['images'])  ){?>
+																						
+																																						<?php foreach( $data['users']['pictures']['images']  as $image_id){?>
+																						
+																																							<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['pictures']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='1'  >
+																																								<div  class='small_icons_panel transparent' >
+																																									<div  class='delete ' >[X]
+																																									</div>
+																																									<div  class='hide update-image  pictures_update_button' >[E]
+																																									</div>																																				
+																																								</div>
+																																								<div  class='inside_li images_preview' >
+																																								</div>																		
+																																							</li>
+																																						
+																																						<?php } ?>
+																						
+																						<?php } ?>
+																						
 	
 																	
 																	
@@ -415,29 +416,24 @@ ul#fonts_ul li {
 																	
 																</ul>															
 															</div>
-	
-														</td>
-													</tr>												
-												</table>					      	
-					      </p>
-					    </div>					    
+									    	
+								</div>
+
+					    </div>		
+					    			    
 					    <div class="tab-pane " id="5">
-					      <p>
-												<table>
-													<tr>
-	
-														<td >
-															
-															<div   style='height:30px'  >
+					  
+
+																		
+															<div  class='clearfix'   >
 																
-																		<style>
-																			li#panel-4 input[type=text]{
-																				width: 299px;
-																				margin-right: 5px;
-																			}														
-																		</style>
-																		
-																		
+																<table style='width:100%'  >
+																	
+																	
+																	<tr>
+																		<td align='left' class='profile-label ' >Photo Gallery
+																		</td>
+																		<td >
 																		<form 
 																			id='form_video' 
 																			target='iframe_dom' 
@@ -445,57 +441,46 @@ ul#fonts_ul li {
 																			method='POST'  
 																			action='<?php echo base_url();    ?>index.php/main/update_video'
 																			>
-																			<input name="video_url" id="video_url" type="text" value=""><input name="video_submit" id="video_submit" type="button" value="submit">	
+																			<a id="video_submit" class='btn float_right'  >submit</a>	
+																			<input  class='float_right ' name="video_url" id="video_url" type="text" value="">
+																			
 																			<input name="image_id"  type="hidden" value="0">
 																			<input name="li_index"  type="hidden" value="-1">
 																			
-																		</form>																
+																		</form>																					
+																		</td>
+																	</tr>
+																</table>
 																
+
 															</div>
-															
-															
-	
-															
-	
-														</td>													
-													</tr>
-	
-													<tr>
-														<td>
-															<div  id='videos-div' class='mycarousel jcarousel-skin-tango'>
+
+															<div  id='videos-div' class='mycarousel jcarousel-skin-tango clearfix'>
 																<ul class='thumbs-ul'   >
 																	
-	<?php if( isset($data['users']['videos']['images']) ){?>
-	
-																	<?php foreach( $data['users']['videos']['images']  as $image_id){?>
-		
-																			<li   style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
-																				<div  class='small_icons_panel transparent' >
-																					<div  class='delete ' >[X]
-																					</div>
-																					<div  class='hide update-video_url '  >[E]
-																					</div>																																					
-																				</div>
-																			<div  class='inside_li videos_preview' >
-																			</div>																			
-																			</li>
+																		<?php if( isset($data['users']['videos']['images']) ){?>
+																		
+																																		<?php foreach( $data['users']['videos']['images']  as $image_id){?>
 																			
-																	<?php };?>
-	
-	<?php } ?>
-																	
-	
-																	
-																	
+																																				<li style='background:url(<?php echo base_url()     ?>uploads/<?php echo $data['users']['videos']['user_id']    ?>/<?php echo $image_id    ?>/image_thumb.jpg)'  class='hovering ' image_id='<?php  echo $image_id   ?>'  image_type_id='2'  >
+																																					<div  class='small_icons_panel transparent' >
+																																						<div  class='delete ' >[X]
+																																						</div>
+																																						<div  class='hide update-video_url '  >[E]
+																																						</div>																																					
+																																					</div>
+																																					<div  class='inside_li videos_preview' >
+																																					</div>																			
+																																				</li>
+																																				
+																																		<?php };?>
+																		
+																		<?php } ?>
 																	
 																	
 																</ul>															
 															</div>
-	
-														</td>
-													</tr>												
-												</table>
-					      </p>
+
 					    </div>						    
 					  </div>
 					</div>
