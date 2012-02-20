@@ -145,7 +145,7 @@ cursor:pointer;
 }
 			
 #head-line-box{
-width: 500px; 
+width: 800px; 
 height: 200px;	
 position:absolute;
 

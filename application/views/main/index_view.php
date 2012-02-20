@@ -331,17 +331,18 @@
 																					<style>
 																						ul#fonts_ul {
 																						    border: 1px solid #CCCCCC;
-																						    height: 257px;
+																						    height: 220px;
 																						    overflow-y: scroll;
 																						}
 																						ul#fonts_ul li {
 																						    padding: 9px;
-																						  border-bottom: 1px solid #CCCCCC;}
+																						  	border-bottom: 1px solid #CCCCCC;
+																						 }
 																					</style>
 																					<ul  id='fonts_ul'  class="span4 unstyled">
 																						<?php foreach($data['fonts'] as $font ){?>
 																							
-																							<li  class='span4  fonts_li ' font_name='<?php echo $font->name    ?>' '  style='font-size:24px'  '><?php  echo $font->name   ?></li>
+																							<li  class='fonts_li ' font_name='<?php echo $font->name    ?>' '  style='font-size:24px'  '><?php  echo $font->name   ?></li>
 																						
 																						<?php }?>
 																					</ul>

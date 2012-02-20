@@ -88,6 +88,12 @@ class Main extends CI_Controller {
 			$font_size['text'] = $i.'px'; 
 			$font_sizes_array[] = $font_size;
 		}
+		
+		for($i=1;$i<=400;$i++){
+			$width_of_headline_size['value'] = $i.'px'; 
+			$width_of_headline_size['text'] = $i.'px'; 
+			$width_of_headline_sizes_array[] = $width_of_headline_size;
+		}		
 
 		for($i=0;$i<=9;$i++){
 			$transparency_shade['value'] = $i; 
@@ -124,8 +130,14 @@ class Main extends CI_Controller {
 						'label' => 'Transparency', 
 						'input_name' =>'transparency', 
 						'options' => $transparency_shades_array
-				)						
+				),					
 				
+				array(
+						'type' => 'select', 
+						'label' => 'Box Width', 
+						'input_name' =>'box_width', 
+						'options' => $width_of_headline_sizes_array
+				),		
 			)
 		);
 		
