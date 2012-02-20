@@ -400,6 +400,7 @@
 	
 								<div  class='clearfix ' >  
 															<div  id='pictures-div' class='mycarousel jcarousel-skin-tango'  >
+
 																<ul class='thumbs-ul'   >
 	
 																						
@@ -421,10 +422,7 @@
 																																						<?php } ?>
 																						
 																						<?php } ?>
-																						
 	
-																	
-																	
 																	
 																	
 																</ul>															

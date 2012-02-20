@@ -9,7 +9,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 			
-			$('li#panel-tab-1 a').click()
+			$('li#panel-tab-4 a').click()
 			
 			//$("#menu1 a#settings_menu_item").click()
 
@@ -636,15 +636,21 @@ function thumbnail_controls(){
 
 												$("#backgrounds-div").jcarousel({
 												        scroll: 4,
-												        initCallback: mycarousel_initCallback_1
+												        initCallback: mycarousel_initCallback_1,
+//												        buttonNextHTML: null,
+//        												buttonPrevHTML: null
 												});	
 												$("#pictures-div").jcarousel({
 												        scroll: 4,
-												        initCallback: mycarousel_initCallback_2
+												        initCallback: mycarousel_initCallback_2,
+//												        buttonNextHTML: null,
+//        												buttonPrevHTML: null
 												});													
 												$("#videos-div").jcarousel({
 												        scroll: 4,
-												        initCallback: mycarousel_initCallback_3
+												        initCallback: mycarousel_initCallback_3,
+//												        buttonNextHTML: null,
+//        												buttonPrevHTML: null
 												});													
 
 
