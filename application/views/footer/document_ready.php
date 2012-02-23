@@ -9,7 +9,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 			
-			$('li#panel-tab-4 a').click()
+			$('li#panel-tab-2 a').click()
 			
 			//$("#menu1 a#settings_menu_item").click()
 
@@ -385,7 +385,7 @@ function bind_events(){
 			
 				var mbox = $("#wysiwyg_text_area").css({
 						height:"340px",
-						width:"420px"
+						width:"390px"
 						}).htmlbox({
 						toolbars:[
  						[

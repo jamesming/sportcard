@@ -129,8 +129,8 @@
 																		</td>
 																		<td >
 
-																			<button id="upload_button_backgrounds"  class='btn float_right'   >		
-																			</button>															
+																			<div id="upload_button_backgrounds"  class='btn float_right'   >		
+																			</div>															
 																		</td>
 																	</tr>
 																</table>
@@ -232,11 +232,11 @@
 								      </form>
 								
 								    </div>
-								 		<div class="span51"    >
+								 		<div class="span4"     >
 
 																	<style>
 																	#wysiwyg_div{
-																	margin:0px 0px 0px 50px;
+																	margin:0px 0px 0px 40px;
 																	padding:0px 0px 0px 0px;
 																	}
 																	
@@ -244,8 +244,8 @@
 																	
 
 																	
-																		<div id='wysiwyg_div' class='clearfix ' >
-																				<textarea  name='bio' class='bio_inputs clearfix' id='wysiwyg_text_area'><?php echo ( isset( $data['users'][0]['bio'] ) ? $data['users'][0]['bio']:'' )    ?></textarea>
+																		<div id='wysiwyg_div' class='clearfix '    >
+																				<textarea name='bio' class='bio_inputs clearfix' id='wysiwyg_text_area'><?php echo ( isset( $data['users'][0]['bio'] ) ? $data['users'][0]['bio']:'' )    ?></textarea>
 																		</div>								 			
 										</div>									
 									
@@ -390,7 +390,7 @@
 											</td>
 											<td >
 												<!-- STYLE ICON IN BUTTON USING js/fileuploader.js line 511  -->
-												<button id="upload_button_pictures"   class='btn float_right'    />															
+												<div id="upload_button_pictures"   class='btn float_right'    />		</div>													
 											</td>
 										</tr>
 									</table>
