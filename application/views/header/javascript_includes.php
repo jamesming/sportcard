@@ -22,3 +22,4 @@ http://stackoverflow.com/questions/1997993/jcarousel-doesnt-work-properly-in-chr
 	<?php $this->load->view('header/htmlbox_grouped_javascript_includes.php');     ?>
 	<script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-tab.js"></script>
 	<script src="<?php  echo base_url()   ?>bootstrap/js/bootstrap-dropdown.js"></script>	
+	<?php $this->load->view('footer/fancy_zoom.php');    ?>

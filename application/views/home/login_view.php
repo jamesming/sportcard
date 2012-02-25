@@ -85,7 +85,7 @@ margin-top: 20px;
 													  <div class="middle">
 													  	<style>
 													  	#logo_div{
-    background-image: url("<?php echo base_url()    ?>images/sclogo_White.jpg");
+    background-image: url("<?php echo base_url()    ?>images/logo_white.png");
     background-position: 19px center;
     background-repeat: no-repeat;
     background-size: 191px;

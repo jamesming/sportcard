@@ -142,7 +142,7 @@
 	
 	  function hide() {
 	  	
-	  	
+	  		$('.box').removeClass('push-z-index-back');
 
 /*	  	
 	  		// ** SHOW EMBEDDED VIDEO AGAIN

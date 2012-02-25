@@ -15,7 +15,17 @@ class Main extends CI_Controller {
 						
 				};
 				
-				$this->user_id = $this->session->userdata['user_id'];
+				if(  isset( $this->session->userdata['user_id'] )  ){
+
+					$this->user_id = $this->session->userdata['user_id'];
+
+				}else{
+
+					redirect('/home/login');
+
+				};
+				
+				
 
 
 

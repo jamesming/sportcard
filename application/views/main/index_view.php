@@ -31,7 +31,11 @@
                 <a class="brand" href="#">SPORTCARD</a>
 
                 <ul class="nav  pull-right ">
-
+									<li class=" ">
+									
+										<a  id='test'  href='#fancyZoom_div' >Test</a>
+									
+									</li>
 
 									<li class=" ">
 									
@@ -503,19 +507,21 @@
 
 				</div>
 				
+	</div> 
+	<div  id='fancyZoom_div'   style='z-index:999999999'  >
+		<iframe  
+			id="iframe_dom"   
+			name="iframe_dom"
+			style='background:white;border:0px solid gray;width:0px;height:0px'  
+			border="1" 
+			frameborder="1" 
+			scrolling="auto" 
+			align="center" 
+			hspace="0" 
+			vspace="">
+		</iframe>		
 	</div>
-		
-	<iframe  
-		id="iframe_dom"   
-		name="iframe_dom"
-		style='background:white;border:0px solid gray;width:0px;height:0px'  
-		border="1" 
-		frameborder="1" 
-		scrolling="auto" 
-		align="center" 
-		hspace="0" 
-		vspace="">
-	</iframe>
+
 	
 
 </body>

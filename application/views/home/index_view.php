@@ -46,11 +46,11 @@
 </div>
 <style>
 #logo_div{
-  background-image: url(<?php  echo base_url()   ?>images/sclogo_White.jpg);
+  background-image: url(<?php  echo base_url()   ?>images/logo_white.png);
   background-position:center center;
   background-repeat:no-repeat;
   background-size:contain;
-  height:260px;
+  height:100px;
   margin-top:100px;
   margin-bottom:25px;
 }

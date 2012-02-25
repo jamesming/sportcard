@@ -9,13 +9,21 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 			
-			$('li#panel-tab-2 a').click()
+			$('li#panel-tab-1 a').click()
 			
 			//$("#menu1 a#settings_menu_item").click()
 
 });
 
 function account_menu(){
+	
+						$('#test').css({cursor:'pointer'}).fancyZoom().click(function(event) {
+							
+									$('.box').addClass('push-z-index-back');
+
+							  	$('#iframe_dom').attr('src','')
+							  	
+						});	
 
 						$("#menu1 a").css({cursor:'pointer'}).click(function(e) {          
 							
@@ -319,7 +327,9 @@ function store_custom_configuration(){
 
 function bind_events(){
 
-
+			$('#iframe_dom').setFancyZoomWindowSize($(window).width()-100, $(window).height()-200 );
+			
+			
 
 			$('#profile_box').css({
 				'position':'absolute',
@@ -442,6 +452,19 @@ function activate_fonts_for_selection(){
 * LIBRARY OF FUNCTIONS
 *	
 *********************/
+
+$.fn.setFancyZoomWindowSize = function(width, height) {
+			$(this).css({width:width+'px',height:height+'px'})
+			.children('iframe').css({
+					width:width+'px',
+					height:height+'px',
+					<?php     
+						echo ( $this->tools->browserIsExplorer()  ? "'margin-top':'40px'" :"" );
+					?>
+			})
+};
+	
+			
 
 $.fn.bind_mouse_events = function(){
 	
