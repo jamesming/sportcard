@@ -389,6 +389,21 @@ class Main extends CI_Controller {
 				$width = $new_width, 
 				$height = $new_height
 				);
+				
+			
+			// ?>			
+			//
+			//<script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
+			//<script type="text/javascript" language="Javascript">			
+			//	window.parent.$('#test').click()
+			//</script>
+			//
+			//
+			//<?php    
+			//			
+			//			
+			//			exit;
+			
 			
 			$this->update_thumbnail_panel(
 				$image_id,
@@ -397,10 +412,18 @@ class Main extends CI_Controller {
 			);
 		
 	}		
+
+	function on2update_thumbnail_panel(){
+		
+				$this->update_thumbnail_panel(
+				$image_id = $this->input->get('image_id'),
+				$image_type_id = $this->input->get('image_type_id'),
+				$li_index = $this->input->get('li_index')
+				);		
+		
+	}
 	
-	
-	
-	
+
 	
 	function get_video_url(){
 		

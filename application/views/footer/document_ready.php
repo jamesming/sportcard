@@ -21,7 +21,7 @@ function account_menu(){
 							
 									$('.box').addClass('push-z-index-back');
 
-							  	$('#iframe_dom').attr('src','')
+							  	$('#iframe_fancyZoom').attr('src','<?php echo base_url()     ?>index.php/ajax/jcrop')
 							  	
 						});	
 
@@ -327,7 +327,7 @@ function store_custom_configuration(){
 
 function bind_events(){
 
-			$('#iframe_dom').setFancyZoomWindowSize($(window).width()-100, $(window).height()-200 );
+			$('#fancyZoom_div').setFancyZoomWindowSize($(window).width()-100, $(window).height()-200 );
 			
 			
 

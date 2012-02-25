@@ -508,10 +508,24 @@
 				</div>
 				
 	</div> 
+	
+	<iframe  
+		id="iframe_dom"   
+		name="iframe_dom"
+		style='background:white;border:0px solid gray;width:0px;height:0px'  
+		border="1" 
+		frameborder="1" 
+		scrolling="auto" 
+		align="center" 
+		hspace="0" 
+		vspace="">
+	</iframe>		
+
+
 	<div  id='fancyZoom_div'   style='z-index:999999999'  >
 		<iframe  
-			id="iframe_dom"   
-			name="iframe_dom"
+			id="iframe_fancyZoom"   
+			name="iframe_fancyZoom"
 			style='background:white;border:0px solid gray;width:0px;height:0px'  
 			border="1" 
 			frameborder="1" 
@@ -520,9 +534,7 @@
 			hspace="0" 
 			vspace="">
 		</iframe>		
-	</div>
-
-	
+	</div>	
 
 </body>
 </html>

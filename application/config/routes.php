@@ -48,6 +48,8 @@ $route['home/validate_account'] = "home/validate_account";
 $route['home/create_or_update_with_facebook'] = "home/create_or_update_with_facebook";
 $route['home/facebook'] = "home/facebook";
 
+$route['ajax/jcrop'] = "ajax/jcrop";
+
 $route['main/:any'] = "main/index"; 
 
 $route['main/confirm_existing_password'] = "main/confirm_existing_password";
@@ -61,6 +63,8 @@ $route['main/resize'] = "main/resize";
 $route['main/get_video_url'] = "main/get_video_url";
 $route['main/get_video_iframe'] = "main/get_video_iframe";
 $route['main/update_thumbnail_panel'] = "main/update_thumbnail_panel";
+$route['main/on2update_thumbnail_panel'] = "main/on2update_thumbnail_panel";
+
 $route['main/t'] = "main/t";
 
 $route[':any'] = "live"; 
