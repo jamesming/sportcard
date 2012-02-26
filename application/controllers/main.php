@@ -386,7 +386,7 @@ class Main extends CI_Controller {
 				);
 				
 				
-			$crop_height = '400';	
+			$crop_height = '500';	
 				
 			$this->tools->clone_and_resize_append_name_of(
 				$appended_suffix = '_crop', 
@@ -427,21 +427,87 @@ class Main extends CI_Controller {
 	
 	
 	function jcrop(){
+		
+			$dir_path = 'uploads/'. $this->user_id .'/'  . $this->input->get('image_id'); 
+		
+			$image_information = getimagesize($dir_path . '/' . 'image_crop.jpg');
+			
+			$width_of_file = $image_information[0];
+			$height_of_file = $image_information[1];
+		
 		 ?>
-				<link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
-				<script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
+		 
+		 <head>
+
+				<link rel="stylesheet" href="<?php  echo base_url();   ?>js/Jcrop/css/jquery.Jcrop.css" type="text/css"  type="text/css" >
+				
+				<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
+				
+				<script type='text/javascript' src='<?php  echo base_url()   ?>js/Jcrop/js/jquery.Jcrop.min.js'></script>	
+							
 				<script type="text/javascript" language="Javascript">
+
 					$(document).ready(function() { 
+						
+								$('#cropbox').Jcrop({		
+									onChange: showPreview,
+									aspectRatio: <?php echo ($width_of_file/$height_of_file);    ?>,
+									setSelect:   [ 0, 0, <?php  echo $width_of_file   ?>, <?php echo $height_of_file   ?>]
+								}); 
+						
 								$('#press').click(function(event) {
 										window.parent.$('#iframe_dom').attr('src', '<?php echo base_url()    ?>index.php/main/on2update_thumbnail_panel?image_id=<?php  echo $this->input->get('image_id');   ?>&image_type_id=<?php  echo $this->input->get('image_type_id');   ?>&li_index=<?php  echo $this->input->get('li_index');   ?>');
 										window.parent.$('#close_fancy_zoom').click();
 								});	
+								$('#submit').click(function(event) {
+									submitCropForm();
+								});										
 					});
+					
+					function checkCoords(){
+						if (parseInt($('#w').val())) return true;
+						alert('Please select a crop region then press submit.');
+						return false;
+					};
+					
+					function showPreview(coords){
+						$('#x').val(coords.x);
+						$('#y').val(coords.y);
+						$('#x2').val(coords.x2);
+						$('#y2').val(coords.y2);
+						$('#w').val(coords.w);
+						$('#h').val(coords.h);
+					};
+					
+					function submitCropForm(){
+										$.post("<?php echo base_url() . 'index.php/main/crop_image/';    ?>",{
+											x_origin: $('#x').val(),
+											y_origin: $('#y').val(),
+											width: $('#w').val(),
+											height: $('#h').val()
+										},function(data) {
+
+										});		
+					};										
 				</script>
-				<div>
-					<img src='<?php  echo base_url()   ?>uploads/<?php echo  $this->user_id;    ?>/<?php echo $this->input->get('image_id');    ?>/image_crop.jpg' />
-				</div>
-				<a  id='press' class='btn ' >click</a>
+
+	</head>
+
+<body >
+<div   style='width:<?php echo $width_of_file;    ?>px;margin-left:auto;margin-right:auto'  > 
+	<img  id='cropbox' src='<?php  echo base_url()   ?>uploads/<?php echo  $this->user_id;    ?>/<?php echo $this->input->get('image_id');    ?>/image_crop.jpg?random=<?php  echo rand(234234,234234)   ?>'>		
+</div> 
+<a  id='press' class='btn ' >click</a>		
+
+<input type="text" size="4" id="x" name="x" value="" />
+<input type="text" size="4" id="y" name="y" />
+<input type="text" size="4" id="x2" name="x2" />
+<input type="text" size="4" id="y2" name="y2" />
+<input type="text" size="4" id="w" name="w" />
+<input type="text" size="4" id="h" name="h" />
+
+</body>
+
 			<?php    	
 		
 	}
