@@ -390,10 +390,21 @@ class Main extends CI_Controller {
 			
 			<script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
 			<script type="text/javascript" language="Javascript">
+				
+/*				
 				iframe_fancy_zoom = window.parent.$('#iframe_fancyZoom');
 				window.parent.$('#test').fancyZoom().click(function(event) {
 					iframe_fancy_zoom.attr('src','<?php  echo base_url()   ?>index.php/main/jcrop?image_id=<?php  echo $image_id   ?>&image_type_id=<?php echo $image_type_id    ?>&li_index=<?php echo $li_index    ?>')
 				});
+*/		
+			
+				window.parent.$('#test')
+					.attr('image_id', '<?php  echo $image_id   ?>')
+					.attr('image_type_id', '<?php  echo $image_type_id   ?>')
+					.attr('li_index', '<?php  echo $li_index   ?>')
+					.attach_FancyZoom_JcropPopWindow();
+					
+				
 				window.parent.$('#test').click();	
 			</script>
 			
@@ -428,7 +439,7 @@ class Main extends CI_Controller {
 
 				<link rel="stylesheet" href="<?php  echo base_url();   ?>js/Jcrop/css/jquery.Jcrop.css" type="text/css"  type="text/css" >
 				
-				<script type="text/javascript" language="Javascript" src = "<?php echo  base_url();   ?>js/jquery.js"></script>
+				<script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
 				
 				<script type='text/javascript' src='<?php  echo base_url()   ?>js/Jcrop/js/jquery.Jcrop.min.js'></script>	
 							
