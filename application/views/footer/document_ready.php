@@ -16,13 +16,6 @@ $(document).ready(function() {
 });
 
 
-$.fn.attach_FancyZoom_JcropPopWindow = function() {
-	$(this).fancyZoom().css({cursor:'pointer'}).click(function(event) {
-		$('#iframe_fancyZoom').attr('src','<?php  echo base_url()   ?>index.php/main/jcrop?image_id=' + $(this).attr('image_id') +  '&image_type_id=' + $(this).attr('image_type_id') +  '&li_index=' + $(this).attr('li_index')  )
-	});	
-	return this;
-};
-
 function account_menu(){
 	
 						$('#test').css({cursor:'pointer'}).attach_FancyZoom_JcropPopWindow().click(function(event) {
@@ -470,7 +463,14 @@ $.fn.setFancyZoomWindowSize = function(width, height) {
 			})
 };
 	
-			
+
+$.fn.attach_FancyZoom_JcropPopWindow = function() {
+	$(this).fancyZoom().css({cursor:'pointer'}).click(function(event) {
+		$('#iframe_fancyZoom').attr('src','<?php  echo base_url()   ?>index.php/main/jcrop?image_id=' + $(this).attr('image_id') +  '&image_type_id=' + $(this).attr('image_type_id') +  '&li_index=' + $(this).attr('li_index')  )
+	});	
+	return this;
+};
+		
 
 $.fn.bind_mouse_events = function(){
 	

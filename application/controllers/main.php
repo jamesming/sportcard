@@ -387,23 +387,17 @@ class Main extends CI_Controller {
 				
 			
 			 ?>			
+			 
+			 
 			
 			<script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
 			<script type="text/javascript" language="Javascript">
-				
-/*				
-				iframe_fancy_zoom = window.parent.$('#iframe_fancyZoom');
-				window.parent.$('#test').fancyZoom().click(function(event) {
-					iframe_fancy_zoom.attr('src','<?php  echo base_url()   ?>index.php/main/jcrop?image_id=<?php  echo $image_id   ?>&image_type_id=<?php echo $image_type_id    ?>&li_index=<?php echo $li_index    ?>')
-				});
-*/		
-			
+
 				window.parent.$('#test')
 					.attr('image_id', '<?php  echo $image_id   ?>')
 					.attr('image_type_id', '<?php  echo $image_type_id   ?>')
 					.attr('li_index', '<?php  echo $li_index   ?>')
 					.attach_FancyZoom_JcropPopWindow();
-					
 				
 				window.parent.$('#test').click();	
 			</script>
@@ -733,7 +727,7 @@ class Main extends CI_Controller {
 							whichCarousel.size( 0 )
 						};
 						
-						whichCarousel.add(  (whichCarousel.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent '  <?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "  style='height:51px !important' ": "")    ?> ><div  class='delete ' ><i class='icon-trash icon-white'></i></div><div  class='hide <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?>  ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' ><i class='icon-refresh icon-white'></div>": "")    ?></div><div  class='inside_li <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'videos_preview':'images_preview' )    ?>  ' ></div></li>");					
+						whichCarousel.add(  (whichCarousel.size()) , "<li style='background:brown'  class='hovering ' image_id='0'  image_type_id='<?php echo $image_type_id    ?>'  ><div  class='small_icons_panel transparent '  <?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "  style='height:51px !important' ": "")    ?> ><div  class='delete ' ><i class='icon-trash icon-white'></i></div><div  class='hide <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'update-video_url':'update-image' )    ?>  ' >[E]</div><?php echo ( $image_types[$image_type_id] == 'backgrounds-div' ? "<div  class='swap ' ><i class='icon-refresh icon-white'></i></div>": "")    ?></div><div  class='inside_li <?php echo ( $image_types[$image_type_id] == 'videos-div' ? 'videos_preview':'images_preview' )    ?>  ' ></div></li>");					
 	
 	
 					  whichCarousel.scroll(parseInt(whichCarousel.size()),true);
