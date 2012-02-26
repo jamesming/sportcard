@@ -444,23 +444,15 @@ class Main extends CI_Controller {
 								$('#cropbox').Jcrop({		
 									onChange: showPreview,
 									aspectRatio: <?php echo ($width_of_file/$height_of_file);    ?>,
-									setSelect:   [ 0, 0, <?php  echo $width_of_file   ?>, <?php echo $height_of_file   ?>]
+									setSelect:   [ 0, 0, <?php  echo $width_of_file   ?>, <?php echo $height_of_file   ?>],
+									trackDocument: true
 								}); 
-						
-								$('#press').click(function(event) {
-										window.parent.$('#iframe_dom').attr('src', '<?php echo base_url()    ?>index.php/main/on2update_thumbnail_panel?image_id=<?php  echo $this->input->get('image_id');   ?>&image_type_id=<?php  echo $this->input->get('image_type_id');   ?>&li_index=<?php  echo $this->input->get('li_index');   ?>');
-										window.parent.$('#close_fancy_zoom').click();
-								});	
+
 								$('#submit').click(function(event) {
 									submitCropForm();
 								});										
 					});
-					
-					function checkCoords(){
-						if (parseInt($('#w').val())) return true;
-						alert('Please select a crop region then press submit.');
-						return false;
-					};
+
 					
 					function showPreview(coords){
 						$('#x').val(coords.x);
