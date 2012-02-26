@@ -22,25 +22,7 @@ class Ajax extends CI_Controller {
 		
 	}
 	
-	function jcrop(){
-		 ?>
-				<link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
-				<script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
-				<script type="text/javascript" language="Javascript">
-					$(document).ready(function() { 
-						$('#test2').click(function(event) {
-							
-							alert('');
-							//document.location = '<?php  echo base_url()   ?>index.php/main/update_thumbnail_panel?image_id=&image_type_id=&li_index=';
-						});						
-					});
-				</script>
-				
-				<a  id='test2' class='btn ' >click</a>		 
-			<?php    	
-		
-	}
-	
+
 
 
 

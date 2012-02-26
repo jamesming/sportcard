@@ -22,6 +22,8 @@
 	
 
 <body>
+	<div  id='close_fancy_zoom'></div>
+	
           <div id="navbar-example" class="navbar  navbar-fixed-top">
 
             <div class="navbar-inner">

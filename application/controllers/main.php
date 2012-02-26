@@ -355,8 +355,7 @@ class Main extends CI_Controller {
 */		
 		  
 	}	
-	
-	
+
 	
 	
 	public function resize(){
@@ -373,37 +372,50 @@ class Main extends CI_Controller {
 			
 			$width_of_file = $image_information[0];
 			$height_of_file = $image_information[1];
-			
-			$new_width = $this->thumbnail_size_width;
-			$new_height = $this->tools->get_new_size_of (
-				$what = 'height', 
-				$based_on_new = $new_width, 
-				$orig_width = $width_of_file, 
-				$orig_height = $height_of_file 
-				);
-		
 		
 			$this->tools->clone_and_resize_append_name_of(
 				$appended_suffix = '_thumb', 
 				$full_path = $dir_path . '/' . 'image.jpg', 
-				$width = $new_width, 
-				$height = $new_height
+				$width =  $this->thumbnail_size_width, 
+				$height = $this->tools->get_new_size_of (
+											$what = 'height', 
+											$based_on_new =  $this->thumbnail_size_width, 
+											$orig_width = $width_of_file, 
+											$orig_height = $height_of_file 
+											)
 				);
 				
+				
+			$crop_height = '400';	
+				
+			$this->tools->clone_and_resize_append_name_of(
+				$appended_suffix = '_crop', 
+				$full_path = $dir_path . '/' . 'image.jpg', 
+				$width = $this->tools->get_new_size_of (
+											$what = 'width', 
+											$based_on_new =  $crop_height, 
+											$orig_width = $width_of_file, 
+											$orig_height = $height_of_file 
+											), 
+				$height = $crop_height
+				);				
+				
 			
-			// ?>			
-			//
-			//<script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
-			//<script type="text/javascript" language="Javascript">			
-			//	window.parent.$('#test').click()
-			//</script>
-			//
-			//
-			//<?php    
-			//			
-			//			
-			//			exit;
+			 ?>			
 			
+			<script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
+			<script type="text/javascript" language="Javascript">
+				iframe_fancy_zoom = window.parent.$('#iframe_fancyZoom');
+				window.parent.$('#test').fancyZoom().click(function(event) {
+					iframe_fancy_zoom.attr('src','<?php  echo base_url()   ?>index.php/main/jcrop?image_id=<?php  echo $image_id   ?>&image_type_id=<?php echo $image_type_id    ?>&li_index=<?php echo $li_index    ?>')
+				});
+				window.parent.$('#test').click();	
+			</script>
+			
+			
+			<?php    
+
+			exit;
 			
 			$this->update_thumbnail_panel(
 				$image_id,
@@ -412,6 +424,29 @@ class Main extends CI_Controller {
 			);
 		
 	}		
+	
+	
+	function jcrop(){
+		 ?>
+				<link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
+				<script src="<?php  echo base_url()   ?>bootstrap/js/jquery.js"></script>
+				<script type="text/javascript" language="Javascript">
+					$(document).ready(function() { 
+								$('#press').click(function(event) {
+										window.parent.$('#iframe_dom').attr('src', '<?php echo base_url()    ?>index.php/main/on2update_thumbnail_panel?image_id=<?php  echo $this->input->get('image_id');   ?>&image_type_id=<?php  echo $this->input->get('image_type_id');   ?>&li_index=<?php  echo $this->input->get('li_index');   ?>');
+										window.parent.$('#close_fancy_zoom').click();
+								});	
+					});
+				</script>
+				<div>
+					<img src='<?php  echo base_url()   ?>uploads/<?php echo  $this->user_id;    ?>/<?php echo $this->input->get('image_id');    ?>/image_crop.jpg' />
+				</div>
+				<a  id='press' class='btn ' >click</a>
+			<?php    	
+		
+	}
+	
+	
 
 	function on2update_thumbnail_panel(){
 		

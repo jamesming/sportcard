@@ -21,7 +21,7 @@ function account_menu(){
 							
 									$('.box').addClass('push-z-index-back');
 
-							  	$('#iframe_fancyZoom').attr('src','<?php echo base_url()     ?>index.php/ajax/jcrop')
+							  	$('#iframe_fancyZoom').attr('src','<?php echo base_url()     ?>index.php/main/jcrop')
 							  	
 						});	
 
@@ -327,7 +327,7 @@ function store_custom_configuration(){
 
 function bind_events(){
 
-			$('#fancyZoom_div').setFancyZoomWindowSize($(window).width()-100, $(window).height()-200 );
+			$('#fancyZoom_div').setFancyZoomWindowSize($(window).width()-100, $(window).height()-120 );
 			
 			
 
@@ -634,9 +634,11 @@ function thumbnail_controls(){
 
 															
 															$('#preview_box_inside').html('').css({
-														    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/'  + $(this).parent().attr('image_id') + '/image.jpg?random=<?php echo   rand(5,124344523)   ?>)',
+														    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/'  + $(this).parent().attr('image_id') + '/image_thumb.jpg?random=<?php echo   rand(5,124344523)   ?>)',
 														    'background-position': 'center 0px',
-														    'background-repeat': 'no-repeat'});
+														    'background-repeat': 'no-repeat',
+														    'background-size':'contain'
+														    });
 												});	
 												
 												$('.thumbs-ul li .videos_preview.inside_li').live("click", function(){					             
