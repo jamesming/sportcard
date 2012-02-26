@@ -50,12 +50,14 @@ $route['home/facebook'] = "home/facebook";
 
 $route['main/jcrop'] = "main/jcrop";
 $route['main/on2update_thumbnail_panel'] = "main/on2update_thumbnail_panel";
+$route['main/crop'] = "main/crop";
 
 $route['main/:any'] = "main/index"; 
 
 $route['main/confirm_existing_password'] = "main/confirm_existing_password";
 $route['main/update_password'] = "main/update_password";
 $route['main/update'] = "main/update";
+
 $route['main/insert'] = "main/insert";
 $route['main/remove'] = "main/remove";
 $route['main/upload'] = "main/upload";

@@ -144,6 +144,7 @@
 	  	
 	  		$('.box').removeClass('push-z-index-back');
 
+
 /*	  	
 	  		// ** SHOW EMBEDDED VIDEO AGAIN
 	  		if( window.parent.document.getElementById('bottom_edit_frame')  ){

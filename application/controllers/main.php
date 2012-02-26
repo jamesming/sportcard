@@ -360,37 +360,22 @@ class Main extends CI_Controller {
 	
 	public function resize(){
 		
-
-		
 			$image_id = $this->input->get('image_id');
 			$image_type_id = $this->input->get('image_type_id');
 			$li_index = $this->input->get('li_index');
 		
-			$dir_path = 'uploads/'. $this->user_id .'/'  . $image_id; 
+			$dir_path = 'uploads/'. $this->user_id .'/'  . $image_id . '/'; 
 		
-			$image_information = getimagesize($dir_path . '/' . 'image.jpg');
+			$image_information = getimagesize($dir_path  . 'image.jpg');
 			
 			$width_of_file = $image_information[0];
 			$height_of_file = $image_information[1];
 		
-			$this->tools->clone_and_resize_append_name_of(
-				$appended_suffix = '_thumb', 
-				$full_path = $dir_path . '/' . 'image.jpg', 
-				$width =  $this->thumbnail_size_width, 
-				$height = $this->tools->get_new_size_of (
-											$what = 'height', 
-											$based_on_new =  $this->thumbnail_size_width, 
-											$orig_width = $width_of_file, 
-											$orig_height = $height_of_file 
-											)
-				);
-				
-				
 			$crop_height = '500';	
 				
 			$this->tools->clone_and_resize_append_name_of(
-				$appended_suffix = '_crop', 
-				$full_path = $dir_path . '/' . 'image.jpg', 
+				$appended_suffix = '_crop_this', 
+				$full_path = $dir_path  . 'image.jpg', 
 				$width = $this->tools->get_new_size_of (
 											$what = 'width', 
 											$based_on_new =  $crop_height, 
@@ -428,9 +413,11 @@ class Main extends CI_Controller {
 	
 	function jcrop(){
 		
-			$dir_path = 'uploads/'. $this->user_id .'/'  . $this->input->get('image_id'); 
+			$image_id = $this->input->get('image_id');
 		
-			$image_information = getimagesize($dir_path . '/' . 'image_crop.jpg');
+			$dir_path = 'uploads/'. $this->user_id .'/'  .  $image_id; 
+		
+			$image_information = getimagesize($dir_path . '/' . 'image_crop_this.jpg');
 			
 			$width_of_file = $image_information[0];
 			$height_of_file = $image_information[1];
@@ -480,13 +467,15 @@ class Main extends CI_Controller {
 					};
 					
 					function submitCropForm(){
-										$.post("<?php echo base_url() . 'index.php/main/crop_image/';    ?>",{
+										$.post("<?php echo base_url() . 'index.php/main/crop/';    ?>",{
+											image_id: <?php  echo $image_id;   ?>,
 											x_origin: $('#x').val(),
 											y_origin: $('#y').val(),
 											width: $('#w').val(),
 											height: $('#h').val()
 										},function(data) {
-
+												window.parent.$('#iframe_dom').attr('src', '<?php echo base_url()    ?>index.php/main/on2update_thumbnail_panel?image_id=<?php  echo $this->input->get('image_id');   ?>&image_type_id=<?php  echo $this->input->get('image_type_id');   ?>&li_index=<?php  echo $this->input->get('li_index');   ?>');
+												window.parent.$('#close_fancy_zoom').click();
 										});		
 					};										
 				</script>
@@ -495,16 +484,15 @@ class Main extends CI_Controller {
 
 <body >
 <div   style='width:<?php echo $width_of_file;    ?>px;margin-left:auto;margin-right:auto'  > 
-	<img  id='cropbox' src='<?php  echo base_url()   ?>uploads/<?php echo  $this->user_id;    ?>/<?php echo $this->input->get('image_id');    ?>/image_crop.jpg?random=<?php  echo rand(234234,234234)   ?>'>		
+	<img  id='cropbox' src='<?php  echo base_url()   ?>uploads/<?php echo  $this->user_id;    ?>/<?php echo $this->input->get('image_id');    ?>/image_crop_this.jpg?random=<?php  echo rand(234234,234234)   ?>'>		
 </div> 
-<a  id='press' class='btn ' >click</a>		
-
-<input type="text" size="4" id="x" name="x" value="" />
-<input type="text" size="4" id="y" name="y" />
-<input type="text" size="4" id="x2" name="x2" />
-<input type="text" size="4" id="y2" name="y2" />
-<input type="text" size="4" id="w" name="w" />
-<input type="text" size="4" id="h" name="h" />
+<center   style='margin-top:10px'  ><button  id='submit' class='btn ' >submit</button></center>
+<input type="hidden" size="4" id="x" name="x" value="" />
+<input type="hidden" size="4" id="y" name="y" />
+<input type="hidden" size="4" id="x2" name="x2" />
+<input type="hidden" size="4" id="y2" name="y2" />
+<input type="hidden" size="4" id="w" name="w" />
+<input type="hidden" size="4" id="h" name="h" />
 
 </body>
 
@@ -512,7 +500,46 @@ class Main extends CI_Controller {
 		
 	}
 	
-	
+	function crop(){
+		
+		$dir_path = 'uploads/' . $this->user_id . '/' .   $this->input->post('image_id')  . '/';
+
+		$x_origin = $this->input->post('x_origin');
+		$y_origin = $this->input->post('y_origin');
+		$width = $this->input->post('width');
+		$height = $this->input->post('height');
+
+		$this->tools->crop_and_name_it( 
+		$new_name = 'image_cropped.jpg', 
+		$original_file = 'image_crop_this.jpg', 
+		$dir_path, 
+		$width, 
+		$height, 
+		$x_origin, 
+		$y_origin 
+		);
+
+		$this->tools->copy_file( 
+		$orig_file_name = $dir_path.'image_cropped.jpg', 
+		$new_file_name = $dir_path .'image_thumb.jpg'
+		);
+		
+		$image_information = getimagesize($dir_path  . 'image_thumb.jpg');
+
+		$this->tools->resize_this(  
+		 $orig_file_name = $dir_path .'image_thumb.jpg' ,
+		 $width =  $this->thumbnail_size_width, 
+		 $height = $this->tools->get_new_size_of (
+		 				$what = 'height', 
+		 				$based_on_new = $this->thumbnail_size_width, 
+		 				$orig_width = $image_information[0], 
+		 				$orig_height =  $image_information[1] )
+		 );
+			
+		// ** Delete transitional image
+		$this->tools->recursiveDelete($dir_path  . 'image_crop_this.jpg');			
+
+	}
 
 	function on2update_thumbnail_panel(){
 		
@@ -527,8 +554,6 @@ class Main extends CI_Controller {
 
 	
 	function get_video_url(){
-		
-
 		
 		$images = $this->my_database_model->select_from_table( 
 					$table = 'images', 
@@ -546,8 +571,6 @@ class Main extends CI_Controller {
 
     
 	function update_video(){
-
-		
 		
 		$table = 'images';
 		$video_url = $this->input->post('video_url');
@@ -709,7 +732,14 @@ class Main extends CI_Controller {
 							.attr('image_id',<?php  echo $image_id   ?>)
 							.css({'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_thumb.jpg?random=<?php echo  rand(5,126724523)   ?>)',
 								    'background-position': '0px 0px',
-								    'background-repeat': 'no-repeat'})					  
+								    'background-repeat': 'no-repeat'})		
+								    
+						window.parent.$('#preview_box_inside').html('').css({
+																				    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/<?php echo $image_id    ?>/image_cropped.jpg?random=<?php echo   rand(5,124344523)   ?>)',
+																				    'background-position': 'center 0px',
+																				    'background-repeat': 'no-repeat',
+																				    'background-size':'contain'
+																				    });			  
 				  
 							/*							
 							if( window.parent.$('#<?php echo $image_types[$image_type_id] ?> li').length > 0   ){

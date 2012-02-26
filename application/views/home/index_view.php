@@ -79,7 +79,7 @@ clear:both;
 	</div>
 	<div   id='slogan' class='cufon ' >LAUNCHING SOON
 	</div>
-<?php if(1==2 ){?>
+<?php if(1==1 ){?>
 
 
 	<div>

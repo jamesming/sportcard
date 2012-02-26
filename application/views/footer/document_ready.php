@@ -18,7 +18,7 @@ $(document).ready(function() {
 function account_menu(){
 	
 						$('#test').css({cursor:'pointer'}).fancyZoom().click(function(event) {
-							
+
 									$('.box').addClass('push-z-index-back');
 
 							  	$('#iframe_fancyZoom').attr('src','<?php echo base_url()     ?>index.php/main/jcrop')
@@ -327,7 +327,7 @@ function store_custom_configuration(){
 
 function bind_events(){
 
-			$('#fancyZoom_div').setFancyZoomWindowSize($(window).width()-100, $(window).height()-120 );
+			$('#fancyZoom_div').setFancyZoomWindowSize(800, 560 );
 			
 			
 
@@ -573,6 +573,7 @@ function thumbnail_controls(){
 												        image_type_id: 0,
 												        li_index: -1
 												    },
+														allowedExtensions: ['jpg', 'JPG'],
 						                onComplete: function(id, fileName, responseJSON){
 															//alert(JSON.stringify(responseJSON));
 															
@@ -607,6 +608,7 @@ function thumbnail_controls(){
 												        image_type_id: 1,
 												        li_index: -1
 												    },
+														allowedExtensions: ['jpg', 'JPG'],
 						                onComplete: function(id, fileName, responseJSON){
 															//alert(JSON.stringify(responseJSON));
 						                	$('#iframe_dom').attr('src','<?php echo base_url()    ?>index.php/main/resize?li_index=' + responseJSON['li_index']+ '&image_id='  + responseJSON['image_id'] +  '&image_type_id=' + responseJSON['image_type_id'] +  '&random='+ Math.floor(Math.random()*9999));
@@ -634,7 +636,7 @@ function thumbnail_controls(){
 
 															
 															$('#preview_box_inside').html('').css({
-														    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/'  + $(this).parent().attr('image_id') + '/image_thumb.jpg?random=<?php echo   rand(5,124344523)   ?>)',
+														    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $this->user_id    ?>/'  + $(this).parent().attr('image_id') + '/image_cropped.jpg?random=<?php echo   rand(5,124344523)   ?>)',
 														    'background-position': 'center 0px',
 														    'background-repeat': 'no-repeat',
 														    'background-size':'contain'
@@ -691,6 +693,13 @@ function thumbnail_controls(){
 														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.jpg)'
 														})		
 														
+														$('#preview_box_inside').html('').css({
+													    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/'  + $(this).parent().parent().attr('image_id') + '/image_cropped.jpg?random=<?php echo   rand(5,124344523)   ?>)',
+													    'background-position': 'center 0px',
+													    'background-repeat': 'no-repeat',
+													    'background-size':'contain'
+													    });														
+														
 														var image_id_serialized = "image_background_id=" + $(this).parent().parent().attr('image_id');
 	
 														$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
@@ -699,7 +708,7 @@ function thumbnail_controls(){
 														set_what:image_id_serialized
 														},function(data) {
 								
-																
+
 															
 														});	
 

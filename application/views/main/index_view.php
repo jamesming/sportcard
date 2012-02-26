@@ -33,7 +33,7 @@
                 <a class="brand" href="#">SPORTCARD</a>
 
                 <ul class="nav  pull-right ">
-									<li class=" ">
+									<li class=" "  >
 									
 										<a  id='test'  href='#fancyZoom_div' >Test</a>
 									
