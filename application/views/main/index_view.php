@@ -324,7 +324,109 @@
 											         				<?php
 											         				};
 											         			 
-											         } ?>														
+											         } ?>			
+											         
+		         
+																<style>
+																.slider-bar{
+																width:100px; 
+																position:relative; 
+																float:left;
+																}
+																.slider-bubble{ 
+																background:url(<?php echo base_url()    ?>images/callout.gif) no-repeat; 
+																height:46px; 
+																width:38px; 
+																overflow:hidden; 
+																position:absolute;
+																top:-50px;
+																margin-left:-17px;
+																padding:8px 0 0 0;
+																text-align:center;
+																font-weight:bold;
+																color:#202020;
+																}
+																</style>
+																
+																
+																
+											          <div class="control-group">
+											
+											            <label class="control-label" for="slider-bar_padding-left">Center</label>
+											
+											            <div class="controls">
+																			<div id="slider-bar_padding-left"   class='slider-bar ' >
+																				<div id="slider-handle_padding-left">
+																				</div>
+																				<div  id='slider-bubble_padding-left' class="slider-bubble">
+																				</div>
+																			</div>															
+											            </div>
+											
+											          </div>	
+
+																<script>
+																$(document).ready(function() { 
+																	$('#slider-bubble_padding-left').hide();
+																	$( "#slider-bar_padding-left" ).slider({
+															             handle: '#slider-handle_padding-left',
+															             min: 0,
+															             max: 100,
+															             start: function(e,ui){
+															                     $('#slider-bubble_padding-left').fadeIn('fast');
+															             },
+															             stop: function(e,ui){
+															                     $('#slider-bubble_padding-left').fadeOut('fast');
+															             },
+															             slide: function(e,ui){
+																							     	var mypos = ($('#slider-bar_padding-left').slider("value")/1);
+																									 	$('#slider-bubble_padding-left').css('left', mypos).text(ui.value);
+																									 	$('#full_name_readonly').css({'padding-left':ui.value})
+															             }
+															     });
+																});
+																</script>
+
+											          <div class="control-group">
+											
+											            <label class="control-label" for="slider-bar_height">Height</label>
+											
+											            <div class="controls">
+																			<div id="slider-bar_height"   class='slider-bar ' >
+																				<div id="slider-handle_height">
+																				</div>
+																				<div  id='slider-bubble_height' class="slider-bubble">
+																				</div>
+																			</div>															
+											            </div>
+											
+											          </div>	
+											          
+											          
+											          
+											          					
+																<script>
+																$(document).ready(function() { 
+																	$('#slider-bubble_height').hide();
+																	$( "#slider-bar_height" ).slider({
+															             handle: '#slider-handle_height',
+															             min: 0,
+															             max: 1000,
+															             start: function(e,ui){
+															                     $('#slider-bubble_height').fadeIn('fast');
+															             },
+															             stop: function(e,ui){
+															                     $('#slider-bubble_height').fadeOut('fast');
+															             },
+															             slide: function(e,ui){
+																							     	var mypos = ($('#slider-bar_height').slider("value")/10);
+																									 	$('#slider-bubble_height').css('left', mypos).text(ui.value);
+																									 	$('#head-line-box').css({'height':ui.value})
+															             }
+															     });
+																});
+																</script>
+											         											
 													</div>
        										<div  class=' span5'>
 			

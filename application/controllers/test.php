@@ -16,9 +16,11 @@ class Test extends CI_Controller {
 						
 						<link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
 						
-		<link type="text/css" href="<?php echo  base_url();   ?>js/jquery_latest/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
-		<script type="text/javascript" src="<?php echo  base_url();   ?>js/jquery_latest/js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="<?php echo  base_url();   ?>js/jquery_latest/js/jquery-ui-1.8.18.custom.min.js"></script>
+						<link type="text/css" href="<?php echo  base_url();   ?>js/jquery_latest/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
+						<script type="text/javascript" src="<?php echo  base_url();   ?>js/jquery_latest/js/jquery-1.7.1.min.js"></script>
+						<script type="text/javascript" src="<?php echo  base_url();   ?>js/jquery_latest/js/jquery-ui-1.8.18.custom.min.js"></script>
+		
+		
 						</head>
 						
 						<html>
