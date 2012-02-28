@@ -406,7 +406,7 @@
 											          
 											          					
 																<script>
-																$(document).ready(function() { 
+																$(document).ready(function() { //
 																	$('#slider-bubble_height').hide();
 																	$( "#slider-bar_height" ).slider({
 															             handle: '#slider-handle_height',
