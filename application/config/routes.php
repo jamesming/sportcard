@@ -41,6 +41,7 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
+$route['test/slide'] = "test/slide";
 $route['home/login'] = "home/login";
 $route['home/logout'] = "home/logout";
 $route['home/register'] = "home/register";

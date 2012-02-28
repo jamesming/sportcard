@@ -9,6 +9,86 @@ class Test extends CI_Controller {
    }
 
 
+	function slide(){?>
+						<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+						<html xmlns="http://www.w3.org/1999/xhtml">
+						<head>
+						
+						<link href="<?php  echo base_url()   ?>bootstrap/css/bootstrap.css" rel="stylesheet">
+						
+		<link type="text/css" href="<?php echo  base_url();   ?>js/jquery_latest/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="<?php echo  base_url();   ?>js/jquery_latest/js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="<?php echo  base_url();   ?>js/jquery_latest/js/jquery-ui-1.8.18.custom.min.js"></script>
+						</head>
+						
+						<html>
+							
+							
+						
+						<body>
+							
+<style>
+#slider-bar{
+width:100px; 
+position:relative; 
+float:left;
+}
+#slider-bubble{ 
+background:url(<?php  echo base_url()   ?>images/callout.gif) no-repeat; 
+height:46px; 
+width:38px; 
+overflow:hidden; 
+position:absolute;
+top:-50px;
+margin-left:-17px;
+padding:8px 0 0 0;
+text-align:center;
+font-weight:bold;
+color:#202020;
+}
+</style>
+									<script>
+									$(document).ready(function() { 
+										$('#slider-bubble').hide();
+										$( "#slider-bar" ).slider({
+								             handle: '#slider-handle',
+								             min: 0,
+								             max: 100,
+								             start: function(e,ui){
+								                     $('#slider-bubble').fadeIn('fast');
+								             },
+								             stop: function(e,ui){
+								                     $('#slider-bubble').fadeOut('fast');
+								             },
+								             slide: function(e,ui){
+																     	var mypos = ($('#slider-bar').slider("value")/1);
+																		 	$('#slider-bubble').css('left', mypos).text(ui.value);
+								             }
+								     });
+									});
+									</script>
+								
+								
+								<div   class='container '   style='margin-top:200px'  >
+									
+										<div id="slider-bar">
+											<div id="slider-handle">
+											</div>
+											<div id="slider-bubble"></div>
+										</div>
+										
+								</div>
+
+								
+								
+						</body>
+						</html>		
+		
+		<?php     
+
+	}
+
+
 	function html5player(){
 	?>
 	
