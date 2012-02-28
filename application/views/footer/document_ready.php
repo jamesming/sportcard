@@ -525,6 +525,7 @@ function store( dom_element ){
 
 function store_position( dom_element ){
 	
+
 						var coord = dom_element.offset();
 						$('#x').val( coord.left.toFixed(0) );
 						$('#y').val( coord.top.toFixed(0) );
@@ -535,7 +536,7 @@ function store_position( dom_element ){
 							id:<?php echo $data['user_id']    ?>,
 							set_what:$('#form0').serialize()
 							},function(data) {
-							
+								
 								$('#y').val(data);
 
 								if( $('#edit_mode').attr('on') == 1){
@@ -543,12 +544,6 @@ function store_position( dom_element ){
 								
 								};
 
-								
-//								$('#head-line-box .handle').mouseout(function(event) {
-//
-//								//		$('#profile_box').show();
-//														
-//								})
 		
 						});		
 	

@@ -146,7 +146,7 @@ class Query {
 	function update($post_array){
 
 		$set_what_array = $this->get_set_what_array_by_parsing_post_parameter($post_array);
-		
+
 		$this->add_column_if_not_exist($set_what_array, $post_array['table']);
 
 		return $this->CI->my_database_model->update_table_where(

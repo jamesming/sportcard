@@ -22,6 +22,10 @@
 	
 
 <body>
+	<form name='form0' id='form0'>
+		<input name="x" id="x" type="hidden" value="">
+		<input name="y" id="y" type="hidden" value="">
+	</form>
 	<div  id='close_fancy_zoom'></div>
 	
           <div id="navbar-example" class="navbar  navbar-fixed-top">
