@@ -325,6 +325,13 @@ function store_custom_configuration(){
 }
 
 function bind_events(){
+	
+			$('#head-line-box .window-controls-container').css({visibility:'hidden'})
+			$('#head-line-box').live("mouseover", function(){
+						$(this).children('.window-controls-container').css({visibility:'visible'})
+			 }).live("mouseout", function(){
+						$(this).children('.window-controls-container').css({visibility:'hidden'})
+			 });			
 
 			$('#fancyZoom_div').setFancyZoomWindowSize(800, 560 );
 			
@@ -490,18 +497,14 @@ $.fn.bind_mouse_events = function(){
 };
 
 function edit_mode_on(){
-
+						
 						$('#profile_box').show();
-						$('#head-line-box .window-controls-container, .coordinates')
-						.css({'visibility':'visible'});
 						
 }
 
 function edit_mode_off(){
 
 							$('#profile_box').hide();
-							$('#head-line-box .window-controls-container, .coordinates')
-							.css({'visibility':'hidden'});
 	
 						
 }
