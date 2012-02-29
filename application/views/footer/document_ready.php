@@ -694,9 +694,11 @@ function thumbnail_controls(){
 
 												
 												$('.swap').live("click", function(){
-													$('body').css({
-														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.jpg)'
-														})		
+													
+													$('#background').attr('src','<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.jpg');
+//														$('body').css({
+//														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.jpg)'
+//														})		
 														
 														$('#preview_box_inside').html('').css({
 													    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/'  + $(this).parent().parent().attr('image_id') + '/image_cropped.jpg?random=<?php echo   rand(5,124344523)   ?>)',
