@@ -1,11 +1,25 @@
 <style>
 	body{
-  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg);
+/*  background-image: url(<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg);
   background-position:center 40px;/* 40px to make the container go all the way to the bottom of the topbar */
   background-repeat:no-repeat;
-//  -webkit-background-size:1280px 1324px; background-size:cover;
+  -webkit-background-size:1280px 1324px; background-size:cover;*/
   padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 	}
+.fullBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+//  margin-top:35px;
+}
+ 
+#maincontent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50; 
+}	
 	.top-right-rounded{
 		border-top-right-radius: 6px;
 		-moz-border-radius-topright: 6px;

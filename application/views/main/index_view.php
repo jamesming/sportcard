@@ -18,15 +18,18 @@
 </head>
 
 <html>
-	
-	
-
-<body>
 	<form name='form0' id='form0'>
 		<input name="x" id="x" type="hidden" value="">
 		<input name="y" id="y" type="hidden" value="">
-	</form>
+	</form>	
 	<div  id='close_fancy_zoom'></div>
+<body>
+<img id="background" alt="" src="<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg"  />
+<div id="maincontent">
+
+
+
+	
 	
           <div id="navbar-example" class="navbar  navbar-fixed-top">
 
@@ -643,7 +646,7 @@
 			vspace="">
 		</iframe>		
 	</div>	
-
+</div>
 </body>
 </html>
 

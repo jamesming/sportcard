@@ -1,10 +1,7 @@
 <script type="text/javascript" language="Javascript">
 	
 $(document).ready(function() { 
-	
-//			$('body').css({'background-size': $('window').width()+'px' +  ($('window').height() + 100) +'px'})
-//			$('body').css({'background-size': '200px 400px')
-	
+			$("#background").fullBg();
 			account_menu();
 			settings_box();
 			get_stored_configurations();
