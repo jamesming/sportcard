@@ -1,6 +1,10 @@
 <script type="text/javascript" language="Javascript">
 	
 $(document).ready(function() { 
+	
+//			$('body').css({'background-size': $('window').width()+'px' +  ($('window').height() + 100) +'px'})
+//			$('body').css({'background-size': '200px 400px')
+	
 			account_menu();
 			settings_box();
 			get_stored_configurations();
@@ -352,7 +356,7 @@ function bind_events(){
 			$('#head-line-box .handle')
 			.mouseup(function(event) {
 				
-									$('#profile_box').show();
+						$('#profile_box').show();
 									
 			}).mousedown(function() {
 				
@@ -536,7 +540,7 @@ function store_position( dom_element ){
 							id:<?php echo $data['user_id']    ?>,
 							set_what:$('#form0').serialize()
 							},function(data) {
-								
+								//alert(data);
 								$('#y').val(data);
 
 								if( $('#edit_mode').attr('on') == 1){
