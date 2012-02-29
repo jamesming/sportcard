@@ -43,6 +43,7 @@ $route['404_override'] = '';
 
 $route['test/slide'] = "test/slide";
 $route['fonts/form'] = "fonts/form";
+$route['fonts/add_update_fonts'] = "fonts/add_update_fonts";
 $route['home/login'] = "home/login";
 $route['home/logout'] = "home/logout";
 $route['home/register'] = "home/register";
