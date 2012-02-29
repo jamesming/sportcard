@@ -42,7 +42,7 @@ $route['default_controller'] = "home";
 $route['404_override'] = '';
 
 $route['test/slide'] = "test/slide";
-$route['font/form'] = "font/form";
+$route['fonts/form'] = "fonts/form";
 $route['home/login'] = "home/login";
 $route['home/logout'] = "home/logout";
 $route['home/register'] = "home/register";
