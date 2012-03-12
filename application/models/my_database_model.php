@@ -248,7 +248,10 @@ function select_from_table(
 	$use_join = FALSE, 
 	$join_array = array(), 
 	$group_by_array = array(),
-	$or_where_array = array()
+	$or_where_array = array(),
+	$use_wherein = FALSE,
+	$where_in_field,
+	$where_in = array()
 	){
 	
 
@@ -317,6 +320,13 @@ function select_from_table(
 	
 	
 	
+	if($use_wherein == TRUE){
+		
+		$this->db->where_in($where_in_field, $where_in);
+		
+	};
+	
+	
 	$query = $this->db->get($table); 
 	
 	return $query->result(); 
@@ -366,20 +376,17 @@ function count_records( $table,  $where_array ){
 
 function check_if_exist($where_array, $table ){
 	
-
-	
 	$this->db->select('id');
 	$this->db->from($table);
+	
 	foreach( $where_array as $field => $value ){
 
 		$this->db->where($field, $value);
 	}
-	
   
 	$query = $this->db->get();
 
-	
-	if( $query->num_rows() ){
+	if( count($query->num_rows()) > 0 ){
 		return TRUE;
 	}else{
 		return FALSE;
