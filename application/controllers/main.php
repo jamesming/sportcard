@@ -812,10 +812,10 @@ class Main extends CI_Controller {
 
 	
 function t(){
-$table = 'images';
+$table = 'a3_nos';
 $this->my_database_model->create_generic_table($table );
 
-
+exit;
 $fields_array = array(
                       'user_id' => array(
                                                'type' => 'int(11)'
