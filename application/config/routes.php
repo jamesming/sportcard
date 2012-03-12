@@ -51,6 +51,7 @@ $route['home/validate_account'] = "home/validate_account";
 $route['home/create_or_update_with_facebook'] = "home/create_or_update_with_facebook";
 $route['home/facebook'] = "home/facebook";
 
+$route['main/t'] = "main/t";
 $route['main/jcrop'] = "main/jcrop";
 $route['main/on2update_thumbnail_panel'] = "main/on2update_thumbnail_panel";
 $route['main/crop'] = "main/crop";
