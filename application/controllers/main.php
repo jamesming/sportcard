@@ -61,7 +61,6 @@ class Main extends CI_Controller {
 			$limit = 10
 			);
 
-		
 		$users = $this->query->get_users(
 			'users',
 			$where_array = array(

@@ -1,7 +1,12 @@
 <script type="text/javascript" language="Javascript">
 	
 $(document).ready(function() { 
-			$("#background").fullBg();
+			$.backstretch("<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg",{	
+																	centeredX: true,         // Should we center the image on the X axis?
+																	centeredY: false,        // Should we center the image on the Y axis?
+																	speed: 0                 // fadeIn speed for background after image loads (e.g. "fast" or 500)
+																}
+			);
 			account_menu();
 			settings_box();
 			get_stored_configurations();
@@ -10,7 +15,7 @@ $(document).ready(function() {
 			thumbnail_controls();
 			bind_events();
 			
-			$('li#panel-tab-3 a').click()
+			$('li#panel-tab-1 a').click()
 			
 			//$("#menu1 a#settings_menu_item").click()
 
@@ -212,12 +217,19 @@ function store_custom_configuration(){
 				
 				$('#full_name_readonly').attr('font_name', $(this).attr('font_name'));
 				
+				
+				var width_of_name_container = $('#full_name_readonly').width() + 15;
+				
+				$('#head-line-box').css({'width':width_of_name_container});
+				$('#box_width').val(width_of_name_container);				
+				
+				
 				var font_name_serialized = "font_name=" + $(this).attr('font_name');
 				
 				$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
 				table:'users',
 				id:<?php echo $data['user_id']    ?>,
-				set_what:font_name_serialized
+				set_what:'box_width='+width_of_name_container+'&'+font_name_serialized
 				},function(data) {
 				
 					$('#y').val(data);
@@ -229,10 +241,27 @@ function store_custom_configuration(){
 			$('#full_name')
 			.keyup(function(event) {
 				$('#full_name_readonly').html( $(this).val() );	
-				Cufon.replace('#full_name_readonly',{ fontFamily: $('#full_name_readonly').attr('font_name'), hover: true });				
-			}).blur(function(event) {
-						store( $(this) );		
-			});	
+				Cufon.replace('#full_name_readonly',{ fontFamily: $('#full_name_readonly').attr('font_name'), hover: true });			
+				
+				var width_of_name_container = $('#full_name_readonly').width() + 15;
+				
+				$('#head-line-box').css({'width':width_of_name_container});
+				$('#box_width').val(width_of_name_container);
+
+							$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
+							table:'users',
+							id:<?php echo $data['user_id']    ?>,
+							set_what:'box_width='+width_of_name_container+'&full_name='+$(this).val()
+							},function(data) {
+							
+								$('#y').val(data);
+								
+							});	
+
+			})
+//			.blur(function(event) {
+//						store( $(this) );		
+//			});	
 			
 
 			
@@ -282,8 +311,24 @@ function store_custom_configuration(){
 						$('#full_name_readonly').css({'font-size':$(this).val()});
 						
 						Cufon.replace('#full_name_readonly',{ fontFamily: $('#full_name_readonly').attr('font_name'), hover: true });
+						
+						
+								var width_of_name_container = $('#full_name_readonly').width() + 15;
+								
+								$('#head-line-box').css({'width':width_of_name_container});
+								$('#box_width').val(width_of_name_container);
+								
+								$.post("<?php echo base_url(). 'index.php/main/update';    ?>",{
+								table:'users',
+								id:<?php echo $data['user_id']    ?>,
+								set_what:'box_width='+width_of_name_container+'&font_size='+$(this).val()
+								},function(data) {
+								
+									$('#y').val(data);
+									
+								});							
 
-						store( $(this) );	
+						// store( $(this) );	
 			});		
 			
 			$('#box_width').change(function(event) {
@@ -667,7 +712,7 @@ function thumbnail_controls(){
 	
 
 												$("#backgrounds-div").jcarousel({
-												        scroll: 4,
+												        scroll: 1,
 												        initCallback: mycarousel_initCallback_1,
 //												        buttonNextHTML: null,
 //        												buttonPrevHTML: null
@@ -695,11 +740,14 @@ function thumbnail_controls(){
 												
 												$('.swap').live("click", function(){
 													
-													$('#background').attr('src','<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.jpg');
-//														$('body').css({
-//														  'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.jpg)'
-//														})		
-														
+														$.backstretch('<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/' + $(this).parent().parent().attr('image_id') + '/image.jpg',{	
+																	centeredX: true,         // Should we center the image on the X axis?
+																	centeredY: false,         // Should we center the image on the Y axis?
+																	speed: 0                 // fadeIn speed for background after image loads (e.g. "fast" or 500)
+																}
+														);
+
+
 														$('#preview_box_inside').html('').css({
 													    'background-image': 'url(<?php  echo base_url()   ?>uploads/<?php echo $data['user_id']   ?>/'  + $(this).parent().parent().attr('image_id') + '/image_cropped.jpg?random=<?php echo   rand(5,124344523)   ?>)',
 													    'background-position': 'center 0px',

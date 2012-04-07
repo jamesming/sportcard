@@ -537,10 +537,9 @@
             }
 
             this.pauseAuto();
-            
-            
-            
+
             this.animate(this.pos(i), a);
+         
         },
 
         /**
@@ -552,7 +551,10 @@
          * @param fv {Boolean} Whether to force last item to be visible.
          */
         pos: function(i, fv) {
+
             var pos  = $jc.intval(this.list.css(this.lt));
+
+						
 
             if (this.locked || this.animating) {
                 return pos;
@@ -625,6 +627,7 @@
 
                 c = e;
                 d = this.dimension(e);
+
                 if (d === 0) {
                     throw new Error('jCarousel: No width/height set for items. This will cause an infinite loop. Aborting...');
                 }
@@ -636,6 +639,7 @@
                 }
 
                 v += d;
+
 
                 if (v >= clipping) {
                     break;
@@ -727,6 +731,7 @@
          * @param a {Boolean} Flag indicating whether to perform animation.
          */
         animate: function(p, a) {
+
             if (this.locked || this.animating) {
                 return;
             }
@@ -766,6 +771,7 @@
                 this.list.css(this.lt, p + 'px');
                 scrolled();
             } else {
+            	
                 var o = !this.options.vertical ? (this.options.rtl ? {'right': p} : {'left': p}) : {'top': p};
                 // Define animation settings.
                 var settings = {
@@ -778,8 +784,12 @@
                     settings.step = this.options.animationStepCallback;
                 }
                 // Start the animation.
+                
+                
                 this.list.animate(o, settings);
             }
+            
+             
         },
 
         /**

@@ -250,7 +250,7 @@ function select_from_table(
 	$group_by_array = array(),
 	$or_where_array = array(),
 	$use_wherein = FALSE,
-	$where_in_field,
+	$where_in_field = FALSE,
 	$where_in = array()
 	){
 	

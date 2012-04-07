@@ -24,11 +24,7 @@
 	</form>	
 	<div  id='close_fancy_zoom'></div>
 <body>
-<img id="background" alt="" src="<?php  echo base_url()   ?>uploads/<?php echo $data['users'][0]['user_id']   ?>/<?php echo $data['users'][0]['image_background_id']   ?>/image.jpg"  />
 <div id="maincontent">
-
-
-
 	
 	
           <div id="navbar-example" class="navbar  navbar-fixed-top">
@@ -37,7 +33,7 @@
 
               <div class="container" >
 
-                <a class="brand" href="#">SPORTCARD</a>
+                <a class="brand" href="#">Prospace</a>
 
                 <ul class="nav  pull-right ">
 									<li class=" "  >
@@ -92,7 +88,7 @@
 						</div>
 					</div>
 
-					<div  id='full_name_readonly'>
+					<div  id='full_name_readonly'   style='display:inline;'  >
 					</div>
 				</div>
 	
